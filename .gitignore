@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+.env
+
+# React Native / Expo
+.expo/
+.expo-shared/
+android/.gradle/
+ios/Pods/
+
+# General
+*.log
+.DS_Store
