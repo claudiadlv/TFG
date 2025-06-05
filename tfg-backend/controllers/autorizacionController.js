@@ -49,3 +49,34 @@ exports.login = (req, res) => {
     });
   });
 };
+
+exports.solicitarRegistro = (req, res) => {
+  const {
+    nombre_tutor,
+    apellidos_tutor,
+    correo_tutor,
+    nombre_hijo,
+    apellidos_hijo,
+    fecha_nacimiento,
+    contrasena,
+  } = req.body;
+
+  if (!nombre_tutor || !apellidos_tutor || !correo_tutor || !nombre_hijo || !apellidos_hijo || !fecha_nacimiento || !contrasena) {
+    return res.status(400).json({ error: 'Faltan datos' });
+  }
+
+  db.query(
+    `INSERT INTO solicitudes_registro 
+    (nombre_tutor, apellidos_tutor, correo_tutor, nombre_hijo, apellidos_hijo, fecha_nacimiento, contrasena) 
+    VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    [nombre_tutor, apellidos_tutor, correo_tutor, nombre_hijo, apellidos_hijo, fecha_nacimiento, contrasena],
+    (err, result) => {
+      if (err) {
+        console.error('Error al guardar solicitud:', err);
+        return res.status(500).json({ error: 'Error al guardar la solicitud' });
+      }
+
+      res.status(200).json({ mensaje: 'Solicitud guardada correctamente' });
+    }
+  );
+};

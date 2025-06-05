@@ -60,3 +60,35 @@ exports.getUsuarioActual = (req, res) => {
   });
 };
 
+exports.solicitarRegistro = (req, res) => {
+  const {
+    nombre_tutor,
+    apellidos_tutor,
+    correo_tutor,
+    nombre_hijo,
+    apellidos_hijo,
+    fecha_nacimiento,
+    contrasena,
+  } = req.body;
+
+  db.query(
+    'INSERT INTO solicitudes_registro (nombre_tutor, apellidos_tutor, correo_tutor, nombre_hijo, apellidos_hijo, fecha_nacimiento, contrasena) VALUES (?, ?, ?, ?, ?, ?, ?)',
+    [
+      nombre_tutor,
+      apellidos_tutor,
+      correo_tutor,
+      nombre_hijo,
+      apellidos_hijo,
+      fecha_nacimiento,
+      contrasena,
+    ],
+    (err, results) => {
+      if (err) {
+        console.error('Error creando solicitud:', err);
+        res.status(500).send('Error al registrar la solicitud');
+        return;
+      }
+      res.status(201).json({ mensaje: 'Solicitud registrada correctamente' });
+    }
+  );
+};

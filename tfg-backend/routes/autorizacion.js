@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const autorizacionControllers = require('../controllers/autorizacionController'); 
+const autorizacionController = require('../controllers/autorizacionController'); 
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secreto-super-clave';
 
-router.post('/login', autorizacionControllers.login); 
+router.post('/login', autorizacionController.login); 
+router.post('/solicitar-registro', autorizacionController.solicitarRegistro);
 
 router.post('/refresh', (req, res) => {
   const { refreshToken } = req.body;
