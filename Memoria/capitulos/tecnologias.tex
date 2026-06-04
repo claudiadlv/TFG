@@ -1,0 +1,36 @@
+\chapter{Tecnologías utilizadas}
+    En el desarrollo de este proyecto se han empleado diversas tecnologías y herramientas que han permitido la implementación de una solución integral para la gestión de un club de esquí alpino. A continuación, se detallan las principales tecnologías utilizadas:
+
+    \section{Infraestructura Backend y API REST}
+
+    Para dar soporte a la aplicación móvil y centralizar la lógica de negocio, se ha diseñado un servicio backend basado en una arquitectura cliente-servidor mediante el desarrollo de una API REST. Las tecnologías seleccionadas para esta capa son Node.js y el framework Express.
+
+    \subsection{Node.js}
+    Node.js es un entorno de ejecución para JavaScript construido con el motor de JavaScript V8 de Google. Su elección como núcleo del backend se justifica por las siguientes características técnicas:
+
+    \begin{itemize}
+        \item \textbf{Modelo de E/S sin bloqueo y orientado a eventos:} Node.js utiliza un único hilo de ejecución (\textit{Single Thread}) asistido por un bucle de eventos (\textit{Event Loop}). Esto permite gestionar miles de conexiones concurrentes de forma asíncrona sin bloquear el servidor, una cualidad crítica cuando múltiples entrenadores y familias interactúan con la aplicación simultáneamente para consultar calendarios o registrar asistencias.
+        \item \textbf{Eficiencia en la transferencia de datos:} Al procesar las peticiones mediante flujos de datos (\textit{streams}), Node.js es altamente eficiente en la manipulación de archivos pesados y comunicaciones en tiempo real, facilitando la futura integración y transferencia del repositorio multimedia técnico del club.
+        \item \textbf{Unificación del lenguaje:} El uso de JavaScript tanto en el servidor (Node.js) como en el cliente (React Native) optimiza los tiempos de desarrollo, reduce la curva de aprendizaje y simplifica el mantenimiento del código fuente global del proyecto.
+    \end{itemize}
+
+    \subsection{Express}
+    Express es un \textit{framework} minimalista y flexible creado para Node.js, seleccionado para estructurar la API REST debido a su solvencia en el manejo de peticiones HTTP:
+
+    \begin{itemize}
+        \item \textbf{Arquitectura basada en Middleware:} Express organiza el flujo de las peticiones mediante funciones interconectadas (\textit{middlewares}). Esto permite auditar, transformar o validar los datos de entrada (como las credenciales de usuario o los parámetros de asistencia) antes de que alcancen la lógica de negocio final.
+        \item \textbf{Enrutamiento modular:} Permite desglosar las rutas de la API en controladores independientes (por ejemplo, rutas exclusivas para deportistas, asistencias o multimedia), garantizando un código limpio, escalable y alineado con los principios de diseño de software modular.
+    \end{itemize}
+
+    \subsection{Diseño del Modelo de Datos y Estructura Relacional}
+
+    Para soportar las funcionalidades de roles diferenciados, control de asistencia y gestión multimedia, se ha diseñado un modelo entidad-relación normalizado. Aunque el esquema detallado se aborda en los capítulos de implementación, el motor de MySQL gestiona la persistencia del sistema a través de cuatro entidades principales interconectadas:
+    
+    \begin{itemize}
+        \item \textbf{Entrenadores (Usuarios del Sistema):} Almacena la información de identificación, credenciales de acceso cifradas y el rol asignado dentro del club. Esta tabla es el núcleo para el proceso de autenticación y delimita qué usuarios tienen permisos de administrador para alterar calendarios o subir material audiovisual.
+        \item \textbf{Deportistas:} Registra los datos personales y deportivos de los atletas (nombre, categoría como U14 o U16, y fecha de nacimiento). Mediante relaciones jerárquicas, cada deportista queda vinculado a sus respectivos tutores legales (padres) y a su grupo de entrenamiento, permitiendo que el sistema filtre la información sensible según el rol que realice la consulta.
+        \item \textbf{Eventos (Calendario y Planificación):} Contiene la planificación de las sesiones de entrenamiento, convocatorias y jornadas técnicas en las estaciones de esquí. Registra variables críticas como la fecha, la hora de inicio, el tipo de actividad y la estación invernal donde se ejecuta, ofreciendo la flexibilidad necesaria para modificar la planificación ante imprevistos meteorológicos.
+        \item \textbf{Asistencia (Tabla de Hechos y Relación):} Es la entidad que registra la constancia de los atletas. Rompe la relación de muchos a muchos entre \textit{Deportistas} y \textit{Eventos}, almacenando el estado de presencia (asiste, ausente o justificado), la fecha y observaciones técnicas. Es la tabla con mayor volumen de transacciones y de la cual la librería de gráficos del \textit{frontend} extrae las métricas de progresión.
+    \end{itemize}
+    
+    Esta estructura relacional garantiza que el flujo de datos entre la API REST en Node.js y el dispositivo móvil sea consistente, eficiente y seguro en todo momento.

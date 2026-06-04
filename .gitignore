@@ -1,0 +1,19 @@
+# Node modules (librerías pesadas)
+node_modules/
+
+# Archivos de configuración local
+.env
+.expo/
+npm-debug.log*
+
+# Android generados (¡AQUÍ ESTÁ EL PROBLEMA!)
+SkiClubManager/android/build/
+SkiClubManager/android/app/build/
+SkiClubManager/node_modules/
+*.so
+*.apk
+*.aar
+
+# iOS generados
+SkiClubManager/ios/build/
+SkiClubManager/ios/DerivedData/
