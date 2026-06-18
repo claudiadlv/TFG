@@ -2359,11 +2359,19 @@
   <!-- SECTION 0 -->
   <bcf:bibdata section="0">
     <bcf:datasource type="file" datatype="bibtex" glob="false">capitulos/referencias.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">referencias.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1" intorder="1">SportEasy</bcf:citekey>
     <bcf:citekey order="2" intorder="1">SportEasy</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">Playoff</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">Playoff</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">TeamSnap</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">TeamSnap</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">Sprongo</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">Sprongo</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">Onesporter</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">Onesporter</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">boe_indemnizaciones</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

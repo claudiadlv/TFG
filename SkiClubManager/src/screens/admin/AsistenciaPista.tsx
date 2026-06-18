@@ -1,12 +1,14 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import { 
   View, Text, ActivityIndicator, Dimensions, StyleSheet, 
-  TouchableOpacity, FlatList, ScrollView 
+  TouchableOpacity, FlatList, ScrollView, Alert 
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fetchWithAuth } from '../../utils/fetchWithAuth';
 import { API_URL } from '../../config';
+import RNFS from 'react-native-fs';
+import Share from 'react-native-share';
 
 // --- TIPOS Y CONSTANTES ---
 type EventoAsistencia = { fecha: string; tipo: 'Pista' | 'Carrera' | 'Físico'; asistio: boolean };
@@ -151,6 +153,80 @@ export default function AsistenciaAdmin() {
     return map;
   }, [deportistasFiltrados]);
 
+  const handleExportCSV = async () => {
+    if (fechasClavesOrdenadas.length === 0 || deportistasFiltrados.length === 0) {
+      Alert.alert('Aviso', 'No hay datos de asistencia para exportar en el rango seleccionado.');
+      return;
+    }
+
+    try {
+      const SEPARATOR = ';'; 
+      const rows: string[] = [];
+
+      // 1. Cabecera estructurada
+      const headerColumns = ['Nombre', 'Categoría', ...fechasClavesOrdenadas];
+      rows.push(headerColumns.join(SEPARATOR));
+
+      // 2. Mapeo seguro con Clave Unificada
+      deportistasFiltrados.forEach((deportista) => {
+        const rowData: string[] = [
+          deportista.nombre,
+          deportista.categoria || 'Global'
+        ];
+
+        fechasClavesOrdenadas.forEach((fecha) => {
+          const subMapa = mapaAsistenciaCruzada.get(deportista.deportistaId);
+          const asistio = subMapa ? subMapa.get(fecha) : undefined;
+          
+          if (asistio === undefined) {
+            rowData.push('N/A'); 
+          } else {
+            rowData.push(asistio ? 'P' : 'A'); 
+          }
+        });
+
+        rows.push(rowData.join(SEPARATOR));
+      });
+
+      const csvContent = rows.join('\n');
+      const fileName = `Reporte_Asistencia_Admin_${activeTab}_${modo}.csv`;
+      
+      // 🌟 CAMBIO CRÍTICO: Usamos CachesDirectoryPath, Android otorga permisos de lectura automática aquí
+      const path = `${RNFS.CachesDirectoryPath}/${fileName}`;
+
+      // Escribimos el archivo limpio en texto plano UTF-8
+      await RNFS.writeFile(path, csvContent, 'utf8');
+
+      // 🌟 ESTRATEGIA DE COMPARTICIÓN URIS NATIVAS EN ANDROID
+      const shareOptions = {
+        title: 'Exportar Reporte de Asistencia',
+        url: `file://${path}`,        // Forzamos el prefijo file:// explícito en la caché
+        type: 'text/csv',
+        filename: fileName,
+        failOnCancel: false,
+      };
+
+      await Share.open(shareOptions);
+
+    } catch (error: any) {
+      console.error('❌ Error exportando matriz CSV:', error);
+      
+      // Capturamos el fallo específico de Android para ofrecer un plan B al usuario
+      if (error && error.message && !error.message.includes('User cancelled')) {
+        
+        // 🛠️ PLAN B (FALLBACK): Si el menú nativo falla por culpa del emulador, guardamos en descargas
+        try {
+          const downloadPath = `${RNFS.DownloadDirectoryPath}/${fileName}`;
+          await RNFS.writeFile(downloadPath, csvContent, 'utf8');
+          Alert.alert('Archivo Guardado', `El emulador bloqueó el menú compartir, pero hemos guardado el CSV directamente en tu carpeta de Descargas del teléfono.`);
+        } catch (downloadError) {
+          Alert.alert('Error', 'Ocurrió un problema de permisos al compilar el reporte.');
+        }
+        
+      }
+    }
+  };
+
   if (loading) return <View style={styles.centerContainer}><ActivityIndicator size="large" color="#0D47A1" /></View>;
   if (error) return <View style={styles.centerContainer}><Text style={styles.errorText}>{error}</Text></View>;
 
@@ -165,6 +241,11 @@ export default function AsistenciaAdmin() {
           <View>
             <View style={styles.headerContainer}>
               <Text style={styles.header}>Tabla de Asistencia</Text>
+              {fechasClavesOrdenadas.length > 0 && (
+                <TouchableOpacity style={styles.exportButton} onPress={handleExportCSV}>
+                  <Text style={styles.exportButtonText}>📥 CSV</Text>
+                </TouchableOpacity>
+              )}
             </View>
             
             <View style={styles.tabContainer}>
@@ -207,7 +288,6 @@ export default function AsistenciaAdmin() {
               </View>
             </View>
             
-            {/* Rango de Tiempo con Estilo Mejorado */}
             <View style={styles.filterGroup}>
               <View style={[pickerStyles.section, { flex: 1 }]}>
                 <Text style={pickerStyles.label}>Rango de Tiempo</Text>
@@ -226,7 +306,6 @@ export default function AsistenciaAdmin() {
               </View>
             </View>
             
-            {/* Selectores de Mes y Año con Estilo Mejorado */}
             {modo === 'mes' && (
               <View style={styles.filterGroup}>
                 <View style={[pickerStyles.section, styles.flexItem]}>
@@ -258,7 +337,6 @@ export default function AsistenciaAdmin() {
               </View>
             )}
 
-            {/* Selector de Temporada con Estilo Mejorado */}
             {modo === 'temporada' && (
               <View style={[pickerStyles.section, { width: '50%', paddingRight: 8 }]}>
                  <Text style={pickerStyles.label}>Temporada (Inicio)</Text>
@@ -278,7 +356,6 @@ export default function AsistenciaAdmin() {
             {fechasClavesOrdenadas.length > 0 ? (
               <View style={matrixStyles.mainWrapper}>
                 
-                {/* Columna Estática Izquierda */}
                 <View style={matrixStyles.fixedColumnContainer}>
                   <View style={matrixStyles.fixedHeaderCell}>
                     <Text style={matrixStyles.headerAthleteText}>Nombre</Text>
@@ -301,11 +378,9 @@ export default function AsistenciaAdmin() {
                   )}
                 </View>
 
-                {/* Área Deslizable Derecha */}
                 <ScrollView horizontal showsHorizontalScrollIndicator={true} style={matrixStyles.scrollableArea}>
                   <View style={{ flexDirection: 'column' }}>
                     
-                    {/* Cabecera de Fechas */}
                     <View style={matrixStyles.scrollableHeaderRow}>
                       {fechasClavesOrdenadas.map((dateKey) => {
                         const metaLabel = etiquetasVisuales.get(dateKey) || { dia: '00', mesAbrev: 'MAY' };
@@ -318,16 +393,17 @@ export default function AsistenciaAdmin() {
                       })}
                     </View>
 
-                    {/* Matriz de Ticks y Cruces */}
                     {deportistasFiltrados.length > 0 ? (
                       deportistasFiltrados.map((item) => (
                         <View key={`scroll-row-${item.deportistaId}`} style={matrixStyles.scrollableBodyRow}>
                           {fechasClavesOrdenadas.map((dateKey) => {
-                            const asistio = mapaAsistenciaCruzada.get(item.deportistaId)?.get(dateKey);
+                            // Corrección estricta también aquí para el renderizado visual
+                            const subMapa = mapaAsistenciaCruzada.get(item.deportistaId);
+                            const asistio = subMapa ? subMapa.get(dateKey) : undefined;
                             return (
                               <View key={`c-${item.deportistaId}-${dateKey}`} style={matrixStyles.cell}>
                                 <Text style={matrixStyles.emojiIcon}>
-                                  {asistio ? '✅' : '❌'}
+                                  {asistio === undefined ? '➖' : asistio ? '✅' : '❌'}
                                 </Text>
                               </View>
                             );
@@ -367,8 +443,8 @@ const styles = StyleSheet.create({
   contentContainer: { paddingHorizontal: 16, paddingBottom: 40 },
   centerContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   errorText: { color: 'red', textAlign: 'center', fontWeight: 'bold' },
-  headerContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 15, marginTop: 10 },
-  header: { fontSize: 22, fontWeight: '700', color: '#0D47A1', textAlign: 'center', flex: 1 },
+  headerContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 15, marginTop: 10, paddingRight: 4 },
+  header: { fontSize: 22, fontWeight: '700', color: '#0D47A1', textAlign: 'left', flex: 1 },
   noDataText: { textAlign: 'center', marginTop: 40, color: '#888', fontSize: 15, fontStyle: 'italic', backgroundColor: '#fff', padding: 20, borderRadius: 10, borderWidth: 1, borderColor: '#CFD8DC' },
   tabContainer: { flexDirection: 'row', marginBottom: 12, backgroundColor: '#E0E0E0', borderRadius: 10, padding: 3 },
   tab: { flex: 1, paddingVertical: 11, borderRadius: 8, alignItems: 'center' },
@@ -377,25 +453,35 @@ const styles = StyleSheet.create({
   activeTabText: { color: '#0D47A1' },
   filterGroup: { flexDirection: 'row', justifyContent: 'space-between' },
   flexItem: { flex: 1, marginHorizontal: 4 },
+  exportButton: {
+    backgroundColor: '#0D47A1',
+    paddingVertical: 7,
+    paddingHorizontal: 14,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 2,
+  },
+  exportButtonText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '700',
+  },
 });
 
 const pickerStyles = StyleSheet.create({
   section: { marginTop: 6, marginBottom: 6 },
   label: { fontSize: 13, fontWeight: '700', color: '#0D47A1', marginBottom: 6, marginLeft: 2 },
-  
-  // Contenedor adaptado para evitar recortes de texto inferiores en Android/iOS
   pickerWrapper: { 
     borderRadius: 10, 
     backgroundColor: '#FFFFFF', 
     borderWidth: 1, 
     borderColor: '#CFD8DC', 
     overflow: 'hidden',
-    height: 54,                  // Altura ideal para albergar los textos completos
-    justifyContent: 'center',     // Centrado vertical estricto
+    height: 54,                  
+    justifyContent: 'center',     
     paddingLeft: 4
   },
-  
-  // Limpieza del componente nativo para un escalado equilibrado de fuentes
   pickerNative: { 
     width: '100%',
     color: '#0D47A1',

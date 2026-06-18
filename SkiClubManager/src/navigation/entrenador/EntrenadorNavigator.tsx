@@ -13,6 +13,7 @@ import GaleriaScreen from '../../screens/entrenador/GaleriaEntrenador';
 import AsistenciaEntrenamiento from '../../screens/entrenador/AsistenciaEntrenamiento';
 import AsistenciaPista from '../../screens/entrenador/AsistenciaPista';
 import AdministrarTransporte from '../../screens/entrenador/AdministrarTransporte';
+import CambiarContrasena from '../../screens/comun/CambiarContraseña'; 
 
 const Stack = createNativeStackNavigator<EntrenadorStackParamList>();
 
@@ -68,6 +69,12 @@ export default function EntrenadorNavigator() {
         name="AdministrarTransporte"
         component={AdministrarTransporte}
         options={{ title: 'Administrar Transporte' }}
+      />
+      
+      <Stack.Screen
+        name="CambiarContrasena"
+        component={CambiarContrasena}
+        options={{ title: 'Cambiar Contraseña' }}
       />
     </Stack.Navigator>
   );

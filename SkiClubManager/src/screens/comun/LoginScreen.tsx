@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert, Image, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Alert, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/types/types';
@@ -56,11 +56,22 @@ export default function LoginScreen() {
         const status = response.status;
         const errorText = await response.text();
         console.log(`Error HTTP ${status}:`, errorText);
-        Alert.alert('Error', `(${status}) ${errorText}`);
+
+        // --- SOLUCIÓN: PARSEO DEL MENSAJE DE ERROR ---
+        try {
+          const errorJson = JSON.parse(errorText);
+          // Si el backend tiene la clave 'mensaje', la extraemos; si no, dejamos un fallback
+          const mensajeLimpio = errorJson.mensaje || errorJson.message || 'Credenciales inválidas';
+          
+          Alert.alert('Acceso Denegado', mensajeLimpio, [{ text: 'OK' }]);
+        } catch {
+          // Fallback por si el servidor no responde con un JSON válido
+          Alert.alert('Error', 'Usuario o contraseña incorrectos.');
+        }
       }
     } catch (error) {
       console.error('Login error:', error);
-      Alert.alert('Error', 'No se pudo conectar con el servidor');
+      Alert.alert('Error de Conexión', 'No se pudo conectar con el servidor');
     }
   };
 
@@ -82,8 +93,12 @@ export default function LoginScreen() {
         onChangeText={setPassword}
         secureTextEntry
       />
-     <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
+      <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
         <Text style={styles.loginButtonText}>Entrar</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+        <Text style={styles.registerText}>¿Has olvidado tu contraseña?</Text>
       </TouchableOpacity>
         
       <TouchableOpacity onPress={() => navigation.navigate('RegisterRequest')}>

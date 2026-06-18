@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 15,
+    overflow: 'hidden',
+    position: 'relative',
+    elevation: 0,
   },
   optionText: {
     flex: 1,

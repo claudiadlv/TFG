@@ -14,6 +14,7 @@ export type RootStackParamList = {
   AdminStack: { user: Usuario };
   EntrenadorStack: { user: Usuario };
   PadreStack: { user: Usuario };
+  ForgotPassword: undefined; 
 };
 
 // Tabs del entrenador
@@ -34,6 +35,7 @@ export type EntrenadorStackParamList = {
   AsistenciaEntrenamiento: { eventoId: string };
   AsistenciaPista: undefined;        
   AdministrarTransporte: undefined;
+  CambiarContrasena: { user: { id: number; nombre: string } };
 };
 
 //Tab admin
@@ -56,6 +58,20 @@ export type AdminStackParamList = {
   AsistenciaEntrenamiento: { eventoId: string };
   AsistenciaPista: undefined;
   AdministrarTransporte: undefined;
+  CambiarContrasena: { user: { id: number; nombre: string } };    
+  GestionarDeportistas: undefined;
+  DetallePadreHijos: { 
+      deportista: { 
+        deportista_id: number; 
+        nombre_deportista: string; 
+        apellidos_deportista: string;
+        fecha_nacimiento: string;
+        tutor_id?: number;
+        nombre_tutor?: string;
+        apellidos_tutor?: string;
+        correo_tutor?: string;
+      } 
+    };
 };
 
 export type PadreTabParamList = {
@@ -79,6 +95,7 @@ export type PadreStackParamList = {
   DetalleEventoPadreDesapuntar: { entrenamiento: Entrenamiento };
   AsistenciaPista: undefined;        
   AsistenciaFisico: undefined;
-  AsistenciaTransporte: undefined;      
+  AsistenciaTransporte: undefined;  
+  CambiarContrasena: { user: { id: number; nombre: string } };    
 };
 

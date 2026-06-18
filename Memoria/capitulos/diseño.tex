@@ -1,0 +1,207 @@
+\chapter{Diseño}
+En este capítulo se desglosan las decisiones arquitectónicas que articulan el proyecto, estructuradas en tres ejes principales: el diseño del almacén de datos, la lógica de interconexión entre las capas del sistema (frontend y backend) y el modelado de la interfaz de usuario. A través de este análisis se demuestra cómo cada componente ha sido planificado estratégicamente para ofrecer un desarrollo escalable en Node.js y React Native, garantizando una experiencia fluida para administrador, entrenadores y padres
+\section{Planificación del proyecto}
+    \subsection{Cronograma}
+    \begin{table}[htbp]
+        \centering
+        \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Fase} & \textbf{Duración} \\ \hline
+        Análisis y aprendizaje & 2 semanas (14 días) \\ \hline
+        Documentación & 16 semanas (112 días) \\ \hline
+        Diseño de la aplicación & 2 semanas (14 días) \\ \hline
+        Desarrollo del Back-End & 6 semanas (42 días) \\ \hline
+        Desarrollo del Front-End & 5 semanas (35 días) \\ \hline
+        Despliegue y Pruebas & 2 semanas (15 días) \\ \hline
+        \end{tabular}
+        \caption{Resumen de las fases del proyecto y su duración real}
+        \label{tab:duracion_fases_real}
+    \end{table}
+
+Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se compone de seis fases principales distribuidas a lo largo del segundo cuatrimestre. Es imperativo destacar que la fase de \textit{Documentación} posee un carácter transversal, desarrollándose de forma simultánea y paralela junto con las fases de diseño, desarrollo e implementación del sistema Full Stack.
+    \subsection{Diagrama de Gantt}
+    El diagrama de Gantt a continuación muestra la planificación detallada de todas las actividades realizadas durante el desarrollo del proyecto. Este diagrama refleja la secuencia, duración y solapamiento de las diferentes tareas, ofreciendo una visión global de la gestión del tiempo y recursos a lo largo de todo el proceso.
+    \begin{figure}[htbp]
+        \centering
+        \scriptsize
+        \resizebox{\textwidth}{!}{%
+            \begin{ganttchart}[
+                hgrid,
+                vgrid={*{6}{draw=none}, dotted},
+                title/.append style={fill=blue!10},
+                title label font=\tiny,
+                title height=1,
+                bar/.append style={fill=gray!30},
+                bar height=.4,
+                y unit chart=0.5cm,
+                x unit=0.12cm,
+                time slot format=isodate,
+                milestone left shift=-1,
+                milestone right shift=2
+            ]{2026-02-01}{2026-06-05}
+            
+                \gantttitlecalendar{month=name} \\
+                
+                \ganttgroup{Análisis y Aprendizaje}{2026-02-01}{2026-02-14} \\
+                    \ganttbar{Definición de alcance y requisitos}{2026-02-01}{2026-02-07} \\
+                    \ganttbar{Investigación de tecnologías}{2026-02-08}{2026-02-14} \\
+        
+                \ganttgroup{Diseño de la Aplicación}{2026-02-15}{2026-02-28} \\
+                    \ganttbar{Diseño del modelo entidad-relación}{2026-02-15}{2026-02-21} \\
+                    \ganttbar{Bocetos de interfaz móvil}{2026-02-22}{2026-02-28} \\
+
+                \ganttgroup{Desarrollo del Back-End}{2026-03-01}{2026-04-11} \\
+                    \ganttbar{Configuración del entorno y MySQL}{2026-03-01}{2026-03-10} \\
+                    \ganttbar{Implementación de controladores y lógica}{2026-03-11}{2026-03-25} \\
+                    \ganttbar{Desarrollo de endpoints y JWT}{2026-03-26}{2026-04-11} \\
+                    
+                \ganttgroup{Desarrollo del Front-End}{2026-04-12}{2026-05-16} \\
+                    \ganttbar{Estructura de vistas en React Native}{2026-04-12}{2026-04-25} \\
+                    \ganttbar{Integración de Context API y lógica}{2026-04-26}{2026-05-05} \\
+                    \ganttbar{Conexión con API y gráficos}{2026-05-06}{2026-05-16} \\
+                
+                \ganttgroup{Despliegue y Pruebas}{2026-05-17}{2026-05-31} \\
+                    \ganttbar{Pruebas unitarias y del sistema}{2026-05-17}{2026-05-24} \\
+                    \ganttbar{Ajustes finales y despliegue}{2026-05-25}{2026-05-31} \\
+                
+                \ganttgroup{Documentación Transversal}{2026-02-01}{2026-06-05} \\
+                    \ganttbar{Redacción de la memoria del TFG}{2026-02-01}{2026-05-20} \\
+                    \ganttbar{Revisiones finales y correcciones}{2026-05-21}{2026-06-05} \\
+                    
+            \end{ganttchart}
+        }
+        \caption{Diagrama de Gantt detallado con la planificación y fases de desarrollo}
+        \label{fig:gantt_diagram_detailed}
+    \end{figure}
+    \subsection{Presupuesto}
+        \subsubsection{Introducción al presupuesto}
+        Para la realización de este proyecto, se ha estimado el presupuesto siguiendo el diagrama de Gantt previamente presentado, tomando en cuenta los costes de recursos humanos y materiales, conforme a la normativa vigente en el BOE \cite{boe_indemnizaciones}. Este presupuesto tiene como objetivo estimar de manera detallada los recursos necesarios para llevar a cabo el desarrollo del software de forma exitosa.    
+
+        \subsubsection{Recursos Humanos}
+        
+
+    \section{Diseño}
+    \subsection{Definición de Requisitos y Flujos de Interacción}
+        \subsubsection{Requisitos Funcionales y No Funcionales}
+        En este apartado se detallan los requisitos que debe cumplir la aplicación para garantizar
+        su correcto funcionamiento. Se clasifican en dos categorías: los requisitos funcionales, que
+        describen las funcionalidades y características específicas que debe proporcionar el sistema,
+        y los requisitos no funcionales, que establecen las condiciones y restricciones de calidad,
+        usabilidad, rendimiento y seguridad que debe cumplir la aplicación.
+
+        \subsection{Requisitos Funcionales}
+
+        A continuación, se describen de manera detallada los requisitos funcionales del sistema, organizados por módulos lógicos. Estos especifican las acciones, comportamientos y operaciones que la aplicación informática debe ejecutar para satisfacer las necesidades de gestión del club de esquí alpino.
+
+        \subsubsection*{RF1: Gestión de Usuarios y Roles}
+        \begin{itemize}
+            \item \textbf{RF1.1: Registro de cuentas de familiares.} La aplicación móvil debe permitir a los nuevos padres registrarse de forma autónoma en el sistema introduciendo sus datos personales, quedando su cuenta en estado pendiente de aprobación.
+            \item \textbf{RF1.2: Control y validación de accesos por el administrador.} El sistema debe permitir al administrador, desde su panel de gestión centralizado, supervisar y validar las solicitudes de registro de los nuevos familiares, habilitando sus credenciales en la base de datos de forma segura.
+            \item \textbf{RF1.3: Alta centralizada de entrenadores.} El sistema debe permitir únicamente al administrador dar de alta las cuentas del personal técnico y entrenadores en la base de datos, asignándoles una contraseña temporal por defecto.
+            \item \textbf{RF1.4: Alta y vinculación de deportistas.} La interfaz móvil con rol de padre debe permitir registrar las fichas de los deportistas (hijos) introduciendo sus datos técnicos e integrándolos automáticamente bajo su tutoría mediante claves foráneas en MySQL.
+            \item \textbf{RF1.5: Inicio de sesión y distribución de roles.} La aplicación debe permitir a los usuarios validados iniciar sesión de forma segura. El backend en Node.js emitirá un token JWT conteniendo el rol (Administrador, Entrenador o Padre) para configurar la interfaz en React Native.
+            \item \textbf{RF1.6: Persistencia segura de sesión.} El frontend debe almacenar el token JWT de forma persistente en el dispositivo para mantener la sesión activa sin requerir credenciales en cada apertura del sistema.
+            \item \textbf{RF1.7: Modificación de contraseña temporal.} El sistema debe permitir a cualquier usuario logueado editar sus datos de contacto y forzar al entrenador a sustituir la contraseña asignada por defecto por una clave privada y segura.
+            \item \textbf{RF1.8: Recuperación de credenciales.} La plataforma debe incorporar un mecanismo de recuperación de contraseña para que cualquier usuario, en caso de olvido, pueda restablecer su acceso mediante un código de validación por correo electrónico.
+            \item \textbf{RF1.9: Modificación y actualización de fichas de deportistas.} La interfaz móvil con rol de padre debe permitir la edición posterior de los datos técnicos y de contacto de emergencia de los deportistas asociados a su cuenta.
+        \end{itemize}
+
+        \subsubsection*{RF2: Gestión de Entrenamientos}
+        \begin{itemize}
+            \item \textbf{RF2.1: Programación de eventos.} El usuario con rol de entrenador debe poder crear y calendarizar entrenamientos técnicos, competiciones o sesiones de preparación física, detallando fecha, hora y localización.
+            \item \textbf{RF2.2: Inscripción obligatoria por los padres.} La aplicación debe permitir a los padres apuntar o desapuntar a sus hijos de los eventos programados de forma directa, gestionando de manera autónoma la asistencia del deportista.
+            \item \textbf{RF2.3: Consulta de asistencia en tiempo real.} El sistema debe ofrecer al entrenador un listado dinámico con los atletas confirmados para cada sesión, permitiéndole conocer de antemano el volumen de alumnos en pista.
+            \item \textbf{RF2.4: Gestión de eventos programados.} El sistema debe permitir al entrenador modificar o cancelar entrenamientos debido a contingencias climáticas o logísticas de la estación de esquí, notificando el cambio a los padres.
+            \item \textbf{RF2.5: Buscador avanzado de entrenamientos.} La interfaz en React Native debe incorporar un campo de búsqueda que permita a los usuarios filtrar el listado de sesiones planificadas mediante la introducción de texto libre para entrenamientos específicos o mediante la selección de un día concreto.                
+        \end{itemize}
+
+        \subsubsection*{RF3: Gestión Multimedia}
+        \begin{itemize}
+            \item \textbf{RF3.1: Almacenamiento de fotografías.} La aplicación móvil debe permitir al usuario con rol de entrenador o administrador cargar imágenes en el servidor, ya sea capturándolas con la cámara del dispositivo o seleccionándolas desde su galería local.
+            \item \textbf{RF3.2: Vinculación por categoría o alcance general.} El sistema debe indexar cada fotografía asociándola a una categoría deportiva específica del club o asignándole un identificador de carácter general, almacenando la ruta del archivo correspondiente en el motor de persistencia.
+            \item \textbf{RF3.3: Buscador cronológico en galería.} La interfaz en React Native debe incorporar un módulo de búsqueda dentro de la galería que permita filtrar los registros fotográficos mediante consultas por año o mes.
+            \item \textbf{RF3.4: Visualización restringida para padres.} El sistema debe garantizar que los usuarios con rol de padre puedan visualizar únicamente las fotografías de carácter general y las publicaciones pertenecientes a la categoría deportiva de sus hijos.
+        \end{itemize}
+
+        \subsubsection*{RF4: Gestión de Transporte del Club}
+        \begin{itemize}
+            \item \textbf{RF4.1: Configuración de capacidad de transporte.} El sistema debe permitir al entrenador vincular un servicio de transporte a cualquier entrenamiento programado, specifying el límite máximo de plazas disponibles en los vehículos del club.
+            \item \textbf{RF4.2: Reserva de plazas por los padres.} La aplicación móvil debe ofrecer a los padres la posibilidad de solicitar una plaza de transporte para sus hijos de manera simultánea al proceso de confirmación de asistencia al entrenamiento.
+            \item \textbf{RF4.3: Control de aforo en tiempo real.} El backend en Node.js debe verificar de forma activa el número de asientos ocupados en MySQL, denegando nuevas solicitudes automáticamente e informando al usuario en React Native una vez que se alcance el límite de capacidad.
+            \item \textbf{RF4.4: Listado logístico de transporte.} El sistema debe proporcionar al entrenador una vista clara y actualizada con la relación de deportistas que han reservado plaza para cada trayecto, facilitando la organización del viaje hacia la estación de esquí.
+        \end{itemize}
+
+        \subsubsection*{RF5: Gestión de Asistencias}
+        \begin{itemize}
+            \item \textbf{RF5.1: Filtrado por tipología de sesión.} La aplicación móvil debe permitir clasificar el historial de asistencias del deportista en función del entorno del entrenamiento, discriminando entre sesiones técnicas en pista y sesiones de preparación física.
+            \item \textbf{RF5.2: Selección de deportista vinculado.} El sistema debe proporcionar un selector interactivo en la interfaz del padre que le permita alternar de forma dinámica la visualización de los datos entre los distintos hijos que tenga registrados bajo su tutela.
+            \item \textbf{RF5.3: Filtrado cronológico por temporada y mes.} La plataforma debe resolver consultas relacionales que agrupen y muestren de forma integrada todo el registro de asistencias pertenecientes a una temporada completa del club de esquí o acotadas a mensualidades específicas.
+            \item \textbf{RF5.4: Renderizado estadístico y gráfico.} El frontend en React Native debe capturar los datos filtrados provenientes de la API y transformarlos de manera automatizada en diagramas y gráficos evolutivos mediante el uso de la librería \textit{react-native-chart-kit}.
+            \item \textbf{RF5.5: Restricción de vista para el entrenador.} La aplicación debe limitar la visualización del rol de entrenador de forma estricta a los registros de asistencia globales e individuales de los deportistas que pertenecen exclusivamente a su categoría asignada.
+            \item \textbf{RF5.6: Panel de control global para el administrador.} El sistema debe permitir al administrador consultar el histórico de asistencia de la totalidad de los atletas del club, incorporando un selector dinámico para filtrar los resultados por categorías deportivas.
+        \end{itemize}  
+
+        \subsection{Requisitos No Funcionales}
+
+        Los requisitos no funcionales definen los atributos de calidad, restricciones técnicas y criterios de rendimiento que debe cumplir el sistema informático. Estos garantizan que la solución de software no solo ejecute las tareas solicitadas, sino que lo haga de forma segura, eficiente, robusta y con una experiencia de usuario óptima.
+
+        \subsubsection*{RNF1: Seguridad y Privacidad}
+        \begin{itemize}
+            \item \textbf{RNF1.1: Cifrado de credenciales.} Toda contraseña de usuario almacenada en la base de datos MySQL debe ser cifrada de extremo a extremo mediante el uso del algoritmo de hash robusto \textit{bcrypt}, aplicando una función de salado (\textit{salting}) para prevenir ataques de diccionario.
+            \item \textbf{RNF1.2: Mecanismo de autenticación sin estado.} El control de sesiones e intercambio de información confidencial entre la aplicación móvil y la API REST debe gestionarse mediante tokens web de JSON (\textit{JSON Web Tokens}, JWT). Estos tokens viajarán firmados digitalmente para evitar su manipulación y tendrán un tiempo de expiración acotado.
+            \item \textbf{RNF1.3: Control de accesos basado en roles (RBAC).} El backend en Node.js debe implementar capas de middleware interconectadas encargadas de interceptar cada petición HTTP, validando la firma del token JWT y verificando de forma estricta que el rol del usuario (Administrador, Entrenador o Padre) posea los privilegios específicos para consumir dicho recurso.
+            \item \textbf{RNF1.4: Protección de datos sensibles.} Al tratar con información de menores de edad (deportistas), el sistema debe anonimizar o restringir el acceso a datos sensibles de contacto, exponiéndolos exclusivamente a los tutores legales vinculados y al administrador del club.
+        \end{itemize}
+
+        \subsubsection*{RNF2: Rendimiento y Escalabilidad}
+        \begin{itemize}
+            \item \textbf{RNF2.1: Gestión asíncrona de conexiones concurrentes.} El servicio backend basado en Express debe aprovechar el modelo de E/S sin bloqueo y el bucle de eventos (\textit{Event Loop}) de Node.js para mitigar la degradación del rendimiento en picos de alta concurrencia, como las horas previas al inicio de los entrenamientos.
+            \item \textbf{RNF2.2: Optimización de transferencias multimedia.} El sistema de almacenamiento y servicio de imágenes técnicas debe optimizar el peso de los archivos cargados antes de su persistencia en el servidor, minimizando el consumo de ancho de banda en los dispositivos móviles que utilicen redes de datos móviles en las estaciones de esquí.
+            \item \textbf{RNF2.3: Tiempos de respuesta de la API.} El backend debe procesar las consultas relacionales ordinarias (como listados de asistencia y consultas de calendario) y devolver una respuesta en formato JSON en un tiempo inferior a los 500 milisegundos en condiciones óptimas de red.
+        \end{itemize}
+
+        \subsubsection*{RNF3: Disponibilidad y Fiabilidad}
+        \begin{itemize}
+            \item \textbf{RNF3.1: Tasa de disponibilidad del servicio.} Al tratarse de una aplicación de gestión deportiva crítica para la planificación diaria del club, el despliegue del servidor API y el motor de persistencia MySQL debe garantizar una disponibilidad continua del 99\% mensual.
+            \item \textbf{RNF3.2: Persistencia transaccional de datos.} El motor de base de datos debe operar bajo el motor de almacenamiento InnoDB para asegurar el cumplimiento de las propiedades ACID (Aislamiento, Consistencia, Integridad y Durabilidad), garantizando que las transacciones complejas de asistencias concurrentes se ejecuten por completo o se reviertan de forma segura.
+        \end{itemize}
+
+        \subsubsection*{RNF4: Usabilidad y Compatibilidad}
+        \begin{itemize}
+            \item \textbf{RNF4.1: Diseño de interfaz adaptativa y móvil.} El frontend desarrollado en React Native debe implementar un diseño de interfaz responsivo y coherente, optimizado tanto para dispositivos iOS como Android, garantizando que los elementos visuales y los formularios sean accesibles y legibles en pantallas de distintas dimensiones.
+            \item \textbf{RNF4.2: Experiencia de usuario en entornos invernales.} La interfaz gráfica debe priorizar el uso de componentes interactivos de gran tamaño, tipografías contrastadas y selectores ágiles, facilitando la operativa del entrenador en la pista de esquí a bajas temperaturas y bajo condiciones lumínicas extremas.
+        \end{itemize}
+
+        \subsection{Descripción de los Implicados}
+
+        En el contexto de la aplicación, los implicados desempeñan diferentes roles que son cruciales para su funcionamiento y evolución. A continuación, se presentan los tipos de implicados y sus respectivas responsabilidades de forma estructurada:
+
+        \begin{table}[htbp]
+            \centering
+            % tabularx necesita saber el ancho total (\textwidth) antes de definir las columnas
+            \begin{tabularx}{\textwidth}{|l|>{\raggedright\arraybackslash}X|c|>{\raggedright\arraybackslash}X|}
+            \hline
+            \textbf{Nombre} & \textbf{Descripción} & \textbf{Tipo} & \textbf{Rol} \\ \hline
+            Administrador & Personal de dirección o administración del club de esquí. & Interno & Supervisar y validar registros, dar de alta al personal técnico y auditar asistencias globales. \\ \hline
+            Entrenador & Personal técnico profesional responsable de la parte deportiva. & Interno & Programar entrenamientos, gestionar furgonetas y multimedia. \\ \hline
+            Padres / Tutores & Familiares y representantes legales de los atletas menores de edad. & Externo & Consultar calendario, confirmar asistencia y reservar transporte. \\ \hline
+            Deportistas & Atletas menores de edad pertenecientes a las categorías del club. & Indirecto & Beneficiarios del sistema. No operan la app por seguridad, pero sus datos nuclean el sistema. \\ \hline
+            Desarrollador & Ingeniero de software responsable de la creación técnica del proyecto. & Externo & Diseñar la arquitectura, implementar código, desplegar la base de datos y dar soporte técnico. \\ \hline
+            \end{tabularx}
+            \caption{Implicados en la Aplicación}
+            \label{tab:implicados_aplicacion}
+        \end{table}
+        \newpage
+        \subsubsection{Casos de Uso}
+        Los casos de uso describen las interacciones entre los usuarios y el sistema, detallando cómo se comporta la aplicación para satisfacer las necesidades del usuario. Esta sección tiene como objetivo presentar los diferentes escenarios en los que los usuarios pueden interactuar con la aplicación y cómo el sistema responde a esas acciones. Los elementos que forman un caso de uso incluyen:
+
+        \begin{description}
+            \item[Nombre del Caso de Uso:] Descripción breve y clara de la funcionalidad que se va a representar.
+            \item[Actores:] Usuarios o sistemas externos que interactúan con el sistema en el caso de uso.
+            \item[Descripción:] Explicación del flujo principal del caso de uso, destacando los pasos principales.
+            \item[Precondiciones:] Condiciones que deben cumplirse antes de que el caso de uso pueda ser ejecutado.
+            \item[Flujo Principal:] Secuencia de pasos que describen cómo se lleva a cabo el caso de uso bajo circunstancias normales.
+            \item[Flujo Alternativo:] Variaciones o excepciones al flujo principal, describiendo cómo se manejarían otras posibles situaciones.
+            \item[Postcondiciones:] Estado final del sistema después de que el caso de uso ha sido ejecutado.
+            \item[Requisitos Asociados:] Requisitos funcionales que se cumplen al llevar a cabo este caso de uso.
+        \end{description}

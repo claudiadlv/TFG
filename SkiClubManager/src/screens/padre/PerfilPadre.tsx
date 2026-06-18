@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { useAuth } from '../../context/AuthContext';
 import { API_URL } from '../../config';
-import styles from '../../styles/PerfilEntrenador.styles';
+import styles from '../../styles/PerfilEntrenador.styles'; // Reutiliza tus estilos correctamente
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -20,7 +20,8 @@ type NavigationProp = NativeStackNavigationProp<PadreStackParamList>;
 
 export default function PerfilPadre() {
   const navigation = useNavigation<NavigationProp>();
-  const [nombre, setNombre] = useState<string | null>(null);
+  
+  const [usuario, setUsuario] = useState<{ id: number; nombre: string } | null>(null);
 
   const { logout, accessToken } = useAuth();
 
@@ -37,7 +38,7 @@ export default function PerfilPadre() {
 
         if (response.ok) {
           const data = await response.json();
-          setNombre(data.nombre);
+          setUsuario({ id: data.id, nombre: data.nombre });
         } else {
           Alert.alert('Error', 'No se pudo cargar la información del usuario');
         }
@@ -65,7 +66,7 @@ export default function PerfilPadre() {
         </View>
 
         <Text style={styles.title}>
-          {nombre ?? 'Padre/Madre'}
+          {usuario?.nombre ?? 'Padre/Madre'}
         </Text>
 
         {/* Botón Asistencia en pista */}
@@ -100,6 +101,25 @@ export default function PerfilPadre() {
             <Icon name="person-outline" size={20} color="white" />
           </View>
           <Text style={styles.optionText}>Administrar Usuario</Text>
+          <Icon name="chevron-forward" size={24} color="#888" />
+        </TouchableOpacity>
+
+        {/* 🆕 NUEVO APARTADO: GESTIONAR CONTRASEÑA DEL PADRE */}
+        <TouchableOpacity 
+          style={styles.optionContainer}
+          onPress={() => {
+            if (usuario) {
+              // Navegamos a la pantalla pasándole los datos del padre
+              navigation.navigate('CambiarContrasena', { user: usuario });
+            } else {
+              Alert.alert('Error', 'No se han podido cargar los datos del perfil aún.');
+            }
+          }} 
+        >
+          <View style={[styles.iconWrapper, { backgroundColor: '#FFB020' }]}> 
+            <Icon name="lock-closed-outline" size={20} color="white" />
+          </View>
+          <Text style={styles.optionText}>Gestionar contraseña</Text>
           <Icon name="chevron-forward" size={24} color="#888" />
         </TouchableOpacity>
 

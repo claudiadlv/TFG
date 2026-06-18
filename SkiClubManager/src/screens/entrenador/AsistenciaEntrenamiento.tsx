@@ -1,13 +1,14 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import { 
-  View, Text, ActivityIndicator, Dimensions, StyleSheet, 
-  TouchableOpacity, FlatList, ScrollView
+  View, Text, ActivityIndicator, Dimensions, TouchableOpacity, FlatList, ScrollView, Alert, StyleSheet 
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fetchWithAuth } from '../../utils/fetchWithAuth';
 import { BarChart } from 'react-native-chart-kit';
 import { API_URL } from '../../config';
+import RNFS from 'react-native-fs';
+import Share from 'react-native-share';
 
 // --- TIPOS Y CONSTANTES ---
 type EventoAsistencia = { fecha: string; tipo: 'Pista' | 'Carrera' | 'Físico' };
@@ -41,6 +42,7 @@ export default function AsistenciaEntrenador() {
   const [mesSel, setMesSel] = useState<number>(today.getMonth() + 1); 
   const [anioSel, setAnioSel] = useState<number>(today.getFullYear());
   const [seasonStart, setSeasonStart] = useState<number>(today.getFullYear());
+
   const availableYears = useMemo(() => {
     const currentYear = today.getFullYear();
     const years: number[] = [];
@@ -115,7 +117,6 @@ export default function AsistenciaEntrenador() {
     return map;
   }, [puntosFiltrados]);
 
-  // Se separa la lógica del gráfico para obtener también el número máximo de asistentes
   const { chartData, maxAttendance } = useMemo(() => {
     const byDate: Record<string, PuntoGrafico[]> = {};
     puntosFiltrados.forEach(p => {
@@ -148,7 +149,6 @@ export default function AsistenciaEntrenador() {
       labelColors,
       dateKeys: keys,
     };
-    
     return { chartData: data, maxAttendance: maxAtt };
   }, [puntosFiltrados]);
 
@@ -164,17 +164,66 @@ export default function AsistenciaEntrenador() {
     }
   }, [chartData.dateKeys]);
 
-  const handleExport = async () => { /* ...código de exportar sin cambios... */ };
+  // 🚀 ALGORITMO COMPATIBLE CON ANDROID 11+ USANDO RUTA DE CACHÉ NATIVA
+  const handleExport = async () => {
+    if (chartData.dateKeys.length === 0 || todosLosDeportistas.length === 0) {
+      Alert.alert('Aviso', 'No hay datos disponibles para exportar en este período.');
+      return;
+    }
+
+    try {
+      const SEPARATOR = ';';
+      const rows: string[] = [];
+
+      const headerRow = ['Deportista', ...chartData.labels].join(SEPARATOR);
+      rows.push(headerRow);
+
+      todosLosDeportistas.forEach(item => {
+        const rowData = [item.nombre];
+        chartData.dateKeys.forEach(dateKey => {
+          const asistio = asistenciaPorFecha.get(dateKey)?.has(item.id);
+          rowData.push(asistio ? 'P' : 'A');
+        });
+        rows.push(rowData.join(SEPARATOR));
+      });
+
+      const csvContent = rows.join('\n');
+      const fileName = `Asistencia_Entrenador_${activeTab}_${modo}.csv`;
+      
+      // 🌟 Canalización segura a través de CachesDirectoryPath para evitar fallos de Uri nula
+      const path = `${RNFS.CachesDirectoryPath}/${fileName}`;
+
+      await RNFS.writeFile(path, csvContent, 'utf8');
+
+      const shareOptions = {
+        title: 'Exportar Asistencia',
+        url: `file://${path}`,
+        type: 'text/csv',
+        filename: fileName,
+        failOnCancel: false,
+      };
+
+      await Share.open(shareOptions);
+    } catch (error: any) {
+      console.error('Error al exportar CSV:', error);
+      if (error && error.message && !error.message.includes('User cancelled')) {
+        // Fallback dinámico automático en el almacenamiento si el bridge nativo de compartir falla en el emulador
+        try {
+          const downloadPath = `${RNFS.DownloadDirectoryPath}/${fileName}`;
+          await RNFS.writeFile(downloadPath, csvContent, 'utf8');
+          Alert.alert('Archivo Guardado', 'El sistema de compartición no respondió, pero el CSV se ha exportado con éxito en tu carpeta de Descargas.');
+        } catch {
+          Alert.alert('Error', 'Ocurrió un error al intentar exportar el archivo.');
+        }
+      }
+    }
+  };
 
   if (loading) return <View style={styles.centerContainer}><ActivityIndicator size="large" color="#0D47A1" /></View>;
   if (error) return <View style={styles.centerContainer}><Text style={styles.errorText}>{error}</Text></View>;
-  
-const renderHeader = () => (
+
+  const renderHeader = () => (
     <View style={styles.contentContainer}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.header}>Asistencia de Deportistas</Text>
-      </View>
-      
       <View style={styles.tabContainer}>
         <TouchableOpacity 
           style={[styles.tab, activeTab === 'Técnico' && styles.activeTab]}
@@ -231,7 +280,6 @@ const renderHeader = () => (
         </View>
       )}
 
-      {/* GRÁFICO DE BARRAS MEJORADO CON SCROLL HORIZONTAL */}
       {chartData.labels.length > 0 && (
         <>
           <Text style={styles.subheader}>Asistencia Diaria</Text>
@@ -243,7 +291,7 @@ const renderHeader = () => (
                   datasets: chartData.datasets 
                 }}
                 width={Math.max(windowWidth - 32, chartData.labels.length * 60) - 20}
-                height={200}
+                height={160}
                 fromZero
                 yAxisLabel=""
                 yAxisSuffix=""
@@ -258,7 +306,7 @@ const renderHeader = () => (
                 {chartData.labels.map((label, index) => (
                   <TouchableOpacity 
                     key={index} 
-                    style={[styles.customXAxisLabel, { width: 45, flexGrow: 0, flexShrink: 0 }]} // <--- Cambiado aquí
+                    style={[styles.customXAxisLabel, { width: 45, flexGrow: 0, flexShrink: 0 }]}
                     onPress={() => handleDateSelect(chartData.dateKeys[index])}>
                     <Text style={{ 
                       color: chartData.labelColors[index], 
@@ -271,7 +319,7 @@ const renderHeader = () => (
                   </TouchableOpacity>
                 ))}
               </View>
-            </View>
+           </View>
           </ScrollView>
 
           {activeTab === 'Técnico' && (
@@ -291,14 +339,15 @@ const renderHeader = () => (
     </View>
   );
 
-  /* --- RETURN PRINCIPAL DE LA PANTALLA --- */
   return (
-    <View style={styles.container}>
-      {/* Lista contenedora para desplazar toda la pantalla verticalmente si es necesario */}
+    // Envoltura absoluta para aislar el layout y asegurar el funcionamiento libre del scroll down
+    <View style={styles.absoluteWrapper}>
       <FlatList
         data={chartData.labels.length > 0 ? todosLosDeportistas : []}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={renderHeader}
+        nestedScrollEnabled={true}
+        contentContainerStyle={styles.listContent}
         ListEmptyComponent={
           chartData.labels.length === 0 ? (
             <Text style={styles.noDataText}>
@@ -308,7 +357,6 @@ const renderHeader = () => (
         }
         renderItem={({ item }) => (
           <View style={{ paddingHorizontal: 16 }}>
-            {/* Si es el primer elemento de la lista, pintamos la cabecera de la tabla */}
             {todosLosDeportistas[0]?.id === item.id && (
               <View style={[matrixStyles.tableHeader, { marginTop: 15 }]}>
                 <Text style={matrixStyles.headerAthlete}>Deportista</Text>
@@ -324,7 +372,6 @@ const renderHeader = () => (
               </View>
             )}
 
-            {/* Fila del deportista con sus estados */}
             <View style={matrixStyles.row}>
               <Text style={matrixStyles.athleteName} numberOfLines={1}>
                 {item.nombre}
@@ -335,11 +382,9 @@ const renderHeader = () => (
                     const asistio = asistenciaPorFecha.get(dateKey)?.has(item.id);
                     return (
                       <View key={dateKey} style={matrixStyles.cell}>
-                        <Text style={[
-                          matrixStyles.badge, 
-                          asistio ? matrixStyles.badgePresente : matrixStyles.badgeAusente
-                        ]}>
-                          {asistio ? 'P' : 'A'}
+                        {/* Renderizado de checks estandarizados uniformemente con el Admin */}
+                        <Text style={matrixStyles.emojiIcon}>
+                          {asistio ? '✅' : '❌'}
                         </Text>
                       </View>
                     );
@@ -350,10 +395,16 @@ const renderHeader = () => (
           </View>
         )}
       />
+
+      {/* 🚀 BOTÓN FLOTANTE ABSOLUTO INDEXADO POR ENCIMA DEL LISTVIEW */}
+      <TouchableOpacity style={styles.floatingButton} onPress={handleExport}>
+        <Text style={styles.floatingButtonText}>📥 Exportar CSV</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
+// --- CONFIGURACIONES DE ESTILOS UNIFICADOS ---
 const chartConfig = {
   backgroundColor: '#fff',
   backgroundGradientFrom: '#fff',
@@ -369,8 +420,12 @@ const chartConfig = {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F4F7F9' },
-  contentContainer: { paddingHorizontal: 16, paddingBottom: 10 },
+  absoluteWrapper: { 
+    position: 'absolute',
+    top: 0, left: 0, right: 0, bottom: 0,
+    backgroundColor: '#FFFFFF' 
+  },
+  contentContainer: { paddingHorizontal: 16, paddingTop: 10 },
   centerContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   errorText: { color: 'red', textAlign: 'center' },
   headerContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10, marginTop: 10 },
@@ -385,6 +440,7 @@ const styles = StyleSheet.create({
   activeTabText: { color: '#0D47A1' },
   filterGroup: { flexDirection: 'row', justifyContent: 'space-between' },
   flexItem: { flex: 1, marginHorizontal: 4 },
+  listContent: { paddingBottom: 100 },
   legendContainer: { 
     flexDirection: 'row', 
     justifyContent: 'center', 
@@ -393,30 +449,29 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     flexWrap: 'wrap',
   },
-  legendItem: { 
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    marginHorizontal: 10, 
+  legendItem: { flexDirection: 'row', alignItems: 'center', marginHorizontal: 10 },
+  legendColor: { width: 10, height: 10, borderRadius: 5, marginRight: 5 },
+  legendText: { fontSize: 12, color: '#333' },
+  customXAxisContainer: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 4 },
+  customXAxisLabel: { alignItems: 'center', paddingVertical: 4 },
+  
+  // Maquetación del botón flotante tipo FAB (WhatsApp Style)
+  floatingButton: {
+    position: 'absolute',
+    bottom: 25,
+    right: 20,
+    backgroundColor: '#0D47A1',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 25,
+    elevation: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    zIndex: 9999,
   },
-  legendColor: { 
-    width: 10, 
-    height: 10, 
-    borderRadius: 5, 
-    marginRight: 5 
-  },
-  legendText: { 
-    fontSize: 12, 
-    color: '#333', 
-  },
-  customXAxisContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 4,
-  },
-  customXAxisLabel: {
-    alignItems: 'center',
-    paddingVertical: 4,
-  },
+  floatingButtonText: { color: '#FFFFFF', fontSize: 14, fontWeight: 'bold' },
 });
 
 const pickerStyles = StyleSheet.create({
@@ -427,69 +482,13 @@ const pickerStyles = StyleSheet.create({
 });
 
 const matrixStyles = StyleSheet.create({
-  tableHeader: {
-    flexDirection: 'row',
-    backgroundColor: '#0D47A1',
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    alignItems: 'center',
-  },
-  headerAthlete: {
-    width: 110,
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
-  headerScroll: {
-    flex: 1,
-  },
-  columnHeaderDate: {
-    color: '#fff',
-    fontWeight: '600',
-    fontSize: 11,
-    width: 50,
-    textAlign: 'center',
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
-  },
-  athleteName: {
-    width: 110,
-    fontSize: 14,
-    color: '#333',
-    fontWeight: '500',
-  },
-  rowScroll: {
-    flex: 1,
-  },
-  cell: {
-    width: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  badge: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    borderRadius: 4,
-    overflow: 'hidden',
-    textAlign: 'center',
-    width: 26,
-    paddingVertical: 2,
-  },
-  badgePresente: {
-    backgroundColor: '#E8F5E9',
-    color: '#2E7D32',
-  },
-  badgeAusente: {
-    backgroundColor: '#FFEBEE',
-    color: '#C62828',
-  },
+  tableHeader: { flexDirection: 'row', backgroundColor: '#0D47A1', paddingVertical: 12, paddingHorizontal: 10, borderTopLeftRadius: 8, borderTopRightRadius: 8, alignItems: 'center' },
+  headerAthlete: { width: 110, color: '#fff', fontWeight: 'bold', fontSize: 14 },
+  headerScroll: { flex: 1 },
+  columnHeaderDate: { color: '#fff', fontWeight: '600', fontSize: 11, width: 50, textAlign: 'center' },
+  row: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', paddingVertical: 10, paddingHorizontal: 10, borderBottomWidth: 1, borderBottomColor: '#E0E0E0' },
+  athleteName: { width: 110, fontSize: 14, color: '#333', fontWeight: '500' },
+  rowScroll: { flex: 1 },
+  cell: { width: 50, alignItems: 'center', justifyContent: 'center' },
+  emojiIcon: { fontSize: 16, textAlign: 'center' },
 });

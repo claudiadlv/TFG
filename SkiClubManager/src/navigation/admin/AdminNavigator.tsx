@@ -13,6 +13,9 @@ import ListaEntrenadores from '../../screens/admin/ListaEntrenadores';
 import EditarEntrenador from '../../screens/admin/EditarEntrenador';
 import AsistenciaPista from '../../screens/admin/AsistenciaPista';
 import AdministrarTransporte from '../../screens/admin/AdministrarTransporte';
+import CambiarContrasena from '../../screens/comun/CambiarContraseña';
+import GestionarDeportistas from '../../screens/admin/GestionarDeportistas';
+import DetallePadreHijos from '../../screens/admin/DetallePadreHijos';
 
 const Stack = createNativeStackNavigator<AdminStackParamList>();
 
@@ -72,6 +75,21 @@ export default function AdminNavigator() {
         options={{ title: 'Administrar Transporte' }}
       />
 
+      <Stack.Screen
+        name="CambiarContrasena"
+        component={CambiarContrasena}
+        options={{ title: 'Cambiar Contraseña' }}
+      />
+      <Stack.Screen
+        name="GestionarDeportistas"
+        component={GestionarDeportistas}
+        options={{ title: 'Gestionar Deportistas' }}
+      />
+      <Stack.Screen
+        name="DetallePadreHijos"
+        component={DetallePadreHijos}
+        options={{ title: 'Detalle del Padre o Tutor' }}
+      />
     </Stack.Navigator>
   );
 }

@@ -57,6 +57,24 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginLeft: 8,
   },
+  
+  input: {
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#DDD',
+    borderRadius: 8,
+    padding: 12,
+    fontSize: 16,
+    color: '#333',
+    marginTop: 5,
+  },
+  submitButton: {
+    backgroundColor: '#4A56E2', // Mismo color azul corporativo que tus iconos
+    borderRadius: 8,
+    padding: 15,
+    alignItems: 'center',
+    marginTop: 20,
+  }
 });
 
 export default styles;

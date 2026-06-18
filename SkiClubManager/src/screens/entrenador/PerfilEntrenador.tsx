@@ -15,12 +15,13 @@ import styles from '../../styles/PerfilEntrenador.styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { EntrenadorStackParamList } from '../../navigation/types/types'; // Asegúrate de importar tu tipo de stack
+import { EntrenadorStackParamList } from '../../navigation/types/types'; 
 
 export default function PerfilEntrenador() {
-  const { logout, accessToken } = useAuth(); // Agrupé accessToken aquí por limpieza
+  const { logout } = useAuth(); 
 
-  const [nombre, setNombre] = useState<string | null>(null);
+  // Cambiamos 'nombre' por un estado que contenga el objeto usuario completo
+  const [usuario, setUsuario] = useState<{ id: number; nombre: string } | null>(null);
   const navigation = useNavigation<NativeStackNavigationProp<EntrenadorStackParamList>>(); 
 
   useEffect(() => {
@@ -38,7 +39,8 @@ export default function PerfilEntrenador() {
         if (response.ok) {
           const data = await response.json();
           console.log('Usuario actual:', data);
-          setNombre(data.nombre);
+          // Guardamos tanto el id como el nombre que nos devuelve tu backend
+          setUsuario({ id: data.id, nombre: data.nombre });
         } else {
           console.log('Error al obtener el usuario:', response.status);
         }
@@ -63,7 +65,7 @@ export default function PerfilEntrenador() {
         </View>
 
         <Text style={styles.title}>
-          {nombre ?? 'Entrenador'}
+          {usuario?.nombre ?? 'Entrenador'}
         </Text>
 
         <TouchableOpacity
@@ -77,15 +79,34 @@ export default function PerfilEntrenador() {
           <Icon name="chevron-forward" size={24} color="#888" />
         </TouchableOpacity>
 
-        {/* --- AQUÍ ESTÁ EL CAMBIO --- */}
         <TouchableOpacity 
           style={styles.optionContainer}
-          onPress={() => navigation.navigate('AdministrarTransporte')} // Añadida la navegación
+          onPress={() => navigation.navigate('AdministrarTransporte')} 
         >
           <View style={styles.iconWrapper}>
             <Icon name="bus-outline" size={20} color="white" />
           </View>
           <Text style={styles.optionText}>Administrar transporte</Text>
+          <Icon name="chevron-forward" size={24} color="#888" />
+        </TouchableOpacity>
+
+        {/* 🆕 NUEVO APARTADO: GESTIONAR CONTRASEÑA */}
+        <TouchableOpacity 
+          style={styles.optionContainer}
+          onPress={() => {
+            if (usuario) {
+              // Le pasamos el objeto del usuario como parámetro a la pantalla para usar su ID
+              navigation.navigate('CambiarContrasena', { user: usuario });
+            } else {
+              Alert.alert('Error', 'No se han podido cargar los datos del perfil aún.');
+            }
+          }} 
+        >
+          <View style={[styles.iconWrapper, { backgroundColor: '#FFB020' }]}> 
+            {/* Le pongo un fondo naranja o el color que prefieras para destacar la seguridad */}
+            <Icon name="lock-closed-outline" size={20} color="white" />
+          </View>
+          <Text style={styles.optionText}>Gestionar contraseña</Text>
           <Icon name="chevron-forward" size={24} color="#888" />
         </TouchableOpacity>
 

@@ -7,17 +7,22 @@ import EntrenadorNavigator from './entrenador/EntrenadorNavigator';
 import PadreNavigator from './padre/PadreNavigator';
 import { RootStackParamList } from './types/types';
 import { useAuth } from '../context/AuthContext';
+import ForgotPasswordScreen from '../screens/comun/ForgotPassword'; // Asegúrate de importar tu nueva pantalla
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+
 
 export default function StackNavigator() {
   const { accessToken, rol, isAuthenticated } = useAuth();
 
-
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {!isAuthenticated ? (
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+          <Stack.Screen name="RegisterRequest" component={RegisterRequestScreen} />
+        </>
       ) : rol === 'admin' ? (
         <Stack.Screen name="AdminStack" component={AdminNavigator} />
       ) : rol === 'entrenador' ? (
@@ -27,8 +32,6 @@ export default function StackNavigator() {
       ) : (
         <Stack.Screen name="Login" component={LoginScreen} />
       )}
-
-      <Stack.Screen name="RegisterRequest" component={RegisterRequestScreen} />
     </Stack.Navigator>
   );
 }

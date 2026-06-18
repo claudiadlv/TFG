@@ -9,7 +9,7 @@ type Viaje = {
   id: string; 
   destino: string;
   fecha_salida: string; 
-  hora_salida_furgoneta?: string | null; // 🔥 Mapeado exacto del backend como en el entrenador
+  hora_salida_furgoneta?: string | null; 
   plazas_totales: number; 
   plazas_disponibles: number;
 };
@@ -222,28 +222,40 @@ export default function TransportePadre() {
                 </View>
               </View>
 
-              {/* BURBUJAS DE ESTADO DE LOS HIJOS (Verde apuntado ✅ / Rojo no apuntado ❌) */}
               <View style={styles.hijosSection}>
                 <View style={styles.hijosContainer}>
-                  {misHijos.map(hijo => {
-                    const registradoEnEsteViaje = reservas.some(r => 
-                      String(r.viaje_id) === String(item.id) && Number(r.deportista_id) === Number(hijo.id)
-                    );
-                    return (
-                      <View 
-                        key={hijo.id} 
-                        style={[
-                          styles.hijoBadge, 
-                          registradoEnEsteViaje ? styles.badgeApuntado : styles.badgeNoApuntado
-                        ]}
-                      >
-                        <Text style={[styles.hijoTexto, registradoEnEsteViaje ? styles.textoApuntado : styles.textoNoApuntado]}>
-                          {registradoEnEsteViaje ? '✅ ' : '❌ '}
-                          {hijo.nombre}
-                        </Text>
-                      </View>
-                    );
-                  })}
+                  {/* 🚀 ORDENACIÓN EN TIEMPO REAL PARA EL TFG */}
+                  {[...misHijos]
+                    .sort((a, b) => {
+                      const aApuntado = reservas.some(r => 
+                        String(r.viaje_id) === String(item.id) && Number(r.deportista_id) === Number(a.id)
+                      );
+                      const bApuntado = reservas.some(r => 
+                        String(r.viaje_id) === String(item.id) && Number(r.deportista_id) === Number(b.id)
+                      );
+                      
+                      // Si 'b' está apuntado y 'a' no, los intercambia para que los true queden arriba (1 - 0)
+                      return (bApuntado ? 1 : 0) - (aApuntado ? 1 : 0);
+                    })
+                    .map(hijo => {
+                      const registradoEnEsteViaje = reservas.some(r => 
+                        String(r.viaje_id) === String(item.id) && Number(r.deportista_id) === Number(hijo.id)
+                      );
+                      return (
+                        <View 
+                          key={hijo.id} 
+                          style={[
+                            styles.hijoBadge, 
+                            registradoEnEsteViaje ? styles.badgeApuntado : styles.badgeNoApuntado
+                          ]}
+                        >
+                          <Text style={[styles.hijoTexto, registradoEnEsteViaje ? styles.textoApuntado : styles.textoNoApuntado]}>
+                            {registradoEnEsteViaje ? '✅ ' : '❌ '}
+                            {hijo.nombre}
+                          </Text>
+                        </View>
+                      );
+                    })}
                 </View>
               </View>
             </View>

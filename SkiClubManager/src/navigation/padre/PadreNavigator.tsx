@@ -11,6 +11,7 @@ import DetalleEventoPadreApuntar from '../../screens/padre/DetalleEventoPadreApu
 import DetalleEventoPadreDesapuntar from '../../screens/padre/DetalleEventoPadreDesapuntar';
 import AsistenciaPista from '../../screens/padre/AsistenciaHijoPista'; 
 import AsistenciaTransporte from '../../screens/padre/AsistenciaTransporte';
+import CambiarContrasena from '../../screens/comun/CambiarContraseña';
 
 const Stack = createNativeStackNavigator<PadreStackParamList>();
 
@@ -71,6 +72,12 @@ export default function PadreNavigator() {
         name="AsistenciaTransporte"
         component={AsistenciaTransporte}
         options={{ title: 'Transporte' }}
+      />
+
+      <Stack.Screen
+        name="CambiarContrasena"
+        component={CambiarContrasena}
+        options={{ title: 'Cambiar Contraseña' }}
       />
     </Stack.Navigator>
   );

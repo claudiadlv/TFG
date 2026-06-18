@@ -1,22 +1,24 @@
+% !BIB program = biber
+% !TEX encoding = UTF-8 Unicode
 \documentclass[a4paper,11pt]{book}
 %\documentclass[a4paper,twoside,11pt,titlepage]{book}
 
 \usepackage{listings}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
-\usepackage[style=numeric, sorting=none, backend=biber]{biblatex} 
-\addbibresource{capitulos/referencias.bib}
-\usepackage{graphicx}    % Para poder gestionar e incluir imágenes
-\usepackage{subcaption}  % Para que funcione el entorno subfigure
-\usepackage{url}         % Para que las URLs de la bibliografía no den error
+\usepackage{tabularx}
+
 
 % csquotes se coloca SIEMPRE antes de biblatex para la compatibilidad con babel
 \usepackage{csquotes}    
-\usepackage[backend=biber, style=numeric]{biblatex} % Carga la librería de bibliografía
-\addbibresource{referencias.bib}
-% \usepackage[style=list, number=none]{glossary} %
-%\usepackage{titlesec}
-%\usepackage{pailatino}
+\usepackage[style=numeric, sorting=none, backend=biber]{biblatex} 
+\addbibresource{capitulos/referencias.bib}
+
+\usepackage{graphicx}    % Para poder gestionar e incluir imágenes
+\usepackage{subcaption}  % Para que funcione el entorno subfigure
+\usepackage{url}         % Para que las URLs de la bibliografía no den error
+\usepackage{pgfgantt}
+\usepackage{pdflscape}
 
 \decimalpoint
 \usepackage{dcolumn}
@@ -25,17 +27,12 @@
 \addto\shorthandsspanish{\let\esperiod\es@period@code}
 \makeatother
 
-
-%\usepackage[chapter]{algorithm}
 \RequirePackage{verbatim}
-%\RequirePackage[Glenn]{fncychap}
 \usepackage{fancyhdr}
-\usepackage{graphicx}
 \usepackage{afterpage}
-
 \usepackage{longtable}
-
-\usepackage[pdfborder={000}]{hyperref} %referencia
+\usepackage{colortbl}
+\usepackage[stable]{footmisc}
 
 % ********************************************************************
 % Re-usable information
@@ -45,44 +42,25 @@
 \newcommand{\myName}{Nombre Apllido1 Apellido2 (alumno)\xspace}
 \newcommand{\myProf}{Nombre Apllido1 Apellido2 (tutor1)\xspace}
 \newcommand{\myOtherProf}{Nombre Apllido1 Apellido2 (tutor2)\xspace}
-%\newcommand{\mySupervisor}{Put name here\xspace}
-\newcommand{\myFaculty}{Escuela Técnica Superior de Ingenierías Informática y de
-Telecomunicación\xspace}
-\newcommand{\myFacultyShort}{E.T.S. de Ingenierías Informática y de
-Telecomunicación\xspace}
+\newcommand{\myFaculty}{Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación\xspace}
+\newcommand{\myFacultyShort}{E.T.S. de Ingenierías Informática y de Telecomunicación\xspace}
 \newcommand{\myDepartment}{Departamento de ...\xspace}
 \newcommand{\myUni}{\protect{Universidad de Granada}\xspace}
 \newcommand{\myLocation}{Granada\xspace}
 \newcommand{\myTime}{\today\xspace}
 \newcommand{\myVersion}{Version 0.1\xspace}
 
-
+% Configuración unificada de hyperref AL FINAL de los paquetes de datos
+\usepackage[pdfborder={0 0 0}]{hyperref}
 \hypersetup{
-pdfauthor = {\myName (email (en) ugr (punto) es)},
-pdftitle = {\myTitle},
-pdfsubject = {},
-pdfkeywords = {palabra_clave1, palabra_clave2, palabra_clave3, ...},
-pdfcreator = {LaTeX con el paquete ....},
-pdfproducer = {pdflatex}
+    pdfauthor = {\myName (email (en) ugr (punto) es)},
+    pdftitle = {\myTitle},
+    pdfsubject = {},
+    pdfkeywords = {palabra_clave1, palabra_clave2, palabra_clave3, ...},
+    pdfcreator = {LaTeX con el paquete ....},
+    pdfproducer = {pdflatex},
+    colorlinks = false
 }
-
-%\hyphenation{}
-
-
-%\usepackage{doxygen/doxygen}
-%\usepackage{pdfpages}
-\usepackage{url}
-\usepackage{colortbl,longtable}
-\usepackage[stable]{footmisc}
-%\usepackage{index}
-
-%\makeindex
-%\usepackage[style=long, cols=2,border=plain,toc=true,number=none]{glossary}
-% \makeglossary
-
-% Definición de comandos que me son tiles:
-%\renewcommand{\indexname}{Índice alfabético}
-%\renewcommand{\glossaryname}{Glosario}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -95,8 +73,7 @@ pdfproducer = {pdflatex}
 \setlength{\headheight}{1.5\headheight}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-%Definimos los tipos teorema, ejemplo y definición podremos usar estos tipos
-%simplemente poniendo \begin{teorema} \end{teorema} ...
+
 \newtheorem{teorema}{Teorema}[chapter]
 \newtheorem{ejemplo}{Ejemplo}[chapter]
 \newtheorem{definicion}{Definición}[chapter]
@@ -116,13 +93,11 @@ pdfproducer = {pdflatex}
      rulesep=.4pt,
      backgroundcolor=\color{gray97},
      rulesepcolor=\color{black},
-     %
      stringstyle=\ttfamily,
      showstringspaces = false,
      basicstyle=\scriptsize\ttfamily,
      commentstyle=\color{gray45},
      keywordstyle=\bfseries,
-     %
      numbers=left,
      numbersep=6pt,
      numberstyle=\tiny,
@@ -130,26 +105,24 @@ pdfproducer = {pdflatex}
      breaklines=true,
    }
  
-% minimizar fragmentado de listados
 \lstnewenvironment{listing}[1][]
    {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
 
 \lstdefinestyle{CodigoC}
    {
-	basicstyle=\scriptsize,
-	frame=single,
-	language=C,
-	numbers=left
+   basicstyle=\scriptsize,
+   frame=single,
+   language=C,
+   numbers=left
    }
 \lstdefinestyle{CodigoC++}
    {
-	basicstyle=\small,
-	frame=single,
-	backgroundcolor=\color{gray30},
-	language=C++,
-	numbers=left
+   basicstyle=\small,
+   frame=single,
+   backgroundcolor=\color{gray30},
+   language=C++,
+   numbers=left
    }
-
  
 \lstdefinestyle{Consola}
    {basicstyle=\scriptsize\bf\ttfamily,
@@ -158,11 +131,8 @@ pdfproducer = {pdflatex}
     numbers=none
    }
 
-
 \newcommand{\bigrule}{\titlerule[0.5mm]}
 
-
-%Para conseguir que en las páginas en blanco no ponga cabecerass
 \makeatletter
 \def\clearpage{%
   \ifvmode
@@ -182,8 +152,11 @@ pdfproducer = {pdflatex}
 
 \usepackage{pdfpages}
 \begin{document}
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\addto\captionsspanish{\renewcommand{\listtablename}{Índice de tablas}}
 \input{portada/portada}
 \input{prefacios/prefacio}
+
 %\frontmatter
 %\tableofcontents
 %\listoffigures
@@ -207,19 +180,16 @@ pdfproducer = {pdflatex}
 %\input{capitulos/07_Pruebas}
 %
 %\input{capitulos/08_Conclusiones}
-%
-%%\chapter{Conclusiones y Trabajos Futuros}
-%
-%
-%%\nocite{*}
-%\bibliography{bibliografia/bibliografia}\addcontentsline{toc}{chapter}{Bibliografía}
+
+%\cleardoublepage
+%\phantomsection
+\cleardoublepage
 \printbibliography[title={Referencias Bibliográficas}]
-%\appendix
+
+\appendix
 %\input{apendices/manual_usuario/manual_usuario}
-%%\input{apendices/paper/paper}
 %\input{glosario/entradas_glosario}
-% \addcontentsline{toc}{chapter}{Glosario}
-% \printglossary
+
 \chapter*{}
 \thispagestyle{empty}
 

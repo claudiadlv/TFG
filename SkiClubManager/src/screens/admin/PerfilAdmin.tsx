@@ -17,11 +17,10 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { AdminStackParamList } from '../../navigation/types/types';
 
-export default function PerfilEntrenador() {
+export default function PerfilAdmin() {
   const { logout } = useAuth();
-  const { accessToken } = useAuth();
 
-  const [nombre, setNombre] = useState<string | null>(null);
+  const [usuario, setUsuario] = useState<{ id: number; nombre: string } | null>(null);
   const navigation = useNavigation<NativeStackNavigationProp<AdminStackParamList>>();
 
   useEffect(() => {
@@ -39,7 +38,7 @@ export default function PerfilEntrenador() {
         if (response.ok) {
           const data = await response.json();
           console.log('Usuario actual:', data);
-          setNombre(data.nombre);
+          setUsuario({ id: data.id, nombre: data.nombre });
         } else {
           console.log('Error al obtener el usuario:', response.status);
         }
@@ -67,7 +66,7 @@ export default function PerfilEntrenador() {
         </View>
 
         <Text style={styles.title}>
-          {nombre ?? 'Entrenador'}
+          {usuario?.nombre ?? 'Administrador'}
         </Text>
 
         <TouchableOpacity
@@ -111,6 +110,34 @@ export default function PerfilEntrenador() {
             <Icon name="person-add-outline" size={20} color="white" />
           </View>
           <Text style={styles.optionText}>Administrar entrenador</Text>
+          <Icon name="chevron-forward" size={24} color="#888" />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.optionContainer}
+          onPress={() => navigation.navigate('GestionarDeportistas')}
+        >
+          <View style={styles.iconWrapper}> 
+            <Icon name="snow-outline" size={20} color="white" />
+          </View>
+          <Text style={styles.optionText}>Gestionar deportistas</Text>
+          <Icon name="chevron-forward" size={24} color="#888" />
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={styles.optionContainer}
+          onPress={() => {
+            if (usuario) {
+              navigation.navigate('CambiarContrasena', { user: usuario });
+            } else {
+              Alert.alert('Error', 'No se han podido cargar los datos del perfil aún.');
+            }
+          }} 
+        >
+          <View style={[styles.iconWrapper, { backgroundColor: '#FFB020' }]}> 
+            <Icon name="lock-closed-outline" size={20} color="white" />
+          </View>
+          <Text style={styles.optionText}>Gestionar contraseña</Text>
           <Icon name="chevron-forward" size={24} color="#888" />
         </TouchableOpacity>
 

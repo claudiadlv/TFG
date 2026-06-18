@@ -8,6 +8,10 @@ const JWT_SECRET = process.env.JWT_SECRET || 'secreto-super-clave';
 router.post('/login', autorizacionController.login); 
 router.post('/solicitar-registro', autorizacionController.solicitarRegistro);
 
+router.post('/forgot-password', autorizacionController.forgotPassword);
+router.post('/reset-password', autorizacionController.resetPassword);
+router.post('/change-password', autorizacionController.changePassword);
+
 router.post('/refresh', (req, res) => {
   const { refreshToken } = req.body;
   if (!refreshToken) return res.status(401).json({ mensaje: 'Refresh token requerido' });
