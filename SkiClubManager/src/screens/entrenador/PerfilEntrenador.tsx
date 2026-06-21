@@ -20,7 +20,6 @@ import { EntrenadorStackParamList } from '../../navigation/types/types';
 export default function PerfilEntrenador() {
   const { logout } = useAuth(); 
 
-  // Cambiamos 'nombre' por un estado que contenga el objeto usuario completo
   const [usuario, setUsuario] = useState<{ id: number; nombre: string } | null>(null);
   const navigation = useNavigation<NativeStackNavigationProp<EntrenadorStackParamList>>(); 
 
@@ -39,7 +38,6 @@ export default function PerfilEntrenador() {
         if (response.ok) {
           const data = await response.json();
           console.log('Usuario actual:', data);
-          // Guardamos tanto el id como el nombre que nos devuelve tu backend
           setUsuario({ id: data.id, nombre: data.nombre });
         } else {
           console.log('Error al obtener el usuario:', response.status);
@@ -90,7 +88,6 @@ export default function PerfilEntrenador() {
           <Icon name="chevron-forward" size={24} color="#888" />
         </TouchableOpacity>
 
-        {/* 🆕 NUEVO APARTADO: GESTIONAR CONTRASEÑA */}
         <TouchableOpacity 
           style={styles.optionContainer}
           onPress={() => {
@@ -103,7 +100,6 @@ export default function PerfilEntrenador() {
           }} 
         >
           <View style={[styles.iconWrapper, { backgroundColor: '#FFB020' }]}> 
-            {/* Le pongo un fondo naranja o el color que prefieras para destacar la seguridad */}
             <Icon name="lock-closed-outline" size={20} color="white" />
           </View>
           <Text style={styles.optionText}>Gestionar contraseña</Text>

@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 
 const { hashearContrasena, compararContrasena } = require('../utils/crypto');
 
+//Login
 exports.login = (req, res) => {
   const { correo, contrasena } = req.body;
 
@@ -55,6 +56,7 @@ exports.login = (req, res) => {
   });
 };
 
+//Solicitud de registro
 exports.solicitarRegistro = async (req, res) => {
   const {
     nombre_tutor,
@@ -71,7 +73,6 @@ exports.solicitarRegistro = async (req, res) => {
   }
 
   try {
-    // 🔒 Hasheamos la contraseña que introduce el padre antes de guardarla en la tabla de pre-registro
     const contrasenaHasheada = await hashearContrasena(contrasena);
 
     db.query(
@@ -93,6 +94,7 @@ exports.solicitarRegistro = async (req, res) => {
   }
 };
 
+//Contraseña olvidada
 exports.forgotPassword = (req, res) => {
   const { correo } = req.body;
 
@@ -160,6 +162,7 @@ exports.forgotPassword = (req, res) => {
   });
 };
 
+// Valida un token temporal no expirado para hashear e introducir la nueva contraseña del usuario, invalidando el token tras su uso.
 exports.resetPassword = (req, res) => {
   const { token, newPassword } = req.body;
 
@@ -183,7 +186,6 @@ exports.resetPassword = (req, res) => {
       const usuario = results[0];
 
       try {
-        // 🔒 Hasheamos la nueva contraseña generada desde la recuperación externa
         const nuevaContrasenaHasheada = await hashearContrasena(newPassword);
 
         db.query(
@@ -204,6 +206,7 @@ exports.resetPassword = (req, res) => {
   );
 };
 
+//Cambia la contraseña actual con la nueva
 exports.changePassword = (req, res) => {
   const { usuarioId, contrasenaActual, nuevaContrasena } = req.body;
 
@@ -223,7 +226,6 @@ exports.changePassword = (req, res) => {
 
     const usuario = results[0];
 
-    // 🔒 Comparamos de forma segura la contraseña actual usando bcrypt
     const coinciden = await compararContrasena(contrasenaActual, usuario.contrasena);
 
     if (!coinciden) {
@@ -231,7 +233,6 @@ exports.changePassword = (req, res) => {
     }
 
     try {
-      // 🔒 Hasheamos la nueva contraseña antes de persistirla en MySQL
       const nuevaContrasenaHasheada = await hashearContrasena(nuevaContrasena);
 
       db.query(

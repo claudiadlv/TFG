@@ -19,12 +19,10 @@ import { API_URL } from '../../config';
 import { PadreStackParamList } from '../../navigation/types/types'; 
 import styles from '../../styles/DetalleEntrenamiento.styles';
 
-// IMÁGENES
 import imagenFisico from '../../img/gym.png';
 import imagenPista from '../../img/juandelcampo.jpg';
 import imagenCarrera from '../../img/carrera.jpg';
 
-// --- FUNCIONES DE APOYO ---
 const getImagenFondo = (tipo: string) => {
   switch (tipo) {
     case 'Físico': return imagenFisico;
@@ -109,14 +107,6 @@ export default function DetalleEventoPadreApuntar() {
         
         if (resEventos.ok) {
           const fresco = await resEventos.json();
-          console.log("=================================================");
-          console.log("🔥 [AUDITORÍA FRONTEND] ¡OBJETO FRESCO RECIBIDO!");
-          console.log("1. ¿Tiene viaje_id?:", fresco.viaje_id, `(Tipo: ${typeof fresco.viaje_id})`);
-          console.log("2. ¿Tiene tiene_transporte?:", fresco.tiene_transporte, `(Tipo: ${typeof fresco.tiene_transporte})`);
-          console.log("3. ¿Tiene hora_salida_furgoneta?:", fresco.hora_salida_furgoneta, `(Tipo: ${typeof fresco.hora_salida_furgoneta})`);
-          console.log("4. Estructura completa de las llaves del JSON:", Object.keys(fresco));
-          console.log("5. JSON en texto plano para verificar todo:", JSON.stringify(fresco));
-          console.log("=================================================");
           setEvento(fresco); 
         }else {
           console.error(`[FRONTEND PADRE] Error en respuesta de API. Código estatus: ${resEventos.status}`);
@@ -324,6 +314,8 @@ export default function DetalleEventoPadreApuntar() {
     </ScrollView>
   );
 }
+
+//Estilos
 
 const customStyles = StyleSheet.create({
   citacionBox: {

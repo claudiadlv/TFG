@@ -2,7 +2,6 @@ const { pool: db } = require('../db');
 
 // Crear entrenador
 exports.createEntrenador = (req, res) => {
-  // CORRECCIÓN: 'apellidos' mapeado correctamente según lo envía tu frontend en el body
   const { nombre, apellidos, apellido, correo, fechaNacimiento, contrasena, categoria } = req.body;
   const rol = 'entrenador';
   
@@ -22,7 +21,6 @@ exports.createEntrenador = (req, res) => {
 
     const userId = result.insertId;
 
-    // ADAPTACIÓN CRUCIAL: Convertimos el array de categorías a un string JSON válido ('["U14","FIS"]')
     const categoriaJSON = Array.isArray(categoria) 
       ? JSON.stringify(categoria) 
       : JSON.stringify([categoria]);
@@ -50,6 +48,7 @@ exports.createEntrenador = (req, res) => {
     });
   });
 };
+
 // Obtener todos los entrenadores
 exports.getEntrenadores = (req, res) => {
   const sql = `
@@ -106,11 +105,39 @@ exports.updateEntrenador = (req, res) => {
       return res.status(404).json({ message: 'Entrenador no encontrado' });
     }
 
-    // ADAPTACIÓN EN LUGAR DE COMAS: Guardamos como un string JSON real
-    // Si viene como array ['U14', 'U16'] se convertirá en '["U14","U16"]'
-    const categoriaJSON = Array.isArray(categoria) 
-      ? JSON.stringify(categoria) 
-      : JSON.stringify([categoria]);
+    let arrayFinal = [];
+
+    if (Array.isArray(categoria)) {
+      categoria.forEach(elemento => {
+        if (typeof elemento === 'string' && (elemento.startsWith('[') || elemento.startsWith('{'))) {
+          try {
+            const parseado = JSON.parse(elemento);
+            if (Array.isArray(parseado)) arrayFinal.push(...parseado);
+            else arrayFinal.push(parseado);
+          } catch (e) {
+            arrayFinal.push(elemento);
+          }
+        } else {
+          arrayFinal.push(elemento);
+        }
+      });
+    } else if (typeof categoria === 'string') {
+      if (categoria.startsWith('[')) {
+        try {
+          arrayFinal = JSON.parse(categoria);
+        } catch (e) {
+          arrayFinal = categoria.split(',').map(c => c.trim());
+        }
+      } else {
+        arrayFinal = categoria.split(',').map(c => c.trim());
+      }
+    }
+
+    // Filtramos para asegurar que solo persistan strings limpios y eliminamos duplicados
+    const arrayLimpio = [...new Set(arrayFinal.filter(c => typeof c === 'string' && c.trim().length > 0))];
+    
+    // Convertimos a JSON plano estricto: '["U14","FIS"]'
+    const categoriaJSON = JSON.stringify(arrayLimpio);
 
     const sqlEntrenador = `
       UPDATE entrenador
@@ -127,6 +154,7 @@ exports.updateEntrenador = (req, res) => {
     });
   });
 };
+
 // Eliminar entrenador
 exports.deleteEntrenador = (req, res) => {
   const id = req.params.id;

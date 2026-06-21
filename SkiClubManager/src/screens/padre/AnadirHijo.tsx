@@ -32,7 +32,7 @@ export default function AnadirHijoScreen() {
     }
 
     try {
-      console.log('📦 Insertando hijo con:', { nombre, apellidos, fechaNacimiento });
+      console.log('Insertando hijo con:', { nombre, apellidos, fechaNacimiento });
 
       const response = await fetch(`${API_URL}/deportista/anadir_hijo`, {
         method: 'POST',
@@ -49,7 +49,7 @@ export default function AnadirHijoScreen() {
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('❌ Error al añadir hijo:', errorText);
+        console.error('Error al añadir hijo:', errorText);
         throw new Error('No se pudo añadir el hijo');
       }
 

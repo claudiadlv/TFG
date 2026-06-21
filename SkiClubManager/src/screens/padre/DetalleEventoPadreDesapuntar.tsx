@@ -19,12 +19,11 @@ import { fetchWithAuth } from '../../utils/fetchWithAuth';
 import { PadreStackParamList } from '../../navigation/types/types';
 import styles from '../../styles/DetalleEntrenamiento.styles';
 
-// IMÁGENES
 import imagenFisico from '../../img/gym.png';
 import imagenPista from '../../img/juandelcampo.jpg';
 import imagenCarrera from '../../img/carrera.jpg';
 
-// --- HELPERS Y TIPOS ---
+//Tipos
 type Evento = { 
   id: string; 
   tipo: string; 
@@ -84,14 +83,12 @@ export default function DetalleEventoPadreDesapuntar() {
   const [cargando, setCargando] = useState(true);
   const [haCambiado, setHaCambiado] = useState(false);
 
-  // Comprobación segura de transporte
   const tieneTransporte = evento?.viaje_id !== null && evento?.viaje_id !== undefined;
 
   const categoriasAMostrar = Array.isArray(evento.categoria) 
     ? evento.categoria.join(', ') 
     : evento.categoria;
 
-  // Tu lógica original de carga intacta para que sigan saliendo Nil y Loreto perfectamente
   const cargarHijos = useCallback(async () => {
     try {
       setCargando(true);
@@ -228,7 +225,6 @@ export default function DetalleEventoPadreDesapuntar() {
         )}
       </View>
 
-      {/* 🚀 RECUADRO AZUL DESTACADO: Idéntico a la pantalla de apuntar */}
       {tieneTransporte && (
         <View style={customStyles.citacionBox}>
           <Icon name="time-outline" size={20} color="#0D47A1" style={{ marginRight: 2 }} />
@@ -315,7 +311,7 @@ export default function DetalleEventoPadreDesapuntar() {
   );
 }
 
-// --- ESTILOS NATIVOS LOCALES COMPLEMENTARIOS ---
+//Estilos
 const customStyles = StyleSheet.create({
   citacionBox: {
     flexDirection: 'row',

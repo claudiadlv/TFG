@@ -25,10 +25,8 @@ export default function GaleriaEntrenadorScreen() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedPhotoIds, setSelectedPhotoIds] = useState<string[]>([]);
   
-  // 📥 Aquí guardaremos las categorías Reales del perfil (ej: ['U6', 'U8']) para validar la seguridad
   const [misCategoriasReales, setMisCategoriasReales] = useState<string[]>([]);
   
-  // Pestañas visuales de la pantalla
   const pestañasPantalla = ['General', 'Mis Equipos'];
   const [categoriaActiva, setCategoriaActiva] = useState<string>('Mis Equipos');
 
@@ -234,7 +232,7 @@ export default function GaleriaEntrenadorScreen() {
   // 5. FILTRADO COMPUESTO Y BUSCADOR CRONOLÓGICO CORREGIDO
   const agruparFotosPorMes = (): SectionData[] => {
     const nombresMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-    const grupos: { [key: string]: Photo[] } = {}; // 🎯 Variable declarada en español
+    const grupos: { [key: string]: Photo[] } = {};
 
     const fotosUnicas = obtenerFotosUnicas();
 
@@ -244,7 +242,6 @@ export default function GaleriaEntrenadorScreen() {
       if (categoriaActiva === 'General') {
         if (!listaCategoriasFoto.includes('General')) return false;
       } else {
-        // 🚨 PESTAÑA "MIS EQUIPOS"
         // Ocultamos las circulares del club globales
         if (listaCategoriasFoto.length === 1 && listaCategoriasFoto.includes('General')) {
           return false;
@@ -260,7 +257,7 @@ export default function GaleriaEntrenadorScreen() {
         }
       }
 
-      // 🔍 EL BUSCADOR: Validamos contra el mes y el año de la imagen
+      //Buscador
       if (!searchQuery) return true;
       const query = searchQuery.toLowerCase().trim();
       
@@ -290,7 +287,6 @@ export default function GaleriaEntrenadorScreen() {
         mesAnio = `${nombresMeses[fechaObj.getMonth()]} ${fechaObj.getFullYear()}`; 
       }
       
-      // 🎯 CORRECCIÓN: Cambiado 'groups' por 'grupos' para evitar el quiebre de estado
       if (!grupos[mesAnio]) grupos[mesAnio] = [];
       grupos[mesAnio].push(photo);
     });
@@ -326,7 +322,6 @@ export default function GaleriaEntrenadorScreen() {
   return (
     <View style={styles.container}>
       
-      {/* HEADER */}
       {selectedPhotoIds.length > 0 ? (
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#FFEBEE', padding: 12, borderRadius: 8, margin: 10 }}>
           <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C62828' }}>
@@ -345,7 +340,6 @@ export default function GaleriaEntrenadorScreen() {
         <Text style={styles.title}>Galería del Entrenador</Text> 
       )}
 
-      {/* PESTAÑAS */}
       {selectedPhotoIds.length === 0 && (
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start', backgroundColor: '#F8F9F9', padding: 8, marginHorizontal: 15, borderRadius: 8, marginBottom: 10 }}>
           {pestañasPantalla.map((cat) => {
@@ -363,7 +357,6 @@ export default function GaleriaEntrenadorScreen() {
         </View>
       )}
 
-      {/* BUSCADOR */}
       <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#F0F3F4', borderRadius: 10, marginHorizontal: 15, paddingHorizontal: 10, marginBottom: 15 }}>
         <Icon name="search-outline" size={20} color="#7F8C8D" style={{ marginRight: 8 }} />
         <TextInput
@@ -375,14 +368,12 @@ export default function GaleriaEntrenadorScreen() {
         />
       </View>
 
-      {/* BOTÓN FLOTANTE */}
       {selectedPhotoIds.length === 0 && (
         <TouchableOpacity style={styles.uploadButton} onPress={handleAddPhoto}>
           <Icon name="add-circle" size={50} color="#2C3E50" />
         </TouchableOpacity>
       )}
 
-      {/* CUADRÍCULA */}
       {seccionesEntrenador.length === 0 ? (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
           <Icon name="images-outline" size={55} color="#BDC3C7" style={{ marginBottom: 12 }} />

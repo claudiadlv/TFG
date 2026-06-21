@@ -19,7 +19,6 @@ export default function CambiarContrasena() {
   const route = useRoute<any>(); 
   const navigation = useNavigation<any>();
 
-  // Recuperamos el objeto usuario pasado por parámetro desde cualquier perfil
   const { user } = route.params || {};
 
   const [contrasenaActual, setContrasenaActual] = useState('');
@@ -46,7 +45,6 @@ export default function CambiarContrasena() {
     setLoading(true);
 
     try {
-      // Petición HTTP al endpoint del Backend
       const response = await fetch(`${API_URL}/auth/change-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -57,7 +55,6 @@ export default function CambiarContrasena() {
         }),
       });
 
-      // Consumimos la respuesta de forma segura
       await response.json();
 
       if (response.ok) {
@@ -65,7 +62,6 @@ export default function CambiarContrasena() {
           { text: 'Estupendo', onPress: () => navigation.goBack() },
         ]);
       } else {
-        // En caso de error en el backend (ej: contraseña actual incorrecta), devolvemos el mismo aviso genérico
         Alert.alert(
           'No se pudo actualizar',
           'Los datos introducidos no son válidos. Por favor, verifica la información e inténtalo de nuevo.'
@@ -95,7 +91,6 @@ export default function CambiarContrasena() {
           </Text>
         </View>
 
-        {/* Inputs del Formulario */}
         <View style={{ marginBottom: 15 }}>
           <Text style={{ fontWeight: '600', marginBottom: 5, color: '#333' }}>Contraseña actual</Text>
           <TextInput
@@ -129,7 +124,6 @@ export default function CambiarContrasena() {
           />
         </View>
 
-        {/* Botón de Acción */}
         <TouchableOpacity
           style={[styles.submitButton]}
           onPress={handleChangePassword}

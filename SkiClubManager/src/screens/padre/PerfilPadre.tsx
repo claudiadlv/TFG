@@ -69,7 +69,6 @@ export default function PerfilPadre() {
           {usuario?.nombre ?? 'Padre/Madre'}
         </Text>
 
-        {/* Botón Asistencia en pista */}
         <TouchableOpacity
           style={styles.optionContainer}
           onPress={() => navigation.navigate('AsistenciaPista')}
@@ -92,7 +91,6 @@ export default function PerfilPadre() {
           <Icon name="chevron-forward" size={24} color="#888" />
         </TouchableOpacity>
 
-        {/* Botón administrar usuario */}
         <TouchableOpacity
           style={styles.optionContainer}
           onPress={() => navigation.navigate('GestionarPerfil')}
@@ -104,7 +102,6 @@ export default function PerfilPadre() {
           <Icon name="chevron-forward" size={24} color="#888" />
         </TouchableOpacity>
 
-        {/* 🆕 NUEVO APARTADO: GESTIONAR CONTRASEÑA DEL PADRE */}
         <TouchableOpacity 
           style={styles.optionContainer}
           onPress={() => {
@@ -123,7 +120,6 @@ export default function PerfilPadre() {
           <Icon name="chevron-forward" size={24} color="#888" />
         </TouchableOpacity>
 
-        {/* Botón salir */}
         <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
           <Icon name="log-out-outline" size={20} color="white" />
           <Text style={styles.logoutText}>Salir de la cuenta</Text>

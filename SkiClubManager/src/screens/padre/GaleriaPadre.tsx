@@ -27,7 +27,6 @@ export default function GaleriaPadreScreen() {
   const [selectedPhotoIds, setSelectedPhotoIds] = useState<string[]>([]); 
 
   const [categoriasDisponibles, setCategoriasDisponibles] = useState<string[]>([]);
-  // 🎯 CORRECCIÓN 1: Forzamos a que por defecto empiece siempre en la pestaña institucional 'General'
   const [categoriaActiva, setCategoriaActiva] = useState<string>('General');
 
   useEffect(() => {
@@ -57,21 +56,21 @@ export default function GaleriaPadreScreen() {
         const fotosRaw = jsonResponse.fotos ? jsonResponse.fotos : [];
         const catsRaw = jsonResponse.categoriasVisibles ? jsonResponse.categoriasVisibles : [];
 
-        // 🧼 1. Limpiamos las comillas de las categorías de los hijos
+        //Limpiamos las comillas de las categorías de los hijos
         const catsHijosLimpias = catsRaw.map((c: string) => c.replace(/["']/g, '').trim());
 
-        // 🗺️ 2. Definimos el orden estricto del club (de más pequeña a más grande)
+        //Definimos el orden estricto del club (de más pequeña a más grande)
         const ordenClub = ['U6', 'U8', 'U10', 'U12', 'U14', 'U16', 'FIS'];
 
-        // 📊 3. Ordenamos las categorías del hijo basándonos en el patrón del club
+        //Ordenamos las categorías del hijo basándonos en el patrón del club
         const catsHijosOrdenadas = catsHijosLimpias.sort((a: any, b: any) => {
           return ordenClub.indexOf(a) - ordenClub.indexOf(b);
         });
 
-        // 👑 4. Juntamos forzando 'General' SIEMPRE en la primera posición
+        //Juntamos forzando 'General' SIEMPRE en la primera posición
         const pestañasFinalesPadre = ['General', ...catsHijosOrdenadas];
 
-        // 🔄 5. Mapeamos las fotos para leer 'todas_categorias' o 'categoria_id'
+        //Mapeamos las fotos para leer 'todas_categorias' o 'categoria_id'
         const fotosMapeadas = fotosRaw.map((f: any) => {
           const categoriasEnBruto = f.todas_categorias || f.categoria_id || '';
           return {
@@ -82,7 +81,7 @@ export default function GaleriaPadreScreen() {
           };
         });
 
-        // 💾 6. Guardamos en los estados del Padre
+        //Guardamos en los estados del Padre
         setCategoriasDisponibles(pestañasFinalesPadre);
         setAllPhotos(fotosMapeadas);
 
@@ -154,7 +153,7 @@ export default function GaleriaPadreScreen() {
     }
   };
 
-  // 🛡️ FILTRO ANTI-DUPLICADOS POR COPIA DE RUTA
+  //Filtro antiduplicados
   const obtenerFotosUnicas = (): Photo[] => {
     const urisVistas = new Set();
     return allPhotos.filter(photo => {
@@ -166,7 +165,7 @@ export default function GaleriaPadreScreen() {
     });
   };
 
-  // 🛠️ 4. FILTRADO Y AGRUPACIÓN INTELIGENTE CON CONTROL MULTICATEGORÍA
+  //Filtrado y agrupacón
   const agruparFotosPorMes = (): SectionData[] => {
     const grupos: { [key: string]: Photo[] } = {};
     const query = searchQuery.toLowerCase().trim();
@@ -174,10 +173,8 @@ export default function GaleriaPadreScreen() {
     const fotosUnicas = obtenerFotosUnicas();
 
     const fotosFiltradas = fotosUnicas.filter(photo => {
-      // 🧼 Separamos la cadena por comas por si viene agrupada del backend (ej: "U6,U8")
       const listaCategoriasFoto = photo.categoria.split(',').map(c => c.trim());
 
-      // 🚨 CORRECCIÓN 2: Filtrado estricto por pertenencia de pestañas relacionales
       if (categoriaActiva === 'General') {
         if (!listaCategoriasFoto.includes('General')) {
           return false;
@@ -188,7 +185,6 @@ export default function GaleriaPadreScreen() {
         }
       }
 
-      // Filtro 2: Si el buscador está vacío, pasan todas las fotos de esta categoría
       if (!query) return true;
 
       if (!photo.fecha) return false;
@@ -252,7 +248,6 @@ export default function GaleriaPadreScreen() {
   return (
     <View style={styles.container}>
       
-      {/* BARRA SUPERIOR SELECCIÓN */}
       {selectedPhotoIds.length > 0 ? (
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#E1F5FE', padding: 12, borderRadius: 8, margin: 10 }}>
           <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0288D1' }}>
@@ -271,7 +266,6 @@ export default function GaleriaPadreScreen() {
         <Text style={styles.title}>Galería del Equipo</Text>
       )}
 
-      {/* PESTAÑAS DINÁMICAS ORDENADAS */}
       {selectedPhotoIds.length === 0 && categoriasDisponibles.length > 0 && (
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start', flexWrap: 'wrap', backgroundColor: '#F8F9F9', padding: 8, marginHorizontal: 15, borderRadius: 8, marginBottom: 10 }}>
           {categoriasDisponibles.map((cat, index) => {
@@ -291,7 +285,6 @@ export default function GaleriaPadreScreen() {
         </View>
       )}
 
-      {/* 🔍 INPUT DE BÚSQUEDA */}
       <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#F0F3F4', borderRadius: 10, marginHorizontal: 15, paddingHorizontal: 10, marginBottom: 15 }}>
         <Icon name="search-outline" size={20} color="#7F8C8D" style={{ marginRight: 8 }} />
         <TextInput
@@ -305,7 +298,6 @@ export default function GaleriaPadreScreen() {
         />
       </View>
 
-      {/* RENDERIZADO DE FOTOS FILTRADAS */}
       {secciones.length === 0 ? (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
           <Icon name="images-outline" size={55} color="#BDC3C7" style={{ marginBottom: 12 }} />

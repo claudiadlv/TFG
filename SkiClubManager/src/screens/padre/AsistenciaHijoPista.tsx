@@ -107,9 +107,6 @@ export default function AsistenciaPadre() {
     const data: ChartDataPoint[] = [];
     const legend: Record<string, number> = {};
 
-    // SOLUCIÓN AQUÍ: 
-    // Si el backend aún no envía totalTecnico/totalFisico, usamos el totalEntrenamientosMes
-    // Pero restamos las asistencias de la OTRA categoría para aproximar el total de la actual.
     let programados = 0;
     let asistidos = 0;
 
@@ -119,7 +116,6 @@ export default function AsistenciaPadre() {
       const fisicoCount = datesByType.get('Físico')?.length || 0;
 
       asistidos = pistaCount + carreraCount;
-      // Si no existen las variables desglosadas, calculamos el total restando los físicos al total general
       programados = (datosDelHijo as any).totalTecnico ?? (datosDelHijo.totalEntrenamientosMes - fisicoCount);
 
       if (pistaCount > 0) {

@@ -229,7 +229,6 @@ export default function HomeEntrenador() {
         <View style={[styles.card, { backgroundColor: color }]}>
           <Text style={styles.cardTitle}>{titulo}</Text>
           
-          {/* ESTRUCTURA CORREGIDA: Creamos un único óvalo blanco envolviendo el texto completo */}
           <View style={styles.categoriasContainer}>
             <View style={styles.categoriaChip}>
               <Text style={styles.categoriaTexto}>{categoriasUnificadas}</Text>

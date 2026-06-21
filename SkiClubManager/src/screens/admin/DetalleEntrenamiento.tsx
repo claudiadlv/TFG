@@ -139,7 +139,6 @@ export default function DetalleEntrenamiento({ route }: Props) {
         <Text style={styles.label}>Fecha: <Text style={styles.valor}>{fechaFormateada}</Text></Text>
         <Text style={styles.label}>Hora Entrenamiento: <Text style={styles.valor}>{horaFormateada} h</Text></Text>
         
-        {/* 🕒 Caja azul de Citación furgoneta (Solo renderiza si el evento tiene transporte activo) */}
         {entrenamiento.hora_salida_furgoneta ? (
           <View style={customStyles.citacionBox}>
             <Icon name="time-outline" size={20} color="#0D47A1" style={{ marginRight: 2 }} />
@@ -153,7 +152,6 @@ export default function DetalleEntrenamiento({ route }: Props) {
 
         <Text style={styles.label}>Categoría: <Text style={styles.valor}>{categoriasMostrar}</Text></Text>
 
-        {/* Auditoría de Inscritos */}
         <TouchableOpacity onPress={() => setModalAsistenciaVisible(true)} style={cardStyles.botonInfo}>
           <Text style={{ fontSize: 24, marginRight: 12 }}>📋</Text>
           <View style={{ flex: 1 }}>
@@ -164,7 +162,6 @@ export default function DetalleEntrenamiento({ route }: Props) {
           </View>
         </TouchableOpacity>
 
-        {/* Logística de Furgoneta (Solo lectura para Admin) */}
         {tieneTransporte && (
           <TouchableOpacity 
             onPress={verPasajerosFurgoneta}
@@ -183,7 +180,6 @@ export default function DetalleEntrenamiento({ route }: Props) {
         )}
       </View>
 
-      {/* MODAL ASISTENCIA UNIFICADO */}
       <Modal visible={modalAsistenciaVisible} transparent animationType="fade">
         <View style={modalStyles.overlay}>
           <View style={modalStyles.content}>
@@ -212,7 +208,6 @@ export default function DetalleEntrenamiento({ route }: Props) {
         </View>
 </Modal>
 
-      {/* MODAL FURGONETA ORIGINAL */}
       <Modal visible={modalVisible} transparent animationType="fade">
         <View style={modalStyles.overlay}>
           <View style={modalStyles.content}>

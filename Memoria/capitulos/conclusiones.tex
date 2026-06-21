@@ -1,0 +1,39 @@
+\chapter{Conclusiones y Trabajos Futuros}
+\label{cap:conclusiones_trabajos_futuros}
+
+En este capítulo final se exponen las conclusiones derivadas del diseño, desarrollo e implementación de la plataforma \textit{SkiClubManager}, así como el cumplimiento de los objetivos planteados inicialmente. Asimismo, se proponen las líneas de investigación y desarrollo futuro para la evolución del sistema en el contexto de los clubes deportivos alpino.
+
+\section{Conclusiones}
+
+El desarrollo de la plataforma \textit{SkiClubManager} ha permitido integrar en una única aplicación distintas tareas relacionadas con la gestión de un club de esquí, como la planificación de entrenamientos, la gestión del transporte, el control de asistencia y el almacenamiento de contenido multimedia. De este modo, se reduce la dependencia de herramientas independientes y de procesos manuales, proporcionando una solución centralizada para las necesidades identificadas durante el análisis del proyecto.
+
+A partir del desarrollo realizado pueden extraerse las siguientes conclusiones técnico-metodológicas:
+
+\begin{itemize}
+    \item \textbf{Arquitectura Full Stack:} La combinación de una API REST desarrollada con Node.js y una base de datos relacional MySQL ha proporcionado una arquitectura adecuada para la gestión de la lógica de negocio y la persistencia de la información. El modelo adoptado facilita el mantenimiento de la integridad de los datos y la gestión de operaciones concurrentes durante procesos como el registro de usuarios o la asignación de plazas de transporte.
+
+    \item \textbf{Desarrollo de la aplicación móvil:} La utilización de React Native junto con la \textit{Context API} ha permitido desarrollar una aplicación multiplataforma manteniendo una única base de código. Esta aproximación simplifica el mantenimiento de la interfaz y favorece una experiencia de uso fluida en dispositivos móviles.
+
+    \item \textbf{Seguridad y control de acceso:} La autenticación basada en \textit{JSON Web Tokens} (JWT) y la definición de distintos roles de usuario permiten restringir el acceso a los recursos de la plataforma según los permisos asignados a cada perfil, contribuyendo a la protección de la información gestionada por el sistema.
+
+    \item \textbf{Visualización de la información:} La incorporación de gráficos estadísticos facilita la consulta del historial de asistencia y entrenamientos, proporcionando tanto a entrenadores como a familias una representación más clara de la evolución de los deportistas a lo largo de la temporada.
+\end{itemize}
+
+\section{Trabajos Futuros}
+
+Aunque la aplicación implementa los requisitos funcionales definidos para este proyecto, existen diversas líneas de trabajo que podrían ampliar sus funcionalidades y mejorar su utilidad en futuros desarrollos:
+
+\begin{itemize}
+    \item \textbf{Soporte \textit{Offline-First}:} Incorporar una base de datos local en el dispositivo móvil (por ejemplo, SQLite o WatermelonDB) para permitir el registro de asistencias y la gestión de contenido multimedia en zonas con conectividad limitada, sincronizando posteriormente la información con el servidor.
+
+    \item \textbf{Incorporación del rol de deportista:} Añadir un nuevo perfil de usuario destinado al esquiador, permitiéndole consultar entrenamientos, calendario y evolución deportiva, manteniendo la vinculación con el tutor legal cuando corresponda.
+
+    \item \textbf{Informes de evaluación técnica:} Incorporar un módulo que permita a los entrenadores elaborar informes cualitativos sobre el rendimiento de cada deportista tras las sesiones de entrenamiento.
+
+    \item \textbf{Soporte para contenido en vídeo:} Ampliar el sistema multimedia para permitir la subida, almacenamiento y reproducción de vídeos, facilitando el análisis técnico de los entrenamientos.
+
+    \item \textbf{Notificaciones \textit{Push}:} Integrar un servicio de notificaciones mediante Firebase Cloud Messaging para comunicar incidencias, cambios en la planificación, asignaciones de transporte o la publicación de nuevo contenido.
+
+    \item \textbf{Pasarela de pagos:} Incorporar una plataforma de pagos, como Stripe, para gestionar de forma integrada las cuotas del club, las inscripciones a competiciones y otros servicios ofrecidos a las familias.
+\end{itemize}
+```

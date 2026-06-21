@@ -17,7 +17,6 @@ import { API_URL } from '../../config';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 
-// 🆕 Importamos el componente del calendario nativo
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 type Props = NativeStackScreenProps<AdminStackParamList, 'DetallePadreHijos'>;
@@ -28,12 +27,10 @@ export default function DetallePadreHijos({ route, navigation }: Props) {
   const [nombre, setNombre] = useState(deportista?.nombre_deportista || '');
   const [apellidos, setApellidos] = useState(deportista?.apellidos_deportista || '');
   
-  // 📆 La fecha para el estado interno del input (Texto: YYYY-MM-DD)
   const [fechaNacimiento, setFechaNacimiento] = useState(
     deportista?.fecha_nacimiento ? deportista.fecha_nacimiento.split('T')[0] : ''
   );
 
-  // 🆕 Estado para controlar cuándo se muestra el calendario flotante
   const [showCalendar, setShowCalendar] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -45,7 +42,6 @@ export default function DetallePadreHijos({ route, navigation }: Props) {
     );
   }
 
-  // 🆕 Función que captura el cambio de fecha en el calendario
   const onChangeFecha = (event: any, selectedDate?: Date) => {
     setShowCalendar(false); 
 
@@ -58,7 +54,6 @@ export default function DetallePadreHijos({ route, navigation }: Props) {
     }
   };
 
-  // 📝 1. GUARDAR CAMBIOS (MÉTODO PUT)
   const handleGuardarCambios = async () => {
     if (!nombre.trim() || !apellidos.trim() || !fechaNacimiento.trim()) {
       Alert.alert('Atención', 'Todos los campos son obligatorios.');
@@ -88,7 +83,6 @@ export default function DetallePadreHijos({ route, navigation }: Props) {
     }
   };
 
-  // 🗑️ 2. ELIMINAR DEPORTISTA CON ALERTA DE CONFIRMACIÓN (MÉTODO DELETE)
   const handleEliminarDeportista = () => {
     Alert.alert(
       '¿Eliminar expediente?',
@@ -129,7 +123,6 @@ export default function DetallePadreHijos({ route, navigation }: Props) {
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
         <ScrollView contentContainerStyle={{ padding: 20 }}>
           
-          {/* Ficha editable del esquiador */}
           <View style={{ backgroundColor: '#FFF', padding: 20, borderRadius: 12, marginBottom: 20, borderWidth: 1, borderColor: '#EEF0F2' }}>
             <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 15, color: '#333' }}>Datos del Esquiador</Text>
             
@@ -171,7 +164,6 @@ export default function DetallePadreHijos({ route, navigation }: Props) {
             )}
           </View>
 
-          {/* Ficha informativa del Tutor Legal */}
           <View style={{ backgroundColor: '#FFF', padding: 20, borderRadius: 12, marginBottom: 25, borderWidth: 1, borderColor: '#EEF0F2' }}>
             <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 15, color: '#333' }}>Tutor Legal Vinculado</Text>
             
@@ -184,7 +176,6 @@ export default function DetallePadreHijos({ route, navigation }: Props) {
             <Text style={{ fontSize: 15, fontWeight: '500', color: '#333' }}>{deportista.correo_tutor}</Text>
           </View>
 
-          {/* 🟦 Botón: Guardar Cambios */}
           <TouchableOpacity 
             style={{ backgroundColor: '#4A56E2', borderRadius: 8, padding: 15, alignItems: 'center', marginBottom: 12 }} 
             onPress={handleGuardarCambios} 

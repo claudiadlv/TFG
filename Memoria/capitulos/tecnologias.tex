@@ -1,44 +1,46 @@
-\chapter{Tecnologías utilizadas}
-    En el desarrollo de este proyecto se han empleado diversas tecnologías y herramientas que han permitido la implementación de una solución integral para la gestión de un club de esquí alpino. A continuación, se detallan las principales tecnologías utilizadas:
+\chapter{Tecnologías y Herramientas Utilizadas}
+\label{cap:tecnologias_utilizadas}
 
-    \section{Infraestructura Backend y API REST}
+El desarrollo de la plataforma \textit{SkiClubManager} se ha basado en una arquitectura desacoplada compuesta por un servicio de \textit{backend} centralizado y una aplicación móvil nativa como \textit{frontend}. La selección de la pila tecnológica (\textit{stack}) responde a criterios estrictos de rendimiento, mantenibilidad y la necesidad de ofrecer una experiencia de usuario fluida en entornos de alta montaña. A continuación, se justifican técnicamente las herramientas y entornos seleccionados.
 
-    Para dar soporte a la aplicación móvil y centralizar la lógica de negocio, se ha diseñado un servicio backend basado en una arquitectura cliente-servidor mediante el desarrollo de una API REST. Las tecnologías seleccionadas para esta capa son Node.js y el framework Express.
+\subsubsection{Infraestructura Backend y API REST}
+Para dar soporte a la aplicación móvil y centralizar la lógica de negocio, se ha diseñado un servicio backend basado en una arquitectura cliente-servidor mediante el desarrollo de una API REST.
 
-    \subsection{Node.js}
-    Node.js es un entorno de ejecución para JavaScript construido con el motor de JavaScript V8 de Google. Su elección como núcleo del backend se justifica por las siguientes características técnicas:
+\subsubsection{Node.js}
+Node.js es un entorno de ejecución para JavaScript construido con el motor V8 de Google \cite{NodeJS}. Su elección como núcleo del \textit{backend} se justifica por las siguientes características:
+\begin{itemize}
+    \item \textbf{Modelo de E/S sin bloqueo y orientado a eventos:} Utiliza un único hilo de ejecución asistido por un bucle de eventos (\textit{Event Loop}). Esto permite gestionar múltiples conexiones concurrentes de forma asíncrona sin bloquear el servidor, una cualidad crítica cuando entrenadores y familias interactúan con la aplicación simultáneamente.
+    \item \textbf{Unificación del lenguaje:} El uso de JavaScript tanto en el servidor como en el cliente (\textit{frontend}) optimiza los tiempos de desarrollo, reduce la curva de aprendizaje y simplifica el mantenimiento del código fuente global.
+\end{itemize}
 
-    \begin{itemize}
-        \item \textbf{Modelo de E/S sin bloqueo y orientado a eventos:} Node.js utiliza un único hilo de ejecución (\textit{Single Thread}) asistido por un bucle de eventos (\textit{Event Loop}). Esto permite gestionar miles de conexiones concurrentes de forma asíncrona sin bloquear el servidor, una cualidad crítica cuando múltiples entrenadores y familias interactúan con la aplicación simultáneamente para consultar calendarios o registrar asistencias.
-        \item \textbf{Eficiencia en la transferencia de datos:} Al procesar las peticiones mediante flujos de datos (\textit{streams}), Node.js es altamente eficiente en la manipulación de archivos pesados y comunicaciones en tiempo real, facilitando la futura integración y transferencia del repositorio multimedia técnico del club.
-        \item \textbf{Unificación del lenguaje:} El uso de JavaScript tanto en el servidor (Node.js) como en el cliente (React Native) optimiza los tiempos de desarrollo, reduce la curva de aprendizaje y simplifica el mantenimiento del código fuente global del proyecto.
-    \end{itemize}
+\subsubsection{Express}
+Express es un \textit{framework} minimalista y flexible creado para Node.js \cite{ExpressJS}, seleccionado para estructurar la API REST debido a su solvencia en el manejo de peticiones HTTP:
+\begin{itemize}
+    \item \textbf{Arquitectura basada en Middleware:} Organiza el flujo de las peticiones mediante funciones interconectadas. Esto permite auditar, transformar o validar los datos de entrada antes de que alcancen la lógica de negocio final.
+    \item \textbf{Enrutamiento modular:} Permite desglosar las rutas de la API en controladores independientes, garantizando un código limpio, escalable y alineado con los principios de diseño de software modular.
+\end{itemize}
 
-    \subsection{Express}
-    Express es un \textit{framework} minimalista y flexible creado para Node.js, seleccionado para estructurar la API REST debido a su solvencia en el manejo de peticiones HTTP:
+\subsubsection{Motor de Persistencia: MySQL}
+Como sistema de gestión de bases de datos se ha seleccionado MySQL \cite{MySQL}, un motor relacional de código abierto que garantiza el almacenamiento seguro y consistente de la información del club. Su elección se fundamenta en su capacidad para gestionar restricciones de integridad referencial mediante claves foráneas, asegurando que las asistencias, transportes y expedientes queden vinculados de forma unívoca y protegida a las fichas de los deportistas menores de edad.
 
-    \begin{itemize}
-        \item \textbf{Arquitectura basada en Middleware:} Express organiza el flujo de las peticiones mediante funciones interconectadas (\textit{middlewares}). Esto permite auditar, transformar o validar los datos de entrada (como las credenciales de usuario o los parámetros de asistencia) antes de que alcancen la lógica de negocio final.
-        \item \textbf{Enrutamiento modular:} Permite desglosar las rutas de la API en controladores independientes (por ejemplo, rutas exclusivas para deportistas, asistencias o multimedia), garantizando un código limpio, escalable y alineado con los principios de diseño de software modular.
-    \end{itemize}
+\subsubsection{Desarrollo Frontend Móvil}
+La capa de interacción con el usuario final requiere un entorno capaz de ofrecer portabilidad sin penalizar el rendimiento en dispositivos móviles.
 
-    \subsection{Diseño del Modelo de Datos y Estructura Relacional}
+\subsubsection{React Native}
+React Native es un \textit{framework} de código abierto desarrollado por Meta \cite{ReactNative} que permite compilar aplicaciones móviles nativas para iOS y Android a partir de una única base de código en JavaScript y React. Los motivos técnicos de su elección incluyen:
+\begin{itemize}
+    \item \textbf{Renderizado Nativo:} A diferencia de las soluciones híbridas basadas en vistas web, React Native invoca directamente los componentes nativos del sistema operativo, garantizando una interfaz fluida y una respuesta inmediata a las interacciones del usuario.
+    \item \textbf{Eficiencia en Entornos de Nieve:} La ligereza de la aplicación y la velocidad de respuesta de sus componentes son críticas para el cuerpo técnico en las pistas de esquí, donde las bajas temperaturas exteriores exigen flujos de trabajo rápidos y pantallas de carga mínimas.
+\end{itemize}
 
-    Para soportar las funcionalidades de roles diferenciados, control de asistencia y gestión multimedia, se ha diseñado un modelo entidad-relación normalizado. Aunque el esquema detallado se aborda en los capítulos de implementación, el motor de MySQL gestiona la persistencia del sistema a través de cuatro entidades principales interconectadas:
-    
-    \begin{itemize}
-        \item \textbf{Entrenadores (Usuarios del Sistema):} Almacena la información de identificación, credenciales de acceso cifradas y el rol asignado dentro del club. Esta tabla es el núcleo para el proceso de autenticación y delimita qué usuarios tienen permisos de administrador para alterar calendarios o subir material audiovisual.
-        \item \textbf{Deportistas:} Registra los datos personales y deportivos de los atletas (nombre, categoría, y fecha de nacimiento). Mediante relaciones jerárquicas, cada deportista queda vinculado a sus respectivos tutores legales (padres) y a su grupo de entrenamiento, permitiendo que el sistema filtre la información sensible según el rol que realice la consulta.
-        \item \textbf{Eventos (Calendario y Planificación):} Contiene la planificación de las sesiones de entrenamiento, convocatorias y jornadas técnicas en las estaciones de esquí. Registra variables críticas como la fecha, la hora de inicio, el tipo de actividad y la estación invernal donde se ejecuta, ofreciendo la flexibilidad necesaria para modificar la planificación ante imprevistos meteorológicos.
-        \item \textbf{Asistencia (Tabla de Hechos y Relación):} Es la entidad que registra la constancia de los atletas. Rompe la relación de muchos a muchos entre \textit{Deportistas} y \textit{Eventos}, almacenando el estado de presencia (asiste, ausente o justificado), la fecha y observaciones técnicas. Es la tabla con mayor volumen de transacciones y de la cual la librería de gráficos del \textit{frontend} extrae las métricas de progresión.
-    \end{itemize}
+\subsubsection{Gestión de Estado: Context API}
+Para la propagación del estado global de la aplicación se ha utilizado la herramienta nativa \textit{Context API} de React. Este mecanismo permite inyectar los datos de la sesión activa, el rol del usuario autenticado (Entrenador o Padre) y los filtros temporales a lo largo de todo el árbol de componentes sin necesidad de recurrir a librerías externas complejas, facilitando el renderizado condicional inmediato de la interfaz.
 
-   A partir del análisis de los requisitos del sistema informático, se ha consolidado el diseño del esquema relacional global en el motor de persistencia. Esta estructura relacional garantiza que el flujo de datos entre la API REST en Node.js y el dispositivo móvil sea consistente, eficiente y seguro en todo momento. En la figura \ref{fig:diagrama_er_completo} se detalla la estructura lógica de las tablas, sus campos y las restricciones de integridad mediante claves foráneas que gobiernan la aplicación, incluyendo los módulos de control de accesos, la gestión de transportes, el almacenamiento multimedia y la entidad aislada para la auditoría de solicitudes de registro pendientes de aprobación.
+\subsubsection{Autenticación: JSON Web Tokens (JWT)}
+La seguridad y el aislamiento de los datos sensibles se gestionan mediante el estándar abierto RFC 7519, conocido como JSON Web Tokens \cite{RFC7519_JWT}. Tras un inicio de sesión exitoso, el servidor genera un token firmado criptográficamente que la aplicación móvil almacena de forma segura. Este token se adjunta en las cabeceras de cada petición HTTP, garantizando la autenticidad del emisor y permitiendo la validación de roles en cada \textit{endpoint} de la API REST.
 
-    \clearpage
-    \begin{figure}[htbp]
-        \centering
-        \includegraphics[width=\textwidth, keepaspectratio]{imagenes/modelo_relacional_completo.jpg}
-        \caption{Diagrama Entidad-Relación completo de la base de datos de la aplicación.}
-        \label{fig:diagrama_er_completo}
-    \end{figure}
+\subsubsection{Visualización Analítica: React Native Chart Kit}
+Para la representación gráfica del rendimiento de los corredores y los balances de asistencia en los perfiles familiares, se ha implementado la librería complementaria \textit{react-native-chart-kit} \cite{ReactNativeChartKit}. Esta herramienta se acopla directamente sobre el flujo de datos del estado global, transformando registros relacionales planos de asistencia en métricas visuales comprensibles y optimizadas para su correcta renderización en dispositivos móviles.
+
+\subsubsection{Diseño de Interfaces: Figma}
+Como entorno de prototipado industrial se ha empleado Figma. Esta herramienta basada en la nube ha permitido modelar la arquitectura de la información y evolucionar los esquemas desde \textit{wireframes} de baja fidelidad hasta los \textit{mockups} de alta fidelidad que sirven como plano técnico exacto para la maquetación visual de la aplicación móvil.

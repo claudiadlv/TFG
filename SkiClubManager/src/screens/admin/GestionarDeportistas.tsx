@@ -25,7 +25,6 @@ export default function GestionarDeportistas() {
   const [busqueda, setBusqueda] = useState('');
   const [loading, setLoading] = useState(true);
 
-  // 🔄 Petición al backend sincronizada con el foco de la pantalla
   useEffect(() => {
     const fetchExpedientes = async () => {
       try {
@@ -53,11 +52,9 @@ export default function GestionarDeportistas() {
     const nombreCompletoTutor = `${item.nombre_tutor || ''} ${item.apellidos_tutor || ''}`;
     const categoriaNiño = item.categoria || '';
 
-    // Juntamos todo en un string plano y en minúsculas
     const cadenaObjetivo = `${nombreCompletoNiño} ${nombreCompletoTutor} ${categoriaNiño}`.toLowerCase();
     const textoBusqueda = busqueda.toLowerCase().trim();
 
-    // ✨ El truco de la normalización: descompone los caracteres y borra las tildes (bloque \u0300-\u036f)
     const cadenaSinAcentos = cadenaObjetivo.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     const busquedaSinAcentos = textoBusqueda.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
@@ -77,7 +74,6 @@ export default function GestionarDeportistas() {
       <StatusBar barStyle="dark-content" />
       <View style={{ flex: 1, padding: 20 }}>
         
-        {/* Cabecera explicativa */}
         <Text style={{ fontSize: 22, fontWeight: 'bold', marginBottom: 5, color: '#333' }}>
           Expedientes de Deportistas
         </Text>
@@ -85,7 +81,6 @@ export default function GestionarDeportistas() {
           Busca por el nombre del esquiador o por su tutor legal para gestionar sus datos.
         </Text>
 
-        {/* 🔍 Buscador en tiempo real */}
         <View style={{
           flexDirection: 'row',
           alignItems: 'center',
@@ -117,7 +112,6 @@ export default function GestionarDeportistas() {
           )}
         </View>
 
-        {/* 📜 Listado de Expedientes */}
         <FlatList
           data={expedientesFiltrados}
           keyExtractor={(item) => item.deportista_id.toString()}
@@ -138,7 +132,6 @@ export default function GestionarDeportistas() {
               onPress={() => navigation.navigate('DetallePadreHijos', { deportista: item })}
             >
               <View style={{ flex: 1, paddingRight: 10 }}>
-                {/* Nombre del Alumno + Categoría */}
                 <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
                   <Text style={{ fontSize: 16, fontWeight: '600', color: '#333', marginRight: 8 }}>
                     {item.nombre_deportista} {item.apellidos_deportista}
@@ -158,7 +151,6 @@ export default function GestionarDeportistas() {
                   )}
                 </View>
                 
-                {/* Nombre completo del Tutor legal (Padre) */}
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 6 }}>
                   <Icon name="person-circle-outline" size={16} color="#666" style={{ marginRight: 4 }} />
                   <Text style={{ fontSize: 13, color: '#666' }}>

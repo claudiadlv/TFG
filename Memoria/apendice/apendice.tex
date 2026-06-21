@@ -1,0 +1,52 @@
+\appendix
+\chapter{Planificación Detallada e Historial de Versiones}
+\label{ap:planificacion_versiones}
+
+Este apéndice complementa la planificación temporal expuesta en el cuerpo de la memoria a través de la \hyperref[fig:gantt_diagram_detailed]{Figura 3.1 (\textit{Diagrama de Gantt})}, detallando de forma cronológica cómo se estructuró el desarrollo real del software. A continuación, se correlacionan las fases del proyecto con el histórico de control de versiones ejecutado sobre el repositorio de la aplicación.
+    \section{Cronograma de Fases (Basado en el Diagrama de Gantt)}
+    De acuerdo con la planificación temporal establecida, el desarrollo del proyecto \textit{SkiClubManager} abarcó un periodo continuo desde febrero hasta junio, distribuido en las siguientes macro-etapas:
+
+    \begin{itemize}
+        \item \textbf{Febrero -- Análisis, Aprendizaje y Diseño conceptual:} Dedicado a la definición de requisitos funcionales del club, la investigación de la pila tecnológica (Node.js, MySQL, React Native) y el diseño inicial del modelo entidad-relación junto con los bocetos de interfaz.
+        \item \textbf{Marzo -- Desarrollo del Back-End:} Configuración del entorno de base de datos en MySQL y codificación de los controladores, lógica de negocio y endpoints protegidos mediante \textit{Json Web Tokens} (JWT).
+        \item \textbf{Abril -- Desarrollo del Front-End:} Maquetación y estructura de las primeras vistas adaptativas en React Native, implementando la gestión del estado global mediante \textit{Context API}.
+        \item \textbf{Mayo -- Integración de API, Conexión y Gráficos:} Periodo crítico de conexión entre ambos entornos, maquetación de gráficos dinámicos y refactorización iterativa de la lógica transaccional de transportes y asistencias.
+        \item \textbf{Junio -- Despliegue, Pruebas y Cierre:} Fase orientada a las pruebas unitarias y del sistema, corrección de desfases horarios en emuladores, incorporación del módulo final multimedia y redacción final de la presente memoria.
+    \end{itemize}
+
+    \section{Historial del Control de Versiones}
+    A continuación, se detalla el diario de desarrollo del sistema a través de sus hitos de versión (\textit{commits} y \textit{tags} del repositorio), reflejando las funcionalidades añadidas, los fallos de lógica detectados y las soluciones de ingeniería de software aplicadas en cada iteración.
+
+    \subsection{Fase Inicial: Estructura y Altas Base}
+    \begin{itemize}
+        \item \textbf{Versión 2.0:} Consolidación del flujo base del \textit{backend}. Se valida con éxito el funcionamiento del módulo de registro y alta segura del perfil de tutores legales (\texttt{Padres}) en el sistema.
+        \item \textbf{Versión 3.0:} Evolución del flujo familiar. Se implementa la funcionalidad para añadir las fichas de los hijos (\texttt{Deportistas}) vinculadas al tutor. Se detecta un fallo crítico de renderizado en el módulo de calendario debido a colisiones de identificadores compartidos, procediendo a su aislamiento para proteger la base de código estable.
+    \end{itemize}
+
+    \subsection{Fase Intermedia: Interfaz y Lógica de Asistencia}
+    \begin{itemize}
+        \item \textbf{Versión 4.0:} Integración global del \textit{frontend}. Se dispone de la totalidad de las pantallas operativas a excepción de la galería multimedia. Se inicia la reestructuración completa de la vista de asistencias para mejorar la experiencia de usuario en dispositivos móviles.
+        \item \textbf{Versión 5.0:} Optimización de búsquedas y permisos. Se implementa con éxito el filtro de búsqueda local. Se amplían los privilegios del perfil de administrador para auditar las listas de asistencia y se modifica la vista de partes de pista para permitir el filtrado directo por categorías deportivas.
+        \item \textbf{Versión 6.0:} Maduración del núcleo técnico. Cierre de la lógica funcional de asistencia. Quedan pendientes de desarrollo únicamente el módulo transversal de transporte y la persistencia de imágenes de la galería.
+    \end{itemize}
+
+    \subsection{Fase Avanzada: Refactorización Logística de Transporte}
+    \begin{itemize}
+        \item \textbf{Versión 7.0:} Desarrollo del transporte en pista. Se detecta un problema de duplicación de eventos concurrentes en el perfil del entrenador (los entrenamientos del mismo día con categorías distintas e identificadores únicos se computaban de forma separada). Se inicia el desarrollo de la lógica de unificación (\textit{merge}). En paralelo, se actualiza el perfil del padre para que visualice en tiempo real si ha solicitado o rechazado la plaza de transporte para sus hijos.
+        \item \textbf{Versión 8.0:} Reestructuración del modelo de datos. Se modifican las tablas físicas de la base de datos para añadir los campos requeridos de \texttt{categoria} del menor y \texttt{fecha\_nacimiento\_tutor} en la pasarela de solicitudes de registro. Se introducen las tablas normalizadas \texttt{transporte\_viajes} y \texttt{transporte\_reservas} logrando resolver el \textit{merge} del calendario, aunque se detecta un bloqueo temporal en el cálculo de plazas ocupadas al interactuar con el evento.
+        \item \textbf{Versión 9.0:} Unificación logística y peticiones en paralelo. Se optimiza el \textit{backend} para agrupar los entrenamientos por ID diario, enviando un único objeto al padre con un vector interno de hijos inscritos. En el \textit{frontend}, se habilita la selección múltiple para tramitar altas o bajas simultáneas mediante peticiones asíncronas en paralelo. Se ajusta la lógica del servidor para que la liberación de plazas en la furgoneta solo sea efectiva si el deportista se desapunta de la totalidad de eventos que comparten la ruta ese día, blindando la consistencia del transporte.
+    \end{itemize}
+
+    \subsection{Fase Final: Experiencia de Usuario y Cierre de Producción}
+    \begin{itemize}
+        \item \textbf{Versión 10.0:} Refinamiento del módulo de transporte y control de emuladores. 
+        \begin{itemize}
+            \item \textit{Perfil Padre:} Integración estética del botón "Transportes" bajo la iconografía nativa \texttt{bus-outline}.
+            \item \textit{Filtros Inteligentes:} Implementación de un buscador por texto en el hilo del cliente (\texttt{TextInput}) para fechas (días, meses, años) en tiempo real.
+            \item \textit{Parseador de Fechas Nativo:} Creación de un formateador manual basado en un arreglo estático en español (\texttt{mesesEspanyol}) para neutralizar el bug de los emuladores Android, los cuales forzaban la localización en inglés e introducían desfases horarios por diferencias de zona horaria (\textit{timezone}).
+            \item \textit{Ordenación Contextual:} Configuración inversa del historial de viajes (próximos ordenados cronológicamente de más cercano a lejano, e históricos de más nuevo a antiguo).
+            \item \textit{Perfil Entrenador:} Duplicación e integración de toda la lógica de filtrado, ordenación e internacionalización en la interfaz técnica de administración del transporte.
+        \end{itemize}
+        \item \textbf{Versión 11.0:} Estabilización del sistema. Se constata el correcto funcionamiento del ecosistema completo de la aplicación, dejando el último ciclo para el desarrollo del repositorio gráfico.
+        \item \textbf{Versión 12.0 (Versión Final de Producción):} Cierre de requisitos funcionales del proyecto. Integración final del módulo de galería multimedia con buscador indexado, sistema autónomo de recuperación y gestión segura de contraseñas de usuarios, y habilitación del panel global de administración para la gestión integral de perfiles y expedientes de deportistas.
+    \end{itemize}

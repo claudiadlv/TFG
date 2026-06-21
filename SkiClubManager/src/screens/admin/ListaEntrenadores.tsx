@@ -48,12 +48,10 @@ export default function ListaEntrenadores() {
     }
   };
 
-  // Mantenemos el useEffect para la carga inicial de montaje
   useEffect(() => {
     fetchEntrenadores();
   }, []);
 
-  // Hook estratégico: Se dispara automáticamente cada vez que la pantalla vuelve al primer plano
   useFocusEffect(
     useCallback(() => {
       fetchEntrenadores();
@@ -159,8 +157,6 @@ export default function ListaEntrenadores() {
           <View style={styles.textContainer}>
             <Text style={styles.name}>{entrenador.nombre} {entrenador.apellidos}</Text>
             <Text style={styles.detail}>{entrenador.correo}</Text>
-            
-            {/* Renderizado limpio con Badges dinámicos */}
             {renderCategoriasBadges(entrenador.categoria)}
           </View>
           <View style={styles.buttonContainer}>

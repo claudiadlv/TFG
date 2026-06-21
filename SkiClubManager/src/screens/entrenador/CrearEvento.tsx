@@ -67,7 +67,6 @@ export default function CrearEvento() {
     setShowTimePicker(false);
   };
 
-  // Manejador de cambio para el reloj de la furgoneta
   const handleFurgonetaTimeChange = (_event: any, selectedTime?: Date) => {
     if (selectedTime) {
       const d = new Date(horaFurgoneta);
@@ -146,7 +145,6 @@ export default function CrearEvento() {
 
     const hora = date.toTimeString().split(' ')[0].slice(0, 5);
     
-    // Formateamos la hora de la furgoneta en formato HH:mm plano
     const horaSalidaFurgoneta = horaFurgoneta.toTimeString().split(' ')[0].slice(0, 5);
 
     const eventos = fechasGeneradas.map(f => {
@@ -212,7 +210,6 @@ export default function CrearEvento() {
   const fechaFormateada = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   const horaFormateada = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
   
-  // Formato visual para la hora de la furgoneta
   const horaFurgonetaFormateada = horaFurgoneta.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
   
   const fechaFinFormateada = `${endDate.getDate()}/${endDate.getMonth() + 1}/${endDate.getFullYear()}`;
@@ -353,7 +350,6 @@ export default function CrearEvento() {
           )}
       </View>
         
-      {/* Espaciador antes del botón final */}
       <View style={{ height: 20 }} />
 
       <View style={{ marginTop: 12, paddingVertical: 8, borderTopWidth: 1, borderTopColor: '#e5e7eb' }}>

@@ -1,8 +1,6 @@
 const { promisePool: db } = require('../db');
 
-/* =========================
-   CREAR EVENTO
-========================= */
+//Crear eventos
 exports.crearEvento = async (req, res) => {
   const { 
     tipo, 
@@ -29,18 +27,15 @@ exports.crearEvento = async (req, res) => {
     if (habilitarTransporte) {
       console.log("Buscando si ya existe un viaje para la fecha:", fecha);
       
-      // 1. BUSCAMOS SI YA EXISTE UN VIAJE PARA ESA FECHA
       const [viajeExistente] = await connection.query(
         'SELECT id FROM transporte_viajes WHERE fecha = ? LIMIT 1', 
         [fecha]
       );
 
       if (viajeExistente.length > 0) {
-        // 2. SI EXISTE, REUTILIZAMOS EL ID (Recurso compartido)
         viajeId = viajeExistente[0].id;
         console.log("Reutilizando viaje existente ID:", viajeId);
       } else {
-        // 3. SI NO EXISTE, LO CREAMOS INYECTANDO LA HORA DE LA FURGONETA
         console.log("Creando nuevo transporte compartido con hora:", hora_salida_furgoneta);
         
         const queryNuevoViaje = `
@@ -58,7 +53,6 @@ exports.crearEvento = async (req, res) => {
       }
     }
 
-    // 4. INSERTAMOS EL EVENTO
     const queryEvento = `
       INSERT INTO eventos (tipo, fecha, hora, categoria, disciplina, viaje_id, nombreCarrera) 
       VALUES (?, ?, ?, ?, ?, ?, ?)
@@ -87,9 +81,7 @@ exports.crearEvento = async (req, res) => {
   }
 };
 
-/* =========================
-   OBTENER TODOS LOS EVENTOS (CALENDARIO GENERAL)
-========================= */
+//Obtener todos los eventos (calendario general)
 exports.obtenerEventos = async (req, res) => {
   try {
     const query = `
@@ -110,7 +102,6 @@ exports.obtenerEventos = async (req, res) => {
     const eventosParseados = results.map((evento) => {
       const nuevoEvento = { ...evento };
 
-      // 1. Parseo de Categoría
       try {
         if (typeof nuevoEvento.categoria === 'string') {
           nuevoEvento.categoria = (!nuevoEvento.categoria || nuevoEvento.categoria === 'null') 
@@ -120,13 +111,11 @@ exports.obtenerEventos = async (req, res) => {
         nuevoEvento.categoria = nuevoEvento.categoria ? [nuevoEvento.categoria] : [];
       }
 
-      // 2. Lógica de plazas DINÁMICA y BLINDAJE DE HORA (CamelCase y barra_baja unificados)
       if (nuevoEvento.viaje_id) {
         const maxPlazas = parseInt(nuevoEvento.plazas_totales) || 8; 
         const ocupadas = parseInt(nuevoEvento.plazas_ocupadas) || 0;
         const disponibles = Math.max(0, maxPlazas - ocupadas);
 
-        // 🚀 DUPLICAMOS PARA BLINDAR AMBOS FRONTENDS
         nuevoEvento.plazasTotales = maxPlazas;
         nuevoEvento.plazas_totales = maxPlazas;
         nuevoEvento.plazasOcupadas = ocupadas;
@@ -158,9 +147,8 @@ exports.obtenerEventos = async (req, res) => {
     return res.status(500).json({ error: 'Error al procesar eventos' });
   }
 };
-/* =========================
-   ELIMINAR EVENTO
-========================= */
+
+//Eliminar evento
 exports.eliminarEvento = async (req, res) => {
   const { id } = req.params;
   let connection;
@@ -182,13 +170,11 @@ exports.eliminarEvento = async (req, res) => {
     await connection.query('DELETE FROM eventos WHERE id = ?', [id]);
 
     if (viajeId) {
-      // Comprobamos si queda algún OTRO evento que siga usando este mismo viaje compartido
       const [otrosEventos] = await connection.query(
         'SELECT id FROM eventos WHERE viaje_id = ? LIMIT 1', 
         [viajeId]
       );
 
-      // Si ningún otro entrenamiento lo usa, limpiamos las reservas de los pasajeros y el viaje por completo
       if (otrosEventos.length === 0) {
         console.log(`Borrando logística huérfana de la furgoneta con ID: ${viajeId}`);
         await connection.query('DELETE FROM transporte_reservas WHERE viaje_id = ?', [viajeId]);
@@ -208,9 +194,7 @@ exports.eliminarEvento = async (req, res) => {
   }
 };
 
-/* =========================
-   MODIFICAR EVENTO
-========================= */
+//Modificar evento
 exports.modificarEvento = async (req, res) => {
   const { id } = req.params;
   const { 
@@ -259,7 +243,7 @@ exports.modificarEvento = async (req, res) => {
       }
     }
 
-    // 3. Convertimos la categoría a texto plano (JSON en string) para guardarlo de forma segura
+    // 3. Convertimos la categoría a texto plano para guardarlo de forma segura
     const categoriaString = Array.isArray(categoria) ? JSON.stringify(categoria) : JSON.stringify([categoria]);
 
     // 4. Ejecutamos la actualización del evento principal unificando el viajeId (o null si se desactivó)
@@ -297,9 +281,8 @@ exports.modificarEvento = async (req, res) => {
     if (connection) connection.release();
   }
 };
-/* =========================
-   FILTRAR POR CATEGORÍAS
-========================= */
+
+//Filtrar por categorias
 exports.getEventosFiltradosPorCategorias = async (req, res) => {
   try {
     const categoriasParam = req.query.categorias;
@@ -322,9 +305,7 @@ exports.getEventosFiltradosPorCategorias = async (req, res) => {
   }
 };
 
-/* =========================
-   APUNTAR DEPORTISTA A EVENTO (Con Transacción y Transporte)
-========================= */
+//Apuntar deportista evento
 exports.apuntarDeportistaAEvento = async (req, res) => {
   const eventoId = req.params.id; 
   const { hijoId, enFurgoneta } = req.body; 
@@ -334,12 +315,12 @@ exports.apuntarDeportistaAEvento = async (req, res) => {
     connection = await db.getConnection(); 
     await connection.beginTransaction();
 
-    // 1. Obtener el viaje_id del evento
+    //Obtener el viaje_id del evento
     const [evento] = await connection.query('SELECT viaje_id FROM eventos WHERE id = ?', [eventoId]); 
     if (evento.length === 0) throw new Error("Evento no encontrado");
     const viajeId = evento[0].viaje_id;
 
-    // 2. Si quiere furgoneta, validamos y reservamos
+    //Si quiere furgoneta, validamos y reservamos
     if (enFurgoneta && viajeId) {
       // Comprobar disponibilidad real con bloqueo de fila
       const [viaje] = await connection.query(
@@ -361,7 +342,7 @@ exports.apuntarDeportistaAEvento = async (req, res) => {
       );
     }
 
-    // 3. Registrar la asistencia al evento (independientemente del transporte)
+    //Registrar la asistencia al evento (independientemente del transporte)
     await connection.query(
       'INSERT INTO eventos_deportistas (id_evento, id_deportista, enFurgoneta) VALUES (?, ?, ?)',
       [eventoId, hijoId, enFurgoneta ? 1 : 0]
@@ -378,20 +359,18 @@ exports.apuntarDeportistaAEvento = async (req, res) => {
   }
 };
 
-/* =========================
-   EVENTOS APUNTADOS (PADRE) - VERSION AGRUPADA
-========================= */
+//Eventos apuntados padre (version agrupada)
 exports.getEventosApuntados = async (req, res) => {
   const usuarioId = req.user.id;
 
   try {
-    // 1. Obtener ID del padre vinculado al usuario
+    //Obtener ID del padre vinculado al usuario
     const [padre] = await db.query(
       'SELECT id FROM padres WHERE id_usuario = ?', [usuarioId]
     );
     if (padre.length === 0) return res.status(404).json([]);
 
-    // 2. Obtener los IDs de todos los hijos de ese padre
+    //Obtener los IDs de todos los hijos de ese padre
     const [hijos] = await db.query(
       'SELECT id_deportista FROM padres_hijos WHERE id_padre = ?',
       [padre[0].id]
@@ -400,7 +379,7 @@ exports.getEventosApuntados = async (req, res) => {
 
     const hijosIds = hijos.map((h) => h.id_deportista); 
 
-    // 3. Query: Traemos los eventos y los datos de transporte de los hijos
+    //Query: Traemos los eventos y los datos de transporte de los hijos
     const [rows] = await db.query(
       `SELECT 
         e.*, 
@@ -413,7 +392,7 @@ exports.getEventosApuntados = async (req, res) => {
       [hijosIds]
     );
 
-    // 4. AGRUPACIÓN: Una sola tarjeta por evento con lista de hijos dentro
+    //Agrupacion
     const eventosMap = new Map();
 
     rows.forEach((row) => {
@@ -456,9 +435,8 @@ exports.getEventosApuntados = async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor' }); 
   }
 };
-/* =========================
-   DESAPUNTAR DEPORTISTA DE EVENTO
-========================= */
+
+//Desapuntar deportista evento
 exports.desapuntarDeportistaDeEvento = async (req, res) => {
   const eventoId = req.params.id;
   const hijoId = req.query.hijoId;
@@ -473,7 +451,7 @@ exports.desapuntarDeportistaDeEvento = async (req, res) => {
     connection = await db.getConnection();
     await connection.beginTransaction();
 
-    // 1. Verificar que el padre existe
+    //Verificar que el padre existe
     const [padre] = await connection.query(
       'SELECT id FROM padres WHERE id_usuario = ?',
       [usuarioId]
@@ -482,24 +460,24 @@ exports.desapuntarDeportistaDeEvento = async (req, res) => {
     
     const padreId = padre[0].id;
 
-    // 2. Verificar que el hijo pertenece al padre
+    //Verificar que el hijo pertenece al padre
     const [esHijo] = await connection.query(
       'SELECT * FROM padres_hijos WHERE id_padre = ? AND id_deportista = ?',
       [padreId, hijoId]
     );
     if (esHijo.length === 0) throw new Error("No tienes permiso sobre este deportista");
 
-    // 3. Obtener el viaje_id del evento actual
+    //Obtener el viaje_id del evento actual
     const [eventoRow] = await connection.query('SELECT viaje_id FROM eventos WHERE id = ?', [eventoId]);
     const viajeId = eventoRow[0]?.viaje_id;
 
-    // 4. Borrar la inscripción al evento
+    //Borrar la inscripción al evento
     await connection.query(
       'DELETE FROM eventos_deportistas WHERE id_evento = ? AND id_deportista = ?',
       [eventoId, hijoId]
     );
 
-    // 5. LOGICA DE FURGONETA COMPARTIDA:
+    //LOGICA DE FURGONETA COMPARTIDA:
     // Si el evento tenía transporte, verificamos si el niño sigue apuntado a OTROS eventos
     // del MISMO viaje. Si ya no le quedan más eventos ese día, le quitamos la reserva de furgoneta.
     if (viajeId) {
@@ -532,9 +510,8 @@ exports.desapuntarDeportistaDeEvento = async (req, res) => {
     if (connection) connection.release();
   }
 };
-/* =========================
-   OBTENER HIJOS APUNTADOS A UN EVENTO (por ID de evento)
-=========================*/
+
+//Obtener hijos apuntados evento (por id evento)
 exports.getHijosApuntadosEvento = async (req, res) => {
   const eventoId = req.params.id;
   const usuarioId = req.user.id;
@@ -547,7 +524,7 @@ exports.getHijosApuntadosEvento = async (req, res) => {
     if (padre.length === 0) return res.status(404).json([]);
 
     // Obtener hijos apuntados a ese evento
-    // Dentro de getAsistenciasPadre...
+    // Dentro de getAsistenciasPadre
     const [hijos] = await db.query(
       `SELECT d.id, d.nombre, TRIM(BOTH '"' FROM TRIM(d.categoria)) as categoria
        FROM eventos_deportistas ed
@@ -564,14 +541,12 @@ exports.getHijosApuntadosEvento = async (req, res) => {
   }
 };
 
-/* =========================
-   COMPROBAR SI HIJO ESTÁ APUNTADO (por query param)
-========================= */
+//Comprobar si el hijo esta apuntado
 exports.estaApuntado = async (req, res) => {
   const eventoId = req.params.id;
   const hijoId = req.query.hijoId;
 
-  console.log(`➡️ estaApuntado eventoId=${eventoId}, hijoId=${hijoId}`);
+  console.log(`estaApuntado eventoId=${eventoId}, hijoId=${hijoId}`);
 
   if (!hijoId) {
     return res.status(400).json({ apuntado: false, mensaje: 'Falta hijoId' });
@@ -590,13 +565,13 @@ exports.estaApuntado = async (req, res) => {
   }
 };
 
-// Obtener eventos de la categoría del entrenador logueado
+//Obtener eventos de la categoría del entrenador logueado
 exports.getEventosDeMiCategoria = async (req, res) => {
   try {
     const usuarioId = req.user.id;
     console.log("=> [BACKEND] Buscando entrenamientos para el entrenador ID:", usuarioId);
 
-    // 1. Recuperamos la categoría del entrenador
+    //Recuperamos la categoría del entrenador
     const [rows] = await db.query(
       'SELECT categoria FROM entrenador WHERE id = ?',
       [usuarioId]
@@ -610,7 +585,7 @@ exports.getEventosDeMiCategoria = async (req, res) => {
     let entrenadorCategorias = rows[0].categoria;
     let arrayCategorias = [];
 
-    // 2. Normalizamos el formato para garantizar un array limpio de JavaScript
+    //Normalizamos el formato para garantizar un array limpio de JavaScript
     if (typeof entrenadorCategorias === 'string') {
       try {
         const parseado = JSON.parse(entrenadorCategorias);
@@ -625,7 +600,7 @@ exports.getEventosDeMiCategoria = async (req, res) => {
     const jsonStringPerfecto = JSON.stringify(arrayCategorias);
     console.log("=> [BACKEND] Array del entrenador formateado para la Query:", jsonStringPerfecto);
 
-    // 3. Consulta SQL con doble CAST de seguridad para mitigar errores de tipo
+    //Consulta SQL con doble CAST de seguridad para mitigar errores de tipo
     const sql = `
       SELECT 
         e.*, 
@@ -642,7 +617,7 @@ exports.getEventosDeMiCategoria = async (req, res) => {
     const [eventos] = await db.query(sql, [jsonStringPerfecto]);
     console.log(`=> [BACKEND] ¡Éxito! Encontrados ${eventos.length} entrenamientos.`);
 
-    // 4. Mapeo y parseo seguro para entregar al Frontend de la aplicación móvil
+    //Mapeo y parseo seguro para entregar al Frontend de la aplicación móvil
     const parseados = eventos.map(ev => {
       try {
         if (typeof ev.categoria === 'string') {
@@ -663,14 +638,12 @@ exports.getEventosDeMiCategoria = async (req, res) => {
   }
 };
 
-/* =================================
-   OBTENER ASISTENCIAS (VISTA ENTRENADOR)
-================================= */
+//Obtener asistencia (Vista entrenador)
 exports.getAsistenciasAdmin = async (req, res) => {
   try {
     const categoria = req.query.categoria || 'TODAS';
 
-    // 1. Obtener todos los deportistas registrados bajo el filtro de categoría seleccionado
+    //Obtener todos los deportistas registrados bajo el filtro de categoría seleccionado
     let deportistasSql = `SELECT id, nombre, categoria FROM deportistas`;
     const deportistasParams = [];
     if (categoria && categoria !== 'TODAS') {
@@ -683,34 +656,32 @@ exports.getAsistenciasAdmin = async (req, res) => {
       return res.status(200).json([]);
     }
 
-    // 2. Obtener TODOS los entrenamientos sin importar si la tabla intermedia está vacía
+    //Obtener TODOS los entrenamientos sin importar si la tabla intermedia está vacía
     const [eventosRows] = await db.query(
       `SELECT id AS eventoId, DATE_FORMAT(fecha, '%Y-%m-%d') AS fecha, tipo FROM eventos ORDER BY fecha ASC`
     );
 
-    // 3. Obtener el mapa de reservas e inscripciones reales existentes
+    //Obtener el mapa de reservas e inscripciones reales existentes
     const [asistenciasRows] = await db.query(
       `SELECT id_deportista AS deportistaId, id_evento AS eventoId FROM eventos_deportistas`
     );
 
-    // Inyectamos las claves en un Set para búsquedas en tiempo constante O(1)
     const setAsistencias = new Set();
     asistenciasRows.forEach(row => {
       setAsistencias.add(`${row.deportistaId}-${row.eventoId}`);
     });
 
-    // 4. Hidratar la respuesta cruzando dinámicamente cada alumno con todos los días oficiales
+    //Hidratar la respuesta cruzando dinámicamente cada alumno con todos los días oficiales
     const resultado = deportistasRows.map(dep => {
       const listaAsistencias = [];
 
       eventosRows.forEach(ev => {
-        // Comprobamos si existe relación de asistencia en la base de datos
         const haAsistido = setAsistencias.has(`${dep.id}-${ev.eventoId}`);
         
         listaAsistencias.push({
           fecha: ev.fecha,
           tipo: ev.tipo,
-          asistio: haAsistido // Bandera booleana limpia que React Native interpretará como ✅ o ❌
+          asistio: haAsistido 
         });
       });
 
@@ -725,7 +696,7 @@ exports.getAsistenciasAdmin = async (req, res) => {
     return res.status(200).json(resultado);
 
   } catch (error) {
-    console.error('❌ [BACKEND ERROR] Fallo crítico en getAsistenciasAdmin:', error);
+    console.error('[BACKEND ERROR] Fallo crítico en getAsistenciasAdmin:', error);
     return res.status(500).json({ error: 'Error interno del servidor al procesar la asistencia global.' });
   }
 };
@@ -741,7 +712,6 @@ exports.verificarApuntado = async (req, res) => {
     );
 
     if (rows.length > 0) {
-      // LOG DE CONTROL: Mira esto en la terminal cuando entres a la pantalla
       console.log(`Checking DB for ${hijoId}: enFurgoneta is ${rows[0].enFurgoneta}`);
       res.json({ apuntado: true, info: rows[0] });
     } else {
@@ -752,7 +722,7 @@ exports.verificarApuntado = async (req, res) => {
   }
 };
 
-// 6. Actualizar transporte (Lógica de Padre)
+//Actualizar transporte (Lógica de Padre)
 exports.actualizarTransporteHijo = async (req, res) => {
   const eventoId = req.params.id; 
   const { hijoId, enFurgoneta } = req.body; 
@@ -762,7 +732,7 @@ exports.actualizarTransporteHijo = async (req, res) => {
     connection = await db.getConnection(); 
     await connection.beginTransaction(); 
 
-    // 1. Obtener el viaje_id del evento
+    //Obtener el viaje_id del evento
     const [eventoRows] = await connection.query('SELECT viaje_id FROM eventos WHERE id = ?', [eventoId]); 
     
     if (eventoRows.length === 0) throw new Error("Evento no encontrado.");
@@ -782,15 +752,13 @@ exports.actualizarTransporteHijo = async (req, res) => {
         throw new Error("Lo sentimos, la furgoneta está llena."); 
       }
 
-      // Añadir reserva (IGNORE evita error si ya existía)
       await connection.query('INSERT IGNORE INTO transporte_reservas (viaje_id, deportista_id) VALUES (?, ?)', [viajeId, hijoId]);
     } else {
-      // Eliminar de la reserva del viaje
+      //Eliminar de la reserva del viaje
       await connection.query('DELETE FROM transporte_reservas WHERE viaje_id = ? AND deportista_id = ?', [viajeId, hijoId]);
     }
 
-    // 2. Sincronizar enFurgoneta en todos los eventos que compartan este viaje_id para este niño
-    // (Esto es clave para que si cambias el transporte en el físico, se cambie también en la pista)
+    //Sincronizar enFurgoneta en todos los eventos que compartan este viaje_id para este niño
     await connection.query(
       `UPDATE eventos_deportistas ed
        JOIN eventos e ON ed.id_evento = e.id
@@ -809,6 +777,7 @@ exports.actualizarTransporteHijo = async (req, res) => {
     if (connection) connection.release(); 
   }
 };
+
 // ENDPOINT 1: Solo para la lista de asistencia del entrenamiento actual
 exports.getInscritosEvento = async (req, res) => {
   try {
@@ -846,7 +815,7 @@ exports.getPasajerosViaje = async (req, res) => {
     const [pasajeros] = await db.query(sql, [viajeId]);
     
     // Este log te confirmará en la terminal que ahora salen 6
-    console.log(`✅ Ocupación confirmada para viaje ${viajeId}: ${pasajeros.length} personas`);
+    console.log(`Ocupación confirmada para viaje ${viajeId}: ${pasajeros.length} personas`);
     
     res.json(pasajeros);
   } catch (error) {
@@ -855,10 +824,8 @@ exports.getPasajerosViaje = async (req, res) => {
   }
 };
 
-/* =================================
-   OBTENER ASISTENCIAS (VISTA PADRE - UNIFICADA)
-   Esta función sirve para Técnico y Físico filtrando por mes/año
-================================= */
+//Obtener asistencia (Vista padre unificada)
+//Esta función sirve para entrenamiento en pista y físico filtrando por mes/año
 exports.getAsistenciasPadre = async (req, res) => {
   const { mes, anio } = req.query;
   const usuarioId = req.user.id;
@@ -876,7 +843,7 @@ exports.getAsistenciasPadre = async (req, res) => {
     const resultadosFinales = [];
 
     for (const hijo of hijos) {
-      // 1. ASISTENCIAS (Puntos del calendario)
+      //Asistencia (Puntos del calendario)
       // Esta consulta no ha cambiado, es la que hace que aparezcan los puntos
       const [asistencias] = await db.query(
         `SELECT e.fecha, e.tipo
@@ -886,7 +853,7 @@ exports.getAsistenciasPadre = async (req, res) => {
         [hijo.id, mes, anio]
       );
 
-      // 2. TOTALES (La parte que fallaba para U16 y Valeria)
+      //Totales
       // Limpiamos la categoría del hijo de posibles comillas extras para la búsqueda
       const categoriaLimpia = String(hijo.categoria).replace(/[\[\]" ]/g, '');
 
@@ -921,6 +888,7 @@ exports.getAsistenciasPadre = async (req, res) => {
   }
 };
 
+//Obtener detalle del evento (Vision del padre)
 exports.obtenerDetalleEventoPadre = async (req, res) => {
   const eventoId = req.params.id;
 
@@ -995,14 +963,13 @@ exports.obtenerDetalleEventoPadre = async (req, res) => {
     return res.status(500).json({ error: "Error interno del servidor al procesar el detalle del padre" });
   }
 };
-/* =================================
-   OBTENER ASISTENCIAS (VISTA ENTRENADOR - UNIFICADA)
-================================= */
+
+//Obtener asistencia (Vista entrenador unificada)
 exports.getAsistenciasEntrenador = async (req, res) => {
   const entrenadorUsuarioId = req.user.id; 
 
   try {
-    // 1. Obtener las categorías del entrenador logueado
+    //Obtener las categorías del entrenador logueado
     const [entrenadores] = await db.query(
       'SELECT categoria FROM entrenador WHERE id = ?',
       [entrenadorUsuarioId]
@@ -1030,12 +997,11 @@ exports.getAsistenciasEntrenador = async (req, res) => {
       return res.json({ deportistas: [], eventosGlobales: [] });
     }
 
-    // 2. CONSTRUIR REGEXP ESTRICTA:
     // Si tus categorías son ['U14', 'U16', 'FIS'], creará un patrón como: '[[:<:]](U14|U16|FIS)[[:>:]]' o para versiones modernas: '\\b(U14|U16|FIS)\\b'
     // Para asegurar compatibilidad con cualquier versión de MySQL, usamos un patrón de límites flexible:
     const patronRegexp = arrayCategorias.map(c => `(^|[^a-zA-Z0-9])${c}([^a-zA-Z0-9]|$)`).join('|');
 
-    // 3. Traer todos los eventos filtrando con REGEXP estricto y DATE_FORMAT
+    //Traer todos los eventos filtrando con REGEXP estricto y DATE_FORMAT
     const [todosLosEventos] = await db.query(
       `SELECT id, DATE_FORMAT(fecha, '%Y-%m-%d') AS fecha, tipo FROM eventos 
        WHERE categoria REGEXP ?
@@ -1043,7 +1009,7 @@ exports.getAsistenciasEntrenador = async (req, res) => {
       [patronRegexp]
     );
 
-    // 4. Traer las asistencias de los deportistas usando el mismo REGEXP estricto
+    //Traer las asistencias de los deportistas usando el mismo REGEXP estricto
     const sql = `
       SELECT 
         d.id AS deportistaId,
@@ -1060,7 +1026,7 @@ exports.getAsistenciasEntrenador = async (req, res) => {
     
     const [asistencias] = await db.query(sql, [patronRegexp]);
 
-    // 5. Agrupar los resultados para el Frontend
+    //Agrupar los resultados para el Frontend
     const deportistasMap = new Map();
     asistencias.forEach(row => {
       const { deportistaId, nombre, fecha, tipo } = row;

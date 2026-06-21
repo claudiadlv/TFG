@@ -163,11 +163,9 @@ export default function AsistenciaAdmin() {
       const SEPARATOR = ';'; 
       const rows: string[] = [];
 
-      // 1. Cabecera estructurada
       const headerColumns = ['Nombre', 'Categoría', ...fechasClavesOrdenadas];
       rows.push(headerColumns.join(SEPARATOR));
 
-      // 2. Mapeo seguro con Clave Unificada
       deportistasFiltrados.forEach((deportista) => {
         const rowData: string[] = [
           deportista.nombre,
@@ -191,16 +189,13 @@ export default function AsistenciaAdmin() {
       const csvContent = rows.join('\n');
       const fileName = `Reporte_Asistencia_Admin_${activeTab}_${modo}.csv`;
       
-      // 🌟 CAMBIO CRÍTICO: Usamos CachesDirectoryPath, Android otorga permisos de lectura automática aquí
       const path = `${RNFS.CachesDirectoryPath}/${fileName}`;
 
-      // Escribimos el archivo limpio en texto plano UTF-8
       await RNFS.writeFile(path, csvContent, 'utf8');
 
-      // 🌟 ESTRATEGIA DE COMPARTICIÓN URIS NATIVAS EN ANDROID
       const shareOptions = {
         title: 'Exportar Reporte de Asistencia',
-        url: `file://${path}`,        // Forzamos el prefijo file:// explícito en la caché
+        url: `file://${path}`,       
         type: 'text/csv',
         filename: fileName,
         failOnCancel: false,
@@ -209,12 +204,10 @@ export default function AsistenciaAdmin() {
       await Share.open(shareOptions);
 
     } catch (error: any) {
-      console.error('❌ Error exportando matriz CSV:', error);
+      console.error('Error exportando matriz CSV:', error);
       
-      // Capturamos el fallo específico de Android para ofrecer un plan B al usuario
       if (error && error.message && !error.message.includes('User cancelled')) {
         
-        // 🛠️ PLAN B (FALLBACK): Si el menú nativo falla por culpa del emulador, guardamos en descargas
         try {
           const downloadPath = `${RNFS.DownloadDirectoryPath}/${fileName}`;
           await RNFS.writeFile(downloadPath, csvContent, 'utf8');
@@ -397,7 +390,6 @@ export default function AsistenciaAdmin() {
                       deportistasFiltrados.map((item) => (
                         <View key={`scroll-row-${item.deportistaId}`} style={matrixStyles.scrollableBodyRow}>
                           {fechasClavesOrdenadas.map((dateKey) => {
-                            // Corrección estricta también aquí para el renderizado visual
                             const subMapa = mapaAsistenciaCruzada.get(item.deportistaId);
                             const asistio = subMapa ? subMapa.get(dateKey) : undefined;
                             return (

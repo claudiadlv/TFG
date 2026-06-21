@@ -1,6 +1,6 @@
 const { promisePool: db } = require('../db');
 
-// 1. Obtener los viajes (ADMIN)
+//Obtener los viajes (Vision admin)
 exports.getViajesAdmin = async (req, res) => {
   try {
     const sql = `
@@ -52,7 +52,7 @@ exports.getPasajerosViajeAdmin = async (req, res) => {
   }
 };
 
-// 2. Reservar una plaza (Corregida la tabla 'transportes' -> 'transporte_reservas')
+//Reservar una plaza
 exports.reservarPlaza = async (req, res) => {
     const { id_evento, id_deportista } = req.body;
     let connection;
@@ -61,7 +61,6 @@ exports.reservarPlaza = async (req, res) => {
         connection = await db.getConnection();
         await connection.beginTransaction();
 
-        // CORRECCIÓN AQUÍ: Se usa transporte_reservas
         const [transporte] = await connection.query(
             `SELECT id, plazas_disponibles, estado FROM transporte_reservas WHERE id_evento = ? FOR UPDATE`,
             [id_evento]
@@ -79,13 +78,11 @@ exports.reservarPlaza = async (req, res) => {
         if (inscripcion.length === 0) throw new Error('El deportista no está convocado.');
         if (inscripcion[0].enFurgoneta === 1) throw new Error('Ya tiene plaza reservada.');
 
-        // Actualizar contador
         await connection.query(
             `UPDATE transporte_reservas SET plazas_disponibles = plazas_disponibles - 1 WHERE id_evento = ?`,
             [id_evento]
         );
 
-        // Marcar en la tabla intermedia
         await connection.query(
             `UPDATE eventos_deportistas SET enFurgoneta = 1 WHERE id_evento = ? AND id_deportista = ?`,
             [id_evento, id_deportista]
@@ -102,7 +99,7 @@ exports.reservarPlaza = async (req, res) => {
     }
 };
 
-// 3. Cancelar una plaza
+//Cancelar una plaza
 exports.cancelarPlaza = async (req, res) => {
     const { id_evento, id_deportista } = req.body;
     let connection;
@@ -141,7 +138,7 @@ exports.cancelarPlaza = async (req, res) => {
     }
 };
 
-// 5. Crear transporte
+//Crear transporte
 exports.crearTransporte = async (req, res) => {
     const { id_evento, plazas_totales } = req.body;
     try {
@@ -193,7 +190,6 @@ exports.getViajesTransporteEntrenador = async (req, res) => {
     // Creamos el patrón REGEXP estricto para las categorías (ej: U14, U16...)
     const patronRegexp = arrayCategorias.map(c => `(^|[^a-zA-Z0-9])${c}([^a-zA-Z0-9]|$)`).join('|');
 
-    // 🚀 CONSULTA CORREGIDA CON LEFT JOIN PARA VER LOGÍSTICA VACÍA
     const sql = `
       SELECT 
         tv.id, 
@@ -234,7 +230,7 @@ exports.getPasajerosViajeEntrenador = async (req, res) => {
   const entrenadorUsuarioId = req.user.id;
 
   try {
-    // 1. Obtener las categorías del entrenador para filtrar la lista de pasajeros
+    //Obtener las categorías del entrenador para filtrar la lista de pasajeros
     const [entrenador] = await db.query(
       'SELECT categoria FROM entrenador WHERE id = ?',
       [entrenadorUsuarioId]
@@ -259,7 +255,7 @@ exports.getPasajerosViajeEntrenador = async (req, res) => {
 
     const patronRegexp = arrayCategorias.map(c => `(^|[^a-zA-Z0-9])${c}([^a-zA-Z0-9]|$)`).join('|');
 
-    // 2. QUERY: Traemos los deportistas apuntados a este viaje_id que cumplan con la categoría
+    //Traemos los deportistas apuntados a este viaje_id que cumplan con la categoría
     const sql = `
       SELECT 
         d.nombre, 
@@ -274,7 +270,7 @@ exports.getPasajerosViajeEntrenador = async (req, res) => {
     return res.json(pasajeros);
 
   } catch (error) {
-    console.error('❌ [BACKEND ERROR] Fallo en getPasajerosViajeEntrenador:', error);
+    console.error('[BACKEND ERROR] Fallo en getPasajerosViajeEntrenador:', error);
     return res.status(500).json({ error: 'Error al obtener los pasajeros del viaje' });
   }
 };
@@ -285,7 +281,7 @@ exports.getViajesTransportePadre = async (req, res) => {
   try {
     console.log(`=> [TRANSPORTE PADRE CORREGIDO] Buscando datos para Usuario ID: ${usuarioLogueadoId}`);
 
-    // 1. Obtener el ID del padre real en la tabla 'padres' usando su 'id_usuario'
+    //Obtener el ID del padre real en la tabla 'padres' usando su 'id_usuario'
     const [perfilPadre] = await db.query(
       'SELECT id FROM padres WHERE id_usuario = ?',
       [usuarioLogueadoId]
@@ -297,7 +293,7 @@ exports.getViajesTransportePadre = async (req, res) => {
 
     const padreIdReal = perfilPadre[0].id;
 
-    // 2. Obtener los hijos cruzando la tabla intermedia 'padres_hijos' con 'deportistas'
+    //Obtener los hijos cruzando la tabla intermedia 'padres_hijos' con 'deportistas'
     const sqlHijos = `
       SELECT d.id, d.nombre, d.categoria 
       FROM padres_hijos ph
@@ -312,7 +308,7 @@ exports.getViajesTransportePadre = async (req, res) => {
 
     const idsHijos = hijos.map(h => h.id);
 
-    // 3. QUERY ESTRICTA DE VIAJES: Trae solo los viajes con reserva activa de los hijos
+    //QUERY ESTRICTA DE VIAJES: Trae solo los viajes con reserva activa de los hijos
     const sqlViajes = `
       SELECT 
         tv.id, 
@@ -332,7 +328,7 @@ exports.getViajesTransportePadre = async (req, res) => {
 
     const [viajes] = await db.query(sqlViajes, [idsHijos]);
 
-    // 4. QUERY DE RESERVAS MODIFICADA: Ahora sí hace INNER JOIN con 'deportistas' 
+    //QUERY DE RESERVAS MODIFICADA: Ahora sí hace INNER JOIN con 'deportistas' 
     // para traer la propiedad 'nombre_deportista' que el frontend necesita pintar.
     const sqlReservas = `
       SELECT 
@@ -345,7 +341,7 @@ exports.getViajesTransportePadre = async (req, res) => {
     `;
     const [reservas] = await db.query(sqlReservas, [idsHijos]);
 
-    // 5. Devolvemos la estructura exacta esperada
+    //Devolvemos la estructura exacta esperada
     return res.status(200).json({
       viajes,
       reservas

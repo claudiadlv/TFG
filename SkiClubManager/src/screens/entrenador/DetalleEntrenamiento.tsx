@@ -48,9 +48,7 @@ type Props = {
 export default function DetalleEntrenamiento({ route }: Props) {
   const navigation = useNavigation<NativeStackNavigationProp<EntrenadorStackParamList>>();
   const { accessToken } = useAuth();
-  // 🌟 ESTADO DINÁMICO: Guardamos los datos del entrenamiento actualizados del servidor
   const [entrenamiento, setEntrenamiento] = useState<any>(route.params.entrenamiento);
-  // --- ESTADOS ---
   const [inscritos, setInscritos] = useState<any[]>([]);
   const [cargandoInscritos, setCargandoInscritos] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
@@ -62,22 +60,19 @@ export default function DetalleEntrenamiento({ route }: Props) {
     const cargarDatosFrescos = async () => {
       if (!accessToken) return;
       try {
-        // 1. Cargamos la asistencia (Tu lógica original)
         const resAsistencia = await fetch(`${API_URL}/eventos/${entrenamiento.id}/inscritos`, {
           headers: { 'Authorization': `Bearer ${accessToken}` }
         });
         if (resAsistencia.ok) setInscritos(await resAsistencia.json());
 
-        // 2. CORRECCIÓN DE RUTA: Apuntamos al endpoint real '/todos' que devuelve la hora de la furgo
         const resEventos = await fetch(`${API_URL}/eventos/todos`, {
           headers: { 'Authorization': `Bearer ${accessToken}` }
         });
         if (resEventos.ok) {
           const listaEventos = await resEventos.json();
-          // Buscamos nuestro evento concreto dentro de la lista fresca
           const eventoActualizado = listaEventos.find((e: any) => e.id === entrenamiento.id);
           if (eventoActualizado) {
-            setEntrenamiento(eventoActualizado); // Guardamos todos los datos (incluyendo la hora de la furgo)
+            setEntrenamiento(eventoActualizado); 
           }
         }
       } catch (error) {
@@ -89,7 +84,6 @@ export default function DetalleEntrenamiento({ route }: Props) {
     cargarDatosFrescos();
   }, [entrenamiento.id, accessToken]);
 
-  // --- LÓGICA DE CONTEO ORIGINAL MANTENIDA ---
   const plazasTotales = Number(entrenamiento.plazas_totales || 0);
   const ocupadas = Number(entrenamiento.plazas_ocupadas || 0);
   const tieneTransporte = plazasTotales > 0;
@@ -192,7 +186,6 @@ export default function DetalleEntrenamiento({ route }: Props) {
         </TouchableOpacity>
       </View>
 
-      {/* MODAL ASISTENCIA ORIGINAL */}
       <Modal visible={modalAsistenciaVisible} transparent animationType="fade">
         <View style={modalStyles.overlay}>
           <View style={modalStyles.content}>
@@ -212,7 +205,6 @@ export default function DetalleEntrenamiento({ route }: Props) {
         </View>
       </Modal>
 
-      {/* MODAL FURGONETA ORIGINAL */}
       <Modal visible={modalVisible} transparent animationType="fade">
         <View style={modalStyles.overlay}>
           <View style={modalStyles.content}>

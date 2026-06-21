@@ -29,9 +29,7 @@ export default function EditarEntrenador() {
   const [fechaNacimiento, setFechaNacimiento] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   
-  // Estado adaptado para el array de categorías del entrenador
   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState<string[]>([]);
-  // Nomenclatura actualizada: 'U18' pasa a ser 'FIS'
   const categoriasOpciones = ['U6', 'U8', 'U10', 'U12', 'U14', 'U16', 'FIS'];
 
   useEffect(() => {
@@ -51,7 +49,6 @@ export default function EditarEntrenador() {
           setApellido(data.apellidos);
           setCorreo(data.correo);
 
-          // Parseo seguro del string de la base de datos a Array tipado
           if (data.categoria) {
             if (Array.isArray(data.categoria)) {
               setCategoriasSeleccionadas(data.categoria);
@@ -96,7 +93,7 @@ export default function EditarEntrenador() {
           correo,
           fecha_nacimiento: fechaNacimiento.toISOString().split('T')[0],
           rol: 'entrenador',
-          categoria: categoriasSeleccionadas, // Enviamos el array al backend
+          categoria: categoriasSeleccionadas,
         }),
       });
 
@@ -115,16 +112,26 @@ export default function EditarEntrenador() {
   };
 
   const toggleCategoria = (cat: string) => {
-    if (categoriasSeleccionadas.includes(cat)) {
-      setCategoriasSeleccionadas(prev => prev.filter(c => c !== cat));
-    } else {
-      setCategoriasSeleccionadas(prev => [...prev, cat]);
-    }
+    setCategoriasSeleccionadas((prev) => {
+      // Nos aseguramos de limpiar cualquier residuo o string mal parseado en el estado actual
+      const prevLimpio = prev.flatMap(c => {
+        if (c.startsWith('[') || c.includes('"')) {
+          try { return JSON.parse(c); } catch(e) { return c; }
+        }
+        return c;
+      });
+      
+      if (prevLimpio.includes(cat)) {
+        return prevLimpio.filter(c => c !== cat);
+      } else {
+        return [...prevLimpio, cat];
+      }
+    });
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Datos</Text>
+    <ScrollView contentContainerStyle={styles.containerForm}>
+      <Text style={styles.titleForm}>Datos</Text>
 
       <TextInput
         style={styles.input}
@@ -173,7 +180,6 @@ export default function EditarEntrenador() {
         />
       )}
 
-      {/* Título de sección adaptado con estilo inline */}
       <Text style={{ marginTop: 15, marginBottom: 8, fontSize: 16, fontWeight: 'bold', color: '#333' }}>
         Categorías asignadas:
       </Text>
@@ -186,7 +192,7 @@ export default function EditarEntrenador() {
               key={cat}
               onPress={() => toggleCategoria(cat)}
               style={{
-                backgroundColor: seleccionada ? '#003366' : '#ccc',
+                backgroundColor: seleccionada ? '#0D47A1' : '#ccc',
                 padding: 10,
                 margin: 5,
                 borderRadius: 8,
@@ -202,8 +208,8 @@ export default function EditarEntrenador() {
         })}
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handleActualizarEntrenador}>
-        <Text style={styles.buttonText}>Actualizar Entrenador</Text>
+      <TouchableOpacity style={styles.buttonForm} onPress={handleActualizarEntrenador}>
+        <Text style={styles.buttonTextForm}>Actualizar Entrenador</Text>
       </TouchableOpacity>
     </ScrollView>
   );

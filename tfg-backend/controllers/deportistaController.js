@@ -74,7 +74,7 @@ const anadirHijo = (req, res) => {
   const buscarPadre = 'SELECT id FROM padres WHERE id_usuario = ?';
   db.query(buscarPadre, [padreUsuarioId], (err, result) => {
     if (err) {
-      console.error('❌ Error al buscar padre:', err);
+      console.error('Error al buscar padre:', err);
       return res.status(500).json({ mensaje: 'Error interno' });
     }
 
@@ -90,7 +90,7 @@ const anadirHijo = (req, res) => {
     `;
     db.query(insertarHijo, [nombre, apellidos, fecha_nacimiento, categoria], (err, result) => {
       if (err) {
-        console.error('❌ Error al insertar hijo:', err);
+        console.error('Error al insertar hijo:', err);
         return res.status(500).json({ mensaje: 'Error al insertar hijo' });
       }
 
@@ -99,7 +99,7 @@ const anadirHijo = (req, res) => {
       const asociarHijo = 'INSERT INTO padres_hijos (id_padre, id_deportista) VALUES (?, ?)';
       db.query(asociarHijo, [padreId, nuevoDeportistaId], (err) => {
         if (err) {
-          console.error('❌ Error al asociar hijo con padre:', err);
+          console.error('Error al asociar hijo con padre:', err);
           return res.status(500).json({ mensaje: 'Error al asociar hijo con padre' });
         }
 
@@ -149,7 +149,6 @@ const actualizarDeportista = (req, res) => {
     const nacimiento = new Date(fechaNacimientoStr);
     const hoy = new Date();
     
-    // Determinamos la temporada en base al año actual (el esquí va de invierno a invierno)
     const temporadaActual = hoy.getMonth() >= 6 ? hoy.getFullYear() : hoy.getFullYear() - 1;
     const fechaReferencia = new Date(`${temporadaActual}-12-31`);
 
@@ -160,7 +159,6 @@ const actualizarDeportista = (req, res) => {
 
     if (cumpleDespues) edad--;
 
-    // Rangos oficiales de la federación para las categorías de esquí alpino
     if (edad <= 6) return 'U6';
     if (edad <= 7) return 'U8';
     if (edad <= 9) return 'U10';
@@ -180,7 +178,7 @@ const actualizarDeportista = (req, res) => {
 
   db.query(query, [nombre, apellidos, fecha_nacimiento, nuevaCategoria, id], (err, result) => {
     if (err) {
-      console.error('❌ Error al actualizar deportista y categoría:', err);
+      console.error('Error al actualizar deportista y categoría:', err);
       return res.status(500).json({ mensaje: 'Error del servidor al actualizar el expediente' });
     }
 
@@ -188,7 +186,6 @@ const actualizarDeportista = (req, res) => {
       return res.status(404).json({ mensaje: 'Deportista no encontrado' });
     }
 
-    // Devolvemos un estado 200 avisando de la categoría que se le ha asignado
     return res.status(200).json({ 
       mensaje: 'Expediente y categoría actualizados correctamente',
       categoriaAsignada: nuevaCategoria 
@@ -203,7 +200,7 @@ const eliminarDeportista = (req, res) => {
 
   db.query(query, [id], (err, result) => {
     if (err) {
-      console.error('❌ Error al eliminar deportista de la base de datos:', err);
+      console.error('Error al eliminar deportista de la base de datos:', err);
       return res.status(500).json({ mensaje: 'Error del servidor al procesar la baja' });
     }
 

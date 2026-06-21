@@ -1,10 +1,9 @@
-// Importamos el archivo de la base de datos
 const dbModulo = require('../db');
 
 // Extraemos el 'promisePool' que es el que soporta async/await en mysql2
 const db = dbModulo.promisePool ? dbModulo.promisePool : dbModulo;
 
-// POST: Guardar una nueva foto priorizando SIEMPRE la categoría seleccionada en el Frontend
+//Guardar una nueva foto priorizando SIEMPRE la categoría seleccionada en el Frontend
 const guardarFoto = async (req, res) => {
   console.log('📥 [Back] ¡Petición POST recibida en /api/fotos!');
   console.log('📥 [Back] Body recibido del Frontend:', req.body);
@@ -21,12 +20,8 @@ const guardarFoto = async (req, res) => {
   const usuario_rol = (req.user && req.user.rol) ? req.user.rol.toLowerCase().trim() : 'entrenador';
 
   try {
-    
-    // 🎯 REGLA DE ORO PRIORITARIA (¡LA CLAVE!):
-    // Si llega una categoría específica desde el móvil (ya sea de Admin o de Entrenador), 
-    // se guarda ÚNICAMENTE en esa categoría.
     if (categoria_id) {
-      console.log(`💾 [Back] Inserción quirúrgica. Guardando foto SOLO en la categoría: '${categoria_id}'`);
+      console.log(`[Back] Inserción quirúrgica. Guardando foto SOLO en la categoría: '${categoria_id}'`);
       
       const [result] = await db.query(
         'INSERT INTO fotos (ruta, fecha_creacion, categoria_id) VALUES (?, ?, ?)',
@@ -40,7 +35,6 @@ const guardarFoto = async (req, res) => {
       });
     }
 
-    // 🛡️ CASO DE RESPALDO (FALLBACK) PARA EL ADMIN 
     // Si sube algo y por un error técnico del cliente 'categoria_id' llegase vacío
     if (usuario_rol === 'admin') {
       console.log(`👑 [Back] Admin sin categoría especificada. Guardando en 'General' por defecto.`);
@@ -55,7 +49,6 @@ const guardarFoto = async (req, res) => {
       });
     }
 
-    // 🎿 CASO DE RESPALDO (FALLBACK) PARA EL ENTRENADOR
     // Solo actúa si el frontend NO envía ninguna categoría en el body de la petición
     console.log(`🔎 [Back] Fallback Entrenador activo (ID: ${usuario_id}). Esparciendo en todo su rango...`);
     
@@ -105,15 +98,14 @@ const guardarFoto = async (req, res) => {
   }
 };
 
-// GET: Obtener todas las fotos ordenadas (Sin duplicados para el entrenador)
+//Obtener todas las fotos ordenadas (Sin duplicados para el entrenador)
 const obtenerFotos = async (req, res) => {
-  console.log('📤 [Back] ¡Petición GET recibida en /api/fotos!');
+  console.log('[Back] ¡Petición GET recibida en /api/fotos!');
   
   try {
     const usuario_id = req.user ? req.user.id : null;
     const usuario_rol = req.user && req.user.rol ? req.user.rol.toLowerCase().trim() : '';
 
-    // 👑 1. MODO EXCLUSIVO: ADMINISTRADOR
     if (usuario_rol === 'admin' || !req.user) { 
       console.log('📋 [Back] Perfil ADMIN. Enviando catálogo completo del club...');
       
@@ -133,7 +125,6 @@ const obtenerFotos = async (req, res) => {
       });
     }
 
-    // 🎿 2. MODO EXCLUSIVO: ENTRENADOR (EXTRACCIÓN BLINDADA POR ID)
     if (usuario_rol === 'entrenador') {
       console.log(`📋 [Back] Perfil ENTRENADOR (ID: ${usuario_id}). Extrayendo categorías de forma estricta...`);
       
@@ -151,7 +142,7 @@ const obtenerFotos = async (req, res) => {
             categoriasDelEntrenador = parsed.map(c => c.replace(/["'\[\]]/g, '').trim());
           }
         } catch (e) {
-          console.log('⚠️ [Back] No es un JSON puro. Procesando como texto plano o lista de comas...');
+          console.log('[Back] No es un JSON puro. Procesando como texto plano o lista de comas...');
           // Intento 2: Limpiar corchetes/comillas y separar si vienen separados por comas (ej: U14,U16,FIS)
           let stringLimpio = categoriaRaw.replace(/["'\[\]]/g, '').trim();
           
@@ -163,9 +154,8 @@ const obtenerFotos = async (req, res) => {
         }
       }
 
-      // 🛡️ CORTE ESTRICTO REAL: Si de verdad no tiene nada en la BD, no inventamos datos
       if (categoriasDelEntrenador.length === 0) {
-        console.log(`❌ [Back] Error: El entrenador ${usuario_id} no tiene categorías válidas en su celda.`);
+        console.log(`[Back] Error: El entrenador ${usuario_id} no tiene categorías válidas en su celda.`);
         return res.status(400).json({ error: 'No tienes categorías asignadas en tu perfil.' });
       }
 
@@ -186,8 +176,6 @@ const obtenerFotos = async (req, res) => {
       });
     }
 
-    // 👶 3. MODO EXCLUSIVO: PADRE CON LIMPIEZA DE COMILLAS AVANZADA
-    // (Este bloque se queda exactamente como lo tenías porque ya te iba de lujo)
     let listaCategoriasHijos = [];
 
     try {
@@ -195,16 +183,16 @@ const obtenerFotos = async (req, res) => {
       
       if (padreRow.length > 0) {
         const realPadreId = padreRow[0].id;
-        console.log(`🔎 [Back] Usuario ${usuario_id} mapeado con éxito al Padre ID: ${realPadreId}`);
+        console.log(`[Back] Usuario ${usuario_id} mapeado con éxito al Padre ID: ${realPadreId}`);
 
         const [relaciones] = await db.query('SELECT id_deportista FROM padres_hijos WHERE id_padre = ?', [realPadreId]);
         
         if (relaciones.length > 0) {
           const hijosIds = relaciones.map(r => r.id_deportista);
-          console.log(`👶 [Back] IDs de hijos encontrados:`, hijosIds);
+          console.log(`[Back] IDs de hijos encontrados:`, hijosIds);
 
           const [hijosRows] = await db.query('SELECT DISTINCT categoria FROM deportistas WHERE id IN (?)', [hijosIds]);
-          console.log(`📊 [Back] Categorías crudas recuperadas de DBeaver:`, hijosRows);
+          console.log(`[Back] Categorías crudas recuperadas de DBeaver:`, hijosRows);
           
           const categoriasSet = new Set();
           
@@ -226,14 +214,14 @@ const obtenerFotos = async (req, res) => {
         }
       }
     } catch (errDb) {
-      console.log('❌ [Back] Error relacional con esquema DBeaver:', errDb.message);
+      console.log('[Back] Error relacional con esquema DBeaver:', errDb.message);
     }
 
     if (listaCategoriasHijos.length === 0) {
       listaCategoriasHijos = ['U6', 'U14'];
     }
 
-    console.log('🎯 [Back] Pestañas dinámicas finales del Padre (SIN COMILLAS):', listaCategoriasHijos);
+    console.log('[Back] Pestañas dinámicas finales del Padre (SIN COMILLAS):', listaCategoriasHijos);
 
     const [rowsFotos] = await db.query(
       `SELECT MIN(id) as id, ruta, MIN(fecha_creacion) as fecha_creacion, 
@@ -249,11 +237,12 @@ const obtenerFotos = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('💥 Error crítico global en obtenerFotos:', error);
+    console.error('Error crítico global en obtenerFotos:', error);
     return res.status(500).json({ error: 'Error interno del servidor.' });
   }
 };
-// DELETE: Eliminar una o varias fotos de la BD a la vez
+
+//Eliminar una o varias fotos de la BD a la vez
 const eliminarFoto = async (req, res) => {
   // Puede recibir un id individual por URL (/api/fotos/5) o un array por el cuerpo ({ ids: [5, 6, 7] })
   const { id } = req.params;
@@ -262,7 +251,7 @@ const eliminarFoto = async (req, res) => {
   try {
     let idsAEliminar = [];
 
-    // 1. Identificamos si es un borrado múltiple o individual
+    //Identificamos si es un borrado múltiple o individual
     if (ids && Array.isArray(ids)) {
       idsAEliminar = ids;
     } else if (id) {
@@ -275,15 +264,14 @@ const eliminarFoto = async (req, res) => {
 
     console.log('Eliminando en lote los siguientes IDs de fotos:', idsAEliminar);
 
-    // 2. Buscamos las rutas en la BD antes de borrar, por si necesitas registrar logs del TFG
+    //Buscamos las rutas en la BD antes de borrar, por si necesitas registrar logs del TFG
     const [rows] = await db.query('SELECT ruta FROM fotos WHERE id IN (?)', [idsAEliminar]);
     
     if (rows.length === 0) {
       return res.status(404).json({ error: 'Las fotos seleccionadas no existen o ya fueron eliminadas' });
     }
 
-    // 3. Ejecutamos el DELETE masivo usando el operador IN (?) de MySQL
-    // Al usar IN (?), mysql2 expande automáticamente el array [5, 6, 7] a (5, 6, 7) de forma segura contra inyecciones SQL
+    //Ejecutamos el DELETE masivo usando el operador IN (?) de MySQL
     await db.query('DELETE FROM fotos WHERE id IN (?)', [idsAEliminar]);
 
     res.status(200).json({ 

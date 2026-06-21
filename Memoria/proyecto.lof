@@ -1,7 +1,54 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Interfaces de las soluciones de software analizadas en el estudio competitivo.}}{23}{figure.caption.8}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Interfaces de las soluciones de software analizadas en el estudio competitivo.}}{25}{figure.caption.9}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Diagrama Entidad-Relación completo de la base de datos de la aplicación.}}{28}{figure.caption.9}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de Gantt detallado con la planificación y fases de desarrollo}}{30}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de Gantt detallado con la planificación y fases de desarrollo}}{32}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de paquetes del sistema.}}{41}{figure.caption.43}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de gestión de usuarios y acceso.}}{42}{figure.caption.45}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de secuencia del CU\_01.}}{43}{figure.caption.47}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Diagrama de secuencia del CU\_02.}}{43}{figure.caption.49}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Diagrama de secuencia del CU\_05.}}{45}{figure.caption.53}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagrama de planificación de entrenamientos.}}{48}{figure.caption.57}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagrama de secuencia del CU\_06.}}{49}{figure.caption.59}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Diagrama de secuencia del CU\_07.}}{50}{figure.caption.61}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Diagrama de secuencia del CU\_08.}}{51}{figure.caption.63}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Diagrama de gestión de transporte.}}{53}{figure.caption.67}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Diagrama de secuencia del CU\_10.}}{54}{figure.caption.69}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Diagrama de secuencia del CU\_12.}}{56}{figure.caption.72}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Diagrama de control de asistencia.}}{58}{figure.caption.76}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Diagrama de secuencia del CU\_14.}}{59}{figure.caption.78}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Diagrama de secuencia del CU\_15.}}{60}{figure.caption.80}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Diagrama de control multimedia.}}{61}{figure.caption.82}%
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Diagrama de secuencia del CU\_16.}}{62}{figure.caption.84}%
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Diagrama de secuencia del CU\_17.}}{63}{figure.caption.86}%
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Arquitectura de SkiClubManager.}}{65}{figure.caption.88}%
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Organización modular del servidor (backend).}}{70}{figure.caption.94}%
+\contentsline {figure}{\numberline {3.22}{\ignorespaces Arquitectura y enrutamiento dinámico de la aplicación móvil según el rol de usuario.}}{73}{figure.caption.98}%
+\contentsline {figure}{\numberline {3.23}{\ignorespaces Diagrama del modelo relacional}}{74}{figure.caption.100}%
+\contentsline {figure}{\numberline {3.24}{\ignorespaces Modelo relacional de datos Usuarios y Perfiles.}}{77}{figure.caption.111}%
+\contentsline {figure}{\numberline {3.25}{\ignorespaces Diagrama del modelo relacional de Entrenamientos y Asistencias.}}{79}{figure.caption.116}%
+\contentsline {figure}{\numberline {3.26}{\ignorespaces Modelo relacional de Transporte.}}{81}{figure.caption.121}%
+\contentsline {figure}{\numberline {3.27}{\ignorespaces Modelo de datos de Soporte y Gestión de Recursos.}}{83}{figure.caption.126}%
+\contentsline {figure}{\numberline {3.28}{\ignorespaces Mockup de la interfaz del administrado y del entrenador.}}{84}{figure.caption.128}%
+\contentsline {figure}{\numberline {3.29}{\ignorespaces Mockup de la interfaz del padre y del tutor.}}{85}{figure.caption.129}%
+\contentsline {figure}{\numberline {3.30}{\ignorespaces Diseño del logo.}}{86}{figure.caption.132}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Interfaces correspondientes a la pantalla de bienvenida y al formulario secuencial de alta para nuevos tutores y deportistas.}}{92}{figure.caption.140}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Interfaces correspondientes al flujo completo de validación de seguridad, restablecimiento y cambio autónomo de credenciales de usuario.}}{93}{figure.caption.142}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Interfaces operativas del perfil técnico: panel principal de bienvenida (a) y desglose detallado tras la selección de una actividad (b).}}{95}{figure.caption.144}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Interfaces de las ventanas emergentes de consulta detallada: listado de pasajeros asignados al transporte (a) y desglose de corredores inscritos en la sesión técnica (b).}}{95}{figure.caption.145}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Interfaces del módulo de planificación: vistas de la agenda (a, b) y pasos del asistente para la creación de entrenamientos según la modalidad (c, d, e, f, g).}}{97}{figure.caption.146}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Interfaces del proceso de edición de parámetros en tiempo real y cancelación de sesiones de entrenamiento programadas.}}{99}{figure.caption.147}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Interfaces del módulo multimedia: flujo guiado de carga asíncrona de archivos (b, c), visualización por categorías competitivas (a) y herramientas de depuración de almacenamiento (d).}}{100}{figure.caption.148}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Interfaces del panel de perfil del entrenador (a) y desglose de sus submódulos de gestión de asistencia (b, c) y control logístico de furgonetas (d, e).}}{102}{figure.caption.149}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Página de inicio del administrador.}}{103}{figure.caption.150}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Interfaces del panel de control multimedia del administrador: visualización del repositorio global (a) y asistente de segmentación de cargas (b).}}{104}{figure.caption.151}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Módulos de navegación, control de asistencia multicategoría y filtrado temporal avanzado para el rol de administración.}}{105}{figure.caption.152}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Paneles logísticos de transporte, moderación de altas de usuarios y mantenimiento CRUD de los censos del club.}}{106}{figure.caption.153}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Flujo inicial operativo del rol de tutor: inscripción a sesiones del club (a), consulta del estado técnico de la actividad (b) y reserva de plaza en transporte colectivo (c).}}{107}{figure.caption.154}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Flujo de edición y consulta multimedia: alteración de traslados a medios propios (a), visualización de carrete restringido (b) y almacenamiento de capturas (c).}}{108}{figure.caption.155}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Paneles del rol de tutor: menú de configuración (a), gráficas estadísticas de asistencia (b, d) y componente de selección filial (c).}}{109}{figure.caption.156}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Módulos de supervisión de transporte colectivo (a, b) y herramientas de gestión del censo familiar en la plataforma (c, d).}}{109}{figure.caption.157}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }

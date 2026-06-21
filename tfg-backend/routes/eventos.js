@@ -3,10 +3,7 @@ const router = express.Router();
 const eventosController = require('../controllers/eventosController');
 const { verifyToken } = require('../middleware/authMiddleware');
 
-// ==========================================
-// 1. RUTAS ESTÁTICAS (Sin parámetros dinámicos en el primer nivel)
-// ==========================================
-
+//Rutas estaticas
 // --- Generales ---
 router.post('/', eventosController.crearEvento);
 router.get('/todos', eventosController.obtenerEventos);
@@ -23,18 +20,12 @@ router.get('/apuntados', verifyToken, eventosController.getEventosApuntados);
 // --- Admin ---
 router.get('/admin/asistencias', verifyToken, eventosController.getAsistenciasAdmin);
 
-// ==========================================
-// 2. RUTAS CON PARÁMETROS INTERMEDIOS O ESPECÍFICOS
-// ==========================================
+//Rutas con parametros intermedios
 
 router.get('/viaje/:viajeId/pasajeros', verifyToken, eventosController.getPasajerosViaje);
 router.get('/padre/evento/:id', verifyToken, eventosController.obtenerDetalleEventoPadre);
 
-
-// ==========================================
-// 3. RUTAS DINÁMICAS (Con :id al principio. Siempre al final del archivo)
-// ==========================================
-
+//Rutas dinamicas
 // --- Acciones de asistencia e inscripción ---
 router.get('/:id/inscritos', verifyToken, eventosController.getInscritosEvento);
 router.get('/:id/apuntado', verifyToken, eventosController.estaApuntado);

@@ -10,7 +10,7 @@ import { API_URL } from '../../config';
 import RNFS from 'react-native-fs';
 import Share from 'react-native-share';
 
-// --- TIPOS Y CONSTANTES ---
+//Tipos y ctes
 type EventoAsistencia = { fecha: string; tipo: 'Pista' | 'Carrera' | 'Físico' };
 type DeportistaResumen = { deportistaId: string; nombre: string; asistencias: EventoAsistencia[]; };
 type ModoFiltro = 'todas' | 'mes' | 'temporada';
@@ -164,7 +164,6 @@ export default function AsistenciaEntrenador() {
     }
   }, [chartData.dateKeys]);
 
-  // 🚀 ALGORITMO COMPATIBLE CON ANDROID 11+ USANDO RUTA DE CACHÉ NATIVA
   const handleExport = async () => {
     if (chartData.dateKeys.length === 0 || todosLosDeportistas.length === 0) {
       Alert.alert('Aviso', 'No hay datos disponibles para exportar en este período.');
@@ -190,7 +189,6 @@ export default function AsistenciaEntrenador() {
       const csvContent = rows.join('\n');
       const fileName = `Asistencia_Entrenador_${activeTab}_${modo}.csv`;
       
-      // 🌟 Canalización segura a través de CachesDirectoryPath para evitar fallos de Uri nula
       const path = `${RNFS.CachesDirectoryPath}/${fileName}`;
 
       await RNFS.writeFile(path, csvContent, 'utf8');
@@ -207,7 +205,6 @@ export default function AsistenciaEntrenador() {
     } catch (error: any) {
       console.error('Error al exportar CSV:', error);
       if (error && error.message && !error.message.includes('User cancelled')) {
-        // Fallback dinámico automático en el almacenamiento si el bridge nativo de compartir falla en el emulador
         try {
           const downloadPath = `${RNFS.DownloadDirectoryPath}/${fileName}`;
           await RNFS.writeFile(downloadPath, csvContent, 'utf8');
@@ -340,7 +337,6 @@ export default function AsistenciaEntrenador() {
   );
 
   return (
-    // Envoltura absoluta para aislar el layout y asegurar el funcionamiento libre del scroll down
     <View style={styles.absoluteWrapper}>
       <FlatList
         data={chartData.labels.length > 0 ? todosLosDeportistas : []}
@@ -396,7 +392,6 @@ export default function AsistenciaEntrenador() {
         )}
       />
 
-      {/* 🚀 BOTÓN FLOTANTE ABSOLUTO INDEXADO POR ENCIMA DEL LISTVIEW */}
       <TouchableOpacity style={styles.floatingButton} onPress={handleExport}>
         <Text style={styles.floatingButtonText}>📥 Exportar CSV</Text>
       </TouchableOpacity>
@@ -404,7 +399,7 @@ export default function AsistenciaEntrenador() {
   );
 }
 
-// --- CONFIGURACIONES DE ESTILOS UNIFICADOS ---
+//Estilos
 const chartConfig = {
   backgroundColor: '#fff',
   backgroundGradientFrom: '#fff',

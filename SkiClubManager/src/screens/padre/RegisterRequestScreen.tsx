@@ -157,7 +157,6 @@ export default function RegisterRequestScreen() {
       <Image source={require('../../img/logo.png')} style={styles.logo} />
       <Text style={styles.title}>Solicitud de registro</Text>
 
-      {/* SECCIÓN TUTOR */}
       <Text style={styles.label}>Nombre del tutor</Text>
       <TextInput style={styles.input} placeholder="Nombre" value={name} onChangeText={setName} />
 
@@ -183,7 +182,6 @@ export default function RegisterRequestScreen() {
 
       <View style={{ height: 2, backgroundColor: '#eee', marginVertical: 20 }} />
 
-      {/* SECCIÓN REGISTRADO */}
       <Text style={styles.label}>Nombre del deportista</Text>
       <TextInput style={styles.input} placeholder="Nombre" value={name_reg} onChangeText={setName_reg} />
 

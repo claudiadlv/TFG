@@ -1,7 +1,7 @@
-\chapter{Diseño}
+\chapter{Analisis y Diseño}
 En este capítulo se desglosan las decisiones arquitectónicas que articulan el proyecto, estructuradas en tres ejes principales: el diseño del almacén de datos, la lógica de interconexión entre las capas del sistema (frontend y backend) y el modelado de la interfaz de usuario. A través de este análisis se demuestra cómo cada componente ha sido planificado estratégicamente para ofrecer un desarrollo escalable en Node.js y React Native, garantizando una experiencia fluida para administrador, entrenadores y padres
 \section{Planificación del proyecto}
-    \subsection{Cronograma}
+    \subsubsection{Cronograma}
     \begin{table}[htbp]
         \centering
         \begin{tabular}{|l|c|}
@@ -19,7 +19,7 @@ En este capítulo se desglosan las decisiones arquitectónicas que articulan el 
     \end{table}
 
 Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se compone de seis fases principales distribuidas a lo largo del segundo cuatrimestre. Es imperativo destacar que la fase de \textit{Documentación} posee un carácter transversal, desarrollándose de forma simultánea y paralela junto con las fases de diseño, desarrollo e implementación del sistema Full Stack.
-    \subsection{Diagrama de Gantt}
+    \subsubsection{Diagrama de Gantt}
     El diagrama de Gantt a continuación muestra la planificación detallada de todas las actividades realizadas durante el desarrollo del proyecto. Este diagrama refleja la secuencia, duración y solapamiento de las diferentes tareas, ofreciendo una visión global de la gestión del tiempo y recursos a lo largo de todo el proceso.
     \begin{figure}[htbp]
         \centering
@@ -73,15 +73,85 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \caption{Diagrama de Gantt detallado con la planificación y fases de desarrollo}
         \label{fig:gantt_diagram_detailed}
     \end{figure}
-    \subsection{Presupuesto}
-        \subsubsection{Introducción al presupuesto}
-        Para la realización de este proyecto, se ha estimado el presupuesto siguiendo el diagrama de Gantt previamente presentado, tomando en cuenta los costes de recursos humanos y materiales, conforme a la normativa vigente en el BOE \cite{boe_indemnizaciones}. Este presupuesto tiene como objetivo estimar de manera detallada los recursos necesarios para llevar a cabo el desarrollo del software de forma exitosa.    
+    \section{Recursos y costes}
+    \label{sec:recursos_costes}
 
-        \subsubsection{Recursos Humanos}
-        
+    Esta sección recoge el coste real de los servicios externos aplicados en el desarrollo del TFG y una estimación de referencia del esfuerzo profesional equivalente para la replicación del sistema.
 
-    \section{Diseño}
-    \subsection{Definición de Requisitos y Flujos de Interacción}
+    \subsubsection{Recursos materiales y software}
+
+    El \textit{stack} tecnológico seleccionado para \textit{SkiClubManager} ha sido elegido bajo la premisa de priorizar herramientas de código abierto, reduciendo el coste directo de licencias a 0 €. El desarrollo principal se realizó en un ordenador de sobremesa adquirido por un importe de 1\,450 €. Siguiendo las directrices estándar de ingeniería, no se imputa el precio íntegro del equipo, sino la parte proporcional al tiempo dedicado al TFG: considerando una vida útil estimada de cuatro años (48 meses), el coste mensual es de $1\,450 / 48 \approx 30$ €/mes. Aplicado a los cinco meses de duración del desarrollo (febrero--junio 2026), el importe de amortización resultante es de 150 €.
+
+    En la tabla \ref{tab:recursos_materiales} se desglosan los recursos materiales y servicios externos utilizados durante la ejecución del proyecto.
+
+    \begin{table}[htbp]
+    \centering
+    \scriptsize
+    \renewcommand{\arraystretch}{1.1}
+    \begin{tabularx}{\textwidth}{|l|X|c|l|}
+    \hline
+    \rowcolor[HTML]{EFEFEF} 
+    \textbf{Recurso} & \textbf{Uso en SkiClubManager} & \textbf{Coste} & \textbf{Observaciones} \\ \hline
+    Ordenador & IDE, emuladores Android/iOS, compilación & 150 € & Amortización de equipo propio \\ \hline
+    Stack open source & Backend (Node.js), Frontend (React Native), BD (MySQL) & 0 € & Licencia libre \\ \hline
+    \textbf{Total materiales} & & \textbf{175 €} & \\ \hline
+    \end{tabularx}
+    \caption{Recursos materiales y servicios externos.}
+    \label{tab:recursos_materiales}
+    \end{table}
+
+    \subsubsection{Estimación de esfuerzo y coste laboral}
+
+    Para cuantificar el esfuerzo de desarrollo, se ha realizado un registro de las horas invertidas en cada una de las fases del ciclo de vida del software, sumando un total de 580 horas de trabajo. El desglose detallado por bloques funcionales se presenta de forma estructurada en la tabla \ref{tab:estimacion_esfuerzo}.
+
+    \begin{table}[htbp]
+    \centering
+    \scriptsize
+    \renewcommand{\arraystretch}{1.1}
+    \begin{tabularx}{\textwidth}{|l|c|X|}
+    \hline
+    \rowcolor[HTML]{EFEFEF} 
+    \textbf{Bloque} & \textbf{Horas} & \textbf{Comentario} \\ \hline
+    Análisis (RF, RNF, Casos de Uso) & 90 & Definición de requisitos del club y flujos de usuarios \\ \hline
+    Diseño (Arquitectura, ER, UI) & 75 & Modelado de base de datos y mockups en Figma \\ \hline
+    Backend (API, controladores, JWT) & 140 & Desarrollo de endpoints, seguridad y lógica en Node.js \\ \hline
+    Frontend (Vistas, Context, Gráficos) & 165 & Maquetación adaptativa y lógica en React Native \\ \hline
+    Integración y Pruebas & 35 & Validación de flujos de asistencia y gestión de transporte \\ \hline
+    Memoria y diagramas & 75 & Redacción de la documentación técnica en LaTeX \\ \hline
+    \textbf{Total} & \textbf{580} & \\ \hline
+    \end{tabularx}
+    \caption{Estimación de esfuerzo (horas).}
+    \label{tab:estimacion_esfuerzo}
+    \end{table}
+
+    Como tarifa de referencia para el cálculo del coste laboral se toma un precio de 13 €/h. Este valor se obtiene a partir del salario medio orientativo de un desarrollador \textit{full-stack} júnior en España (24\,000 € brutos anuales), convertido a coste horario mediante la fórmula de jornada estándar: $24\,000 / (40 \times 48) \approx 12,5$ €/h (asumiendo una jornada de 40 h/semana y 48 semanas laborables al año), redondeado a 13 €/h. Por tanto, el coste laboral de referencia queda establecido en $580 \times 13 = 7\,540$ €.
+
+    \subsubsection{Presupuesto total}
+
+    El presupuesto global estimado para la replicación del proyecto integra tanto los costes tangibles directos como la valoración del esfuerzo de ingeniería. La tabla \ref{tab:presupuesto_total} consolida el presupuesto final de la aplicación.
+
+    \begin{table}[htbp]
+    \centering
+    \scriptsize
+    \renewcommand{\arraystretch}{1.1}
+    \begin{tabularx}{\textwidth}{|l|c|X|}
+    \hline
+    \rowcolor[HTML]{EFEFEF} 
+    \textbf{Concepto} & \textbf{Importe} & \textbf{Notas} \\ \hline
+    Ordenador (amortización) & 150 € & $1\,450 / 48 \times 5 \approx 150$ € \\ \hline
+    Google Gemini API & 25 € & Créditos consumidos en desarrollo \\ \hline
+    Software & 0 € & Entorno open source sin costes de licencia \\ \hline
+    Mano de obra (referencia) & 7\,540 € & 580 h $\times$ 13 €/h \\ \hline
+    \textbf{Total estimado de replicación} & \textbf{7\,715 €} & \\ \hline
+    \end{tabularx}
+    \caption{Presupuesto total estimado del proyecto.}
+    \label{tab:presupuesto_total}
+    \end{table}
+
+    En conclusión, el desembolso directo en servicios de terceros durante la ejecución real de este Trabajo de Fin de Grado fue de 25 € en créditos de API, mientras que la infraestructura de hardware utilizada aporta un coste de amortización proporcional de 150 € a lo largo de los cinco meses de desarrollo, tal como se desglosó previamente.
+    
+    \section{Análisis}
+    \subsubsection{Definición de Requisitos y Flujos de Interacción}
         \subsubsection{Requisitos Funcionales y No Funcionales}
         En este apartado se detallan los requisitos que debe cumplir la aplicación para garantizar
         su correcto funcionamiento. Se clasifican en dos categorías: los requisitos funcionales, que
@@ -205,3 +275,1459 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
             \item[Postcondiciones:] Estado final del sistema después de que el caso de uso ha sido ejecutado.
             \item[Requisitos Asociados:] Requisitos funcionales que se cumplen al llevar a cabo este caso de uso.
         \end{description}
+        
+        A continuación, se introduce el diagrama de paquetes que representa la arquitectura modular del sistema, mostrando la organización y dependencias.
+
+        \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\textwidth]{diagramas/DiagramaPaquetes.drawio.png}
+        \caption{Diagrama de paquetes del sistema.}
+        \label{fig:diagrama_paquetes}
+        \end{figure}
+        
+        \newpage
+        \subsubsection{Módulo de gestión de usuarios y acceso.}
+        Este módulo engloba la lógica de control de acceso, registro y seguridad perimetral de la plataforma. 
+        \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=1\textwidth]{diagramas/DiagramaGestionUsuariosYAcceso.drawio.png}
+        \caption{Diagrama de gestión de usuarios y acceso.}
+        \label{fig:diagrama_gestion_usuarios_acceso}
+
+        \end{figure}
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{1.0}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Solicitar registro de cuenta (CU\_01)} \\ \hline
+        \textbf{Actores} & Padre / Tutor legal \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF1.1 \\ \hline
+        \textbf{Precondición} & El usuario no debe de estar registrado en el sistema. \\ \hline
+        \textbf{Postcondición} & El usuario está registrado en el sistema. \\ \hline
+        \textbf{Propósito} & Permitir a los nuevos usuarios registrarse proporcionando sus datos. \\ \hline
+        \textbf{Resumen} & Un usuario desea registrarse para acceder a la aplicación. Introduce los datos requeridos en el formulario de registro y el sistema valida y almacena la información relacionada con el registro. \\ \hline
+        \textbf{Curso Normal (Básico)} & 
+        \textbf{1.} El usuario accede a la pantalla de registro.\newline
+        \textbf{2.} El usuario proporciona los datos necesarios.\newline
+        \textbf{3.} El sistema verifica que los datos introducidos sean válidos.\newline
+        \textbf{4.} El sistema almacena la petición. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{3a:} El correo introducido ya está dado de alta.\newline
+        \textbf{3b:} El correo tiene un formato erróneo.\newline
+        \textbf{3c:} La contraseña y la confirmación no coinciden. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_01.}
+        \label{tab:cu_01}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=1\textwidth]{diagramas/CU_01.drawio.png}
+            \caption{Diagrama de secuencia del CU\_01.}
+            \label{fig:seq_cu_01}
+        \end{figure}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{1.0}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Aprobar solicitudes (CU\_02)} \\ \hline
+        \textbf{Actores} & Administrador \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF1.2 \\ \hline
+        \textbf{Precondición} & Tiene que haber una solicitud creada por el padre. \\ \hline
+        \textbf{Postcondición} & El usuario está creado. \\ \hline
+        \textbf{Propósito} & Una vez aprobada la solicitud se crea el usuario. \\ \hline
+        \textbf{Resumen} & El administrador gestiona las solicitudes; una vez aceptada, los datos son almacenados en la base de datos. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El administrador accede a la página de administrar solicitud.\newline
+        \textbf{2.} El administrador mira que los datos sean correctos.\newline
+        \textbf{3.} El administrador acepta la solicitud.\newline
+        \textbf{4.} El sistema almacena la información en la base de datos y activa el usuario. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{3a:} Alguno de los datos son incorrectos y el administrador rechaza la solicitud. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_02.}
+        \label{tab:cu_02}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=1\textwidth]{diagramas/CU_02.drawio.png}
+            \caption{Diagrama de secuencia del CU\_02.}
+            \label{fig:seq_cu_02}
+        \end{figure}
+        
+        \newpage
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{1.0}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Dar de alta entrenadores (CU\_03)} \\ \hline
+        \textbf{Actores} & Administrador \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF1.3 \\ \hline
+        \textbf{Precondición} & No tiene que existir usuario entrenador. \\ \hline
+        \textbf{Postcondición} & El entrenador está creado. \\ \hline
+        \textbf{Propósito} & Creación centralizada de los usuarios cuyo rol es entrenador. \\ \hline
+        \textbf{Resumen} & El administrador crea al usuario entrenador de manera que esté centralizado. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El administrador accede a la página de administrar entrenadores.\newline
+        \textbf{2.} El administrador rellena los datos correspondientes.\newline
+        \textbf{3.} El sistema verifica que los datos son correctos.\newline
+        \textbf{4.} El sistema almacena y crea el usuario entrenador. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{3a:} El correo introducido ya está dado de alta.\newline
+        \textbf{3b:} El correo tiene un formato erróneo. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_03.}
+        \label{tab:cu_03}
+        \end{table}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.9}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Registrar y vincular fichas deportivas (CU\_04)} \\ \hline
+        \textbf{Actores} & Padre / Tutor legal \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline        
+        \textbf{Referencias} & RF1.4 \\ \hline
+        \textbf{Precondición} & El padre ha iniciado sesión y su cuenta está activa. \\ \hline
+        \textbf{Postcondición} & Se crea la ficha del deportista y se vincula al padre. \\ \hline
+        \textbf{Propósito} & Permitir a los padres dar de alta a sus hijos bajo su tutela. \\ \hline
+        \textbf{Resumen} & El padre rellena el formulario del menor desde su perfil móvil y el sistema valida y almacena los datos. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El padre accede a "Gestionar Perfil" en la aplicación móvil.\newline
+        \textbf{2.} El sistema valida el token y muestra el botón "Añadir Deportista".\newline
+        \textbf{3.} El padre pulsa el botón y rellena el formulario del menor.\newline
+        \textbf{4.} El padre confirma la operación.\newline
+        \textbf{5.} El sistema verifica que los datos introducidos sean correctos.\newline
+        \textbf{6.} El sistema crea la ficha del deportista vinculada al padre en MySQL. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{5a:} El sistema detecta campos obligatorios vacíos y muestra un error. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_04.}
+        \label{tab:cu_04}
+        \end{table}
+        
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.9}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Autentificar usuario (CU\_05)} \\ \hline
+        \textbf{Actores} & General (Padre/Tutor legal, Entrenador y Administrador) \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF1.5, RF1.6, CU\_22 \\ \hline
+        \textbf{Precondición} & El usuario ya está registrado y su cuenta está activa en el sistema. \\ \hline
+        \textbf{Postcondición} & El usuario accede a la pantalla de inicio según su rol asignado. \\ \hline
+        \textbf{Propósito} & Permitir el acceso seguro a las funciones correspondientes al perfil. \\ \hline
+        \textbf{Resumen} & El usuario introduce email y contraseña. El sistema valida las credenciales y genera un token de sesión si son correctas. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El usuario abre la app e introduce sus credenciales (email y contraseña).\newline
+        \textbf{2.} El usuario presiona el botón "Iniciar Sesión".\newline
+        \textbf{3.} El sistema valida las credenciales contra la base de datos.\newline
+        \textbf{4.} El sistema genera un token de acceso seguro (JWT) con el ID y rol del usuario.\newline
+        \textbf{5.} El sistema retorna el token al frontend para actualizar el contexto global y redirige al usuario. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{3a:} Credenciales incorrectas: el sistema muestra una alerta de error.\newline
+        \textbf{3b:} El usuario selecciona "Olvidé mi contraseña" para iniciar la recuperación. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_05.}
+        \label{tab:cu_05}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=1\textwidth]{diagramas/CU_05.drawio.png}
+            \caption{Diagrama de secuencia del CU\_05.}
+            \label{fig:seq_cu_05}
+        \end{figure}  
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{1.0}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Modificación de contraseña (CU\_20)} \\ \hline
+        \textbf{Actores} & General (Padre/Tutor legal, Entrenador y Administrador) \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF1.7 \\ \hline
+        \textbf{Precondición} & El usuario ha iniciado sesión con sus credenciales actuales. \\ \hline
+        \textbf{Postcondición} & Los datos de contacto o la nueva contraseña se actualizan de forma persistente mediante hash en la base de datos MySQL. \\ \hline
+        \textbf{Propósito} & Permitir a los usuarios modificar su contraseña. \\ \hline
+        \textbf{Resumen} & El usuario accede a la sección de seguridad dentro de la aplicación móvil, introduce la nueva contraseña junto con su confirmación y el sistema valida, encripta y actualiza la credencial en la base de datos. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El usuario accede al formulario de cambio de contraseña.\newline
+        \textbf{2.} El sistema muestra los campos para introducir la nueva contraseña y su correspondiente confirmación.\newline
+        \textbf{3.} El usuario introduce la nueva clave privada en ambos campos y presiona "Confirmar Cambio".\newline
+        \textbf{4.} El frontend en React Native comprueba que la cadena de texto cumpla con los requisitos mínimos de longitud y coincidencia.\newline
+        \textbf{5.} El backend en Node.js recibe la solicitud, valida la firma del token y procesa la nueva clave mediante el algoritmo \textit{bcrypt}.\newline
+        \textbf{6.} El sistema ejecuta el query en MySQL actualizando el campo de la contraseña y cambia el estado de la cuenta a "validada".\newline
+        \textbf{7.} La aplicación móvil redirige al usuario a la pantalla principal confirmando el éxito de la operación. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{4a:} El sistema detecta en la interfaz que la contraseña y su confirmación no coinciden, interrumpe el envío al backend y muestra una alerta visual de error.\newline
+        \textbf{6a:} El backend compara el hash y detecta que el usuario intenta reutilizar la misma clave temporal por defecto; deniega la actualización y solicita una combinación de caracteres diferente. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_20.}
+        \label{tab:cu_20}
+        \end{table}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{1.0}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Recuperar credenciales de acceso (CU\_22)} \\ \hline
+        \textbf{Actores} & General (Padre/Tutor legal, Entrenador y Administrador) \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF1.8, CU\_05 \\ \hline
+        \textbf{Precondición} & El usuario está previamente registrado en el sistema, pero no recuerda sus credenciales de acceso. \\ \hline
+        \textbf{Postcondición} & La contraseña anterior queda invalidada y la nueva clave se almacena encriptada de forma persistente en la base de datos MySQL. \\ \hline
+        \textbf{Propósito} & Permitir a los usuarios restablecer su contraseña de forma autónoma y segura mediante la verificación de un código de validación enviado a su dirección de correo electrónico. \\ \hline
+        \textbf{Resumen} & El usuario solicita la recuperación desde la pantalla de login introduciendo su correo electrónico. El sistema genera un código temporal y lo envía por email; tras introducir dicho código junto con la nueva contraseña, el sistema valida la transacción y actualiza las credenciales en la base de datos. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El usuario abre la aplicación, selecciona la opción "Olvidé mi contraseña" e introduce su correo electrónico.\newline
+        \textbf{2.} El backend verifica la existencia del correo en MySQL, genera un código de validación temporal y realiza el envío automático por email.\newline
+        \textbf{3.} El usuario copia el código recibido en su buzón y accede al formulario de restablecimiento en la app.\newline
+        \textbf{4.} El sistema habilita los campos para introducir el código de verificación, la nueva contraseña y su confirmación.\newline
+        \textbf{5.} El usuario rellena los datos requeridos y presiona "Restablecer Contraseña".\newline
+        \textbf{6.} El frontend comprueba que las cadenas de texto de las contraseñas coincidan.\newline
+        \textbf{7.} El backend valida que el código introducido sea correcto. Encripta y guarda la nueva contraseña en la base de datos.\newline
+        \textbf{8.} El sistema redirige al usuario a la pantalla de login original mostrando un mensaje de éxito. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{2a:} El sistema detecta que el email introducido no coincide con ningún usuario en la base de datos. Interrumpe el flujo y muestra una alerta genérica en la interfaz por motivos de seguridad.\newline
+        \textbf{6b:} El frontend detecta que la nueva contraseña y su confirmación no son idénticas y muestra un aviso de error.\newline
+        \textbf{7b:} El backend comprueba que el código ingresado es incorrecto o que el tiempo límite del token ha caducado. Cancela la operación en MySQL y solicita al usuario demandar un nuevo código. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_22.}
+        \label{tab:cu_22}
+        \end{table}
+
+        \newpage
+        \subsubsection{Módulo de planificación de entrenamientos}
+        Este módulo gestiona el ciclo de vida de la programación deportiva del club, permitiendo la creación, modificación y consulta de sesiones de entrenamiento en nieve, competiciones y preparación física.
+        
+        \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=1\textwidth]{diagramas/DiagramaPlanificacionEntrenos.drawio.png}
+        \caption{Diagrama de planificación de entrenamientos.}
+        \label{fig:diagrama_planificacion_entrenamientos}
+        \end{figure}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.95}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Programar entrenamientos y/o competiciones (CU\_06)} \\ \hline
+        \textbf{Actores} & Entrenador \\ \hline
+        \textbf{Tipo} & Primario y esencial \\ \hline
+        \textbf{Referencias} & RF2.1, RF4.1 \\ \hline
+        \textbf{Precondición} & El entrenador ha iniciado sesión y su cuenta está activa dentro de su categoría asignada. \\ \hline
+        \textbf{Postcondición} & El evento se calendariza y se guarda de forma persistente en la tabla eventos de MySQL. \\ \hline
+        \textbf{Propósito} & Permitir al personal técnico calendarizar una nueva sesión de entrenamiento, competición o preparación física. \\ \hline
+        \textbf{Resumen} & El entrenador abre el módulo de planificación, introduce los detalles del evento (fecha, hora, lugar y plazas de transporte opcionales) y confirma. El sistema valida los datos y publica el evento en el calendario de las familias. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Entrenador accede al calendario y presiona Crear Evento.\newline
+        \textbf{2.} El sistema muestra el formulario de creación solicitando los datos del evento.\newline
+        \textbf{3.} El Entrenador rellena los campos.\newline
+        \textbf{4.} El Entrenador confirma la creación del evento.\newline
+        \textbf{5.} El sistema verifica que los campos obligatorios sean válidos y no tengan conflictos horarios.\newline
+        \textbf{6.} El sistema almacena el registro en la base de datos y actualiza el calendario. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{5a:} El sistema detecta que la fecha elegida es anterior a la fecha actual o faltan datos obligatorios. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_06.}
+        \label{tab:cu_06}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=1\textwidth]{diagramas/CU_06.drawio.png}
+            \caption{Diagrama de secuencia del CU\_06.}
+            \label{fig:seq_cu_06}
+        \end{figure}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.95}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Gestionar, modificar o cancelar eventos (CU\_07)} \\ \hline
+        \textbf{Actores} & Entrenador \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF2.4, RF4.1 y RF4.3 \\ \hline
+        \textbf{Precondición} & El evento ya ha sido creado previamente por el entrenador y existe en la base de datos. \\ \hline
+        \textbf{Postcondición} & El evento se actualiza o elimina en MySQL, y se notifica del cambio a los padres. \\ \hline
+        \textbf{Propósito} & Permitir al personal técnico realizar modificaciones o cancelaciones en los entrenamientos ya programados debido a contingencias climáticas o logísticas. \\ \hline
+        \textbf{Resumen} & El entrenador selecciona un evento de su calendario, modifica sus datos o pulsa en cancelar, y confirma la acción. El sistema actualiza la base de datos. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Entrenador accede a los detalles del entrenamiento y presiona ``Editar'' o ``Eliminar''.\newline
+        \textbf{2.} El sistema muestra los datos actuales del evento permitiendo su edición o solicita confirmación de borrado.\newline
+        \textbf{3.} El Entrenador modifica los datos necesarios (o confirma la cancelación) y presiona ``Guardar cambios''.\newline
+        \textbf{4.} El sistema valida que los nuevos datos introducidos sean correctos.\newline
+        \textbf{5.} El sistema actualiza el estado o la información del evento en la base de datos.\newline
+        \textbf{6.} El sistema genera una notificación automática para avisar a los padres vinculados sobre el cambio. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{4a:} El sistema detecta que la nueva fecha u hora introducida es inválida o anterior al día de hoy. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_07.}
+        \label{tab:cu_07}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.8\textwidth]{diagramas/CU_07.drawio.png}
+            \caption{Diagrama de secuencia del CU\_07.}
+            \label{fig:seq_cu_07}
+        \end{figure}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.95}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Confirmar o eliminar la asistencia (CU\_08)} \\ \hline
+        \textbf{Actores} & Padre / Tutor legal \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF2.2, RF4.2 \\ \hline
+        \textbf{Precondición} & El entrenador ha publicado un evento con transporte vinculado y el padre tiene a sus hijos registrados. \\ \hline
+        \textbf{Postcondición} & Se actualiza el estado de asistencia y se reserva (o libera) la plaza de furgoneta en MySQL. \\ \hline
+        \textbf{Propósito} & Permitir a los padres gestionar la asistencia de sus hijos a los entrenamientos y reservar su plaza en el transporte del club simultáneamente. \\ \hline
+        \textbf{Resumen} & El padre selecciona un evento, marca la asistencia de su hijo junto con la opción de transporte y confirma. El sistema comprueba el aforo, procesa el cambio y actualiza la base de datos. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Padre accede al calendario de la app móvil y selecciona un entrenamiento.\newline
+        \textbf{2.} El sistema muestra los detalles del evento, los nombres de sus hijos y la opción de transporte.\newline
+        \textbf{3.} El Padre marca la casilla de asistencia, activa el check de ``Reserva de Transporte'' y presiona ``Guardar''.\newline
+        \textbf{4.} El sistema verifica de forma activa que queden plazas libres en el vehículo para ese viaje.\newline
+        \textbf{5.} El sistema registra la asistencia del menor y descuenta una plaza del aforo del transporte en la base de datos.\newline
+        \textbf{6.} El sistema refresca la pantalla confirmando que la asistencia y la furgoneta se han reservado con éxito. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{4a:} El sistema detecta que el transporte ya ha alcanzado el límite de capacidad máxima. Inscribe al niño solo en la asistencia en pista y muestra una alerta informando que ya no quedan plazas libres en el vehículo. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_08.}
+        \label{tab:cu_08}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.9\textwidth]{diagramas/CU_08.drawio.png}
+            \caption{Diagrama de secuencia del CU\_08.}
+            \label{fig:seq_cu_08}
+        \end{figure}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.85}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Consultar el listado de asistencia (CU\_09)} \\ \hline
+        \textbf{Actores} & Entrenador \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF2.3, RF4.2 \\ \hline
+        \textbf{Precondición} & El entrenador ha iniciado sesión y existen registros de asistencia para ese evento. \\ \hline
+        \textbf{Postcondición} & El entrenador visualiza en tiempo real el listado consolidado de deportistas apuntados. \\ \hline
+        \textbf{Propósito} & Permitir al personal técnico consultar de manera centralizada la lista de menores que asistirán y verificar el transporte. \\ \hline
+        \textbf{Resumen} & El entrenador selecciona un evento de su calendario. El sistema consulta en MySQL y devuelve el listado con indicadores de transporte en la app móvil. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Entrenador accede a la agenda y selecciona un entrenamiento específico.\newline
+        \textbf{2.} El Entrenador presiona la opción ``Ver Lista de Asistencia''.\newline
+        \textbf{3.} El frontend realiza una petición GET al backend enviando el ID del evento y el token de sesión.\newline
+        \textbf{4.} El backend valida el token e interroga a MySQL mediante un JOIN entre asistencia, deportistas y transporte.\newline
+        \textbf{5.} El sistema retorna el listado de alumnos indicando quiénes tienen plaza reservada en la furgoneta.\newline
+        \textbf{6.} La aplicación móvil renderiza la lista de forma visual en la pantalla del entrenador. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{4a:} No hay asistencias confirmadas todavía: el sistema devuelve una estructura vacía y muestra un aviso informativo. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_09.}
+        \label{tab:cu_09}
+        \end{table}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.85}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Consultar entrenamientos (CU\_18)} \\ \hline
+        \textbf{Actores} & Padre / Tutor legal \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF4.1 \\ \hline
+        \textbf{Precondición} & El usuario ha iniciado sesión en la aplicación móvil. \\ \hline
+        \textbf{Postcondición} & El usuario visualiza la planificación de entrenamientos y competiciones en el calendario. \\ \hline
+        \textbf{Propósito} & Permitir a los padres consultar los días, horarios y disciplinas asignadas para las sesiones de sus hijos. \\ \hline
+        \textbf{Resumen} & El usuario accede a la vista de calendario en la app móvil. El sistema consulta en MySQL filtrando por los deportistas vinculados al tutor y muestra los eventos. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Padre accede al apartado de ``Calendario'' desde el menú principal de la aplicación móvil.\newline
+        \textbf{2.} La app envía una solicitud GET al backend solicitando los eventos programados para las categorías de sus hijos.\newline
+        \textbf{3.} El backend recibe la solicitud, valida el token JWT y realiza la consulta en la base de datos MySQL.\newline
+        \textbf{4.} El sistema retorna un listado con los detalles de los entrenamientos (fecha, hora, disciplina y ubicación).\newline
+        \textbf{5.} La aplicación móvil recibe los datos y los renderiza de forma ordenada en la interfaz del calendario. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{4a:} No existen eventos programados para las categorías asociadas al usuario: el sistema devuelve una estructura vacía y muestra el mensaje correspondiente. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_18.}
+        \label{tab:cu_18}
+        \end{table}        
+        \newpage
+        \subsubsection{Módulo de gestión de logisitica y transporte}
+        Este módulo coordina la asignación, reserva y liberación de plazas limitadas en los vehículos del club, implementando validaciones de concurrencia en el backend para controlar los aforos en tiempo real y asegurar la integridad de las reservas en la base de datos MySQL.
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.6\textwidth]{diagramas/DiagramaLogisticaTransporte.drawio.png}
+            \caption{Diagrama de gestión de transporte.}
+            \label{fig:diagrama_gestion_transporte}
+        \end{figure}
+        \newline
+        \newline
+        \newline
+        \newline
+        \newline
+        \newline
+        \newline
+        \newline
+        \newline
+        \newline
+        \newline
+        \newline
+        \newline
+        \newline
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.95}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Modificar capacidad del transporte (CU\_10)} \\ \hline
+        \textbf{Actores} & Administrador \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Ref} & RF4.2 \\ \hline
+        \textbf{Precondicion} & El administrador ha iniciado sesión y el transporte está registrado en el sistema. \\ \hline
+        \textbf{Postcondicion} & La nueva capacidad de plazas queda actualizada de forma persistente en la base de datos MySQL. \\ \hline
+        \textbf{Propósito} & Permitir la modificación del número máximo de plazas disponibles en el transporte del club. \\ \hline
+        \textbf{Resumen} & El administrador accede al módulo de transporte, edita el número de plazas asignadas a un vehículo y confirma el cambio. El sistema valida la información y actualiza el aforo en MySQL. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Administrador accede al apartado de gestión de transporte en el panel de administración.\newline
+        \textbf{2.} El sistema muestra los datos del transporte actual junto con el campo de capacidad de plazas.\newline
+        \textbf{3.} El Administrador introduce el nuevo número de plazas disponibles y presiona ``Guardar''.\newline
+        \textbf{4.} El backend recibe la petición, valida el token JWT del administrador y comprueba que el valor sea un número entero válido.\newline
+        \textbf{5.} El sistema ejecuta la actualización en la base de datos MySQL reflejando el nuevo aforo.\newline
+        \textbf{6.} El panel de administración web refresca los datos confirmando que la capacidad se ha actualizado con éxito. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{4a:} El Administrador introduce un valor negativo o vacío: el sistema interrumpe la operación y muestra un mensaje de error en la interfaz. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_10.}
+        \label{tab:cu_10}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=1\textwidth]{diagramas/CU_10.drawio.png}
+            \caption{Diagrama de secuencia del CU\_10.}
+            \label{fig:seq_cu_10}
+        \end{figure}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.95}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Reservar plaza de transporte (CU\_11)} \\ \hline
+        \textbf{Actores} & Padre/tutor legal \\ \hline
+        \textbf{Tipo} & Primario y esencial \\ \hline
+        \textbf{Referencias} & RF4.2, RF4.3 \\ \hline
+        \textbf{Precondición} & El entrenador ha vinculado previamente una furgoneta al entrenamiento y el menor está confirmado para asistir al entrenamiento. \\ \hline
+        \textbf{Postcondición} & Se crea el registro de reserva en MySQL y se decrementa una plaza disponible en el aforo del vehículo. \\ \hline
+        \textbf{Propósito} & Permitir a los padres asegurar un asiento en el vehículo del club para el traslado de sus hijos a la estación de esquí, garantizando que no se supere la capacidad máxima del vehículo. \\ \hline
+        \textbf{Resumen} & El padre accede al detalle del entrenamiento en la aplicación móvil, activa la opción de transporte y confirma. El sistema comprueba el aforo disponible en tiempo real, bloquea la plaza y actualiza la base de datos. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Padre accede al evento programado dentro de su calendario en la aplicación móvil.\newline
+        \textbf{2.} El sistema comprueba si el evento tiene transporte asociado y solicita al backend el aforo disponible.\newline
+        \textbf{3.} El Padre marca la casilla ``Reservar Plaza en Furgoneta'' y presiona el botón ``Confirmar''.\newline
+        \textbf{4.} El sistema verifica en la base de datos (MySQL) que el número de reservas actuales sea estrictamente menor que la capacidad máxima permitida.\newline
+        \textbf{5.} El sistema almacena la reserva del alumno de forma persistente en la tabla \textit{transporte\_reservas}.\newline
+        \textbf{6.} El sistema actualiza la interfaz en React Native mostrando un mensaje de éxito y el indicador de plaza confirmada. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{4a:} El sistema detecta que el número de reservas ha alcanzado el límite de capacidad de la furgoneta. Cancela el proceso de guardado, lanza una alerta en la interfaz móvil informando de que ya no quedan asientos libres y mantiene al deportista apuntado únicamente al entrenamiento. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_11.}
+        \label{tab:cu_11_reserva}
+        \end{table}
+
+        \clearpage
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.85}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Consultar listado global de transporte (CU\_12)} \\ \hline
+        \textbf{Actores} & Entrenador, administrador \\ \hline
+        \textbf{Tipo} & Primario y esencial \\ \hline
+        \textbf{Referencias} & RF4.3, RF4.4 \\ \hline
+        \textbf{Precondición} & El usuario ha iniciado sesión y existen reservas de plazas confirmadas por los padres para el viaje. \\ \hline
+        \textbf{Postcondición} & El sistema muestra en pantalla la hoja con todos los pasajeros asignados al vehículo. \\ \hline
+        \textbf{Propósito} & Permitir al personal técnico controlar el aforo total y la lista de menores que viajan en la furgoneta en un entrenamiento específico. \\ \hline
+        \textbf{Resumen} & El usuario accede al apartado de transporte. El sistema realiza una consulta relacional y renderiza la lista de deportistas con plaza reservada. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El usuario accede al menú de logística del transporte y selecciona un viaje programado.\newline
+        \textbf{2.} El usuario presiona el botón de ``Logística de furgoneta''.\newline
+        \textbf{3.} El backend ejecuta la consulta en MySQL uniendo las tablas de reservas y deportistas sin aplicar filtros.\newline
+        \textbf{4.} El sistema renderiza en la pantalla de la aplicación móvil el listado consolidado de todos los pasajeros confirmados. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{3a:} El sistema detecta que ningún padre ha solicitado plaza para este trayecto y muestra la lista vacía con un aviso de 0 deportistas apuntados. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_12.}
+        \label{tab:cu_12}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.8\textwidth]{diagramas/CU_12.drawio.png}
+            \caption{Diagrama de secuencia del CU\_12.}
+            \label{fig:seq_cu_12}
+        \end{figure}
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.78}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Consultar estado de transporte de hijos (CU\_13)} \\ \hline
+        \textbf{Actores} & Padre/tutor legal \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF4.2, RF4.3 \\ \hline
+        \textbf{Precondición} & El padre ha iniciado sesión y tiene solicitudes de reserva previas para los menores bajo su tutela. \\ \hline
+        \textbf{Postcondición} & El sistema muestra únicamente el estado de las plazas solicitadas por el núcleo familiar. \\ \hline
+        \textbf{Propósito} & Permitir a los padres verificar de forma privada si las plazas de furgoneta de sus hijos están asignadas. \\ \hline
+        \textbf{Resumen} & El padre accede a transporte. El sistema lee su identidad mediante el token JWT, filtra en MySQL por sus hijos vinculados y renderiza los estados de reserva en la interfaz. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Padre accede al apartado de ``Mis Reservas de Transporte'' en la aplicación móvil.\newline
+        \textbf{2.} El sistema extrae el ID del padre del token JWT almacenado en el estado global (Context API).\newline
+        \textbf{3.} El Padre selecciona el entrenamiento que desea revisar.\newline
+        \textbf{4.} El backend en Node.js realiza la consulta en MySQL filtrando por las plazas asociadas a los menores vinculados.\newline
+        \textbf{5.} El sistema actualiza React Native mostrando el historial y estado (``Confirmado'' o ``No Confirmado'') de sus hijos. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{4a:} No hay solicitudes vigentes: el sistema muestra un panel informativo con el texto ``No tienes reservas programadas''. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_13.}
+        \label{tab:cu_13}
+        \end{table}
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.78}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Filtrar y buscar viajes de transporte (CU\_23)} \\ \hline
+        \textbf{Actores} & General (Padre / Tutor legal, Entrenador y Administrador). \\ \hline
+        \textbf{Tipo} & Primario y esencial \\ \hline
+        \textbf{Referencias} & RF4.3, RF4.4 \\ \hline
+        \textbf{Precondición} & El usuario ha iniciado sesión en la app y se encuentra en el módulo de administrar transporte. \\ \hline
+        \textbf{Postcondición} & El sistema actualiza la interfaz mostrando las furgonetas y plazas que coinciden con los criterios. \\ \hline
+        \textbf{Propósito} & Permitir restringir el listado de traslados seleccionando un rango de fechas o meses, evitando el desplazamiento infinito. \\ \hline
+        \textbf{Resumen} & El usuario interactúa con los selectores temporales. El sistema captura las fechas, realiza una petición filtrada al backend y actualiza el estado local de React Native para renderizar las tarjetas. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El usuario accede al menú de administración de transporte.\newline
+        \textbf{2.} El sistema renderiza los selectores de búsqueda.\newline
+        \textbf{3.} El usuario selecciona un mes o fecha concreta en la interfaz y pulsa el botón de filtrar.\newline
+        \textbf{4.} El backend recibe los parámetros y ejecuta una consulta indexada en MySQL sobre la tabla de transporte.\newline
+        \textbf{5.} El sistema devuelve la información de los viajes, aforos y estados de reserva que cumplen el criterio.\newline
+        \textbf{6.} El frontend actualiza el estado local y refresca la pantalla mostrando únicamente las tarjetas coincidentes. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{4a:} No existen viajes planificados en el periodo: el sistema limpia el listado y muestra un aviso de ausencia de registros. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_23.}
+        \label{tab:cu_23}
+        \end{table}
+        \newpage
+
+        \subsubsection{Módulo de control de asistencia y rendimiento.}
+        Este módulo gestiona el registro de la presencialidad de los deportistas en las sesiones de entrenamiento y competiciones, sirviendo como núcleo de datos para el análisis del progreso deportivo.
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.8\textwidth]{diagramas/DiagramaAsistencia.drawio.png}
+            \caption{Diagrama de control de asistencia.}
+            \label{fig:diagrama_control_asistencia}
+        \end{figure}
+
+        \newpage
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.95}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Visualizar de manera gráfica la asistencia (CU\_14)} \\ \hline
+        \textbf{Actores} & Padre/Tutor legal \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF5.1, RF5.2, RF5.3, RF5.4 \\ \hline
+        \textbf{Precondición} & El padre ha iniciado sesión y existen registros de asistencia guardados en el histórico de sus hijos. \\ \hline
+        \textbf{Postcondición} & El sistema renderiza el componente gráfico en la pantalla del dispositivo móvil. \\ \hline
+        \textbf{Propósito} & Permitir a los padres consultar de forma visual, intuitiva y rápida la progresión y regularidad de asistencia de sus hijos a los entrenamientos. \\ \hline
+        \textbf{Resumen} & El padre accede al panel de asistencia de su hijo. El sistema solicita los datos acumulados al backend y genera un gráfico estadístico en la pantalla utilizando la librería de diseño. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Padre accede al perfil de su hijo y selecciona la pestaña ``Asistencia a los entrenamientos''.\newline
+        \textbf{2.} El sistema solicita al backend las métricas de asistencia filtradas por el ID del deportista.\newline
+        \textbf{3.} El backend procesa los datos en MySQL y devuelve un JSON con los porcentajes mensuales.\newline
+        \textbf{4.} El sistema procesa los datos en el frontend y renderiza un gráfico dinámico (\textit{pie chart}) en la interfaz móvil. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{3a:} El sistema detecta que el deportista no se ha apuntado a ningún entrenamiento y muestra que hay 0 \% de asistencia. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_14.}
+        \label{tab:cu_14}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.8\textwidth]{diagramas/CU_14.drawio.png}
+            \caption{Diagrama de secuencia del CU\_14.}
+            \label{fig:seq_cu_14}
+        \end{figure}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.95}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Visualizar en formato de tabla la asistencia (CU\_15)} \\ \hline
+        \textbf{Actores} & Entrenador, administrador. \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF5.1, RF5.3, RF5.5, RF5.6 \\ \hline
+        \textbf{Precondición} & El empleado ha iniciado sesión y pertenece a una categoría con deportistas en activo. \\ \hline
+        \textbf{Postcondición} & El sistema muestra una matriz de datos detallada con el desglose de asistencia del grupo. \\ \hline
+        \textbf{Propósito} & Permitir al personal técnico y de administración analizar los datos puros y exactos de asistencia de todo un grupo. \\ \hline
+        \textbf{Resumen} & El entrenador o administrador selecciona una categoría y un mes. El sistema consulta la base de datos y genera una tabla cuadriculada con los nombres de los deportistas y sus días de asistencia y faltas. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Entrenador/Admin accede al módulo de ``Asistencia a los entrenos''.\newline
+        \textbf{2.} El sistema muestra los filtros de selección por categoría deportiva y rango de fechas.\newline
+        \textbf{3.} El Actor selecciona la categoría que desea auditar y confirma la consulta.\newline
+        \textbf{4.} El backend ejecuta una consulta relacional pesada en MySQL para traer todo el histórico del grupo.\newline
+        \textbf{5.} El sistema procesa la información y renderiza en pantalla una tabla organizada por filas (deportistas) y columnas (fechas/estados). \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{4a:} El sistema detecta que la categoría deportiva seleccionada no tiene entrenamientos registrados en el rango de fechas elegido.\newline
+        \textbf{4b:} El sistema detiene la generación de la tabla y muestra un mensaje informativo en la pantalla: ``No existen datos de asistencia para los filtros seleccionados''. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_15.}
+        \label{tab:cu_15}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.9\textwidth]{diagramas/CU_15.drawio.png}
+            \caption{Diagrama de secuencia del CU\_15.}
+            \label{fig:seq_cu_15}
+        \end{figure}
+
+        \newpage
+        \subsubsection{Módulo de control multimedia.}
+        Este módulo gestiona el almacenamiento, asociación y visualización de recursos multimedia.
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.8\textwidth]{diagramas/ControlMultimedia.drawio.png}
+            \caption{Diagrama de control multimedia.}
+            \label{fig:diagrama_control_multimedia}
+        \end{figure}
+
+        \clearpage
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.75}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Cargar y categorizar fotos (CU\_16)} \\ \hline
+        \textbf{Actores} & Entrenador y Administrador. \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF3.1, RF3.2, RF3.3 \\ \hline
+        \textbf{Precondición} & El entrenador ha iniciado sesión y la app tiene permisos de cámara/galería. \\ \hline
+        \textbf{Postcondición} & El archivo se almacena físicamente y sus metadatos quedan guardados en MySQL. \\ \hline
+        \textbf{Propósito} & Permitir subir imágenes de los entrenamientos y clasificarlas según categoría técnica o carácter general. \\ \hline
+        \textbf{Resumen} & El entrenador selecciona una foto de su dispositivo, elige la categoría técnica y el alumno, y confirma. El sistema almacena el archivo y guarda la vinculación en la base de datos. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Actor accede a la galería del entrenamiento y pulsa en ``Subir Imagen''.\newline
+        \textbf{2.} El sistema abre el selector de archivos nativo del dispositivo.\newline
+        \textbf{3.} El Actor selecciona la fotografía de su almacenamiento local.\newline
+        \textbf{4.} El sistema muestra la previsualización de la imagen.\newline
+        \textbf{5.} El Actor pulsa en ``Subir Foto''.\newline
+        \textbf{6.} El backend procesa el archivo, lo guarda en el servidor físico y genera la URL pública.\newline
+        \textbf{7.} El sistema inserta los metadatos y la URL en la tabla \textit{fotografias} de la base de datos.\newline
+        \textbf{8.} El sistema refresca la interfaz del móvil confirmando la subida exitosa. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{6a:} Archivo no válido o supera el tamaño máximo: el sistema interrumpe el proceso y muestra una alerta de error. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_16.}
+        \label{tab:cu_16}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.9\textwidth]{diagramas/CU_16.drawio.png}
+            \caption{Diagrama de secuencia del CU\_16.}
+            \label{fig:seq_cu_16}
+        \end{figure}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.90}
+        \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Consultar galería de fotos (CU\_17)} \\ \hline
+        \textbf{Actores} & Padre/Tutor legal \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF3.3, RF3.4 \\ \hline
+        \textbf{Precondición} & El padre ha iniciado sesión en la aplicación móvil y el entrenador ha subido fotos en la categoría del deportista. \\ \hline
+        \textbf{Postcondición} & El sistema renderiza la cuadrícula de imágenes multimedia en la interfaz del usuario. \\ \hline
+        \textbf{Propósito} & Permitir a los padres acceder a la galería multimedia. \\ \hline
+        \textbf{Resumen} & El padre abre el apartado multimedia de su hijo. El sistema extrae la identidad del menor a través del token, consulta las URLs en la base de datos y renderiza la galería fotográfica clasificada en la pantalla del móvil. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Padre accede al menú ``Galería'' de su hijo en la aplicación móvil.\newline
+        \textbf{2.} El sistema identifica el ID del deportista seleccionado y solicita al backend el listado de sus fotos.\newline
+        \textbf{3.} El Padre filtra la búsqueda seleccionando una ``Categoría''.\newline
+        \textbf{4.} El backend en Node.js consulta en MySQL la tabla \textit{fotografias} filtrando por el ID del deportista y la categoría técnica elegida.\newline
+        \textbf{5.} El sistema devuelve el conjunto de metadatos y las URLs públicas de los archivos.\newline
+        \textbf{6.} La aplicación móvil procesa las URLs y renderiza en pantalla una cuadrícula con las vistas en miniatura de las fotos. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{4a:} El sistema comprueba que no existen fotos subidas o etiquetadas para ese alumno en la base de datos y muestra la pantalla vacía con el texto: ``Aún no hay fotografías disponibles para este deportista''. \\ \hline
+        \end{tabularx}
+        \caption{Ficha caso de uso CU\_17.}
+        \label{tab:cu_17}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.9\textwidth]{diagramas/CU_17.drawio.png}
+            \caption{Diagrama de secuencia del CU\_17.}
+            \label{fig:seq_cu_17}
+        \end{figure}
+
+        \nopagebreak
+        \begingroup
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{0.95}
+        \noindent\begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Caso de Uso} & \textbf{Buscar fotografías de forma cronológica (CU\_21)} \\ \hline
+        \textbf{Actores} & General (Padre/Tutor legal, Entrenador y Administrador). \\ \hline
+        \textbf{Tipo} & Primario y esencial. \\ \hline
+        \textbf{Referencias} & RF3.3 \\ \hline
+        \textbf{Precondición} & El usuario ha iniciado sesión y se encuentra dentro de la sección de galería multimedia de la aplicación. \\ \hline
+        \textbf{Postcondición} & El sistema refresca la pantalla mostrando únicamente las imágenes que coinciden con el año y mes seleccionados. \\ \hline
+        \textbf{Propósito} & Permitir a los usuarios localizar rápidamente el material gráfico de los entrenamientos filtrando la galería por criterios temporales (año y mes). \\ \hline
+        \textbf{Resumen} & El usuario interactúa con el selector de fecha dentro de la galería multimedia. El sistema envía los parámetros de filtrado al backend, realiza la consulta indexada en MySQL y renderiza la nueva cuadrícula de imágenes en React Native. \\ \hline
+        \textbf{Curso Normal} & 
+        \textbf{1.} El Usuario accede al módulo de galería multimedia en la aplicación móvil.\newline
+        \textbf{2.} El sistema habilita el componente de búsqueda cronológica.\newline
+        \textbf{3.} El Usuario introduce un año y/o un mes específicos y pulsa el botón de filtrar.\newline
+        \textbf{4.} El backend recibe los parámetros y realiza una consulta filtrada en la tabla \textit{fotografias} de MySQL.\newline
+        \textbf{5.} El sistema devuelve el JSON con las URLs de las imágenes que cumplen el criterio.\newline
+        \textbf{6.} El frontend descarga las referencias, actualiza el estado local y renderiza en React Native la cuadrícula con los resultados filtrados. \\ \hline
+        \textbf{Cursos Alternos} & 
+        \textbf{5a:} El backend ejecuta la consulta y consta que no hay imágenes almacenadas en el periodo indicado. Devuelve una respuesta vacía y la aplicación muestra en pantalla el texto informativo: ``No se han encontrado fotografías en el periodo seleccionado''. \\ \hline
+        \end{tabularx}
+        \captionof{table}{Ficha caso de uso CU\_21.}
+        \label{tab:cu_21}
+        \endgroup
+
+        \newpage
+        \section{Diseño}
+        Tras el análisis recogido en la sección anterior, este apartado describe el diseño lógico de la aplicación móvil de gestión deportiva ---arquitectura, modelo de datos e interfaz---. En primer lugar se presenta la arquitectura por componentes; a continuación, el modelo de datos que sustenta usuarios, entrenamientos, asistencias y recursos multimedia; por último, se ilustran las pantallas principales mediante capturas de la aplicación desarrollada.
+
+        \subsection{Arquitectura del sistema}
+        \subsubsection{Visión general}
+        La plataforma se despliega como una aplicación móvil nativa en la que el usuario accede a una interfaz interactiva desarrollada en React Native. El cliente se comunica con un servidor backend mediante una API REST; la lógica de negocio y la persistencia residen en este servidor, que almacena la información en una base de datos relacional MySQL. En lugar de repartir la funcionalidad en microservicios independientes, el backend se implementa como un monolito modular: un único proceso desplegable organizado en módulos de dominio (autenticación, gestión de entrenamientos, control de asistencia y almacenamiento multimedia). Esta organización reduce la complejidad operativa del TFG y mantiene un acoplamiento acotado entre áreas funcionales.
+
+        La figura \ref{fig:arq_skiclubmanager} resume la arquitectura general del sistema. Además de la interacción cliente--servidor--base de datos, el cliente gestiona de forma local el estado de la sesión mediante la Context API de React Native, asegurando la persistencia del token JWT para las peticiones autenticadas, mientras que el módulo de rendimiento transforma los históricos de asistencia en componentes visuales mediante la librería gráfica del frontend.
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.9\textwidth]{imagenes/arquitectura.png}
+            \caption{Arquitectura de SkiClubManager.}
+            \label{fig:arq_skiclubmanager}
+        \end{figure}
+
+        \subsubsection{Componentes del backend}
+
+        El servidor de la plataforma se organiza como un monolito modular. Cada módulo de dominio agrupa el controlador REST que expone los endpoints, el servicio donde reside la lógica de negocio y, cuando corresponde, las entidades de persistencia asociadas a la base de datos MySQL. Todos los módulos comparten la misma base de datos relacional. Esta organización mantiene un reparto claro de responsabilidades sin fragmentar el despliegue en varios servicios independientes.
+
+        El conjunto completo de rutas que componen la API REST del sistema se detalla y referencia dinámicamente a través de la \ref{tab:endpoints_backend_1}, la \ref{tab:endpoints_backend_2}, la \ref{tab:endpoints_eventos} y la la \ref{tab:endpoints_gestion}.
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{1.1}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Fichero de Ruta} & \textbf{Verbo} & \textbf{Endpoint} & \textbf{Propósito y Lógica de Negocio} \\ \hline
+        autorizacion.js & POST & /login & Autenticación de credenciales y firma de tokens JWT. \\ \hline
+        autorizacion.js & POST & /solicitar-registro & Gestión de alta en la plataforma para nuevos usuarios. \\ \hline
+        autorizacion.js & POST & /forgot-password & Solicitud de recuperación de contraseña por email. \\ \hline
+        autorizacion.js & POST & /reset-password & Configuración de la nueva credencial del usuario. \\ \hline
+        autorizacion.js & POST & /change-password & Actualización de contraseña desde el perfil activo. \\ \hline
+        autorizacion.js & POST & /refresh & Renovación automática de un accessToken mediante el refresh token. \\ \hline
+        usuarios.js & GET & / & Obtención del listado global de usuarios del sistema (Admin). \\ \hline
+        usuarios.js & GET & /yo & Recuperación del perfil del usuario autenticado en sesión. \\ \hline
+        usuarios.js & GET & /:id & Consulta de un perfil de usuario específico por su identificador. \\ \hline
+        usuarios.js & POST & / & Registro directo de una nueva entidad de usuario. \\ \hline
+        \end{tabularx}
+        \caption{Endpoints REST de la API: Control de Autorización y Gestión de Usuarios.}
+        \label{tab:endpoints_backend_1}
+        \end{table}
+
+        \begin{table}[htbp]
+        \centering
+        \footnotesize
+        \renewcommand{\arraystretch}{1.1}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Fichero de Ruta} & \textbf{Verbo} & \textbf{Endpoint} & \textbf{Propósito y Lógica de Negocio} \\ \hline
+        deportista.js & GET & /mis\_hijos & Listado de los esquiadores vinculados al tutor legal (Padre). \\ \hline
+        deportista.js & POST & /anadir\_hijo & Alta e inserción relacional de un nuevo hijo en MySQL. \\ \hline
+        deportista.js & GET & /expedientes-completos & Consulta agregada de deportistas y sus tutores asignados. \\ \hline
+        deportista.js & PUT & /actualizar/:id & Modificación de los datos del expediente técnico de un esquiador. \\ \hline
+        deportista.js & DELETE & /eliminar/:id & Borrado físico de un deportista de la base de datos por su ID. \\ \hline
+        entrenadores.js & POST & / & Registro e inicialización de un nuevo perfil de entrenador. \\ \hline
+        entrenadores.js & GET & / & Recuperación del listado general del personal técnico del club. \\ \hline
+        entrenadores.js & GET & /mi\_perfil & Consulta del perfil privado y categoría del entrenador en sesión. \\ \hline
+        entrenadores.js & GET & /:id & Búsqueda parametrizada de un entrenador específico. \\ \hline
+        entrenadores.js & PUT & /:id & Actualización de los datos laborales o de contacto del técnico. \\ \hline
+        entrenadores.js & DELETE & /:id & Baja del sistema de la ficha de un entrenador específico. \\ \hline
+        \end{tabularx}
+        \caption{Endpoints REST de la API: Fichas de Deportistas y Personal de Entrenadores.}
+        \label{tab:endpoints_backend_2}
+        \end{table}
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.95}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Fichero de Ruta} & \textbf{Verbo} & \textbf{Endpoint} & \textbf{Propósito y Lógica de Negocio} \\ \hline
+        \texttt{eventos.js} & POST & \texttt{/} & Creación de un entrenamiento o competición deportiva. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/todos} & Recuperación de todo el calendario histórico y futuro del club. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/filtrados} & Eventos segmentados por categorías del usuario logueado. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/entrenador/mios} & Entrenamientos vinculados a la categoría específica del técnico. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/entrenador/asistencias} & Panel de control de faltas y asistencias para el entrenador. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/padre/asistencias} & Histórico de asistencia de los hijos para control del tutor. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/apuntados} & Eventos en los que los deportistas ya han sido confirmados. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/admin/asistencias} & Auditoría completa de asistencia a nivel de administración. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/viaje/:viajeId/pasajeros} & Listado de deportistas con plaza asignada en un trayecto. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/padre/evento/:id} & Detalle extendido de un evento enfocado al rol de los padres. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/:id/inscritos} & Retorna los alumnos que asistirán a un entrenamiento concreto. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/:id/apuntado} & Validación de la inscripción previa de un deportista. \\ \hline
+        \texttt{eventos.js} & POST & \texttt{/:id/apuntar} & Inscripción activa de un deportista en una sesión de pista. \\ \hline
+        \texttt{eventos.js} & DELETE & \texttt{/:id/desapuntar} & Cancelación de la asistencia de un deportista a un evento. \\ \hline
+        \texttt{eventos.js} & PUT & \texttt{/:id/transporte-hijo} & Modificación del método de subida asignado al menor. \\ \hline
+        \texttt{eventos.js} & PUT & \texttt{/:id} & Edición de parámetros (tipo de nieve, disciplina) de un evento. \\ \hline
+        \texttt{eventos.js} & DELETE & \texttt{/:id} & Eliminación del registro de un entrenamiento del calendario. \\ \hline
+        \end{tabularx}
+        \caption{Endpoints REST de la API: Gestión y Planificación de Eventos.}
+        \label{tab:endpoints_eventos}
+        \end{table}
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.95}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Fichero de Ruta} & \textbf{Verbo} & \textbf{Endpoint} & \textbf{Propósito y Lógica de Negocio} \\ \hline
+        \texttt{fotos.js} & GET & \texttt{/} & Consulta indexada de las capturas multimedia de los entrenamientos. \\ \hline
+        \texttt{fotos.js} & POST & \texttt{/} & Almacenamiento físico de una foto de pista y registro de su URL. \\ \hline
+        \texttt{fotos.js} & DELETE & \texttt{/ y /:id} & Eliminación masiva o individual de recursos multimedia. \\ \hline
+        \texttt{solicitud.js} & GET & \texttt{/} & Listado de solicitudes de justificación administrativas pendientes. \\ \hline
+        \texttt{solicitud.js} & POST & \texttt{/} & Envío de una nueva solicitud o justificante desde la aplicación. \\ \hline
+        \texttt{solicitud.js} & POST & \texttt{/:id/aceptar} & Aprobación de una solicitud con impacto en el estado del alumno. \\ \hline
+        \texttt{solicitud.js} & POST & \texttt{/:id/rechazar} & Desestimación o eliminación de una solicitud administrativa. \\ \hline
+        \texttt{transporte.js} & POST & \texttt{/reservar} & Bloqueo de plazas de transporte corporativo para la subida. \\ \hline
+        \texttt{transporte.js} & GET & \texttt{/entrenador} & Consulta de rutas planificadas para el personal de entrenadores. \\ \hline
+        \texttt{transporte.js} & GET & \texttt{/:id/pasajeros} & Control de la lista de pasajeros del bus técnico del club. \\ \hline
+        \texttt{transporte.js} & GET & \texttt{/padre} & Visualización de las rutas disponibles para el rol de familia. \\ \hline
+        \texttt{transporte.js} & GET & \texttt{/admin y /admin/:id/pasajeros} & Gestión e inspección analítica global de la logística de transporte. \\ \hline
+        \end{tabularx}
+        \caption{Endpoints REST de la API: Recursos Multimedia, Solicitudes Administrativas y Gestión Logística de Transporte.}
+        \label{tab:endpoints_gestion}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.9\textwidth]{diagramas/Arquitectura.drawio.png}
+            \caption{Organización modular del servidor (backend).}
+            \label{fig:org_modular_backend}
+        \end{figure}
+
+        \newpage
+        \subsubsection{Componentes del frontend}
+
+        La interfaz de usuario de la plataforma se ha desarrollado como una aplicación móvil nativa multiplataforma utilizando el framework React Native y TypeScript. La navegación interna y el flujo de pantallas se gestionan mediante la librería React Navigation, implementando una estrategia de enrutamiento dinámico basado en el estado de autenticación y el rol asignado al usuario (Administrador, Entrenador o Padre). 
+
+        El punto de entrada de la navegación se centraliza en el componente \texttt{StackNavigator.tsx}, el cual evalúa los parámetros \texttt{isAuthenticated} y \texttt{rol} provistos por el contexto global de seguridad (\texttt{AuthContext}). Si el usuario no está autenticado, el enrutador expone exclusivamente las pantallas del bloque común. Una vez validada la sesión mediante el token JWT, el sistema inyecta un sub-navegador específico (\texttt{AdminNavigator}, \texttt{EntrenadorNavigator} o \texttt{PadreNavigator}) que combina estructuras de navegación por pestañas (\texttt{Tabs}) y pilas de pantallas (\texttt{Stack}).
+
+        Las pantallas que componen los diferentes módulos de la aplicación móvil se detallan e indexan en la \ref{tab:frontend_screens_1} y en la \ref{tab:frontend_screens_2}.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.95}
+        \begin{tabularx}{\textwidth}{|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Bloque / Carpeta} & \textbf{Fichero de Pantalla} & \textbf{Funcionalidad e Interfaz de Usuario} \\ \hline
+        \texttt{comun/} & \texttt{LoginScreen.tsx} & Formulario de acceso al sistema con validación de credenciales. \\ \hline
+        \texttt{comun/} & \texttt{ForgotPassword.tsx} & Interfaz para la solicitud de recuperación de credenciales por correo. \\ \hline
+        \texttt{comun/} & \texttt{CambiarContrasena.tsx} & Formulario seguro para la actualización de la contraseña del usuario. \\ \hline
+        \texttt{padre/} & \texttt{RegisterRequestScreen.tsx} & Formulario de alta inicial y pre-registro para tutores legales. \\ \hline
+        \texttt{padre/} & \texttt{HomePadre.tsx} & Panel principal de familias con accesos directos y notificaciones. \\ \hline
+        \texttt{padre/} & \texttt{AnadirHijo.tsx} & Formulario para vincular y registrar un esquiador menor bajo su tutela. \\ \hline
+        \texttt{padre/} & \texttt{CalendarioPadre.tsx} & Visualización del calendario técnico y eventos de entrenamiento. \\ \hline
+        \texttt{padre/} & \texttt{DetalleEventoPadreApuntar.tsx} & Vista extendida de eventos con opción de inscripción para sus hijos. \\ \hline
+        \texttt{padre/} & \texttt{DetalleEventoPadreDesapuntar.tsx} & Cancelación de inscripciones previas y gestión de bajas del entrenamiento. \\ \hline
+        \texttt{padre/} & \texttt{AsistenciaHijoPista.tsx} & Consulta analítica del histórico de faltas y presencias en nieve de los hijos. \\ \hline
+        \texttt{padre/} & \texttt{AsistenciaTransporte.tsx} & Estado y reserva de plazas en los vehículos de subida a la estación. \\ \hline
+        \texttt{padre/} & \texttt{GaleriaPadre.tsx} & Muro multimedia cronológico para visualizar fotos técnicas de su hijo. \\ \hline
+        \texttt{padre/} & \texttt{PerfilPadre.tsx} & Visualización de los datos del tutor legal y ajustes de la cuenta. \\ \hline
+        \texttt{padre/} & \texttt{GestionarPerfil.tsx} & Formulario de edición de información personal y de contacto de la familia. \\ \hline
+        \end{tabularx}
+        \caption{Componentes del Frontend: Pantallas del Bloque Común y del Rol del Padre.}
+        \label{tab:frontend_screens_1}
+        \end{table}
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.95}
+        \begin{tabularx}{\textwidth}{|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Bloque / Carpeta} & \textbf{Fichero de Pantalla} & \textbf{Funcionalidad e Interfaz de Usuario} \\ \hline
+        \texttt{entrenador/} & \texttt{HomeEntrenador.tsx} & Panel operativo del técnico con resumen de entrenamientos del día. \\ \hline
+        \texttt{entrenador/} & \texttt{CalendarioEntrenador.tsx} & Agenda mensualizada de las sesiones y competiciones asignadas. \\ \hline
+        \texttt{entrenador/} & \texttt{CrearEvento.tsx} & Formulario técnico para la planificación de nuevas sesiones en pista. \\ \hline
+        \texttt{entrenador/} & \texttt{ModificarEntrenamiento.tsx} & Panel de edición de parámetros técnicos del entrenamiento guardado. \\ \hline
+        \texttt{entrenador/} & \texttt{AsistenciaEntrenamiento.tsx} & Interfaz interactiva para el control de asistencia por grupos en nieve. \\ \hline
+        \texttt{entrenador/} & \texttt{AsistenciaPista.tsx} & Consolidación y cierre del registro de faltas del día de esquí. \\ \hline
+        \texttt{entrenador/} & \texttt{AdministrarTransporte.tsx} & Control y verificación de la ocupación del bus técnico del club. \\ \hline
+        \texttt{entrenador/} & \texttt{GaleriaEntrenador.tsx} & Herramienta para capturar, asociar y subir material fotográfico. \\ \hline
+        \texttt{entrenador/} & \texttt{PerfilEntrenador.tsx} & Información profesional, titulación y categorías asignadas al técnico. \\ \hline
+        \texttt{admin/} & \texttt{HomeAdmin.tsx} & Cuadro de mando global del club con métricas y alertas del sistema. \\ \hline
+        \texttt{admin/} & \texttt{AdministrarUsuarios.tsx} & Panel CRUD para la gestión y asignación de roles en la plataforma. \\ \hline
+        \texttt{admin/} & \texttt{AdministrarEntrenador.tsx} & Alta, baja y control del personal técnico y directores de carrera. \\ \hline
+        \texttt{admin/} & \texttt{ListaEntrenadores.tsx} & Visualización global e indexada del cuerpo técnico del club de esquí. \\ \hline
+        \texttt{admin/} & \texttt{GestionarDeportistas.tsx} & Base de datos de expedientes, licencias y categorías de los corredores. \\ \hline
+        \texttt{admin/} & \texttt{AdministrarTransporte.tsx} & Configuración logística de trayectos, conductores y plazas de subida. \\ \hline
+        \texttt{admin/} & \texttt{GaleriaAdmin.tsx} & Moderación global de los recursos multimedia cargados en el servidor. \\ \hline
+        \end{tabularx}
+        \caption{Componentes del Frontend: Pantallas del Rol del Entrenador y del Rol del Administrador.}
+        \label{tab:frontend_screens_2}
+        \end{table}
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.95\textwidth]{diagramas/OrganizacionCliente.drawio.png}
+            \caption{Arquitectura y enrutamiento dinámico de la aplicación móvil según el rol de usuario.}
+            \label{fig:organizacion_cliente}
+        \end{figure}
+
+        \newpage
+        \subsubsection{Modelo de datos}
+
+        La plataforma persiste toda su información en una base de datos relacional gestionada a través de MySQL. El esquema lógico se define mediante un mapeo directo de entidad-tabla, aplicando restricciones de integridad referencial mediante claves foráneas, reglas de unicidad para evitar duplicidades en registros críticos (como credenciales o vinculaciones familiares) y relaciones muchos a muchos administradas mediante tablas de ruptura o pivote.
+
+        El modelo de datos ha sido diseñado para responder de forma estricta a las necesidades operativas y de negocio de la plataforma, estructurándose en torno a los siguientes pilares funcionales:
+        
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=1\textwidth]{diagramas/DiagramaBaseDatos.drawio.png}
+            \caption{Diagrama del modelo relacional}
+            \label{fig:relacional_usuarios_perfiles}
+        \end{figure}
+
+        \newpage
+        \subsection{Usuarios y Perfiles}
+
+        A continuación, se detallan de forma pormenorizada las tablas físicas que componen el dominio de gestión de usuarios, perfiles y filiaciones, especificando el tipo de dato, la clave y el propósito de cada atributo según la implementación real en el motor MySQL.
+
+        \subsubsection{Tabla: usuarios}
+        Esta entidad actúa como el núcleo del sistema de autenticación global de la plataforma, almacenando las credenciales de acceso y el rol asignado para la autorización en las aplicaciones.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{1.0}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Campo} & \textbf{Tipo de Dato} & \textbf{Clave} & \textbf{Descripción y Restricciones} \\ \hline
+        \texttt{id} & INT & PK (AI) & Identificador único auto-incremental de la cuenta. \\ \hline
+        \texttt{nombre} & VARCHAR(255) & - & Nombre de pila del usuario registrado. \\ \hline
+        \texttt{apellidos} & VARCHAR(255) & - & Apellidos completos del usuario. \\ \hline
+        \texttt{correo} & VARCHAR(255) & UNIQUE & Correo electrónico utilizado como login (clave única). \\ \hline
+        \texttt{fecha\_nacimiento} & DATE & - & Fecha de nacimiento del usuario de la cuenta. \\ \hline
+        \texttt{contrasena} & VARCHAR(255) & - & Hash seguro de la clave de acceso cifrada. \\ \hline
+        \texttt{rol} & ENUM(...) & - & Perfil del sistema: \texttt{'admin'}, \texttt{'entrenador'}, \texttt{'padre'}. \\ \hline
+        \texttt{reset\_password\_token} & VARCHAR(255) & - & Token temporal para el flujo de recuperación de contraseña. \\ \hline
+        \texttt{reset\_password\_expires} & DATETIME & - & Fecha de expiración de la validez del token de reinicio. \\ \hline
+        \end{tabularx}
+        \caption{Especificación física de la tabla \texttt{usuarios}.}
+        \label{tab:dic_usuarios}
+        \end{table}
+
+        \subsubsection{Tabla: padres}
+        Extiende la información de la cuenta base para aquellos usuarios que operan con el rol de tutores legales de los esquiadores.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{1.0}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Campo} & \textbf{Tipo de Dato} & \textbf{Clave} & \textbf{Descripción y Restricciones} \\ \hline
+        \texttt{id} & INT & PK (AI) & Identificador único del perfil del padre/tutor. \\ \hline
+        \texttt{id\_usuario} & INT & FK & Referencia al identificador base en la tabla \texttt{usuarios}. \\ \hline
+        \texttt{nombre} & VARCHAR(255) & - & Nombre del tutor legal. \\ \hline
+        \texttt{apellidos} & VARCHAR(255) & - & Apellidos del tutor legal. \\ \hline
+        \texttt{correo} & VARCHAR(255) & - & Correo electrónico de contacto o notificaciones. \\ \hline
+        \end{tabularx}
+        \caption{Especificación física de la tabla \texttt{padres}.}
+        \label{tab:dic_padres}
+        \end{table}
+        \newpage
+
+        \subsubsection{Tabla: entrenador}
+        Almacena la especialización del perfil técnico del club, acotando el ámbito deportivo del profesional.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{1.0}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Campo} & \textbf{Tipo de Dato} & \textbf{Clave} & \textbf{Descripción y Restricciones} \\ \hline
+        \texttt{id} & INT & PK (AI) & Identificador único del perfil del entrenador. \\ \hline
+        \texttt{categoria} & VARCHAR(100) & - & Grupo o categoría alpina asignada (ej. U14, U16, Tec.). \\ \hline
+        \end{tabularx}
+        \caption{Especificación física de la tabla \texttt{entrenador}.}
+        \label{tab:dic_entrenador}
+        \end{table}
+
+        \subsubsection{Tabla: deportistas}
+        Fichas y expedientes deportivos de los atletas del club de esquí. Al ser menores, dependen relacionalmente de sus tutores.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{1.0}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Campo} & \textbf{Tipo de Dato} & \textbf{Clave} & \textbf{Descripción y Restricciones} \\ \hline
+        \texttt{id} & INT & PK (AI) & Identificador único del esquiador. \\ \hline
+        \texttt{nombre} & VARCHAR(255) & - & Nombre del deportista menor de edad. \\ \hline
+        \texttt{apellidos} & VARCHAR(255) & - & Apellidos del deportista. \\ \hline
+        \texttt{fecha\_nacimiento} & DATE & - & Fecha de nacimiento del atleta (determina su categoría por edad). \\ \hline
+        \texttt{categoria} & VARCHAR(100) & - & Categoría de competición alpina asignada. \\ \hline
+        \end{tabularx}
+        \caption{Especificación física de la tabla \texttt{deportistas}.}
+        \label{tab:dic_deportistas}
+        \end{table}
+
+        \subsubsection{Tabla: padres\_hijos}
+        Tabla relacional de ruptura muchos a muchos ($M:N$) encargada de coordinar la patria potestad y los lazos de parentesco del club.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{1.0}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Campo} & \textbf{Tipo de Dato} & \textbf{Clave} & \textbf{Descripción y Restricciones} \\ \hline
+        \texttt{id} & INT & PK (AI) & Identificador correlativo del vínculo. \\ \hline
+        \texttt{id\_padre} & INT & FK & Clave foránea orientada al registro de la tabla \texttt{padres}. \\ \hline
+        \texttt{id\_deportista} & INT & FK & Clave foránea orientada al registro de la tabla \texttt{deportistas}. \\ \hline
+        \end{tabularx}
+        \caption{Especificación física de la tabla intermedia \texttt{padres\_hijos}.}
+        \label{tab:dic_padres_hijos}
+        \end{table}
+
+        La estructura física, las restricciones de integridad y la tipificación de datos que gobiernan este dominio se ilustran de forma detallada en el diagrama del modelo relacional de la \ref{fig:relacional_usuarios_perfiles}.
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.75\textwidth]{diagramas/DiagramaModeloUsuario.drawio.png}
+            \caption{Modelo relacional de datos Usuarios y Perfiles.}
+            \label{fig:relacional_usuarios_perfiles}
+        \end{figure}
+
+        \newpage
+
+        \subsection{Entrenamientos y Asistencias}
+
+        Este bloque del modelo de datos gestiona la planificación del calendario del club y el seguimiento operativo del rendimiento físico y la asistencia en las pistas de esquí. Estas tablas operan para permitir la vinculación de las convocatorias de entrenamientos o carreras oficiales con la presencia real de los esquiadores, optimizando la posterior explotación estadística y visualización de progreso deportivo de los atletas.
+
+        A continuación, se especifican las tablas físicas y las restricciones técnicas correspondientes a este bloque funcional del motor MySQL.
+
+        \subsubsection{Tabla: eventos}
+        Almacena las sesiones técnicas, entrenamientos físicos y competiciones del club programadas en el calendario deportivo.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.9}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Campo} & \textbf{Tipo de Dato} & \textbf{Clave} & \textbf{Descripción y Restricciones} \\ \hline
+        \texttt{id} & INT & PK (AI) & Identificador único auto-incremental del evento. \\ \hline
+        \texttt{fecha} & DATE & - & Fecha programada para la sesión deportiva. \\ \hline
+        \texttt{hora} & TIME & - & Hora de inicio o convocatoria del entrenamiento. \\ \hline
+        \texttt{tipo} & VARCHAR(255) & - & Tipología del evento (ej. Entrenamiento, Carrera, Físico). \\ \hline
+        \texttt{categoria} & VARCHAR(255) & - & Categoría alpina convocada (texto o estructuras mapeadas). \\ \hline
+        \texttt{nombreCarrera} & VARCHAR(255) & - & Nombre del evento competitivo oficial (admite valores nulos). \\ \hline
+        \texttt{disciplina} & VARCHAR(255) & - & Disciplina técnica asociada (ej. SL, GS, SG, DH o nulo). \\ \hline
+        \texttt{viaje\_id} & INT & FK & Referencia opcional al identificador de la tabla \texttt{transporte\_viajes}. \\ \hline
+        \end{tabularx}
+        \caption{Especificación física de la tabla \texttt{eventos}.}
+        \label{tab:dic_eventos}
+        \end{table}
+        \newpage
+
+        \subsubsection{Tabla: eventos\_deportistas}
+        Tabla de ruptura muchos a muchos encargada del control analítico de asistencia a pista y coordinación de la furgoneta técnica.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.9}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Campo} & \textbf{Tipo de Dato} & \textbf{Clave} & \textbf{Descripción y Restricciones} \\ \hline
+        \texttt{id} & INT & PK (AI) & Identificador correlativo único del registro de asistencia. \\ \hline
+        \texttt{id\_evento} & INT & FK & Clave foránea orientada al identificador de la tabla \texttt{eventos}. \\ \hline
+        \texttt{id\_deportista} & INT & FK & Clave foránea orientada al identificador de la tabla \texttt{deportistas}. \\ \hline
+        \texttt{enFurgoneta} & TINYINT(1) & - & Indicador booleano que determina si el deportista requiere plaza de bus. \\ \hline
+        \end{tabularx}
+        \caption{Especificación física de la tabla intermedia \texttt{eventos\_deportistas}.}
+        \label{tab:dic_eventos_deportistas}
+        \end{table}
+
+        La estructura física, las restricciones y la tipificación de los atributos de este módulo se ilustran detalladamente en el diagrama del modelo relacional de la \ref{fig:relacional_eventos_asistencias}.
+        \newpage
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.65\textwidth]{diagramas/DiaagramaModeloEntrenos.drawio.png}
+            \caption{Diagrama del modelo relacional de Entrenamientos y Asistencias.}
+            \label{fig:relacional_eventos_asistencias}
+        \end{figure}
+
+        \subsection{Logística de Transporte}
+
+        Este bloque del modelo de datos resuelve las necesidades operativas del club asociadas al desplazamiento de los esquiadores y el cuerpo técnico. Al centralizar la logística de transporte, el sistema optimiza la ocupación de los vehículos corporativos y furgonetas del equipo, ofreciendo además una trazabilidad completa a los tutores legales sobre el traslado seguro de los deportistas menores de edad.
+
+        A continuación, se especifican las tablas físicas y las restricciones técnicas correspondientes a este bloque funcional del motor MySQL.
+        \newpage
+        \subsubsection{Tabla: transporte\_viajes}
+        Representa las furgonetas, plazas habilitadas y viajes programados.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.9}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Campo} & \textbf{Tipo de Dato} & \textbf{Clave} & \textbf{Descripción y Restricciones} \\ \hline
+        \texttt{id} & INT & PK (AI) & Identificador único auto-incremental del viaje logístico. \\ \hline
+        \texttt{fecha} & DATE & - & Fecha programada para la subida de los deportistas. \\ \hline
+        \texttt{hora\_salida\_furgoneta} & TIME & - & Hora exacta de recogida y salida del vehículo oficial. \\ \hline
+        \texttt{plazas\_totales} & INT & - & Capacidad máxima de pasajeros soportada por el vehículo. \\ \hline
+        \texttt{descripcion} & VARCHAR(255) & - & Detalles de la ruta o furgoneta específica programada. \\ \hline
+        \texttt{activo} & TINYINT(1) & - & Indicador booleano para habilitar o suspender las reservas. \\ \hline
+        \end{tabularx}
+        \caption{Especificación física de la tabla \texttt{transporte\_viajes}.}
+        \label{tab:dic_transporte_viajes}
+        \end{table}
+
+        \subsubsection{Tabla: transporte\_reservas}
+        Tabla intermedia encargada de consolidar y auditar de forma relacional las reservas de plazas ocupadas por los esquiadores en cada vehículo.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.92}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Campo} & \textbf{Tipo de Dato} & \textbf{Clave} & \textbf{Descripción y Restricciones} \\ \hline
+        \texttt{id} & INT & PK (AI) & Identificador correlativo único del registro de la reserva. \\ \hline
+        \texttt{viaje\_id} & INT & FK & Clave foránea orientada al identificador de la tabla \texttt{transporte\_viajes}. \\ \hline
+        \texttt{deportista\_id} & INT & FK & Clave foránea orientada al identificador de la tabla \texttt{deportistas}. \\ \hline
+        \texttt{fecha\_reserva} & DATETIME & - & Sello temporal que registra el instante en el que se confirmó la plaza. \\ \hline
+        \end{tabularx}
+        \caption{Especificación física de la tabla intermedia \texttt{transporte\_reservas}.}
+        \label{tab:dic_transporte_reservas}
+        \end{table}
+
+        La estructura física, las restricciones de integridad y la tipificación de los atributos de este dominio se ilustran detalladamente en el diagrama del modelo relacional de la \ref{fig:relacional_transporte_viajes}.
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.65\textwidth]{diagramas/DiagramaTransporte.drawio.png}
+            \caption{Modelo relacional de Transporte.}
+            \label{fig:relacional_transporte_viajes}
+        \end{figure}
+        
+        \newpage
+        \subsection{Soporte y Gestión de Recursos}
+
+        Este último bloque del modelo de datos engloba aquellas entidades diseñadas para dar soporte administrativo al proceso de incorporación a la plataforma, así como para la persistencia del archivo digital multimedia generado durante los entrenamientos en nieve. Estas tablas operan de forma transversal para garantizar la seguridad en el registro de usuarios y el análisis visual de los deportistas.
+
+        A continuación, se especifican las tablas físicas y las restricciones técnicas correspondientes a este bloque funcional del motor MySQL.
+
+        \subsubsection{Tabla: solicitudes\_registro}
+        Actúa como tabla de tránsito para la validación previa de credenciales y datos familiares antes de su inserción definitiva en las tablas de producción del sistema.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.9}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Campo} & \textbf{Tipo de Dato} & \textbf{Clave} & \textbf{Descripción y Restricciones} \\ \hline
+        \texttt{id} & INT & PK (AI) & Identificador único auto-incremental de la solicitud. \\ \hline
+        \texttt{nombre\_tutor} & VARCHAR(255) & - & Nombre de pila del padre o madre solicitante. \\ \hline
+        \texttt{apellidos\_tutor} & VARCHAR(255) & - & Apellidos completos del tutor legal. \\ \hline
+        \texttt{correo\_tutor} & VARCHAR(255) & - & Correo de contacto (futuro identificador de login). \\ \hline
+        \texttt{nombre\_hijo} & VARCHAR(255) & - & Nombre de pila del deportista menor de edad. \\ \hline
+        \texttt{apellidos\_hijo} & VARCHAR(255) & - & Apellidos completos del deportista menor. \\ \hline
+        \texttt{fecha\_nacimiento\_hijo} & DATE & - & Fecha de nacimiento del corredor en inscripción. \\ \hline
+        \texttt{contrasena} & VARCHAR(255) & - & Hash temporal de la clave propuesta por el usuario. \\ \hline
+        \texttt{estado} & VARCHAR(50) & - & Estado de la solicitud (ej. Pendiente, Aceptada, Rechazada). \\ \hline
+        \texttt{categoria} & VARCHAR(100) & - & Categoría alpina solicitada para el deportista. \\ \hline
+        \texttt{fecha\_nacimiento\_tutor} & DATE & - & Fecha de nacimiento del padre o madre solicitante. \\ \hline
+        \end{tabularx}
+        \caption{Especificación física de la tabla \texttt{solicitudes\_registro}.}
+        \label{tab:dic_solicitudes_registro}
+        \end{table}
+        
+        \newpage
+        \subsubsection{Tabla: fotos}
+        Almacena la indexación y metadatos de las imágenes multimedia para la visualización técnica y el control de progreso deportivo.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{0.9}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabularx}{\textwidth}{|l|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Campo} & \textbf{Tipo de Dato} & \textbf{Clave} & \textbf{Descripción y Restricciones} \\ \hline
+        \texttt{id} & INT & PK (AI) & Identificador único auto-incremental del recurso multimedia. \\ \hline
+        \texttt{ruta} & VARCHAR(255) & - & Dirección URL o path físico del archivo almacenado. \\ \hline
+        \texttt{fecha\_creacion} & DATETIME & - & Sello temporal que registra el instante de subida del archivo. \\ \hline
+        \texttt{categoria\_id} & VARCHAR(100) & - & Identificador de la categoría alpina asociada a la imagen. \\ \hline
+        \end{tabularx}
+        \caption{Especificación física de la tabla \texttt{fotos}.}
+        \label{tab:dic_fotos}
+        \end{table}
+
+        La estructura lógica, los flujos de autoría multimedia y las relaciones de contexto de este módulo se ilustran detalladamente en el diagrama relacional de la \ref{fig:conceptual_soporte_recursos}.
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.8\textwidth]{diagramas/DiagramaMultimedia.drawio.png}
+            \caption{Modelo de datos de Soporte y Gestión de Recursos.}
+            \label{fig:conceptual_soporte_recursos}
+        \end{figure}
+
+        \newpage
+        \subsection{Interfaz de usuario}
+        \subsubsection{Prototipado con figma}
+        Una vez definida la arquitectura conceptual y física de la base de datos, el siguiente paso en el ciclo de vida del desarrollo del software consiste en la traslación de los requisitos funcionales a un entorno puramente visual y operativo. Antes de iniciar la fase de implementación y codificación de los componentes del \textit{frontend}, se llevó a cabo un proceso iterativo de diseño de interfaces con el objetivo de modelar la experiencia de usuario (\textit{User Experience}, UX) y la consistencia visual (\textit{User Interface}, UI).
+
+        Esta etapa de diseño previo resulta crítica en ingeniería del software por tres motivos fundamentales:
+        \begin{itemize}
+            \item \textbf{Mitigación de riesgos técnicos:} Permite validar los flujos de navegación lógicos del club de esquí (como el proceso de reserva indirecta de plazas o el control de asistencias) sin incurrir en costes de refactorización de código en fases avanzadas.
+            \item \textbf{Garantía de usabilidad:} Asegura que tanto los tutores legales (quienes requieren interfaces directas, claras y seguras para el control de sus hijos menores) como el cuerpo técnico (que interactúa con la aplicación en entornos fríos y exteriores en las pistas de esquí) dispongan de una curva de aprendizaje mínima.
+            \item \textbf{Establecimiento de una guía de estilo única:} Consolida de forma unificada la iconografía, las paletas cromáticas corporativas y las jerarquías tipográficas, sirviendo como plano técnico exacto para la posterior fase de maquetación.
+        \end{itemize}
+
+        Para la materialización de estos esquemas visuales se empleó la herramienta de prototipado industrial \textbf{Figma}. El proceso se dividió en dos fases metodológicas consecutivas: en primer lugar, se definieron los esquemas de baja fidelidad o \textit{wireframes} para estructurar la arquitectura de la información; posteriormente, se evolucionaron hacia prototipos de alta fidelidad (\textit{mockups}) que representan de forma fiel y exacta el aspecto final que adoptará la aplicación en producción.
+
+        A continuación, se detallan los pilares visuales que gobiernan la aplicación, así como el desglose de las vistas principales agrupadas por los roles operativos del sistema.
+        
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.8\textwidth]{imagenes/MockupAdmin.png}
+            \caption{Mockup de la interfaz del administrado y del entrenador.}
+            \label{fig:mockup_admin}
+        \end{figure}
+
+         \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.8\textwidth]{imagenes/MockupPadre.png}
+            \caption{Mockup de la interfaz del padre y del tutor.}
+            \label{fig:mockup_padre}
+        \end{figure}
+        \newpage
+
+        La fidelidad de los prototipos desarrollados en Figma y la posterior maquetación de la aplicación no son arbitrarias; responden de manera estricta a una identidad corporativa unificada. El establecimiento de este \textit{UI Kit} (Kit de Interfaz de Usuario) garantiza que cada componente visual mantenga la consistencia a lo largo de las diferentes vistas de la plataforma, reforzando la imagen institucional del club y optimizando la carga cognitiva del usuario.
+
+        A continuación, se describen los pilares fundamentales que componen la guía de estilo del sistema.
+
+        \subsubsection{Nombre}
+        El nombre \textbf{“SkiClubManager”} fue elegido de manera estratégica para evocar la combinación exacta entre el esqui alpino de competición y la robustez de una plataforma de control administrativo moderno. Por un lado, \textbf{“SkiClub”} define de forma inequívoca el nicho y la identidad deportiva del sistema, apelando a la comunidad de corredores, entrenadores y familias que conviven en las estaciones invernales. Por otro lado, \textbf{“Manager”} alude de manera directa a la eficiencia, la automatización de procesos y el control logístico integral (asistencias, transporte y expedientes), lo cual se convierte en la metáfora perfecta del núcleo funcional del proyecto: transformar la compleja gestión manual de un club deportivo tradicional en una operativa ágil, digitalizada y centralizada en una sola herramienta.
+
+        \subsubsection{Logo}
+        El logo de la aplicación fue diseñado para capturar la esencia de “SkiClubManager”. Incluye la silueta de montañas nevadas y una flecha ascendente, lo cual simboliza tanto el entorno alpino como el progreso y la gestión deportiva del club. Se desarrolló utilizando la herramienta Figma, cuidando que los colores (tonos azules y naranja) y las formas fueran coherentes con la estética general de la aplicación, brindando una identidad visual atractiva y memorable.        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=0.5\textwidth]{imagenes/logo.png}
+            \caption{Diseño del logo.}
+            \label{fig:diseño_logo}
+        \end{figure}
+        \newpage
+
+        \subsubsection{Paleta Cromática (Colores)}
+        La selección del espectro cromático responde a la identidad de los deportes de invierno y a la necesidad de ofrecer un contraste óptimo en exteriores. La paleta se compone de una base estructural de azules y un conjunto de colores semánticos destinados a la categorización visual en el módulo de calendario:
+
+        \begin{itemize}
+            \item \textbf{Color Primario y Secundario:} Tonos de azul alpino oscuro para la estructura, barras de navegación y botones principales, combinados con azul celeste para los acentos y estados activos.
+            \item \textbf{Colores Semánticos del Calendario:} Para diferenciar de un vistazo el tipo de planificación en la agenda sin saturar al usuario, se utiliza un código de tres colores específicos (Rojo, Verde y Azul).
+        \end{itemize}
+
+        La definición técnica de la paleta y sus casos de uso en la interfaz se detallan en la tabla \ref{tab:paleta_colores}.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{1.3}
+        \setlength{\tabcolsep}{6pt}
+        \begin{tabularx}{\textwidth}{|l|l|c|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Componente / Aplicación} & \textbf{Código HEX} & \textbf{Muestra} & \textbf{Propósito en la Interfaz (UX)} \\ \hline
+        Azul Principal (Estructural) & \#2C3E50 & \colorbox[HTML]{2C3E50}{\hspace{0.4cm}} & Fondo de cabeceras, botones de acción y texto principal. \\ \hline
+        Azul Celeste (Acentos) & \#3498DB & \colorbox[HTML]{3498DB}{\hspace{0.4cm}} & Elementos seleccionados, enlaces y estados activos. \\ \hline
+        Verde (Calendario) & \#2ECC71 & \colorbox[HTML]{2ECC71}{\hspace{0.4cm}} & Identificación de entrenamientos de tipo físico. \\ \hline
+        Rojo (Calendario) & \#E74C3C & \colorbox[HTML]{E74C3C}{\hspace{0.4cm}} & Identificación de entrenamientos técnicos en nieve. \\ \hline
+        Azul Agenda (Calendario) & \#2980B9 & \colorbox[HTML]{2980B9}{\hspace{0.4cm}} & Identificación de eventos oficiales o competiciones del club. \\ \hline
+        \end{tabularx}
+        \caption{Especificación de la paleta de colores y lógica semántica del calendario.}
+        \label{tab:paleta_colores}
+        \end{table}
+
+        \subsubsection{Componentes de la Interfaz de Usuario}
+
+        El desarrollo del \textit{frontend} de la aplicación se ha estructurado bajo un enfoque de arquitectura basada en componentes reutilizables utilizando el framework \textbf{React Native}. Esta metodología no solo optimiza la mantenibilidad del código y reduce la redundancia, sino que garantiza un comportamiento fluido y nativo tanto en dispositivos Android como iOS, aspecto crítico para el cuerpo técnico que opera la aplicación en condiciones de baja temperatura exterior.
+
+        A continuación, se desglosan los bloques y componentes principales que estructuran la experiencia de usuario de la plataforma:
+
+        \subsubsection{Componentes Estructurales y de Navegación}
+        Para la organización de las vistas y el flujo de pantallas se han implementado contenedores adaptativos que gestionan el ciclo de vida de la interfaz:
+        \begin{itemize}
+            \item \textbf{Contenedores de Pantalla (\texttt{SafeAreaView} y \texttt{ScrollView}):} Componentes encargados de garantizar que la interfaz respete las dimensiones físicas del dispositivo (evitando colisiones con \textit{notches} o barras del sistema) y permitiendo el desplazamiento vertical fluido en listados densos de deportistas o eventos.
+            \item \textbf{Estructuras de Navegación (\texttt{React Navigation}):} Se combina una navegación por pestañas inferiores (\textit{Bottom Tab Navigation}) para el acceso rápido a los módulos principales (Calendario, Deportistas, Perfil) con una navegación en pila (\textit{Stack Navigation}) para flujos transaccionales profundos, tales como la apertura del expediente técnico de un corredor o la visualización de una foto en alta resolución.
+        \end{itemize}
+
+        \subsubsection{Componentes de Control de Estado y Datos}
+        La sincronización de la información proveniente del \textit{backend} en Node.js y la interacción del usuario se gestionan mediante componentes de flujo de datos:
+        \begin{itemize}
+            \item \textbf{Proveedores de Contexto (\texttt{Context API}):} Componentes globales encargados de envolver la aplicación para inyectar el estado de la sesión, las credenciales del token JWT y el rol del usuario autenticado (Entrenador o Padre), permitiendo un renderizado condicional inmediato de la interfaz según los permisos del perfil.
+            \item \textbf{Formularios Dinámicos y Entradas de Texto:} Componentes personalizados basados en \texttt{TextInput} que integran validaciones en tiempo real para procesos críticos como el inicio de sesión, la pasarela de preregistro familiar y la subida de rutas multimedia.
+        \end{itemize}
+
+        \subsubsection{Componentes Visuales Especializados y Analítica}
+        Para responder a los requisitos de control de asistencia y progresión deportiva, la interfaz integra componentes enriquecidos de visualización de datos:
+        \begin{itemize}
+            \item \textbf{Gráficos de Progreso (\texttt{react-native-chart-kit}):} Componentes encargados de renderizar de manera interactiva las métricas de rendimiento y asistencia técnica. Utilizan gráficos de líneas y barras adaptativos que permiten filtrar la evolución del deportista por temporada o mes, facilitando a los entrenadores y padres la detección de patrones de asistencia.
+            \item \textbf{Tarjetas de Expediente Familiar y Deportivo:} Presentan de forma compacta el estado de sus reservas de transporte, asistencias a pista e histórico de imágenes asociadas.
+        \end{itemize}
+
+        La organización e interconexión de estos componentes de interfaz se detalla de forma sintética en la tabla \ref{tab:componentes_ui}.
+
+        \begin{table}[htbp]
+        \centering
+        \scriptsize
+        \renewcommand{\arraystretch}{1.3}
+        \setlength{\tabcolsep}{6pt}
+        \begin{tabularx}{\textwidth}{|l|l|X|}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        \textbf{Categoría} & \textbf{Componente / Librería} & \textbf{Responsabilidad en la Aplicación (React Native)} \\ \hline
+        Navegación & \texttt{BottomTab / Stack} & Gestión del flujo de pantallas y menús según el rol operativo. \\ \hline
+        Analítica Visual & \texttt{react-native-chart-kit} & Renderizado de curvas de progresión, estadísticas y asistencia. \\ \hline
+        Gestión de Estado & \texttt{Context API} & Propagación global del estado de autenticación JWT y filtros de temporada. \\ \hline
+        Interfaz Crítica & \texttt{SafeAreaView / Tarjetas} & Garantizar la legibilidad en exteriores y consistencia del diseño. \\ \hline
+        \end{tabularx}
+        \caption{Clasificación y responsabilidades de los componentes de la interfaz de usuario.}
+        \label{tab:componentes_ui}
+        \end{table}

@@ -37,7 +37,7 @@ export default function GestionarPerfilScreen() {
     };
 
     if (accessToken && isFocused) {
-      setLoading(true); // para mostrar el spinner si se vuelve a enfocar
+      setLoading(true);
       fetchHijos();
     }
   }, [accessToken, isFocused]);

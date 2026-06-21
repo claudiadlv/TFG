@@ -14,7 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { API_URL } from '../../config';
 
-// --- TIPOS ---
+//Tipos
 type Viaje = { 
   id: string; 
   destino: string; 
@@ -44,7 +44,6 @@ export default function AdministrarTransporte() {
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<ActiveTab>('Próximos');
 
-  // Estados para el Modal de Pasajeros
   const [modalVisible, setModalVisible] = useState(false);
   const [pasajerosViaje, setPasajerosViaje] = useState<Pasajero[]>([]);
   const [cargandoPasajeros, setCargandoPasajeros] = useState(false);
@@ -144,7 +143,7 @@ export default function AdministrarTransporte() {
         setPasajerosViaje(data);
       }
     } catch (error) {
-      console.error("Error obteniendo pasajeros del bus:", error);
+      console.error("Error obteniendo pasajeros en el transporte:", error);
     } finally {
       setCargandoPasajeros(false);
     }
@@ -274,7 +273,7 @@ export default function AdministrarTransporte() {
       <Modal visible={modalVisible} transparent animationType="fade">
         <View style={modalStyles.overlay}>
           <View style={modalStyles.content}>
-            <Text style={modalStyles.titulo}>Pasajeros de mi Categoría</Text>
+            <Text style={modalStyles.titulo}>Deportistas</Text>
             {cargandoPasajeros ? (
               <ActivityIndicator size="large" color="#0D47A1" style={{ marginVertical: 20 }} />
             ) : (
@@ -287,7 +286,7 @@ export default function AdministrarTransporte() {
                 ))}
                 {pasajerosViaje.length === 0 && (
                   <Text style={{ textAlign: 'center', color: '#888', marginVertical: 20, fontStyle: 'italic' }}>
-                    No hay alumnos de tu categoría en este viaje.
+                    No hay deportistas en este viaje.
                   </Text>
                 )}
               </ScrollView>

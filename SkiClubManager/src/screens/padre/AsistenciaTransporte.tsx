@@ -4,7 +4,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { API_URL } from '../../config';
 
-// --- TIPOS ---
 type Viaje = { 
   id: string; 
   destino: string;
@@ -32,7 +31,6 @@ export default function TransportePadre() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('Próximos');
   const [busqueda, setBusqueda] = useState('');
 
-  // Carga de datos de la API original intacta
   const cargarDatos = useCallback(async () => {
     try {
       setLoading(true);
@@ -50,7 +48,7 @@ export default function TransportePadre() {
       setReservas(data.reservas || []);
     } catch (e) {
       console.error('❌ Error cargando transporte padre:', e);
-      setError('No se pudieron cargar los horarios de autobuses.');
+      setError('No se pudieron cargar los horarios de la furgoneta.');
     } finally {
       setLoading(false);
     }
@@ -58,12 +56,10 @@ export default function TransportePadre() {
 
   useEffect(() => { cargarDatos(); }, [cargarDatos]);
 
-  // Limpiar la caja al cambiar de pestaña como hace el entrenador
   useEffect(() => {
     setBusqueda('');
   }, [activeTab]);
 
-  // Obtener lista única de hijos (Nil, Loreto, Zoe, Misho) basada en las reservas del usuario
   const misHijos = useMemo(() => {
     const mapa = new Map<number, string>();
     reservas.forEach(r => {
@@ -74,18 +70,15 @@ export default function TransportePadre() {
     return Array.from(mapa.entries()).map(([id, nombre]) => ({ id, nombre }));
   }, [reservas]);
 
-  // 🚀 LÓGICA DE FILTRADO CLONADA DEL ENTRENADOR (Busca por destino y mes sin perder foco)
   const viajesFiltrados = useMemo(() => {
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
     const hoyTime = hoy.getTime();
     
-    // Mantiene tu filtro original de negocio: furgonetas vinculadas a tus hijos
     let vinculados = viajes.filter(v => 
       reservas.some(r => String(r.viaje_id) === String(v.id))
     );
 
-    // 1. Segmentación temporal idéntica al entrenador
     let filtrados = vinculados.filter(viaje => {
       if (!viaje.fecha_salida) return false;
       
@@ -101,7 +94,6 @@ export default function TransportePadre() {
       return fechaViaje < hoyTime;
     });
 
-    // 2. Buscador del entrenador: Filtrado por texto de destino o nombre del mes
     if (busqueda.trim() !== '') {
       const query = busqueda.toLowerCase().trim();
       
@@ -116,7 +108,6 @@ export default function TransportePadre() {
       });
     }
 
-    // 3. Ordenación avanzada según la pestaña activa
     return filtrados.sort((a, b) => {
       const timeA = new Date(a.fecha_salida.includes('T') ? a.fecha_salida.split('T')[0] : a.fecha_salida.split(' ')[0]).getTime();
       const timeB = new Date(b.fecha_salida.includes('T') ? b.fecha_salida.split('T')[0] : b.fecha_salida.split(' ')[0]).getTime();
@@ -129,11 +120,9 @@ export default function TransportePadre() {
 
   return (
     <View style={styles.container}>
-      {/* CABECERA FIJA SUPERIOR (Mantiene el foco del TextInput y evita saltos de teclado) */}
       <View style={styles.fixedHeader}>
-        <Text style={styles.headerTitle}>Autobuses del Club</Text>
+        <Text style={styles.headerTitle}>Transporte del Club</Text>
         
-        {/* Selector de pestañas */}
         <View style={styles.tabContainer}>
           <TouchableOpacity style={[styles.tab, activeTab === 'Próximos' && styles.activeTab]} onPress={() => setActiveTab('Próximos')}>
             <Text style={[styles.tabText, activeTab === 'Próximos' && styles.activeTabText]}>Próximos</Text>
@@ -143,12 +132,11 @@ export default function TransportePadre() {
           </TouchableOpacity>
         </View>
 
-        {/* 🛠️ COMPONENTE BUSCADOR CLONADO DEL ENTRENADOR */}
         <View style={styles.searchContainer}>
           <Icon name="search-outline" size={20} color="#888" style={styles.searchIcon} />
           <TextInput
             style={styles.searchInput}
-            placeholder="Buscar por destino o mes..."
+            placeholder="Buscar por dia o mes..."
             placeholderTextColor="#888"
             value={busqueda}
             onChangeText={setBusqueda}
@@ -162,7 +150,6 @@ export default function TransportePadre() {
         </View>
       </View>
 
-      {/* Listado de Tarjetas */}
       <FlatList
         contentContainerStyle={styles.contentContainer}
         data={viajesFiltrados}
@@ -171,7 +158,7 @@ export default function TransportePadre() {
           <View style={styles.emptyContainer}>
             <Icon name="bus-outline" size={48} color="#9CA3AF" />
             <Text style={styles.emptyText}>
-              {busqueda ? 'No hay resultados que coincidan con tu búsqueda.' : 'No hay autobuses programados.'}
+              {busqueda ? 'No hay resultados que coincidan con tu búsqueda.' : 'No hay transportes programados.'}
             </Text>
           </View>
         }
@@ -180,7 +167,6 @@ export default function TransportePadre() {
           const porcentaje = item.plazas_totales > 0 ? (ocupadas / item.plazas_totales) * 100 : 0;
           const isFull = item.plazas_disponibles === 0;
 
-          // Formateador manual de fecha limpia idéntico al del entrenador
           const soloFechaStr = item.fecha_salida.includes('T') ? item.fecha_salida.split('T')[0] : item.fecha_salida.split(' ')[0];
           const partes = soloFechaStr.split('-');
           let fechaFormateada = item.fecha_salida;
@@ -191,7 +177,6 @@ export default function TransportePadre() {
             fechaFormateada = `${dia} de ${mes}`;
           }
 
-          // 🔥 HORA DE SALIDA EXTRAÍDA CORRECTAMENTE DE TU PROPIEDAD REAL
           const horaFormateada = item.hora_salida_furgoneta 
             ? item.hora_salida_furgoneta.slice(0, 5) 
             : '--:--';
@@ -209,7 +194,6 @@ export default function TransportePadre() {
                 </View>
               </View>
 
-              {/* BARRA DE PROGRESO */}
               <View style={styles.capacityContainer}>
                 <Text style={styles.capacityText}>Ocupación: {ocupadas}/{item.plazas_totales} plazas</Text>
                 <View style={styles.progressBarBg}>
@@ -224,7 +208,6 @@ export default function TransportePadre() {
 
               <View style={styles.hijosSection}>
                 <View style={styles.hijosContainer}>
-                  {/* 🚀 ORDENACIÓN EN TIEMPO REAL PARA EL TFG */}
                   {[...misHijos]
                     .sort((a, b) => {
                       const aApuntado = reservas.some(r => 
@@ -234,7 +217,6 @@ export default function TransportePadre() {
                         String(r.viaje_id) === String(item.id) && Number(r.deportista_id) === Number(b.id)
                       );
                       
-                      // Si 'b' está apuntado y 'a' no, los intercambia para que los true queden arriba (1 - 0)
                       return (bApuntado ? 1 : 0) - (aApuntado ? 1 : 0);
                     })
                     .map(hijo => {
@@ -266,7 +248,7 @@ export default function TransportePadre() {
   );
 }
 
-// --- MAQUETACIÓN DE ESTILOS UNIFICADOS ---
+//Estilos
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F3F4F6' },
   fixedHeader: { paddingHorizontal: 16, paddingTop: 16, backgroundColor: '#F3F4F6' },

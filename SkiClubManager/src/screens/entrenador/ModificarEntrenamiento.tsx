@@ -26,15 +26,12 @@ export default function ModificarEntrenamiento({ route }: Props) {
   const navigation = useNavigation<NativeStackNavigationProp<EntrenadorStackParamList>>();
   const { entrenamiento } = route.params;
 
-  // Utilidad para asegurar que tenemos un array de strings
   const toArray = (v: any): string[] =>
     Array.isArray(v) ? v : (v != null && v !== '' ? [String(v)] : []);
 
-  // --- ESTADOS INICIALES ---
   const [conTransporte, setConTransporte] = useState(!!entrenamiento.viaje_id);
   const [plazasTransporte, setPlazasTransporte] = useState(String(entrenamiento.plazas_totales || '8'));
   
-  // Estados para la hora de la furgoneta corregida
   const [horaFurgo, setHoraFurgo] = useState((entrenamiento as any).hora_salida_furgoneta || '08:30');
   const [showTimePickerFurgo, setShowTimePickerFurgo] = useState(false);
 
@@ -234,7 +231,6 @@ export default function ModificarEntrenamiento({ route }: Props) {
         />
       )}
 
-      {/* --- SECCIÓN DE LOGÍSTICA REDISEÑADA --- */}
       <View style={{ 
         marginTop: 15, 
         padding: 15, 

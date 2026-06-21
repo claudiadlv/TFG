@@ -75,7 +75,6 @@ export default function AsistenciaEntrenador() {
     eventosGlobales.forEach(e => {
       if (!e.fecha) return;
       
-      // Tomamos los primeros 10 caracteres: "YYYY-MM-DD" de forma estricta sin importar la hora
       const dStr = e.fecha.substring(0, 10); 
       const partes = dStr.split('-');
       

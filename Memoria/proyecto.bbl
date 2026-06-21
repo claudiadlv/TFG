@@ -144,33 +144,182 @@
       \verb https://play.google.com/store/apps/details?id=it.l4c.onesporter
       \endverb
     \endentry
-    \entry{boe_indemnizaciones}{official}{}
-      \name{author}{1}{}{%
-        {{hash=65071c37a888c7d12ded8c516e5e4a79}{%
-           family={{Boletín Oficial del Estado}},
-           familyi={B\bibinitperiod}}}%
+    \entry{NodeJS}{article}{}
+      \name{author}{2}{}{%
+        {{hash=71539e822b9d217e558698b79d84a8f4}{%
+           family={Tilkov},
+           familyi={T\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ec36bb9d2db7215ce32871a7fb8526ee}{%
+           family={Vinoski},
+           familyi={V\bibinitperiod},
+           given={Steve},
+           giveni={S\bibinitperiod}}}%
       }
-      \strng{namehash}{65071c37a888c7d12ded8c516e5e4a79}
-      \strng{fullhash}{65071c37a888c7d12ded8c516e5e4a79}
-      \strng{bibnamehash}{65071c37a888c7d12ded8c516e5e4a79}
-      \strng{authorbibnamehash}{65071c37a888c7d12ded8c516e5e4a79}
-      \strng{authornamehash}{65071c37a888c7d12ded8c516e5e4a79}
-      \strng{authorfullhash}{65071c37a888c7d12ded8c516e5e4a79}
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{07ea5eeb05273c4db5828278c617ab85}
+      \strng{fullhash}{07ea5eeb05273c4db5828278c617ab85}
+      \strng{bibnamehash}{07ea5eeb05273c4db5828278c617ab85}
+      \strng{authorbibnamehash}{07ea5eeb05273c4db5828278c617ab85}
+      \strng{authornamehash}{07ea5eeb05273c4db5828278c617ab85}
+      \strng{authorfullhash}{07ea5eeb05273c4db5828278c617ab85}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Boletín Oficial del Estado}
-      \field{number}{166}
-      \field{title}{Orden HFP/793/2023, de 12 de julio, por la que se revisa el importe de la indemnización por uso de vehículo particular y de las condiciones generales de gestión}
-      \field{year}{2023}
-      \field{pages}{102345\bibrangedash 102348}
+      \field{journaltitle}{IEEE Internet Computing}
+      \field{number}{6}
+      \field{title}{Node.js: Using Component-Driven JavaScript to Create Scalable Web Services}
+      \field{volume}{14}
+      \field{year}{2010}
+      \field{pages}{80\bibrangedash 83}
       \range{pages}{4}
+    \endentry
+    \entry{ExpressJS}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=2476777bd9ea1cbcd9c9a6f186348cfa}{%
+           family={{Express JS Foundation}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{2476777bd9ea1cbcd9c9a6f186348cfa}
+      \strng{fullhash}{2476777bd9ea1cbcd9c9a6f186348cfa}
+      \strng{bibnamehash}{2476777bd9ea1cbcd9c9a6f186348cfa}
+      \strng{authorbibnamehash}{2476777bd9ea1cbcd9c9a6f186348cfa}
+      \strng{authornamehash}{2476777bd9ea1cbcd9c9a6f186348cfa}
+      \strng{authorfullhash}{2476777bd9ea1cbcd9c9a6f186348cfa}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Express - Fast, unopinionated, minimalist web framework for Node.js}
+      \field{year}{2026}
       \verb{urlraw}
-      \verb https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-16364
+      \verb https://expressjs.com
       \endverb
       \verb{url}
-      \verb https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-16364
+      \verb https://expressjs.com
+      \endverb
+    \endentry
+    \entry{MySQL}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=d51288dc67d9f5e0330d927a009e208b}{%
+           family={{Oracle Corporation}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{d51288dc67d9f5e0330d927a009e208b}
+      \strng{fullhash}{d51288dc67d9f5e0330d927a009e208b}
+      \strng{bibnamehash}{d51288dc67d9f5e0330d927a009e208b}
+      \strng{authorbibnamehash}{d51288dc67d9f5e0330d927a009e208b}
+      \strng{authornamehash}{d51288dc67d9f5e0330d927a009e208b}
+      \strng{authorfullhash}{d51288dc67d9f5e0330d927a009e208b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{MySQL Reference Manual - The world's most popular open source database}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://dev.mysql.com/doc/
+      \endverb
+      \verb{url}
+      \verb https://dev.mysql.com/doc/
+      \endverb
+    \endentry
+    \entry{ReactNative}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6c56f762d9ebe73063cd2d157e97351f}{%
+           family={{Meta Open Source}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{fullhash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{bibnamehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{authorbibnamehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{authornamehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{authorfullhash}{6c56f762d9ebe73063cd2d157e97351f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{React Native - A framework for building native apps using React}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://reactnative.dev
+      \endverb
+      \verb{url}
+      \verb https://reactnative.dev
+      \endverb
+    \endentry
+    \entry{RFC7519_JWT}{report}{}
+      \name{author}{3}{}{%
+        {{hash=5a25bc91f524ca6dfc2ecf9f4a13903c}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=81e40ae87af997090fa9a9696e364c65}{%
+           family={Bradley},
+           familyi={B\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=34e6848475fd66697bfcb80787f2aef0}{%
+           family={Sakimura},
+           familyi={S\bibinitperiod},
+           given={Nat},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Internet Engineering Task Force (IETF)}%
+      }
+      \strng{namehash}{48d544cafb60a3ced64569d686a33135}
+      \strng{fullhash}{48d544cafb60a3ced64569d686a33135}
+      \strng{bibnamehash}{48d544cafb60a3ced64569d686a33135}
+      \strng{authorbibnamehash}{48d544cafb60a3ced64569d686a33135}
+      \strng{authornamehash}{48d544cafb60a3ced64569d686a33135}
+      \strng{authorfullhash}{48d544cafb60a3ced64569d686a33135}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{7519}
+      \field{title}{JSON Web Token (JWT) - RFC 7519}
+      \field{type}{RFC}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb https://tools.ietf.org/html/rfc7519
+      \endverb
+      \verb{url}
+      \verb https://tools.ietf.org/html/rfc7519
+      \endverb
+    \endentry
+    \entry{ReactNativeChartKit}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9b4bfa966faebeeedf28768a05550414}{%
+           family={Chai},
+           familyi={C\bibinitperiod},
+           given={Chin\bibnamedelima Jin},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{9b4bfa966faebeeedf28768a05550414}
+      \strng{fullhash}{9b4bfa966faebeeedf28768a05550414}
+      \strng{bibnamehash}{9b4bfa966faebeeedf28768a05550414}
+      \strng{authorbibnamehash}{9b4bfa966faebeeedf28768a05550414}
+      \strng{authornamehash}{9b4bfa966faebeeedf28768a05550414}
+      \strng{authorfullhash}{9b4bfa966faebeeedf28768a05550414}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{react-native-chart-kit - React Native Chart Kit for Expo and Vanilla}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://github.com/indiespirit/react-native-chart-kit
+      \endverb
+      \verb{url}
+      \verb https://github.com/indiespirit/react-native-chart-kit
       \endverb
     \endentry
   \enddatalist

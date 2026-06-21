@@ -227,7 +227,6 @@ export default function GaleriaAdminScreen() {
     const fotosFiltradas = fotosUnicas.filter(photo => {
       const listaCategoriasFoto = photo.categoria.split(',').map(c => c.trim());
 
-      // 🛡️ Regra estricta por pestañas relacionales
       if (categoriaActiva === 'General') {
         if (!listaCategoriasFoto.includes('General')) {
           return false;
@@ -238,7 +237,7 @@ export default function GaleriaAdminScreen() {
         }
       }
 
-      // 🔍 EL BUSCADOR INTEGRADO: Compara contra texto de fecha formateada ("marzo 2026")
+      //Buscador
       if (!searchQuery) return true;
       const query = searchQuery.toLowerCase().trim();
       
@@ -251,7 +250,6 @@ export default function GaleriaAdminScreen() {
       if (!isNaN(dateObj.getTime())) {
         const nombreMesStr = nombresMeses[dateObj.getMonth()].toLowerCase();
         const anioStr = dateObj.getFullYear().toString();
-        // Indexamos asociativamente: "2026-03-25 marzo 2026"
         textoFechaCompleto += ` ${nombreMesStr} ${anioStr}`;
       }
 
@@ -302,7 +300,6 @@ export default function GaleriaAdminScreen() {
   return (
     <View style={styles.container}>
       
-      {/* HEADER DE CONTROL TOTAL */}
       {selectedPhotoIds.length > 0 ? (
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#FFEBEE', padding: 12, borderRadius: 8, margin: 10 }}>
           <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#C62828' }}>
@@ -321,7 +318,6 @@ export default function GaleriaAdminScreen() {
         <Text style={styles.title}>Panel de Control Multimedia</Text> 
       )}
 
-      {/* 📊 PICKERS/PESTAÑAS DINÁMICAS COMPLETAS */}
       {selectedPhotoIds.length === 0 && categoriasDisponibles.length > 0 && (
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start', flexWrap: 'wrap', backgroundColor: '#F8F9F9', padding: 8, marginHorizontal: 15, borderRadius: 8, marginBottom: 10 }}>
           {categoriasDisponibles.map((cat, index) => {
@@ -339,7 +335,6 @@ export default function GaleriaAdminScreen() {
         </View>
       )}
 
-      {/* BUSCADOR */}
       <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#F0F3F4', borderRadius: 10, marginHorizontal: 15, paddingHorizontal: 10, marginBottom: 15 }}>
         <Icon name="search-outline" size={20} color="#7F8C8D" style={{ marginRight: 8 }} />
         <TextInput
@@ -351,14 +346,12 @@ export default function GaleriaAdminScreen() {
         />
       </View>
 
-      {/* BOTÓN FLOTANTE SUBIR FOTO */}
       {selectedPhotoIds.length === 0 && (
         <TouchableOpacity style={styles.uploadButton} onPress={handleAddPhoto}>
           <Icon name="add-circle" size={50} color="#2C3E50" />
         </TouchableOpacity>
       )}
 
-      {/* LISTADO EN CUADRÍCULA */}
       {seccionesAdmin.length === 0 ? (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
           <Icon name="images-outline" size={55} color="#BDC3C7" style={{ marginBottom: 12 }} />

@@ -9,13 +9,12 @@ import styles from '../../styles/Login.styles';
 export default function ContraseñaOlvidada() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   
-  // Estados para el flujo
   const [email, setEmail] = useState('');
   const [token, setToken] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   
-  const [step, setStep] = useState<1 | 2>(1); // 1: Pedir email, 2: Cambiar pass
+  const [step, setStep] = useState<1 | 2>(1);
   const [loading, setLoading] = useState(false);
 
   const handleRequestCode = async () => {
@@ -48,7 +47,6 @@ export default function ContraseñaOlvidada() {
   };
 
   const handleReset = async () => {
-    // Validación previa en cliente para ahorrar peticiones innecesarias al servidor
     if (!token || !newPassword || !confirmPassword) {
       Alert.alert('Atención', 'Todos los campos son obligatorios.');
       return;

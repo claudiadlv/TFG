@@ -14,7 +14,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { API_URL } from '../../config';
 
-// --- TIPOS ---
 type Viaje = { 
   id: string; 
   destino: string; 
@@ -44,7 +43,6 @@ export default function AdministrarTransporteAdmin() {
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<ActiveTab>('Próximos');
   
-  // Estados para el Modal de Pasajeros
   const [modalVisible, setModalVisible] = useState(false);
   const [pasajerosViaje, setPasajerosViaje] = useState<Pasajero[]>([]);
   const [cargandoPasajeros, setCargandoPasajeros] = useState(false);

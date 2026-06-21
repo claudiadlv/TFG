@@ -57,15 +57,12 @@ export default function LoginScreen() {
         const errorText = await response.text();
         console.log(`Error HTTP ${status}:`, errorText);
 
-        // --- SOLUCIÓN: PARSEO DEL MENSAJE DE ERROR ---
         try {
           const errorJson = JSON.parse(errorText);
-          // Si el backend tiene la clave 'mensaje', la extraemos; si no, dejamos un fallback
           const mensajeLimpio = errorJson.mensaje || errorJson.message || 'Credenciales inválidas';
           
           Alert.alert('Acceso Denegado', mensajeLimpio, [{ text: 'OK' }]);
         } catch {
-          // Fallback por si el servidor no responde con un JSON válido
           Alert.alert('Error', 'Usuario o contraseña incorrectos.');
         }
       }
@@ -77,7 +74,18 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../../img/logo.png')} style={styles.logo} />
+      <Image 
+        source={require('../../img/logo.png')} 
+        style={[
+          styles.logo, 
+          { 
+            width: 300, 
+            height: 300, 
+            resizeMode: 'contain',
+            marginBottom: -10 
+          }
+        ]} 
+      />
       <Text style={styles.title}>Inicio</Text>
       <TextInput
         style={styles.input}

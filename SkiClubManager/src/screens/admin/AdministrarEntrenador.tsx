@@ -22,17 +22,12 @@ export default function AdministrarEntrenador() {
   const [correo, setCorreo] = useState('');
   const [fechaNacimiento, setFechaNacimiento] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
-  
-  // ADAPTACIÓN: Estado inicializado como un array para multiselección
   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState<string[]>([]);
   
-  // Nomenclatura oficial: Actualizado de 'U18' a 'FIS'
   const categoriasOpciones = ['U6', 'U8', 'U10', 'U12', 'U14', 'U16', 'FIS'];
-
   const navigation = useNavigation<NativeStackNavigationProp<AdminStackParamList>>();
 
   const handleCrearEntrenador = async () => {
-    // Validamos que el array tenga al menos un elemento seleccionado
     if (!nombre || !apellido || !correo || categoriasSeleccionadas.length === 0) {
       Alert.alert('Error', 'Por favor completa todos los campos y selecciona al menos una categoría.');
       return;
@@ -40,7 +35,6 @@ export default function AdministrarEntrenador() {
 
     try {
       const token = await AsyncStorage.getItem('accessToken');
-
       const response = await fetch(`${API_URL}/admin/entrenadores`, {
         method: 'POST',
         headers: {
@@ -53,7 +47,7 @@ export default function AdministrarEntrenador() {
           correo,
           fechaNacimiento: fechaNacimiento.toISOString().split('T')[0],
           rol: 'entrenador',
-          categoria: categoriasSeleccionadas, // Mandamos el array completo
+          categoria: categoriasSeleccionadas, 
           contrasena: 'entrenador123',
         }),
       });
@@ -89,8 +83,8 @@ export default function AdministrarEntrenador() {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Registrar Entrenador</Text>
+    <ScrollView contentContainerStyle={styles.containerForm}>
+      <Text style={styles.titleForm}>Registrar Entrenador</Text>
 
       <TextInput
         style={styles.input}
@@ -139,7 +133,6 @@ export default function AdministrarEntrenador() {
         />
       )}
 
-      {/* ADAPTACIÓN: Reemplazado el Picker por los chips inline para homogeneizar UI/UX */}
       <Text style={{ marginTop: 15, marginBottom: 8, fontSize: 16, fontWeight: 'bold', color: '#333' }}>
         Asignar categorías:
       </Text>
@@ -152,7 +145,7 @@ export default function AdministrarEntrenador() {
               key={cat}
               onPress={() => toggleCategoria(cat)}
               style={{
-                backgroundColor: seleccionada ? '#003366' : '#ccc',
+                backgroundColor: seleccionada ? '#0D47A1' : '#ccc',
                 padding: 10,
                 margin: 5,
                 borderRadius: 8,
@@ -168,8 +161,8 @@ export default function AdministrarEntrenador() {
         })}
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handleCrearEntrenador}>
-        <Text style={styles.buttonText}>Registrar Entrenador</Text>
+      <TouchableOpacity style={styles.buttonForm} onPress={handleCrearEntrenador}>
+        <Text style={styles.buttonTextForm}>Registrar Entrenador</Text>
       </TouchableOpacity>
     </ScrollView>
   );

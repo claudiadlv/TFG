@@ -43,7 +43,7 @@ export default function CalendarioUsuario() {
       const token = await AsyncStorage.getItem('accessToken');
       if (!token) { setEventos({}); setMarkedDates({}); return; }
 
-      // 1) Hijos del padre
+      //Hijos del padre
       const hijosRes = await fetchWithAuth(`${API_URL}/deportista/mis_hijos`, token);
       if (!hijosRes.ok) { setEventos({}); setMarkedDates({}); return; }
       const data = await hijosRes.json();
@@ -55,13 +55,13 @@ export default function CalendarioUsuario() {
 
       if (categoriasArray.length === 0) { setEventos({}); setMarkedDates({}); return; }
 
-      // 2) Eventos filtrados por categorías (sin filtrar por fecha)
+      //Eventos filtrados por categorías (sin filtrar por fecha)
       const categoriasParam = encodeURIComponent(JSON.stringify(categoriasArray));
       const eventosRes = await fetchWithAuth(`${API_URL}/eventos/filtrados?categorias=${categoriasParam}`, token);
       if (!eventosRes.ok) { setEventos({}); setMarkedDates({}); return; }
       const eventosData = await eventosRes.json();
 
-      // 3) Agrupar por fecha (incluye pasados, presentes y futuros)
+      //Agrupar por fecha (incluye pasados, presentes y futuros)
       const eventosPorFecha: { [date: string]: Evento[] } = {};
       (eventosData || []).forEach((ev: any) => {
         const f = new Date(ev.fecha);
@@ -94,7 +94,7 @@ export default function CalendarioUsuario() {
         eventosPorFecha[fechaStr].push(nuevoEvento);
       });
 
-      // 4) Dots del calendario
+      //Dots del calendario
       const marcas: { [date: string]: { dots: { key: string; color: string }[]; marked: true } } = {};
       Object.entries(eventosPorFecha).forEach(([fecha, lista]) => {
         const dots = lista.map((ev, idx) => ({ key: `${ev.id}-${idx}`, color: getCardColor(ev.tipo) }));
@@ -104,7 +104,6 @@ export default function CalendarioUsuario() {
       setEventos(eventosPorFecha);
       setMarkedDates(marcas);
 
-      // 5) Mantener SIEMPRE la selección actual (inicialmente 'today')
       setSelectedDate(prev => prev || today);
     } catch {
       setEventos({}); setMarkedDates({});

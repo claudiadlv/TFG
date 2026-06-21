@@ -13,9 +13,8 @@ exports.getUsuarios = (req, res) => {
         res.json(results);
     });
 };
+
 //Función para obtener un usuario por su ID
-//Mirar esto porque creo q no me sirve porque no voy a tener el id
-// en la base de datos en todo caso seria x el correo
 exports.getUsuarioById = (req, res) => {
     const id = req.params.id;
     db.query('SELECT * FROM usuarios WHERE id = ?', [id], (err, results) => {
@@ -31,6 +30,7 @@ exports.getUsuarioById = (req, res) => {
         res.json(results[0]);
     });
 };      
+
 //Función para crear un nuevo usuario
 exports.createUsuario = (req, res) => {
     const { nombre, correo, contrasena } = req.body;
