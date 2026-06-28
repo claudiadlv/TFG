@@ -3,7 +3,7 @@ En este capítulo se presentan los resultados definitivos obtenidos tras la fase
 
 Para evitar la redundancia documental, aquellas interfaces funcionales del cuerpo técnico que comparten un diseño análogo entre los perfiles de entrenador y administrador se describen de forma unificada, haciendo hincapié en las capacidades de control exclusivas de la administración.
 
-\section{Modulo de acceso común}
+\section{Módulo de acceso común}
 El punto de entrada del sistema agrupa los componentes de control y seguridad iniciales implementados en el directorio \texttt{comun} (Figura \ref{fig:inicio}).
 
 Estas interfaces gestionan el ciclo inicial de los JSON Web Tokens (JWT) y el flujo de recuperación de credenciales:
@@ -279,7 +279,7 @@ El perfil del entrenador está diseñado para que el entrenador solo vea aquello
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{imagenes/galeria_entrenador.png}
-        \caption{Galeria del entrenador.}
+        \caption{Galería del entrenador.}
         \label{fig:galeriaAdminPanel}
     \end{subfigure}
     \hfill
@@ -394,7 +394,7 @@ El perfil de administración comparte la lógica de planificación del entrenado
     \label{fig:grupo_inicio_administrador}
 \end{figure}
 
-\noindent \textbf{Galeria}: El submódulo multimedia para el rol de administración centraliza todo el histórico visual de la temporada en un único punto operativo. A través del panel de control, el usuario puede navegar por las categorías específicas del club o situarse sobre la pestaña General, la cual indexa y agrupa cronológicamente por meses todos aquellos recuerdos e imágenes de interés global para la entidad. Al interactuar con el asistente de subida, la aplicación ofrece un privilegio de asignación flexible exclusivo para este rol; el administrador puede discriminar si el nuevo material fotográfico o de vídeo se vuelca únicamente dentro de la sección de un equipo concreto (mediante la opción de pestaña actual) o si se fuerza su publicación directa en el repositorio general para que sea accesible por todo el cuerpo técnico, compartiendo el resto de funciones de visualización y purga descritas previamente en la Figura~\ref{fig:cuadridula_galeria_multimedia}.
+\noindent \textbf{Galería}: El submódulo multimedia para el rol de administración centraliza todo el histórico visual de la temporada en un único punto operativo. A través del panel de control, el usuario puede navegar por las categorías específicas del club o situarse sobre la pestaña General, la cual indexa y agrupa cronológicamente por meses todos aquellos recuerdos e imágenes de interés global para la entidad. Al interactuar con el asistente de subida, la aplicación ofrece un privilegio de asignación flexible exclusivo para este rol; el administrador puede discriminar si el nuevo material fotográfico o de vídeo se vuelca únicamente dentro de la sección de un equipo concreto (mediante la opción de pestaña actual) o si se fuerza su publicación directa en el repositorio general para que sea accesible por todo el cuerpo técnico, compartiendo el resto de funciones de visualización y purga descritas previamente en la Figura~\ref{fig:cuadridula_galeria_multimedia}.
 
 \begin{figure}[htbp]
     \centering
@@ -499,7 +499,7 @@ El perfil orientado a las familias se enfoca en la transparencia informativa y l
 
 \noindent \textbf{Inicio y Gestión de Inscripciones:} Constituye el punto de acceso centralizado del rol de tutor legal. El comportamiento del panel principal restringe el flujo de información para que solo aparezcan reflejados aquellos eventos y entrenamientos en los que el padre ha apuntado explícitamente a sus hijos mediante el componente de la Figura~\ref{fig:detalleApuntar}. Al presionar sobre cualquiera de las actividades programadas, el sistema redirige a la vista de detalles, desde donde es posible realizar el seguimiento técnico o desapuntar a los menores de la sesión si surge algún imprevisto logístico. \par \smallskip
 
-\noindent \textbf{Control de Asistencia:} Interfaz dedicada a la edición de la asistencia y la reserva de transporte para cada corredor vinculado al tutor. Como se observa en las Figuras~\ref{fig:detallePadre}, \ref{fig:desapuntarDeportista} y \ref{fig:desapuntarTransporte}, el componente renderiza selectores individuales para cada hijo (por ejemplo, Nil o Loreto), indicando mediante iconos visuales si disponen de plaza confirmada en la furgoneta del club. Desde este panel, el tutor puede alternar el conmutador dinámico para solicitar transporte, guardar los cambios en tiempo real o anular la asistencia completa a través del botón de cancelación de inscripción, lo que libera de forma automática el asiento en el vehículo y actualiza el censo del entrenamiento en el servidor. \par \smallskip
+\noindent \textbf{Control de Asistencia:} Interfaz dedicada a la edición de la asistencia y la reserva de transporte para cada corredor vinculado al tutor. Como se observa en las Figuras~\ref{fig:detallePadre}, \ref{fig:desapuntarDeportista} y \ref{fig:desapuntarTransporte}, el componente renderiza selectores individuales para cada hijo, indicando mediante iconos visuales si disponen de plaza confirmada en la furgoneta del club. Desde este panel, el tutor puede alternar el conmutador dinámico para solicitar transporte, guardar los cambios en tiempo real o anular la asistencia completa a través del botón de cancelación de inscripción, lo que libera de forma automática el asiento en el vehículo y actualiza el censo del entrenamiento en el servidor. \par \smallskip
 
 \noindent \textbf{Galería:} Módulo de consulta visual diseñado bajo estrictas políticas de privacidad de los deportistas menores de edad. A diferencia del panel general de administración, en esta pantalla únicamente se exponen las pestañas correspondientes a las categorías deportivas a las que pertenecen los hijos del usuario (como la pestaña U14 activa en la Figura~\ref{fig:galeriaPadre}). El backend discrimina las peticiones web de imágenes para que el tutor solo visualice el repositorio fotográfico y de vídeo de dichos niveles; asimismo, al interactuar con el carrete mediante el menú contextual de la Figura~\ref{fig:descargarPadre}, se habilita la descarga local en el almacenamiento del dispositivo móvil.
 

@@ -315,7 +315,7 @@ export default function GaleriaAdminScreen() {
           </View>
         </View>
       ) : (
-        <Text style={styles.title}>Panel de Control Multimedia</Text> 
+        <Text style={styles.title}>Galeria</Text> 
       )}
 
       {selectedPhotoIds.length === 0 && categoriasDisponibles.length > 0 && (

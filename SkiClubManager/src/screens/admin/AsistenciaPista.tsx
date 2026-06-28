@@ -10,11 +10,10 @@ import { API_URL } from '../../config';
 import RNFS from 'react-native-fs';
 import Share from 'react-native-share';
 
-// --- TIPOS Y CONSTANTES ---
 type EventoAsistencia = { fecha: string; tipo: 'Pista' | 'Carrera' | 'Físico'; asistio: boolean };
 type Categoria = 'U6' | 'U8' | 'U10' | 'U12' | 'U14' | 'U16' | 'FIS';
 type DeportistaResumen = { deportistaId: string; nombre: string; categoria?: Categoria; asistencias: EventoAsistencia[] };
-type ModoFiltro = 'todas' | 'mes' | 'temporada';
+type ModoFiltro = 'mes' | 'temporada';
 type ActiveTab = 'Técnico' | 'Físico';
 
 const LISTA_CATEGORIAS: Categoria[] = ['U6', 'U8', 'U10', 'U12', 'U14', 'U16', 'FIS'];
@@ -34,7 +33,7 @@ export default function AsistenciaAdmin() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('Técnico');
   
   const today = useMemo(() => new Date(), []);
-  const [modo, setModo] = useState<ModoFiltro>('todas'); 
+  const [modo, setModo] = useState<ModoFiltro>('mes'); 
   const [mesSel, setMesSel] = useState<number>(today.getMonth() + 1); 
   const [anioSel, setAnioSel] = useState<number>(today.getFullYear());
   const [seasonStart, setSeasonStart] = useState<number>(today.getFullYear());
@@ -111,10 +110,9 @@ export default function AsistenciaAdmin() {
             
             if (coincideTab) {
               let pasaFiltro = false;
-              if (modo === 'todas') pasaFiltro = true;
-              else if (modo === 'mes') {
+              if (modo === 'mes') {
                 pasaFiltro = (dateObj.getUTCMonth() + 1 === mesSel && dateObj.getUTCFullYear() === anioSel);
-              } else {
+              } else if (modo === 'temporada') {
                 const start = `${seasonStart}-11-01`;
                 const end = `${seasonStart + 1}-04-30`;
                 pasaFiltro = (a.fecha >= start && a.fecha <= end);
@@ -207,7 +205,6 @@ export default function AsistenciaAdmin() {
       console.error('Error exportando matriz CSV:', error);
       
       if (error && error.message && !error.message.includes('User cancelled')) {
-        
         try {
           const downloadPath = `${RNFS.DownloadDirectoryPath}/${fileName}`;
           await RNFS.writeFile(downloadPath, csvContent, 'utf8');
@@ -215,7 +212,6 @@ export default function AsistenciaAdmin() {
         } catch (downloadError) {
           Alert.alert('Error', 'Ocurrió un problema de permisos al compilar el reporte.');
         }
-        
       }
     }
   };
@@ -287,11 +283,10 @@ export default function AsistenciaAdmin() {
                 <View style={pickerStyles.pickerWrapper}>
                   <Picker 
                     selectedValue={modo} 
-                    onValueChange={setModo} 
+                    onValueChange={(itemValue) => setModo(itemValue as ModoFiltro)} 
                     dropdownIconColor="#0D47A1" 
                     style={pickerStyles.pickerNative}
                   >
-                    <Picker.Item label="Ver Todo" value="todas" color="#0D47A1" />
                     <Picker.Item label="Por Mes" value="mes" color="#0D47A1" />
                     <Picker.Item label="Temporada Completa" value="temporada" color="#0D47A1" />
                   </Picker>
@@ -348,7 +343,6 @@ export default function AsistenciaAdmin() {
 
             {fechasClavesOrdenadas.length > 0 ? (
               <View style={matrixStyles.mainWrapper}>
-                
                 <View style={matrixStyles.fixedColumnContainer}>
                   <View style={matrixStyles.fixedHeaderCell}>
                     <Text style={matrixStyles.headerAthleteText}>Nombre</Text>
@@ -373,7 +367,6 @@ export default function AsistenciaAdmin() {
 
                 <ScrollView horizontal showsHorizontalScrollIndicator={true} style={matrixStyles.scrollableArea}>
                   <View style={{ flexDirection: 'column' }}>
-                    
                     <View style={matrixStyles.scrollableHeaderRow}>
                       {fechasClavesOrdenadas.map((dateKey) => {
                         const metaLabel = etiquetasVisuales.get(dateKey) || { dia: '00', mesAbrev: 'MAY' };
@@ -411,17 +404,14 @@ export default function AsistenciaAdmin() {
                         ))}
                       </View>
                     )}
-
                   </View>
                 </ScrollView>
-
               </View>
             ) : (
               <Text style={styles.noDataText}>
                 No se encontraron entrenamientos creados en el rango de tiempo seleccionado.
               </Text>
             )}
-
           </View>
         }
       />
@@ -429,7 +419,6 @@ export default function AsistenciaAdmin() {
   );
 }
 
-// --- HOJAS DE ESTILOS ---
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F4F7F9' },
   contentContainer: { paddingHorizontal: 16, paddingBottom: 40 },

@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber proyecto"] 1782017761.41523 "proyecto.bcf" "proyecto.bbl" "proyecto" 1782052479.921 0
-  "capitulos/referencias.bib" 1782016003.87755 3187 b6cbf36ae98210efa9436a7aba93583a ""
-  "proyecto.bcf" 1782052479.73897 107938 bad553db8c60e6e7f1311eb6925dfadc "pdflatex"
+["biber proyecto"] 1782161913.45862 "proyecto.bcf" "proyecto.bbl" "proyecto" 1782161928.42402 0
+  "capitulos/referencias.bib" 1782139646.12225 3263 3bbcadd1f368d8e81ae4617c4b8c7eb5 ""
+  "proyecto.bcf" 1782161928.22843 108018 a6b36c0edca59a54e031efff1f7fd2c9 "pdflatex"
   (generated)
   "proyecto.bbl"
   "proyecto.blg"
   (rewritten before read)
-["pdflatex"] 1782052472.91996 "/home/claudia/TFG/Memoria/proyecto.tex" "proyecto.pdf" "proyecto" 1782052479.92131 0
+["pdflatex"] 1782161921.46755 "/home/claudia/TFG/Memoria/proyecto.tex" "proyecto.pdf" "proyecto" 1782161928.4245 2
   "/etc/texmf/web2c/texmf.cnf" 1779277049.7843 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/claudia/TFG/Memoria/proyecto.tex" 1781897351.85354 5073 c96455d3d392cfae71cbecafd85fefdf ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -235,11 +235,11 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1779277107.54885 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1779277186 8213012 1cd91c17845ef386ffc75e6c3d973ccf ""
   "apendice/apendice.tex" 1781933435.67528 7842 a88caf90e44be3476facb637b04dad36 ""
-  "capitulos/conclusiones.tex" 1782017823.3725 4350 69ce8a8884df6f7d7905128bd99bb971 ""
-  "capitulos/diseño.tex" 1782052467.69225 131224 744480fd15ea948146e9c8562e7733e2 ""
-  "capitulos/introduccion.tex" 1781884088.91986 11872 ccad25898b9ab19954b18454cb554b3b ""
-  "capitulos/resultados.tex" 1782015498.79447 42559 31ed45088f23ab32b12b47c6c3314edc ""
-  "capitulos/tecnologias.tex" 1782015947.97817 6030 3fbe798cb89db260c217178710787f0c ""
+  "capitulos/conclusiones.tex" 1782142573.97925 4208 b8c9646c870b62642a2c86c5c8199d79 ""
+  "capitulos/diseño.tex" 1782147235.82524 130356 843d30b038c11bf3d806db6186cdc33c ""
+  "capitulos/introduccion.tex" 1782161886.91214 11985 d4ab26ee2dbacd09758bafeccfa34e2b ""
+  "capitulos/resultados.tex" 1782147147.058 42534 59e533490f28d8bf80c987b5a5cb92df ""
+  "capitulos/tecnologias.tex" 1782127408.85145 6051 ad02fae21805d6c13779b13f1d83a47c ""
   "diagramas/Arquitectura.drawio.png" 1781906424.14294 83789 45937aadb4204775340d18fd5a373270 ""
   "diagramas/CU_01.drawio.png" 1781886417.86882 160687 e0123c67f3a01466cbc5e3dcce18ae1f ""
   "diagramas/CU_02.drawio.png" 1781886954.65026 151297 97ba037a7d3c28294542a39ce43db7b9 ""
@@ -333,15 +333,15 @@
   "imagenes/transporte_proximos.png" 1781972435.00517 45472 075ee9565f1ee517d05f3a2820541a56 ""
   "portada/portada.tex" 1782016722.27005 1092 0a737d21a798df50ccc8595862304673 ""
   "portada/portada_2.tex" 1782016748.40857 1244 afcfd687da215745d909ae3ab6a54c07 ""
-  "prefacios/prefacio.tex" 1782016794.50826 5654 7f0ab11081d6ccf2c89375b132b0e506 ""
-  "proyecto.aux" 1782052479.73098 54352 59dd5d7b68fa4b02db8a694670e4201b "pdflatex"
-  "proyecto.bbl" 1782017762.14422 12877 73d57251ec0544d299d5ae60697ae682 "biber proyecto"
-  "proyecto.lof" 1782052479.73997 7554 e75f9b78c62908b6ff64f55859fb6c80 "pdflatex"
-  "proyecto.lot" 1782052479.73997 5947 04ba6090963be5b336386aba9d489769 "pdflatex"
-  "proyecto.out" 1782052479.73698 6923 6bf5aa330ec77c3d27c6dee345aad64e "pdflatex"
-  "proyecto.run.xml" 1782052479.73897 2344 8799ce7da0c710056e8922e6e43bdf9a "pdflatex"
+  "prefacios/prefacio.tex" 1782126808.77293 5667 3cf41231045a0f7cd9ec4f0130227f60 ""
+  "proyecto.aux" 1782161928.21943 54180 65fbf781b8563f9b8c2932a281fe5bd5 "pdflatex"
+  "proyecto.bbl" 1782161914.24398 14302 f27ce619aaa57eb4e2a6f7e68c2b07d4 "biber proyecto"
+  "proyecto.lof" 1782161928.22943 7553 b34718c0704ed5b608810d3f95e907e3 "pdflatex"
+  "proyecto.lot" 1782161928.22943 5829 fec8130c34b2723b1b8d6820c831787f "pdflatex"
+  "proyecto.out" 1782161928.22643 6959 a9fb18b0f31e923fc14e0fab5279992c "pdflatex"
+  "proyecto.run.xml" 1782161928.22943 2344 8799ce7da0c710056e8922e6e43bdf9a "pdflatex"
   "proyecto.tex" 1781897351.85354 5073 c96455d3d392cfae71cbecafd85fefdf ""
-  "proyecto.toc" 1782052479.73897 7029 9a54adaed21b920e162fa510ede7765f "pdflatex"
+  "proyecto.toc" 1782161928.22943 6989 a9bcc9fc60a24488355bea3755b32c36 "pdflatex"
   (generated)
   "proyecto.aux"
   "proyecto.bcf"

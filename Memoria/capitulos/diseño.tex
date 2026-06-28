@@ -1,26 +1,10 @@
-\chapter{Analisis y Diseño}
-En este capítulo se desglosan las decisiones arquitectónicas que articulan el proyecto, estructuradas en tres ejes principales: el diseño del almacén de datos, la lógica de interconexión entre las capas del sistema (frontend y backend) y el modelado de la interfaz de usuario. A través de este análisis se demuestra cómo cada componente ha sido planificado estratégicamente para ofrecer un desarrollo escalable en Node.js y React Native, garantizando una experiencia fluida para administrador, entrenadores y padres
-\section{Planificación del proyecto}
-    \subsubsection{Cronograma}
-    \begin{table}[htbp]
-        \centering
-        \begin{tabular}{|l|c|}
-        \hline
-        \textbf{Fase} & \textbf{Duración} \\ \hline
-        Análisis y aprendizaje & 2 semanas (14 días) \\ \hline
-        Documentación & 16 semanas (112 días) \\ \hline
-        Diseño de la aplicación & 2 semanas (14 días) \\ \hline
-        Desarrollo del Back-End & 6 semanas (42 días) \\ \hline
-        Desarrollo del Front-End & 5 semanas (35 días) \\ \hline
-        Despliegue y Pruebas & 2 semanas (15 días) \\ \hline
-        \end{tabular}
-        \caption{Resumen de las fases del proyecto y su duración real}
-        \label{tab:duracion_fases_real}
-    \end{table}
+\chapter{Análisis y Diseño}
 
-Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se compone de seis fases principales distribuidas a lo largo del segundo cuatrimestre. Es imperativo destacar que la fase de \textit{Documentación} posee un carácter transversal, desarrollándose de forma simultánea y paralela junto con las fases de diseño, desarrollo e implementación del sistema Full Stack.
+En este capítulo se desglosan las decisiones arquitectónicas que articulan el proyecto, estructuradas en tres ejes principales: el diseño del almacén de datos, la lógica de interconexión entre las capas del sistema (frontend y backend) y el modelado de la interfaz de usuario. A través de este análisis se demuestra cómo cada componente ha sido planificado estratégicamente para ofrecer un desarrollo escalable en \textit{Node.js} y \textit{React Native}, garantizando una experiencia fluida para administrador, entrenadores y padres
+
+\section{Planificación del proyecto}
     \subsubsection{Diagrama de Gantt}
-    El diagrama de Gantt a continuación muestra la planificación detallada de todas las actividades realizadas durante el desarrollo del proyecto. Este diagrama refleja la secuencia, duración y solapamiento de las diferentes tareas, ofreciendo una visión global de la gestión del tiempo y recursos a lo largo de todo el proceso.
+    El diagrama de \textit{Gantt} a continuación muestra la planificación detallada de todas las actividades realizadas durante el desarrollo del proyecto. Este diagrama refleja la secuencia, duración y solapamiento de las diferentes tareas, ofreciendo una visión global de la gestión del tiempo y recursos a lo largo de todo el proceso.
     \begin{figure}[htbp]
         \centering
         \scriptsize
@@ -57,7 +41,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
                     
                 \ganttgroup{Desarrollo del Front-End}{2026-04-12}{2026-05-16} \\
                     \ganttbar{Estructura de vistas en React Native}{2026-04-12}{2026-04-25} \\
-                    \ganttbar{Integración de Context API y lógica}{2026-04-26}{2026-05-05} \\
+                    \ganttbar{Integración de API de contexto y lógica}{2026-04-26}{2026-05-05} \\
                     \ganttbar{Conexión con API y gráficos}{2026-05-06}{2026-05-16} \\
                 
                 \ganttgroup{Despliegue y Pruebas}{2026-05-17}{2026-05-31} \\
@@ -73,6 +57,27 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \caption{Diagrama de Gantt detallado con la planificación y fases de desarrollo}
         \label{fig:gantt_diagram_detailed}
     \end{figure}
+
+    \newpage
+    \subsubsection{Cronograma}
+        \begin{table}[htbp]
+            \centering
+            \begin{tabular}{|l|c|}
+            \hline
+            \textbf{Fase} & \textbf{Duración} \\ \hline
+            Análisis y aprendizaje & 2 semanas (14 días) \\ \hline
+            Diseño de la aplicación & 2 semanas (14 días) \\ \hline
+            Desarrollo del Backend & 6 semanas (42 días) \\ \hline
+            Desarrollo del Frontend & 5 semanas (35 días) \\ \hline
+            Despliegue y Pruebas & 2 semanas (15 días) \\ \hline
+            Documentación transversal & 18 semanas (125 días) \\ \hline
+            \end{tabular}
+            \caption{Resumen de las fases del proyecto y su duración real}
+            \label{tab:duracion_fases_real}
+        \end{table}
+
+    Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se compone de seis fases principales distribuidas a lo largo del segundo cuatrimestre. Es imperativo destacar que la fase de \textit{Documentación} posee un carácter transversal, desarrollándose de forma simultánea y paralela junto con las fases de diseño, desarrollo e implementación del sistema \textit{Full-Stack}.
+    
     \section{Recursos y costes}
     \label{sec:recursos_costes}
 
@@ -94,37 +99,22 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
     \textbf{Recurso} & \textbf{Uso en SkiClubManager} & \textbf{Coste} & \textbf{Observaciones} \\ \hline
     Ordenador & IDE, emuladores Android/iOS, compilación & 150 € & Amortización de equipo propio \\ \hline
     Stack open source & Backend (Node.js), Frontend (React Native), BD (MySQL) & 0 € & Licencia libre \\ \hline
-    \textbf{Total materiales} & & \textbf{175 €} & \\ \hline
+    \textbf{Total materiales} & & \textbf{150 €} & \\ \hline
     \end{tabularx}
     \caption{Recursos materiales y servicios externos.}
     \label{tab:recursos_materiales}
     \end{table}
 
     \subsubsection{Estimación de esfuerzo y coste laboral}
+    Como tarifa de referencia para el cálculo del coste laboral, se ha tomado como base el XVII Convenio Colectivo Estatal de Empresas de Consultoría y Tecnologías de la Información, publicado en el BOE núm. 178, de 27 de julio de 2023 \cite{boe_convenio_consultoria}. Para un perfil de desarrollador \textit{full-stack} júnior, se adopta la categoría de Programador o Técnico de Sistemas (Área 3, Grupo E, Nivel E2).
 
-    Para cuantificar el esfuerzo de desarrollo, se ha realizado un registro de las horas invertidas en cada una de las fases del ciclo de vida del software, sumando un total de 580 horas de trabajo. El desglose detallado por bloques funcionales se presenta de forma estructurada en la tabla \ref{tab:estimacion_esfuerzo}.
+    El salario mínimo garantizado por convenio para esta categoría, actualizado al año de ejercicio actual, se sitúa en torno a los 21\,500 € brutos anuales. A este importe se le añade un 32\% en concepto de costes sociales obligatorios a cargo de la empresa (Seguridad Social, contingencias comunes, formación y desempleo), elevando el coste total anual para la organización a 28\,380 €. 
 
-    \begin{table}[htbp]
-    \centering
-    \scriptsize
-    \renewcommand{\arraystretch}{1.1}
-    \begin{tabularx}{\textwidth}{|l|c|X|}
-    \hline
-    \rowcolor[HTML]{EFEFEF} 
-    \textbf{Bloque} & \textbf{Horas} & \textbf{Comentario} \\ \hline
-    Análisis (RF, RNF, Casos de Uso) & 90 & Definición de requisitos del club y flujos de usuarios \\ \hline
-    Diseño (Arquitectura, ER, UI) & 75 & Modelado de base de datos y mockups en Figma \\ \hline
-    Backend (API, controladores, JWT) & 140 & Desarrollo de endpoints, seguridad y lógica en Node.js \\ \hline
-    Frontend (Vistas, Context, Gráficos) & 165 & Maquetación adaptativa y lógica en React Native \\ \hline
-    Integración y Pruebas & 35 & Validación de flujos de asistencia y gestión de transporte \\ \hline
-    Memoria y diagramas & 75 & Redacción de la documentación técnica en LaTeX \\ \hline
-    \textbf{Total} & \textbf{580} & \\ \hline
-    \end{tabularx}
-    \caption{Estimación de esfuerzo (horas).}
-    \label{tab:estimacion_esfuerzo}
-    \end{table}
-
-    Como tarifa de referencia para el cálculo del coste laboral se toma un precio de 13 €/h. Este valor se obtiene a partir del salario medio orientativo de un desarrollador \textit{full-stack} júnior en España (24\,000 € brutos anuales), convertido a coste horario mediante la fórmula de jornada estándar: $24\,000 / (40 \times 48) \approx 12,5$ €/h (asumiendo una jornada de 40 h/semana y 48 semanas laborables al año), redondeado a 13 €/h. Por tanto, el coste laboral de referencia queda establecido en $580 \times 13 = 7\,540$ €.
+    Considerando la jornada máxima anual establecida por dicho convenio de 1\,800 horas laborables, el coste horario real de ingeniería se calcula mediante la fórmula:
+    
+    $$\mathrm{Coste\ por\ hora} = \frac{28\,380\ \mathrm{EUR}}{1\,800\ \mathrm{h}} \approx 15,76\ \mathrm{EUR/h}$$    
+    
+    Para dotar al presupuesto de un margen de contingencia profesional y alinearlo con los precios medios de mercado para servicios de consultoría júnior, se establece una tarifa de **18 \euro/h**. Por tanto, el coste laboral de referencia para las 580 horas de dedicación queda establecido en $580 \times 18 = 10\,440$ €.
 
     \subsubsection{Presupuesto total}
 
@@ -139,17 +129,14 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
     \rowcolor[HTML]{EFEFEF} 
     \textbf{Concepto} & \textbf{Importe} & \textbf{Notas} \\ \hline
     Ordenador (amortización) & 150 € & $1\,450 / 48 \times 5 \approx 150$ € \\ \hline
-    Google Gemini API & 25 € & Créditos consumidos en desarrollo \\ \hline
     Software & 0 € & Entorno open source sin costes de licencia \\ \hline
-    Mano de obra (referencia) & 7\,540 € & 580 h $\times$ 13 €/h \\ \hline
-    \textbf{Total estimado de replicación} & \textbf{7\,715 €} & \\ \hline
+    Mano de obra (Convenio BOE) & 10\,440 € & 580 h $\times$ 18 €/h \\ \hline
+    \textbf{Total estimado de replicación} & \textbf{10\,615 €} & \\ \hline
     \end{tabularx}
     \caption{Presupuesto total estimado del proyecto.}
     \label{tab:presupuesto_total}
     \end{table}
 
-    En conclusión, el desembolso directo en servicios de terceros durante la ejecución real de este Trabajo de Fin de Grado fue de 25 € en créditos de API, mientras que la infraestructura de hardware utilizada aporta un coste de amortización proporcional de 150 € a lo largo de los cinco meses de desarrollo, tal como se desglosó previamente.
-    
     \section{Análisis}
     \subsubsection{Definición de Requisitos y Flujos de Interacción}
         \subsubsection{Requisitos Funcionales y No Funcionales}
@@ -171,7 +158,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
             \item \textbf{RF1.4: Alta y vinculación de deportistas.} La interfaz móvil con rol de padre debe permitir registrar las fichas de los deportistas (hijos) introduciendo sus datos técnicos e integrándolos automáticamente bajo su tutoría mediante claves foráneas en MySQL.
             \item \textbf{RF1.5: Inicio de sesión y distribución de roles.} La aplicación debe permitir a los usuarios validados iniciar sesión de forma segura. El backend en Node.js emitirá un token JWT conteniendo el rol (Administrador, Entrenador o Padre) para configurar la interfaz en React Native.
             \item \textbf{RF1.6: Persistencia segura de sesión.} El frontend debe almacenar el token JWT de forma persistente en el dispositivo para mantener la sesión activa sin requerir credenciales en cada apertura del sistema.
-            \item \textbf{RF1.7: Modificación de contraseña temporal.} El sistema debe permitir a cualquier usuario logueado editar sus datos de contacto y forzar al entrenador a sustituir la contraseña asignada por defecto por una clave privada y segura.
+            \item \textbf{RF1.7: Modificación de contraseña temporal.} El sistema debe permitir a cualquier usuario autentificado editar sus datos de contacto y forzar al entrenador a sustituir la contraseña asignada por defecto por una clave privada y segura.
             \item \textbf{RF1.8: Recuperación de credenciales.} La plataforma debe incorporar un mecanismo de recuperación de contraseña para que cualquier usuario, en caso de olvido, pueda restablecer su acceso mediante un código de validación por correo electrónico.
             \item \textbf{RF1.9: Modificación y actualización de fichas de deportistas.} La interfaz móvil con rol de padre debe permitir la edición posterior de los datos técnicos y de contacto de emergencia de los deportistas asociados a su cuenta.
         \end{itemize}
@@ -195,7 +182,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
 
         \subsubsection*{RF4: Gestión de Transporte del Club}
         \begin{itemize}
-            \item \textbf{RF4.1: Configuración de capacidad de transporte.} El sistema debe permitir al entrenador vincular un servicio de transporte a cualquier entrenamiento programado, specifying el límite máximo de plazas disponibles en los vehículos del club.
+            \item \textbf{RF4.1: Configuración de capacidad de transporte.} El sistema debe permitir al entrenador vincular un servicio de transporte a cualquier entrenamiento programado, el límite máximo de plazas disponibles en los vehículos del club.
             \item \textbf{RF4.2: Reserva de plazas por los padres.} La aplicación móvil debe ofrecer a los padres la posibilidad de solicitar una plaza de transporte para sus hijos de manera simultánea al proceso de confirmación de asistencia al entrenamiento.
             \item \textbf{RF4.3: Control de aforo en tiempo real.} El backend en Node.js debe verificar de forma activa el número de asientos ocupados en MySQL, denegando nuevas solicitudes automáticamente e informando al usuario en React Native una vez que se alcance el límite de capacidad.
             \item \textbf{RF4.4: Listado logístico de transporte.} El sistema debe proporcionar al entrenador una vista clara y actualizada con la relación de deportistas que han reservado plaza para cada trayecto, facilitando la organización del viaje hacia la estación de esquí.
@@ -220,7 +207,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
             \item \textbf{RNF1.1: Cifrado de credenciales.} Toda contraseña de usuario almacenada en la base de datos MySQL debe ser cifrada de extremo a extremo mediante el uso del algoritmo de hash robusto \textit{bcrypt}, aplicando una función de salado (\textit{salting}) para prevenir ataques de diccionario.
             \item \textbf{RNF1.2: Mecanismo de autenticación sin estado.} El control de sesiones e intercambio de información confidencial entre la aplicación móvil y la API REST debe gestionarse mediante tokens web de JSON (\textit{JSON Web Tokens}, JWT). Estos tokens viajarán firmados digitalmente para evitar su manipulación y tendrán un tiempo de expiración acotado.
             \item \textbf{RNF1.3: Control de accesos basado en roles (RBAC).} El backend en Node.js debe implementar capas de middleware interconectadas encargadas de interceptar cada petición HTTP, validando la firma del token JWT y verificando de forma estricta que el rol del usuario (Administrador, Entrenador o Padre) posea los privilegios específicos para consumir dicho recurso.
-            \item \textbf{RNF1.4: Protección de datos sensibles.} Al tratar con información de menores de edad (deportistas), el sistema debe anonimizar o restringir el acceso a datos sensibles de contacto, exponiéndolos exclusivamente a los tutores legales vinculados y al administrador del club.
+            \item \textbf{RNF1.4: Protección de datos sensibles.} Al tratar con información de menores de edad (deportistas), el sistema debe restringir el acceso a datos sensibles de contacto, exponiéndolos exclusivamente a los tutores legales vinculados y al administrador del club.
         \end{itemize}
 
         \subsubsection*{RNF2: Rendimiento y Escalabilidad}
@@ -248,14 +235,13 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
 
         \begin{table}[htbp]
             \centering
-            % tabularx necesita saber el ancho total (\textwidth) antes de definir las columnas
             \begin{tabularx}{\textwidth}{|l|>{\raggedright\arraybackslash}X|c|>{\raggedright\arraybackslash}X|}
             \hline
             \textbf{Nombre} & \textbf{Descripción} & \textbf{Tipo} & \textbf{Rol} \\ \hline
             Administrador & Personal de dirección o administración del club de esquí. & Interno & Supervisar y validar registros, dar de alta al personal técnico y auditar asistencias globales. \\ \hline
             Entrenador & Personal técnico profesional responsable de la parte deportiva. & Interno & Programar entrenamientos, gestionar furgonetas y multimedia. \\ \hline
             Padres / Tutores & Familiares y representantes legales de los atletas menores de edad. & Externo & Consultar calendario, confirmar asistencia y reservar transporte. \\ \hline
-            Deportistas & Atletas menores de edad pertenecientes a las categorías del club. & Indirecto & Beneficiarios del sistema. No operan la app por seguridad, pero sus datos nuclean el sistema. \\ \hline
+            Deportistas & Atletas menores de edad pertenecientes a las categorías del club. & Indirecto & Beneficiarios del sistema. No operan la app por seguridad, pero sus datos centralizan el sistema. \\ \hline
             Desarrollador & Ingeniero de software responsable de la creación técnica del proyecto. & Externo & Diseñar la arquitectura, implementar código, desplegar la base de datos y dar soporte técnico. \\ \hline
             \end{tabularx}
             \caption{Implicados en la Aplicación}
@@ -663,7 +649,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \textbf{3.} El frontend realiza una petición GET al backend enviando el ID del evento y el token de sesión.\newline
         \textbf{4.} El backend valida el token e interroga a MySQL mediante un JOIN entre asistencia, deportistas y transporte.\newline
         \textbf{5.} El sistema retorna el listado de alumnos indicando quiénes tienen plaza reservada en la furgoneta.\newline
-        \textbf{6.} La aplicación móvil renderiza la lista de forma visual en la pantalla del entrenador. \\ \hline
+        \textbf{6.} La aplicación móvil genera la lista de forma visual en la pantalla del entrenador. \\ \hline
         \textbf{Cursos Alternos} & 
         \textbf{4a:} No hay asistencias confirmadas todavía: el sistema devuelve una estructura vacía y muestra un aviso informativo. \\ \hline
         \end{tabularx}
@@ -691,7 +677,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \textbf{2.} La app envía una solicitud GET al backend solicitando los eventos programados para las categorías de sus hijos.\newline
         \textbf{3.} El backend recibe la solicitud, valida el token JWT y realiza la consulta en la base de datos MySQL.\newline
         \textbf{4.} El sistema retorna un listado con los detalles de los entrenamientos (fecha, hora, disciplina y ubicación).\newline
-        \textbf{5.} La aplicación móvil recibe los datos y los renderiza de forma ordenada en la interfaz del calendario. \\ \hline
+        \textbf{5.} La aplicación móvil recibe los datos y los genera de forma ordenada en la interfaz del calendario. \\ \hline
         \textbf{Cursos Alternos} & 
         \textbf{4a:} No existen eventos programados para las categorías asociadas al usuario: el sistema devuelve una estructura vacía y muestra el mensaje correspondiente. \\ \hline
         \end{tabularx}
@@ -699,7 +685,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \label{tab:cu_18}
         \end{table}        
         \newpage
-        \subsubsection{Módulo de gestión de logisitica y transporte}
+        \subsubsection{Módulo de gestión de logística y transporte}
         Este módulo coordina la asignación, reserva y liberación de plazas limitadas en los vehículos del club, implementando validaciones de concurrencia en el backend para controlar los aforos en tiempo real y asegurar la integridad de las reservas en la base de datos MySQL.
         \begin{figure}[htbp]
             \centering
@@ -803,7 +789,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \textbf{Precondición} & El usuario ha iniciado sesión y existen reservas de plazas confirmadas por los padres para el viaje. \\ \hline
         \textbf{Postcondición} & El sistema muestra en pantalla la hoja con todos los pasajeros asignados al vehículo. \\ \hline
         \textbf{Propósito} & Permitir al personal técnico controlar el aforo total y la lista de menores que viajan en la furgoneta en un entrenamiento específico. \\ \hline
-        \textbf{Resumen} & El usuario accede al apartado de transporte. El sistema realiza una consulta relacional y renderiza la lista de deportistas con plaza reservada. \\ \hline
+        \textbf{Resumen} & El usuario accede al apartado de transporte. El sistema realiza una consulta relacional y genera la lista de deportistas con plaza reservada. \\ \hline
         \textbf{Curso Normal} & 
         \textbf{1.} El usuario accede al menú de logística del transporte y selecciona un viaje programado.\newline
         \textbf{2.} El usuario presiona el botón de ``Logística de furgoneta''.\newline
@@ -837,7 +823,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \textbf{Precondición} & El padre ha iniciado sesión y tiene solicitudes de reserva previas para los menores bajo su tutela. \\ \hline
         \textbf{Postcondición} & El sistema muestra únicamente el estado de las plazas solicitadas por el núcleo familiar. \\ \hline
         \textbf{Propósito} & Permitir a los padres verificar de forma privada si las plazas de furgoneta de sus hijos están asignadas. \\ \hline
-        \textbf{Resumen} & El padre accede a transporte. El sistema lee su identidad mediante el token JWT, filtra en MySQL por sus hijos vinculados y renderiza los estados de reserva en la interfaz. \\ \hline
+        \textbf{Resumen} & El padre accede a transporte. El sistema lee su identidad mediante el token JWT, filtra en MySQL por sus hijos vinculados y genera los estados de reserva en la interfaz. \\ \hline
         \textbf{Curso Normal} & 
         \textbf{1.} El Padre accede al apartado de ``Mis Reservas de Transporte'' en la aplicación móvil.\newline
         \textbf{2.} El sistema extrae el ID del padre del token JWT almacenado en el estado global (Context API).\newline
@@ -904,7 +890,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \textbf{Tipo} & Primario y esencial. \\ \hline
         \textbf{Referencias} & RF5.1, RF5.2, RF5.3, RF5.4 \\ \hline
         \textbf{Precondición} & El padre ha iniciado sesión y existen registros de asistencia guardados en el histórico de sus hijos. \\ \hline
-        \textbf{Postcondición} & El sistema renderiza el componente gráfico en la pantalla del dispositivo móvil. \\ \hline
+        \textbf{Postcondición} & El sistema genera el componente gráfico en la pantalla del dispositivo móvil. \\ \hline
         \textbf{Propósito} & Permitir a los padres consultar de forma visual, intuitiva y rápida la progresión y regularidad de asistencia de sus hijos a los entrenamientos. \\ \hline
         \textbf{Resumen} & El padre accede al panel de asistencia de su hijo. El sistema solicita los datos acumulados al backend y genera un gráfico estadístico en la pantalla utilizando la librería de diseño. \\ \hline
         \textbf{Curso Normal} & 
@@ -996,7 +982,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \textbf{4.} El sistema muestra la previsualización de la imagen.\newline
         \textbf{5.} El Actor pulsa en ``Subir Foto''.\newline
         \textbf{6.} El backend procesa el archivo, lo guarda en el servidor físico y genera la URL pública.\newline
-        \textbf{7.} El sistema inserta los metadatos y la URL en la tabla \textit{fotografias} de la base de datos.\newline
+        \textbf{7.} El sistema inserta los metadatos y la URL en la tabla \textit{fotografías} de la base de datos.\newline
         \textbf{8.} El sistema refresca la interfaz del móvil confirmando la subida exitosa. \\ \hline
         \textbf{Cursos Alternos} & 
         \textbf{6a:} Archivo no válido o supera el tamaño máximo: el sistema interrumpe el proceso y muestra una alerta de error. \\ \hline
@@ -1068,7 +1054,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \textbf{1.} El Usuario accede al módulo de galería multimedia en la aplicación móvil.\newline
         \textbf{2.} El sistema habilita el componente de búsqueda cronológica.\newline
         \textbf{3.} El Usuario introduce un año y/o un mes específicos y pulsa el botón de filtrar.\newline
-        \textbf{4.} El backend recibe los parámetros y realiza una consulta filtrada en la tabla \textit{fotografias} de MySQL.\newline
+        \textbf{4.} El backend recibe los parámetros y realiza una consulta filtrada en la tabla \textit{fotografías} de MySQL.\newline
         \textbf{5.} El sistema devuelve el JSON con las URLs de las imágenes que cumplen el criterio.\newline
         \textbf{6.} El frontend descarga las referencias, actualiza el estado local y renderiza en React Native la cuadrícula con los resultados filtrados. \\ \hline
         \textbf{Cursos Alternos} & 
@@ -1158,7 +1144,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \textbf{Fichero de Ruta} & \textbf{Verbo} & \textbf{Endpoint} & \textbf{Propósito y Lógica de Negocio} \\ \hline
         \texttt{eventos.js} & POST & \texttt{/} & Creación de un entrenamiento o competición deportiva. \\ \hline
         \texttt{eventos.js} & GET & \texttt{/todos} & Recuperación de todo el calendario histórico y futuro del club. \\ \hline
-        \texttt{eventos.js} & GET & \texttt{/filtrados} & Eventos segmentados por categorías del usuario logueado. \\ \hline
+        \texttt{eventos.js} & GET & \texttt{/filtrados} & Eventos segmentados por categorías del usuario identificado. \\ \hline
         \texttt{eventos.js} & GET & \texttt{/entrenador/mios} & Entrenamientos vinculados a la categoría específica del técnico. \\ \hline
         \texttt{eventos.js} & GET & \texttt{/entrenador/asistencias} & Panel de control de faltas y asistencias para el entrenador. \\ \hline
         \texttt{eventos.js} & GET & \texttt{/padre/asistencias} & Histórico de asistencia de los hijos para control del tutor. \\ \hline
@@ -1213,7 +1199,7 @@ Como se puede observar en la Tabla~\ref{tab:duracion_fases_real}, el proyecto se
         \newpage
         \subsubsection{Componentes del frontend}
 
-        La interfaz de usuario de la plataforma se ha desarrollado como una aplicación móvil nativa multiplataforma utilizando el framework React Native y TypeScript. La navegación interna y el flujo de pantallas se gestionan mediante la librería React Navigation, implementando una estrategia de enrutamiento dinámico basado en el estado de autenticación y el rol asignado al usuario (Administrador, Entrenador o Padre). 
+        La interfaz de usuario de la plataforma se ha desarrollado como una aplicación móvil nativa multiplataforma utilizando el entorno React Native y TypeScript. La navegación interna y el flujo de pantallas se gestionan mediante la librería React Navigation, implementando una estrategia de enrutamiento dinámico basado en el estado de autenticación y el rol asignado al usuario (Administrador, Entrenador o Padre). 
 
         El punto de entrada de la navegación se centraliza en el componente \texttt{StackNavigator.tsx}, el cual evalúa los parámetros \texttt{isAuthenticated} y \texttt{rol} provistos por el contexto global de seguridad (\texttt{AuthContext}). Si el usuario no está autenticado, el enrutador expone exclusivamente las pantallas del bloque común. Una vez validada la sesión mediante el token JWT, el sistema inyecta un sub-navegador específico (\texttt{AdminNavigator}, \texttt{EntrenadorNavigator} o \texttt{PadreNavigator}) que combina estructuras de navegación por pestañas (\texttt{Tabs}) y pilas de pantallas (\texttt{Stack}).
 

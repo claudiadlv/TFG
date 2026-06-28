@@ -144,6 +144,35 @@
       \verb https://play.google.com/store/apps/details?id=it.l4c.onesporter
       \endverb
     \endentry
+    \entry{boe_convenio_consultoria}{article}{}
+      \name{author}{1}{}{%
+        {{hash=65071c37a888c7d12ded8c516e5e4a79}{%
+           family={{Boletín Oficial del Estado}},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{65071c37a888c7d12ded8c516e5e4a79}
+      \strng{fullhash}{65071c37a888c7d12ded8c516e5e4a79}
+      \strng{bibnamehash}{65071c37a888c7d12ded8c516e5e4a79}
+      \strng{authorbibnamehash}{65071c37a888c7d12ded8c516e5e4a79}
+      \strng{authornamehash}{65071c37a888c7d12ded8c516e5e4a79}
+      \strng{authorfullhash}{65071c37a888c7d12ded8c516e5e4a79}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Boletín Oficial del Estado}
+      \field{number}{178}
+      \field{title}{Resolución de 14 de julio de 2023, de la Dirección General de Trabajo, por la que se registra y publica el XVII Convenio colectivo estatal de empresas de consultoría, tecnologías de la información y estudios de mercado y de la opinión pública}
+      \field{year}{2023}
+      \field{pages}{109241\bibrangedash 109295}
+      \range{pages}{55}
+      \verb{urlraw}
+      \verb https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-17326
+      \endverb
+      \verb{url}
+      \verb https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-17326
+      \endverb
+    \endentry
     \entry{NodeJS}{article}{}
       \name{author}{2}{}{%
         {{hash=71539e822b9d217e558698b79d84a8f4}{%

@@ -444,11 +444,6 @@ INPUT ./imagenes/oneSporter.jpeg
 INPUT ./imagenes/oneSporter.jpeg
 INPUT ./imagenes/oneSporter.jpeg
 INPUT ./imagenes/oneSporter.jpeg
-INPUT ./capitulos/tecnologias.tex
-INPUT ./capitulos/tecnologias.tex
-INPUT ./capitulos/tecnologias.tex
-INPUT ./capitulos/tecnologias.tex
-INPUT capitulos/tecnologias.tex
 INPUT ./capitulos/diseño.tex
 INPUT ./capitulos/diseño.tex
 INPUT ./capitulos/diseño.tex
@@ -610,6 +605,11 @@ INPUT ./imagenes/logo.png
 INPUT ./imagenes/logo.png
 INPUT ./imagenes/logo.png
 INPUT ./imagenes/logo.png
+INPUT ./capitulos/tecnologias.tex
+INPUT ./capitulos/tecnologias.tex
+INPUT ./capitulos/tecnologias.tex
+INPUT ./capitulos/tecnologias.tex
+INPUT capitulos/tecnologias.tex
 INPUT ./capitulos/resultados.tex
 INPUT ./capitulos/resultados.tex
 INPUT ./capitulos/resultados.tex

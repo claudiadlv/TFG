@@ -1,53 +1,52 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Resumen de las fases del proyecto y su duración real}}{28}{table.caption.13}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Recursos materiales y servicios externos.}}{29}{table.caption.15}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Presupuesto total estimado del proyecto.}}{30}{table.caption.18}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces Implicados en la Aplicación}}{36}{table.caption.30}%
+\contentsline {table}{\numberline {2.5}{\ignorespaces Ficha caso de uso CU\_01.}}{38}{table.caption.35}%
+\contentsline {table}{\numberline {2.6}{\ignorespaces Ficha caso de uso CU\_02.}}{39}{table.caption.37}%
+\contentsline {table}{\numberline {2.7}{\ignorespaces Ficha caso de uso CU\_03.}}{40}{table.caption.39}%
+\contentsline {table}{\numberline {2.8}{\ignorespaces Ficha caso de uso CU\_04.}}{40}{table.caption.40}%
+\contentsline {table}{\numberline {2.9}{\ignorespaces Ficha caso de uso CU\_05.}}{41}{table.caption.41}%
+\contentsline {table}{\numberline {2.10}{\ignorespaces Ficha caso de uso CU\_20.}}{42}{table.caption.43}%
+\contentsline {table}{\numberline {2.11}{\ignorespaces Ficha caso de uso CU\_22.}}{43}{table.caption.44}%
+\contentsline {table}{\numberline {2.12}{\ignorespaces Ficha caso de uso CU\_06.}}{45}{table.caption.47}%
+\contentsline {table}{\numberline {2.13}{\ignorespaces Ficha caso de uso CU\_07.}}{46}{table.caption.49}%
+\contentsline {table}{\numberline {2.14}{\ignorespaces Ficha caso de uso CU\_08.}}{47}{table.caption.51}%
+\contentsline {table}{\numberline {2.15}{\ignorespaces Ficha caso de uso CU\_09.}}{48}{table.caption.53}%
+\contentsline {table}{\numberline {2.16}{\ignorespaces Ficha caso de uso CU\_18.}}{48}{table.caption.54}%
+\contentsline {table}{\numberline {2.17}{\ignorespaces Ficha caso de uso CU\_10.}}{50}{table.caption.57}%
+\contentsline {table}{\numberline {2.18}{\ignorespaces Ficha caso de uso CU\_11.}}{51}{table.caption.59}%
+\contentsline {table}{\numberline {2.19}{\ignorespaces Ficha caso de uso CU\_12.}}{52}{table.caption.60}%
+\contentsline {table}{\numberline {2.20}{\ignorespaces Ficha caso de uso CU\_13.}}{53}{table.caption.62}%
+\contentsline {table}{\numberline {2.21}{\ignorespaces Ficha caso de uso CU\_23.}}{53}{table.caption.63}%
+\contentsline {table}{\numberline {2.22}{\ignorespaces Ficha caso de uso CU\_14.}}{55}{table.caption.66}%
+\contentsline {table}{\numberline {2.23}{\ignorespaces Ficha caso de uso CU\_15.}}{56}{table.caption.68}%
+\contentsline {table}{\numberline {2.24}{\ignorespaces Ficha caso de uso CU\_16.}}{58}{table.caption.72}%
+\contentsline {table}{\numberline {2.25}{\ignorespaces Ficha caso de uso CU\_17.}}{59}{table.caption.74}%
+\contentsline {table}{\numberline {2.26}{\ignorespaces Ficha caso de uso CU\_21.}}{60}{table.2.26}%
+\contentsline {table}{\numberline {2.27}{\ignorespaces Endpoints REST de la API: Control de Autorización y Gestión de Usuarios.}}{62}{table.caption.79}%
+\contentsline {table}{\numberline {2.28}{\ignorespaces Endpoints REST de la API: Fichas de Deportistas y Personal de Entrenadores.}}{63}{table.caption.80}%
+\contentsline {table}{\numberline {2.29}{\ignorespaces Endpoints REST de la API: Gestión y Planificación de Eventos.}}{64}{table.caption.81}%
+\contentsline {table}{\numberline {2.30}{\ignorespaces Endpoints REST de la API: Recursos Multimedia, Solicitudes Administrativas y Gestión Logística de Transporte.}}{65}{table.caption.82}%
+\contentsline {table}{\numberline {2.31}{\ignorespaces Componentes del Frontend: Pantallas del Bloque Común y del Rol del Padre.}}{67}{table.caption.85}%
+\contentsline {table}{\numberline {2.32}{\ignorespaces Componentes del Frontend: Pantallas del Rol del Entrenador y del Rol del Administrador.}}{68}{table.caption.86}%
+\contentsline {table}{\numberline {2.33}{\ignorespaces Especificación física de la tabla \texttt {usuarios}.}}{71}{table.caption.91}%
+\contentsline {table}{\numberline {2.34}{\ignorespaces Especificación física de la tabla \texttt {padres}.}}{71}{table.caption.93}%
+\contentsline {table}{\numberline {2.35}{\ignorespaces Especificación física de la tabla \texttt {entrenador}.}}{72}{table.caption.95}%
+\contentsline {table}{\numberline {2.36}{\ignorespaces Especificación física de la tabla \texttt {deportistas}.}}{72}{table.caption.97}%
+\contentsline {table}{\numberline {2.37}{\ignorespaces Especificación física de la tabla intermedia \texttt {padres\_hijos}.}}{72}{table.caption.99}%
+\contentsline {table}{\numberline {2.38}{\ignorespaces Especificación física de la tabla \texttt {eventos}.}}{74}{table.caption.102}%
+\contentsline {table}{\numberline {2.39}{\ignorespaces Especificación física de la tabla intermedia \texttt {eventos\_deportistas}.}}{74}{table.caption.104}%
+\contentsline {table}{\numberline {2.40}{\ignorespaces Especificación física de la tabla \texttt {transporte\_viajes}.}}{76}{table.caption.107}%
+\contentsline {table}{\numberline {2.41}{\ignorespaces Especificación física de la tabla intermedia \texttt {transporte\_reservas}.}}{76}{table.caption.109}%
+\contentsline {table}{\numberline {2.42}{\ignorespaces Especificación física de la tabla \texttt {solicitudes\_registro}.}}{78}{table.caption.112}%
+\contentsline {table}{\numberline {2.43}{\ignorespaces Especificación física de la tabla \texttt {fotos}.}}{78}{table.caption.114}%
+\contentsline {table}{\numberline {2.44}{\ignorespaces Especificación de la paleta de colores y lógica semántica del calendario.}}{83}{table.caption.123}%
+\contentsline {table}{\numberline {2.45}{\ignorespaces Clasificación y responsabilidades de los componentes de la interfaz de usuario.}}{85}{table.caption.128}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Resumen de las fases del proyecto y su duración real}}{31}{table.caption.21}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Recursos materiales y servicios externos.}}{33}{table.caption.25}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Estimación de esfuerzo (horas).}}{33}{table.caption.27}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces Presupuesto total estimado del proyecto.}}{34}{table.caption.29}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Implicados en la Aplicación}}{40}{table.caption.41}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces Ficha caso de uso CU\_01.}}{42}{table.caption.46}%
-\contentsline {table}{\numberline {3.7}{\ignorespaces Ficha caso de uso CU\_02.}}{43}{table.caption.48}%
-\contentsline {table}{\numberline {3.8}{\ignorespaces Ficha caso de uso CU\_03.}}{44}{table.caption.50}%
-\contentsline {table}{\numberline {3.9}{\ignorespaces Ficha caso de uso CU\_04.}}{44}{table.caption.51}%
-\contentsline {table}{\numberline {3.10}{\ignorespaces Ficha caso de uso CU\_05.}}{45}{table.caption.52}%
-\contentsline {table}{\numberline {3.11}{\ignorespaces Ficha caso de uso CU\_20.}}{46}{table.caption.54}%
-\contentsline {table}{\numberline {3.12}{\ignorespaces Ficha caso de uso CU\_22.}}{47}{table.caption.55}%
-\contentsline {table}{\numberline {3.13}{\ignorespaces Ficha caso de uso CU\_06.}}{49}{table.caption.58}%
-\contentsline {table}{\numberline {3.14}{\ignorespaces Ficha caso de uso CU\_07.}}{50}{table.caption.60}%
-\contentsline {table}{\numberline {3.15}{\ignorespaces Ficha caso de uso CU\_08.}}{51}{table.caption.62}%
-\contentsline {table}{\numberline {3.16}{\ignorespaces Ficha caso de uso CU\_09.}}{52}{table.caption.64}%
-\contentsline {table}{\numberline {3.17}{\ignorespaces Ficha caso de uso CU\_18.}}{52}{table.caption.65}%
-\contentsline {table}{\numberline {3.18}{\ignorespaces Ficha caso de uso CU\_10.}}{54}{table.caption.68}%
-\contentsline {table}{\numberline {3.19}{\ignorespaces Ficha caso de uso CU\_11.}}{55}{table.caption.70}%
-\contentsline {table}{\numberline {3.20}{\ignorespaces Ficha caso de uso CU\_12.}}{56}{table.caption.71}%
-\contentsline {table}{\numberline {3.21}{\ignorespaces Ficha caso de uso CU\_13.}}{57}{table.caption.73}%
-\contentsline {table}{\numberline {3.22}{\ignorespaces Ficha caso de uso CU\_23.}}{57}{table.caption.74}%
-\contentsline {table}{\numberline {3.23}{\ignorespaces Ficha caso de uso CU\_14.}}{59}{table.caption.77}%
-\contentsline {table}{\numberline {3.24}{\ignorespaces Ficha caso de uso CU\_15.}}{60}{table.caption.79}%
-\contentsline {table}{\numberline {3.25}{\ignorespaces Ficha caso de uso CU\_16.}}{62}{table.caption.83}%
-\contentsline {table}{\numberline {3.26}{\ignorespaces Ficha caso de uso CU\_17.}}{63}{table.caption.85}%
-\contentsline {table}{\numberline {3.27}{\ignorespaces Ficha caso de uso CU\_21.}}{64}{table.3.27}%
-\contentsline {table}{\numberline {3.28}{\ignorespaces Endpoints REST de la API: Control de Autorización y Gestión de Usuarios.}}{66}{table.caption.90}%
-\contentsline {table}{\numberline {3.29}{\ignorespaces Endpoints REST de la API: Fichas de Deportistas y Personal de Entrenadores.}}{67}{table.caption.91}%
-\contentsline {table}{\numberline {3.30}{\ignorespaces Endpoints REST de la API: Gestión y Planificación de Eventos.}}{68}{table.caption.92}%
-\contentsline {table}{\numberline {3.31}{\ignorespaces Endpoints REST de la API: Recursos Multimedia, Solicitudes Administrativas y Gestión Logística de Transporte.}}{69}{table.caption.93}%
-\contentsline {table}{\numberline {3.32}{\ignorespaces Componentes del Frontend: Pantallas del Bloque Común y del Rol del Padre.}}{71}{table.caption.96}%
-\contentsline {table}{\numberline {3.33}{\ignorespaces Componentes del Frontend: Pantallas del Rol del Entrenador y del Rol del Administrador.}}{72}{table.caption.97}%
-\contentsline {table}{\numberline {3.34}{\ignorespaces Especificación física de la tabla \texttt {usuarios}.}}{75}{table.caption.102}%
-\contentsline {table}{\numberline {3.35}{\ignorespaces Especificación física de la tabla \texttt {padres}.}}{75}{table.caption.104}%
-\contentsline {table}{\numberline {3.36}{\ignorespaces Especificación física de la tabla \texttt {entrenador}.}}{76}{table.caption.106}%
-\contentsline {table}{\numberline {3.37}{\ignorespaces Especificación física de la tabla \texttt {deportistas}.}}{76}{table.caption.108}%
-\contentsline {table}{\numberline {3.38}{\ignorespaces Especificación física de la tabla intermedia \texttt {padres\_hijos}.}}{76}{table.caption.110}%
-\contentsline {table}{\numberline {3.39}{\ignorespaces Especificación física de la tabla \texttt {eventos}.}}{78}{table.caption.113}%
-\contentsline {table}{\numberline {3.40}{\ignorespaces Especificación física de la tabla intermedia \texttt {eventos\_deportistas}.}}{78}{table.caption.115}%
-\contentsline {table}{\numberline {3.41}{\ignorespaces Especificación física de la tabla \texttt {transporte\_viajes}.}}{80}{table.caption.118}%
-\contentsline {table}{\numberline {3.42}{\ignorespaces Especificación física de la tabla intermedia \texttt {transporte\_reservas}.}}{80}{table.caption.120}%
-\contentsline {table}{\numberline {3.43}{\ignorespaces Especificación física de la tabla \texttt {solicitudes\_registro}.}}{82}{table.caption.123}%
-\contentsline {table}{\numberline {3.44}{\ignorespaces Especificación física de la tabla \texttt {fotos}.}}{82}{table.caption.125}%
-\contentsline {table}{\numberline {3.45}{\ignorespaces Especificación de la paleta de colores y lógica semántica del calendario.}}{87}{table.caption.134}%
-\contentsline {table}{\numberline {3.46}{\ignorespaces Clasificación y responsabilidades de los componentes de la interfaz de usuario.}}{89}{table.caption.139}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

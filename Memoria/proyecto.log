@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.5.20)  21 JUN 2026 10:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.5.20)  22 JUN 2026 16:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -930,7 +930,7 @@ Package hyperref Info: Link coloring OFF on input line 154.
 
  (./portada/portada.tex
 \centeroffset=\skip92
-<imagenes/logo_ugr.jpg, id=147, 777.90625pt x 231.86626pt>
+<imagenes/logo_ugr.jpg, id=143, 777.90625pt x 231.86626pt>
 File: imagenes/logo_ugr.jpg Graphic file (type jpg)
 <use imagenes/logo_ugr.jpg>
 Package pdftex.def Info: imagenes/logo_ugr.jpg  used on input line 12.
@@ -946,7 +946,7 @@ Overfull \hbox (24.0pt too wide) in paragraph at lines 9--24
 | $[]$ 
  []
 
-<imagenes/etsiit_logo.png, id=148, 110.814pt x 40.4712pt>
+<imagenes/etsiit_logo.png, id=144, 110.814pt x 40.4712pt>
 File: imagenes/etsiit_logo.png Graphic file (type png)
 <use imagenes/etsiit_logo.png>
 Package pdftex.def Info: imagenes/etsiit_logo.png  used on input line 32.
@@ -964,7 +964,7 @@ Overfull \hbox (24.0pt too wide) in paragraph at lines 26--39
 ] (./portada/portada_2.tex [3] [4
 
 ]
-<imagenes/logo.png, id=173, 819.06pt x 746.03719pt>
+<imagenes/logo.png, id=169, 819.06pt x 746.03719pt>
 File: imagenes/logo.png Graphic file (type png)
 <use imagenes/logo.png>
 Package pdftex.def Info: imagenes/logo.png  used on input line 20.
@@ -1103,12 +1103,12 @@ LaTeX Info: Redefining \sptext on input line 1.
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [19]
-Overfull \hbox (9.38168pt too wide) in paragraph at lines 44--44
+Overfull \hbox (9.38168pt too wide) in paragraph at lines 42--42
  [][] [][]\OT1/cmr/m/n/10.95 Especificaci^^Son f^^S^^Psi-ca de la ta-bla in-ter-me-dia \OT1/cmtt/m/n/10.95 eventos[]deportistas\OT1/cmr/m/n/10.95 .[] [][]  
  []
 
 
-Overfull \hbox (9.38168pt too wide) in paragraph at lines 46--46
+Overfull \hbox (9.38168pt too wide) in paragraph at lines 44--44
  [][] [][]\OT1/cmr/m/n/10.95 Especificaci^^Son f^^S^^Psi-ca de la ta-bla in-ter-me-dia \OT1/cmtt/m/n/10.95 transporte[]reservas\OT1/cmr/m/n/10.95 .[] [][]  
  []
 
@@ -1130,650 +1130,658 @@ LaTeX Info: Redefining \% on input line 25.
 LaTeX Info: Redefining \. on input line 35.
 LaTeX Info: Redefining \% on input line 35.
  [23]
-<imagenes/sportEasy.jpeg, id=544, 943.525pt x 2055.68pt>
+<imagenes/sportEasy.jpeg, id=537, 943.525pt x 2055.68pt>
 File: imagenes/sportEasy.jpeg Graphic file (type jpg)
 <use imagenes/sportEasy.jpeg>
 Package pdftex.def Info: imagenes/sportEasy.jpeg  used on input line 47.
-(pdftex.def)             Requested size: 120.94931pt x 190.05331pt.
-<imagenes/Playoff.jpeg, id=547, 943.525pt x 2055.68pt>
+(pdftex.def)             Requested size: 86.39647pt x 190.05331pt.
+<imagenes/Playoff.jpeg, id=540, 943.525pt x 2055.68pt>
 File: imagenes/Playoff.jpeg Graphic file (type jpg)
 <use imagenes/Playoff.jpeg>
 Package pdftex.def Info: imagenes/Playoff.jpeg  used on input line 53.
-(pdftex.def)             Requested size: 120.94931pt x 190.05331pt.
-<imagenes/TeamSnap.jpeg, id=550, 943.525pt x 2055.68pt>
+(pdftex.def)             Requested size: 86.39647pt x 190.05331pt.
+<imagenes/TeamSnap.jpeg, id=543, 943.525pt x 2055.68pt>
 File: imagenes/TeamSnap.jpeg Graphic file (type jpg)
 <use imagenes/TeamSnap.jpeg>
 Package pdftex.def Info: imagenes/TeamSnap.jpeg  used on input line 63.
-(pdftex.def)             Requested size: 120.94931pt x 190.05331pt.
-<imagenes/Sprongo.jpeg, id=553, 943.525pt x 2055.68pt>
+(pdftex.def)             Requested size: 86.39647pt x 190.05331pt.
+<imagenes/Sprongo.jpeg, id=546, 943.525pt x 2055.68pt>
 File: imagenes/Sprongo.jpeg Graphic file (type jpg)
 <use imagenes/Sprongo.jpeg>
 Package pdftex.def Info: imagenes/Sprongo.jpeg  used on input line 69.
-(pdftex.def)             Requested size: 120.94931pt x 190.05331pt.
-<imagenes/Onesporter.jpeg, id=556, 943.525pt x 2055.68pt>
+(pdftex.def)             Requested size: 86.39647pt x 190.05331pt.
+<imagenes/Onesporter.jpeg, id=549, 943.525pt x 2055.68pt>
 File: imagenes/Onesporter.jpeg Graphic file (type jpg)
 <use imagenes/Onesporter.jpeg>
 Package pdftex.def Info: imagenes/Onesporter.jpeg  used on input line 79.
-(pdftex.def)             Requested size: 118.78975pt x 187.19891pt.
+(pdftex.def)             Requested size: 118.78975pt x 143.97504pt.
 
 
-LaTeX Warning: Float too large for page by 93.158pt on input line 86.
+LaTeX Warning: Float too large for page by 49.93413pt on input line 86.
 
-LaTeX Info: Redefining \. on input line 103.
-LaTeX Info: Redefining \% on input line 103.
+LaTeX Info: Redefining \. on input line 88.
+LaTeX Info: Redefining \% on input line 88.
 [24]
-LaTeX Info: Redefining \. on input line 103.
-LaTeX Info: Redefining \% on input line 103.
- [25 <./imagenes/sportEasy.jpeg> <./imagenes/playOff.jpeg> <./imagenes/teamSnap.jpeg> <./imagenes/sprongo.jpeg> <./imagenes/oneSporter.jpeg>]) (./capitulos/tecnologias.tex
+LaTeX Info: Redefining \. on input line 88.
+LaTeX Info: Redefining \% on input line 88.
+ [25 <./imagenes/sportEasy.jpeg> <./imagenes/playOff.jpeg> <./imagenes/teamSnap.jpeg> <./imagenes/sprongo.jpeg> <./imagenes/oneSporter.jpeg>]) (./capitulos/diseño.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [26]
 Cap\'{\i }tulo 2.
+Missing character: There is no , in font nullfont!
 [27
 
-] [28]) (./capitulos/diseño.tex
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [29] [30
-
 ]
-Cap\'{\i }tulo 3.
-Missing character: There is no , in font nullfont!
+Underfull \vbox (badness 1360) has occurred while \output is active []
 
-Underfull \vbox (badness 2326) has occurred while \output is active []
-
- [31]
-Underfull \hbox (badness 3386) in paragraph at lines 98--98
+LaTeX Info: Redefining \. on input line 89.
+LaTeX Info: Redefining \% on input line 89.
+ [28]
+Underfull \hbox (badness 3386) in paragraph at lines 103--103
 []|\OT1/cmr/m/n/8 IDE, emu-la-do-res An-dro-
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 98--98
+Underfull \hbox (badness 1242) in paragraph at lines 103--103
 []|\OT1/cmr/m/n/8 Backend (No-de.js), Fron-
  []
 
-LaTeX Info: Redefining \. on input line 101.
-LaTeX Info: Redefining \% on input line 101.
-[32{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-LaTeX Info: Redefining \. on input line 149.
-LaTeX Info: Redefining \% on input line 149.
- [33]
+./capitulos/diseño.tex:117: Undefined control sequence.
+l.117 ...or, se establece una tarifa de **18 \euro
+                                                  /h**. Por tanto, el coste ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+LaTeX Info: Redefining \. on input line 118.
+LaTeX Info: Redefining \% on input line 118.
+[29{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+LaTeX Info: Redefining \. on input line 157.
+LaTeX Info: Redefining \% on input line 157.
+ [30]
 LaTeX Info: Redefining \. on input line 170.
 LaTeX Info: Redefining \% on input line 170.
+ [31]
+LaTeX Info: Redefining \. on input line 186.
+LaTeX Info: Redefining \% on input line 186.
+ [32]
+LaTeX Info: Redefining \. on input line 198.
+LaTeX Info: Redefining \% on input line 198.
+ [33]
+LaTeX Info: Redefining \. on input line 216.
+LaTeX Info: Redefining \% on input line 216.
  [34]
-LaTeX Info: Redefining \. on input line 183.
-LaTeX Info: Redefining \% on input line 183.
+LaTeX Info: Redefining \. on input line 235.
+LaTeX Info: Redefining \% on input line 235.
  [35]
-LaTeX Info: Redefining \. on input line 199.
-LaTeX Info: Redefining \% on input line 199.
+LaTeX Info: Redefining \. on input line 250.
+LaTeX Info: Redefining \% on input line 250.
  [36]
-LaTeX Info: Redefining \. on input line 211.
-LaTeX Info: Redefining \% on input line 211.
- [37]
-LaTeX Info: Redefining \. on input line 229.
-LaTeX Info: Redefining \% on input line 229.
- [38]
-LaTeX Info: Redefining \. on input line 248.
-LaTeX Info: Redefining \% on input line 248.
- [39]
-LaTeX Info: Redefining \. on input line 264.
-LaTeX Info: Redefining \% on input line 264.
- [40]
-<diagramas/DiagramaPaquetes.drawio.png, id=688, 653.44125pt x 322.20375pt>
+<diagramas/DiagramaPaquetes.drawio.png, id=643, 653.44125pt x 322.20375pt>
 File: diagramas/DiagramaPaquetes.drawio.png Graphic file (type png)
 <use diagramas/DiagramaPaquetes.drawio.png>
-Package pdftex.def Info: diagramas/DiagramaPaquetes.drawio.png  used on input line 283.
+Package pdftex.def Info: diagramas/DiagramaPaquetes.drawio.png  used on input line 269.
 (pdftex.def)             Requested size: 216.0022pt x 106.50455pt.
-LaTeX Info: Redefining \. on input line 288.
-LaTeX Info: Redefining \% on input line 288.
- [41 <./diagramas/DiagramaPaquetes.drawio.png>]
-<diagramas/DiagramaGestionUsuariosYAcceso.drawio.png, id=695, 2042.63126pt x 354.32375pt>
+LaTeX Info: Redefining \. on input line 274.
+LaTeX Info: Redefining \% on input line 274.
+ [37 <./diagramas/DiagramaPaquetes.drawio.png>]
+<diagramas/DiagramaGestionUsuariosYAcceso.drawio.png, id=650, 2042.63126pt x 354.32375pt>
 File: diagramas/DiagramaGestionUsuariosYAcceso.drawio.png Graphic file (type png)
 <use diagramas/DiagramaGestionUsuariosYAcceso.drawio.png>
-Package pdftex.def Info: diagramas/DiagramaGestionUsuariosYAcceso.drawio.png  used on input line 293.
+Package pdftex.def Info: diagramas/DiagramaGestionUsuariosYAcceso.drawio.png  used on input line 279.
 (pdftex.def)             Requested size: 360.0pt x 62.44551pt.
-<diagramas/CU_01.drawio.png, id=696, 2082.78125pt x 727.71875pt>
+<diagramas/CU_01.drawio.png, id=651, 2082.78125pt x 727.71875pt>
 File: diagramas/CU_01.drawio.png Graphic file (type png)
 <use diagramas/CU_01.drawio.png>
-Package pdftex.def Info: diagramas/CU_01.drawio.png  used on input line 329.
+Package pdftex.def Info: diagramas/CU_01.drawio.png  used on input line 315.
 (pdftex.def)             Requested size: 360.0pt x 125.77591pt.
-<diagramas/CU_02.drawio.png, id=697, 1473.505pt x 753.81625pt>
+<diagramas/CU_02.drawio.png, id=652, 1473.505pt x 753.81625pt>
 File: diagramas/CU_02.drawio.png Graphic file (type png)
 <use diagramas/CU_02.drawio.png>
-Package pdftex.def Info: diagramas/CU_02.drawio.png  used on input line 363.
+Package pdftex.def Info: diagramas/CU_02.drawio.png  used on input line 349.
 (pdftex.def)             Requested size: 360.0pt x 184.16324pt.
-LaTeX Info: Redefining \. on input line 368.
-LaTeX Info: Redefining \% on input line 368.
- [42 <./diagramas/DiagramaGestionUsuariosYAcceso.drawio.png>]
-LaTeX Info: Redefining \. on input line 368.
-LaTeX Info: Redefining \% on input line 368.
- [43 <./diagramas/CU_01.drawio.png> <./diagramas/CU_02.drawio.png>]
-<diagramas/CU_05.drawio.png, id=712, 1335.99126pt x 684.5575pt>
+LaTeX Info: Redefining \. on input line 354.
+LaTeX Info: Redefining \% on input line 354.
+ [38 <./diagramas/DiagramaGestionUsuariosYAcceso.drawio.png>]
+LaTeX Info: Redefining \. on input line 354.
+LaTeX Info: Redefining \% on input line 354.
+ [39 <./diagramas/CU_01.drawio.png> <./diagramas/CU_02.drawio.png>]
+<diagramas/CU_05.drawio.png, id=668, 1335.99126pt x 684.5575pt>
 File: diagramas/CU_05.drawio.png Graphic file (type png)
 <use diagramas/CU_05.drawio.png>
-Package pdftex.def Info: diagramas/CU_05.drawio.png  used on input line 457.
+Package pdftex.def Info: diagramas/CU_05.drawio.png  used on input line 443.
 (pdftex.def)             Requested size: 360.0pt x 184.45695pt.
-LaTeX Info: Redefining \. on input line 526.
-LaTeX Info: Redefining \% on input line 526.
- [44]
-LaTeX Info: Redefining \. on input line 526.
-LaTeX Info: Redefining \% on input line 526.
- [45 <./diagramas/CU_05.drawio.png>]
-LaTeX Info: Redefining \. on input line 526.
-LaTeX Info: Redefining \% on input line 526.
- [46]
-LaTeX Info: Redefining \. on input line 526.
-LaTeX Info: Redefining \% on input line 526.
- [47]
-<diagramas/DiagramaPlanificacionEntrenos.drawio.png, id=733, 531.9875pt x 495.8525pt>
+LaTeX Info: Redefining \. on input line 512.
+LaTeX Info: Redefining \% on input line 512.
+ [40]
+LaTeX Info: Redefining \. on input line 512.
+LaTeX Info: Redefining \% on input line 512.
+ [41 <./diagramas/CU_05.drawio.png>]
+LaTeX Info: Redefining \. on input line 512.
+LaTeX Info: Redefining \% on input line 512.
+ [42]
+LaTeX Info: Redefining \. on input line 512.
+LaTeX Info: Redefining \% on input line 512.
+ [43]
+<diagramas/DiagramaPlanificacionEntrenos.drawio.png, id=688, 531.9875pt x 495.8525pt>
 File: diagramas/DiagramaPlanificacionEntrenos.drawio.png Graphic file (type png)
 <use diagramas/DiagramaPlanificacionEntrenos.drawio.png>
-Package pdftex.def Info: diagramas/DiagramaPlanificacionEntrenos.drawio.png  used on input line 532.
+Package pdftex.def Info: diagramas/DiagramaPlanificacionEntrenos.drawio.png  used on input line 518.
 (pdftex.def)             Requested size: 360.0pt x 335.55609pt.
-<diagramas/CU_06.drawio.png, id=734, 1339.0025pt x 935.495pt>
+<diagramas/CU_06.drawio.png, id=689, 1339.0025pt x 935.495pt>
 File: diagramas/CU_06.drawio.png Graphic file (type png)
 <use diagramas/CU_06.drawio.png>
-Package pdftex.def Info: diagramas/CU_06.drawio.png  used on input line 568.
+Package pdftex.def Info: diagramas/CU_06.drawio.png  used on input line 554.
 (pdftex.def)             Requested size: 360.0pt x 251.51643pt.
-<diagramas/CU_07.drawio.png, id=735, 1611.01875pt x 1134.2375pt>
+<diagramas/CU_07.drawio.png, id=690, 1611.01875pt x 1134.2375pt>
 File: diagramas/CU_07.drawio.png Graphic file (type png)
 <use diagramas/CU_07.drawio.png>
-Package pdftex.def Info: diagramas/CU_07.drawio.png  used on input line 604.
+Package pdftex.def Info: diagramas/CU_07.drawio.png  used on input line 590.
 (pdftex.def)             Requested size: 288.0011pt x 202.75206pt.
-<diagramas/CU_08.drawio.png, id=736, 1579.9025pt x 880.28876pt>
+<diagramas/CU_08.drawio.png, id=691, 1579.9025pt x 880.28876pt>
 File: diagramas/CU_08.drawio.png Graphic file (type png)
 <use diagramas/CU_08.drawio.png>
-Package pdftex.def Info: diagramas/CU_08.drawio.png  used on input line 640.
+Package pdftex.def Info: diagramas/CU_08.drawio.png  used on input line 626.
 (pdftex.def)             Requested size: 323.9978pt x 180.52751pt.
-LaTeX Info: Redefining \. on input line 701.
-LaTeX Info: Redefining \% on input line 701.
- [48 <./diagramas/DiagramaPlanificacionEntrenos.drawio.png>]
-LaTeX Info: Redefining \. on input line 701.
-LaTeX Info: Redefining \% on input line 701.
- [49 <./diagramas/CU_06.drawio.png>]
-LaTeX Info: Redefining \. on input line 701.
-LaTeX Info: Redefining \% on input line 701.
- [50 <./diagramas/CU_07.drawio.png>]
-LaTeX Info: Redefining \. on input line 701.
-LaTeX Info: Redefining \% on input line 701.
- [51 <./diagramas/CU_08.drawio.png>]
-LaTeX Info: Redefining \. on input line 701.
-LaTeX Info: Redefining \% on input line 701.
- [52]
-<diagramas/DiagramaLogisticaTransporte.drawio.png, id=763, 622.325pt x 554.07pt>
+LaTeX Info: Redefining \. on input line 687.
+LaTeX Info: Redefining \% on input line 687.
+ [44 <./diagramas/DiagramaPlanificacionEntrenos.drawio.png>]
+LaTeX Info: Redefining \. on input line 687.
+LaTeX Info: Redefining \% on input line 687.
+ [45 <./diagramas/CU_06.drawio.png>]
+LaTeX Info: Redefining \. on input line 687.
+LaTeX Info: Redefining \% on input line 687.
+ [46 <./diagramas/CU_07.drawio.png>]
+LaTeX Info: Redefining \. on input line 687.
+LaTeX Info: Redefining \% on input line 687.
+ [47 <./diagramas/CU_08.drawio.png>]
+LaTeX Info: Redefining \. on input line 687.
+LaTeX Info: Redefining \% on input line 687.
+ [48]
+<diagramas/DiagramaLogisticaTransporte.drawio.png, id=718, 622.325pt x 554.07pt>
 File: diagramas/DiagramaLogisticaTransporte.drawio.png Graphic file (type png)
 <use diagramas/DiagramaLogisticaTransporte.drawio.png>
-Package pdftex.def Info: diagramas/DiagramaLogisticaTransporte.drawio.png  used on input line 706.
+Package pdftex.def Info: diagramas/DiagramaLogisticaTransporte.drawio.png  used on input line 692.
 (pdftex.def)             Requested size: 216.0022pt x 192.3126pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--724
+Underfull \hbox (badness 10000) in paragraph at lines 689--710
 
  []
 
-<diagramas/CU_10.drawio.png, id=764, 1360.08125pt x 671.50874pt>
+<diagramas/CU_10.drawio.png, id=719, 1360.08125pt x 671.50874pt>
 File: diagramas/CU_10.drawio.png Graphic file (type png)
 <use diagramas/CU_10.drawio.png>
-Package pdftex.def Info: diagramas/CU_10.drawio.png  used on input line 756.
+Package pdftex.def Info: diagramas/CU_10.drawio.png  used on input line 742.
 (pdftex.def)             Requested size: 360.0pt x 177.7338pt.
-LaTeX Info: Redefining \. on input line 790.
-LaTeX Info: Redefining \% on input line 790.
-[53 <./diagramas/DiagramaLogisticaTransporte.drawio.png>]
-LaTeX Info: Redefining \. on input line 790.
-LaTeX Info: Redefining \% on input line 790.
- [54 <./diagramas/CU_10.drawio.png>]
-LaTeX Info: Redefining \. on input line 790.
-LaTeX Info: Redefining \% on input line 790.
- [55]
-<diagramas/CU_12.drawio.png, id=781, 1397.22pt x 643.40375pt>
+LaTeX Info: Redefining \. on input line 776.
+LaTeX Info: Redefining \% on input line 776.
+[49 <./diagramas/DiagramaLogisticaTransporte.drawio.png>]
+LaTeX Info: Redefining \. on input line 776.
+LaTeX Info: Redefining \% on input line 776.
+ [50 <./diagramas/CU_10.drawio.png>]
+LaTeX Info: Redefining \. on input line 776.
+LaTeX Info: Redefining \% on input line 776.
+ [51]
+<diagramas/CU_12.drawio.png, id=736, 1397.22pt x 643.40375pt>
 File: diagramas/CU_12.drawio.png Graphic file (type png)
 <use diagramas/CU_12.drawio.png>
-Package pdftex.def Info: diagramas/CU_12.drawio.png  used on input line 821.
+Package pdftex.def Info: diagramas/CU_12.drawio.png  used on input line 807.
 (pdftex.def)             Requested size: 288.0011pt x 132.6153pt.
- [56
+ [52
 
  <./diagramas/CU_12.drawio.png>]
-LaTeX Info: Redefining \. on input line 882.
-LaTeX Info: Redefining \% on input line 882.
- [57]
-<diagramas/DiagramaAsistencia.drawio.png, id=792, 594.22pt x 325.215pt>
+LaTeX Info: Redefining \. on input line 868.
+LaTeX Info: Redefining \% on input line 868.
+ [53]
+<diagramas/DiagramaAsistencia.drawio.png, id=746, 594.22pt x 325.215pt>
 File: diagramas/DiagramaAsistencia.drawio.png Graphic file (type png)
 <use diagramas/DiagramaAsistencia.drawio.png>
-Package pdftex.def Info: diagramas/DiagramaAsistencia.drawio.png  used on input line 888.
+Package pdftex.def Info: diagramas/DiagramaAsistencia.drawio.png  used on input line 874.
 (pdftex.def)             Requested size: 288.0011pt x 157.62984pt.
-LaTeX Info: Redefining \. on input line 893.
-LaTeX Info: Redefining \% on input line 893.
- [58 <./diagramas/DiagramaAsistencia.drawio.png>]
-<diagramas/CU_14.drawio.png, id=799, 1610.015pt x 712.6625pt>
+LaTeX Info: Redefining \. on input line 879.
+LaTeX Info: Redefining \% on input line 879.
+ [54 <./diagramas/DiagramaAsistencia.drawio.png>]
+<diagramas/CU_14.drawio.png, id=753, 1610.015pt x 712.6625pt>
 File: diagramas/CU_14.drawio.png Graphic file (type png)
 <use diagramas/CU_14.drawio.png>
-Package pdftex.def Info: diagramas/CU_14.drawio.png  used on input line 924.
+Package pdftex.def Info: diagramas/CU_14.drawio.png  used on input line 910.
 (pdftex.def)             Requested size: 288.0011pt x 127.47989pt.
-<diagramas/CU_15.drawio.png, id=800, 1465.475pt x 712.6625pt>
+<diagramas/CU_15.drawio.png, id=754, 1465.475pt x 712.6625pt>
 File: diagramas/CU_15.drawio.png Graphic file (type png)
 <use diagramas/CU_15.drawio.png>
-Package pdftex.def Info: diagramas/CU_15.drawio.png  used on input line 960.
+Package pdftex.def Info: diagramas/CU_15.drawio.png  used on input line 946.
 (pdftex.def)             Requested size: 323.9978pt x 157.5583pt.
-LaTeX Info: Redefining \. on input line 965.
-LaTeX Info: Redefining \% on input line 965.
- [59 <./diagramas/CU_14.drawio.png>]
-LaTeX Info: Redefining \. on input line 965.
-LaTeX Info: Redefining \% on input line 965.
- [60 <./diagramas/CU_15.drawio.png>]
-<diagramas/ControlMultimedia.drawio.png, id=811, 491.8375pt x 308.15125pt>
+LaTeX Info: Redefining \. on input line 951.
+LaTeX Info: Redefining \% on input line 951.
+ [55 <./diagramas/CU_14.drawio.png>]
+LaTeX Info: Redefining \. on input line 951.
+LaTeX Info: Redefining \% on input line 951.
+ [56 <./diagramas/CU_15.drawio.png>]
+<diagramas/ControlMultimedia.drawio.png, id=766, 491.8375pt x 308.15125pt>
 File: diagramas/ControlMultimedia.drawio.png Graphic file (type png)
 <use diagramas/ControlMultimedia.drawio.png>
-Package pdftex.def Info: diagramas/ControlMultimedia.drawio.png  used on input line 971.
+Package pdftex.def Info: diagramas/ControlMultimedia.drawio.png  used on input line 957.
 (pdftex.def)             Requested size: 288.0011pt x 180.44878pt.
-LaTeX Info: Redefining \. on input line 976.
-LaTeX Info: Redefining \% on input line 976.
- [61 <./diagramas/ControlMultimedia.drawio.png>]
-<diagramas/CU_16.drawio.png, id=818, 1563.8425pt x 753.81625pt>
+LaTeX Info: Redefining \. on input line 962.
+LaTeX Info: Redefining \% on input line 962.
+ [57 <./diagramas/ControlMultimedia.drawio.png>]
+<diagramas/CU_16.drawio.png, id=774, 1563.8425pt x 753.81625pt>
 File: diagramas/CU_16.drawio.png Graphic file (type png)
 <use diagramas/CU_16.drawio.png>
-Package pdftex.def Info: diagramas/CU_16.drawio.png  used on input line 1010.
+Package pdftex.def Info: diagramas/CU_16.drawio.png  used on input line 996.
 (pdftex.def)             Requested size: 323.9978pt x 156.17816pt.
-<diagramas/CU_17.drawio.png, id=819, 1375.1375pt x 671.50874pt>
+<diagramas/CU_17.drawio.png, id=775, 1375.1375pt x 671.50874pt>
 File: diagramas/CU_17.drawio.png Graphic file (type png)
 <use diagramas/CU_17.drawio.png>
-Package pdftex.def Info: diagramas/CU_17.drawio.png  used on input line 1046.
+Package pdftex.def Info: diagramas/CU_17.drawio.png  used on input line 1032.
 (pdftex.def)             Requested size: 323.9978pt x 158.21443pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1077.
+(caption)                particular \caption on input line 1063.
 See the caption package documentation for explanation.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [62
+ [58
 
  <./diagramas/CU_16.drawio.png>]
-LaTeX Info: Redefining \. on input line 1077.
-LaTeX Info: Redefining \% on input line 1077.
- [63 <./diagramas/CU_17.drawio.png>]
-LaTeX Info: Redefining \. on input line 1081.
-LaTeX Info: Redefining \% on input line 1081.
- [64]
-<imagenes/arquitectura.png, id=837, 1486.55376pt x 706.64pt>
+LaTeX Info: Redefining \. on input line 1063.
+LaTeX Info: Redefining \% on input line 1063.
+ [59 <./diagramas/CU_17.drawio.png>]
+LaTeX Info: Redefining \. on input line 1067.
+LaTeX Info: Redefining \% on input line 1067.
+ [60]
+<imagenes/arquitectura.png, id=792, 1486.55376pt x 706.64pt>
 File: imagenes/arquitectura.png Graphic file (type png)
 <use imagenes/arquitectura.png>
-Package pdftex.def Info: imagenes/arquitectura.png  used on input line 1093.
+Package pdftex.def Info: imagenes/arquitectura.png  used on input line 1079.
 (pdftex.def)             Requested size: 323.9978pt x 154.00565pt.
-LaTeX Info: Redefining \. on input line 1101.
-LaTeX Info: Redefining \% on input line 1101.
- [65 <./imagenes/arquitectura.png>]
-Underfull \hbox (badness 1418) in paragraph at lines 1146--1146
+LaTeX Info: Redefining \. on input line 1087.
+LaTeX Info: Redefining \% on input line 1087.
+ [61 <./imagenes/arquitectura.png>]
+Underfull \hbox (badness 1418) in paragraph at lines 1132--1132
 \OT1/cmr/m/n/9 por-tis-tas y sus tu-to-res
  []
 
 
-Underfull \hbox (badness 2478) in paragraph at lines 1146--1146
+Underfull \hbox (badness 2478) in paragraph at lines 1132--1132
 []|\OT1/cmr/m/n/9 Recuperaci^^Son del lis-ta-
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 1176--1176
+Underfull \hbox (badness 1052) in paragraph at lines 1162--1162
 []|\OT1/cmr/m/n/8 Creaci^^Son de un en-tre-na-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1176
+Underfull \hbox (badness 10000) in paragraph at lines 1162--1162
 []|\OT1/cmr/m/n/8 Entrenamientos vin-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1176
+Underfull \hbox (badness 10000) in paragraph at lines 1162--1162
 \OT1/cmr/m/n/8 cu-la-dos a la ca-te-gor^^S^^Pa
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1176--1176
+Underfull \hbox (badness 10000) in paragraph at lines 1162--1162
 []|\OT1/cmr/m/n/8 Auditor^^S^^Pa com-ple-ta de
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 1176--1176
+Underfull \hbox (badness 1270) in paragraph at lines 1162--1162
 []|\OT1/cmr/m/n/8 Detalle ex-ten-di-do de un
  []
 
 
-Underfull \hbox (badness 4291) in paragraph at lines 1176--1176
+Underfull \hbox (badness 4291) in paragraph at lines 1162--1162
 \OT1/cmr/m/n/8 asis-tir^^San a un en-tre-na-
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 1176--1176
+Underfull \hbox (badness 1210) in paragraph at lines 1162--1162
 []|\OT1/cmr/m/n/8 Inscripci^^Son ac-ti-va de un
  []
 
 
-Underfull \hbox (badness 1817) in paragraph at lines 1176--1176
+Underfull \hbox (badness 1817) in paragraph at lines 1162--1162
 []|\OT1/cmr/m/n/8 Modificaci^^Son del m^^Seto-do
  []
 
 
-Underfull \hbox (badness 2894) in paragraph at lines 1201--1201
+Underfull \hbox (badness 2894) in paragraph at lines 1187--1187
 \OT1/cmr/m/n/8 dia de los en-tre-na-
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 1201--1201
+Underfull \hbox (badness 1675) in paragraph at lines 1187--1187
 []|\OT1/cmr/m/n/8 Almacenamiento f^^S^^Psi-
  []
 
 
-Underfull \hbox (badness 6944) in paragraph at lines 1201--1201
+Underfull \hbox (badness 6944) in paragraph at lines 1187--1187
 \OT1/cmr/m/n/8 de jus-ti-fi-ca-ci^^Son ad-
  []
 
 
-Underfull \hbox (badness 1968) in paragraph at lines 1201--1201
+Underfull \hbox (badness 1968) in paragraph at lines 1187--1187
 \OT1/cmr/m/n/8 trans-por-te cor-po-ra-ti-
  []
 
 
-Underfull \hbox (badness 3942) in paragraph at lines 1201--1201
+Underfull \hbox (badness 3942) in paragraph at lines 1187--1187
 []|\OT1/cmr/m/n/8 Control de la lis-ta
  []
 
 
-Underfull \hbox (badness 2961) in paragraph at lines 1201--1201
+Underfull \hbox (badness 2961) in paragraph at lines 1187--1187
 []|\OT1/cmr/m/n/8 Visualizaci^^Son de las
  []
 
-<diagramas/Arquitectura.drawio.png, id=848, 778.91pt x 561.09625pt>
+<diagramas/Arquitectura.drawio.png, id=803, 778.91pt x 561.09625pt>
 File: diagramas/Arquitectura.drawio.png Graphic file (type png)
 <use diagramas/Arquitectura.drawio.png>
-Package pdftex.def Info: diagramas/Arquitectura.drawio.png  used on input line 1208.
+Package pdftex.def Info: diagramas/Arquitectura.drawio.png  used on input line 1194.
 (pdftex.def)             Requested size: 323.9978pt x 233.38998pt.
-LaTeX Info: Redefining \. on input line 1213.
-LaTeX Info: Redefining \% on input line 1213.
-[66]
-LaTeX Info: Redefining \. on input line 1213.
-LaTeX Info: Redefining \% on input line 1213.
- [67]
-LaTeX Info: Redefining \. on input line 1213.
-LaTeX Info: Redefining \% on input line 1213.
- [68]
-LaTeX Info: Redefining \. on input line 1213.
-LaTeX Info: Redefining \% on input line 1213.
- [69]
-Underfull \hbox (badness 1960) in paragraph at lines 1244--1244
+LaTeX Info: Redefining \. on input line 1199.
+LaTeX Info: Redefining \% on input line 1199.
+[62]
+LaTeX Info: Redefining \. on input line 1199.
+LaTeX Info: Redefining \% on input line 1199.
+ [63]
+LaTeX Info: Redefining \. on input line 1199.
+LaTeX Info: Redefining \% on input line 1199.
+ [64]
+LaTeX Info: Redefining \. on input line 1199.
+LaTeX Info: Redefining \% on input line 1199.
+ [65]
+Underfull \hbox (badness 1960) in paragraph at lines 1230--1230
 []|\OT1/cmr/m/n/8 Panel prin-ci-pal de fa-mi-lias
  []
 
 
-Underfull \hbox (badness 1248) in paragraph at lines 1244--1244
+Underfull \hbox (badness 1248) in paragraph at lines 1230--1230
 \OT1/cmr/m/n/8 gis-trar un es-quia-dor me-nor
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 1244--1244
+Underfull \hbox (badness 1577) in paragraph at lines 1230--1230
 []|\OT1/cmr/m/n/8 Visualizaci^^Son del ca-len-da-rio
  []
 
 
-Underfull \hbox (badness 1448) in paragraph at lines 1244--1244
+Underfull \hbox (badness 1448) in paragraph at lines 1230--1230
 []|\OT1/cmr/m/n/8 Vista ex-ten-di-da de even-tos
  []
 
 
-Underfull \hbox (badness 2608) in paragraph at lines 1273--1273
+Underfull \hbox (badness 2608) in paragraph at lines 1259--1259
 []|\OT1/cmr/bx/n/8 Funcionalidad e In-ter-faz de
  []
 
 
-Underfull \hbox (badness 1852) in paragraph at lines 1273--1273
+Underfull \hbox (badness 1852) in paragraph at lines 1259--1259
 []|\OT1/cmr/m/n/8 Panel de edi-ci^^Son de par^^Same-tros
  []
 
-<diagramas/OrganizacionCliente.drawio.png, id=870, 873.2625pt x 1243.64626pt>
+<diagramas/OrganizacionCliente.drawio.png, id=825, 873.2625pt x 1243.64626pt>
 File: diagramas/OrganizacionCliente.drawio.png Graphic file (type png)
 <use diagramas/OrganizacionCliente.drawio.png>
-Package pdftex.def Info: diagramas/OrganizacionCliente.drawio.png  used on input line 1280.
+Package pdftex.def Info: diagramas/OrganizacionCliente.drawio.png  used on input line 1266.
 (pdftex.def)             Requested size: 341.9989pt x 487.05057pt.
-LaTeX Info: Redefining \. on input line 1285.
-LaTeX Info: Redefining \% on input line 1285.
-[70 <./diagramas/Arquitectura.drawio.png>]
-LaTeX Info: Redefining \. on input line 1285.
-LaTeX Info: Redefining \% on input line 1285.
- [71]
-LaTeX Info: Redefining \. on input line 1285.
-LaTeX Info: Redefining \% on input line 1285.
- [72]
-LaTeX Info: Redefining \. on input line 1285.
-LaTeX Info: Redefining \% on input line 1285.
- [73 <./diagramas/OrganizacionCliente.drawio.png>]
-<diagramas/DiagramaBaseDatos.drawio.png, id=891, 1281.78876pt x 1122.1925pt>
+LaTeX Info: Redefining \. on input line 1271.
+LaTeX Info: Redefining \% on input line 1271.
+[66 <./diagramas/Arquitectura.drawio.png>]
+LaTeX Info: Redefining \. on input line 1271.
+LaTeX Info: Redefining \% on input line 1271.
+ [67]
+LaTeX Info: Redefining \. on input line 1271.
+LaTeX Info: Redefining \% on input line 1271.
+ [68]
+LaTeX Info: Redefining \. on input line 1271.
+LaTeX Info: Redefining \% on input line 1271.
+ [69 <./diagramas/OrganizacionCliente.drawio.png>]
+<diagramas/DiagramaBaseDatos.drawio.png, id=846, 1281.78876pt x 1122.1925pt>
 File: diagramas/DiagramaBaseDatos.drawio.png Graphic file (type png)
 <use diagramas/DiagramaBaseDatos.drawio.png>
-Package pdftex.def Info: diagramas/DiagramaBaseDatos.drawio.png  used on input line 1294.
+Package pdftex.def Info: diagramas/DiagramaBaseDatos.drawio.png  used on input line 1280.
 (pdftex.def)             Requested size: 360.0pt x 315.17065pt.
-LaTeX Info: Redefining \. on input line 1299.
-LaTeX Info: Redefining \% on input line 1299.
- [74 <./diagramas/DiagramaBaseDatos.drawio.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1325--1325
+LaTeX Info: Redefining \. on input line 1285.
+LaTeX Info: Redefining \% on input line 1285.
+ [70 <./diagramas/DiagramaBaseDatos.drawio.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1311--1311
 []|\OT1/cmr/m/n/8 Perfil del sis-te-ma: \OT1/cmtt/m/n/8 'admin'\OT1/cmr/m/n/8 ,
  []
 
-LaTeX Info: Redefining \. on input line 1351.
-LaTeX Info: Redefining \% on input line 1351.
-[75]
-<diagramas/DiagramaModeloUsuario.drawio.png, id=906, 771.88374pt x 607.26875pt>
+LaTeX Info: Redefining \. on input line 1337.
+LaTeX Info: Redefining \% on input line 1337.
+[71]
+<diagramas/DiagramaModeloUsuario.drawio.png, id=860, 771.88374pt x 607.26875pt>
 File: diagramas/DiagramaModeloUsuario.drawio.png Graphic file (type png)
 <use diagramas/DiagramaModeloUsuario.drawio.png>
-Package pdftex.def Info: diagramas/DiagramaModeloUsuario.drawio.png  used on input line 1418.
+Package pdftex.def Info: diagramas/DiagramaModeloUsuario.drawio.png  used on input line 1404.
 (pdftex.def)             Requested size: 270.0pt x 212.41751pt.
-LaTeX Info: Redefining \. on input line 1423.
-LaTeX Info: Redefining \% on input line 1423.
- [76]
-LaTeX Info: Redefining \. on input line 1455.
-LaTeX Info: Redefining \% on input line 1455.
- [77 <./diagramas/DiagramaModeloUsuario.drawio.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1474--1474
-[]\OT1/cmr/m/n/10.95 Cuadro 3.40: |Es-pe-ci-fi-ca-ci^^Son f^^S^^Psi-ca de la ta-bla in-ter-me-dia
+LaTeX Info: Redefining \. on input line 1409.
+LaTeX Info: Redefining \% on input line 1409.
+ [72]
+LaTeX Info: Redefining \. on input line 1441.
+LaTeX Info: Redefining \% on input line 1441.
+ [73 <./diagramas/DiagramaModeloUsuario.drawio.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1460--1460
+[]\OT1/cmr/m/n/10.95 Cuadro 2.39: |Es-pe-ci-fi-ca-ci^^Son f^^S^^Psi-ca de la ta-bla in-ter-me-dia
  []
 
-LaTeX Info: Redefining \. on input line 1479.
-LaTeX Info: Redefining \% on input line 1479.
-[78]
-<diagramas/DiaagramaModeloEntrenos.drawio.png, id=926, 451.6875pt x 492.84125pt>
+LaTeX Info: Redefining \. on input line 1465.
+LaTeX Info: Redefining \% on input line 1465.
+[74]
+<diagramas/DiaagramaModeloEntrenos.drawio.png, id=881, 451.6875pt x 492.84125pt>
 File: diagramas/DiaagramaModeloEntrenos.drawio.png Graphic file (type png)
 <use diagramas/DiaagramaModeloEntrenos.drawio.png>
-Package pdftex.def Info: diagramas/DiaagramaModeloEntrenos.drawio.png  used on input line 1482.
+Package pdftex.def Info: diagramas/DiaagramaModeloEntrenos.drawio.png  used on input line 1468.
 (pdftex.def)             Requested size: 233.9978pt x 255.32385pt.
-LaTeX Info: Redefining \. on input line 1492.
-LaTeX Info: Redefining \% on input line 1492.
- [79 <./diagramas/DiaagramaModeloEntrenos.drawio.png>]
-Underfull \hbox (badness 5460) in paragraph at lines 1511--1511
+LaTeX Info: Redefining \. on input line 1478.
+LaTeX Info: Redefining \% on input line 1478.
+ [75 <./diagramas/DiaagramaModeloEntrenos.drawio.png>]
+Underfull \hbox (badness 5460) in paragraph at lines 1497--1497
 []|\OT1/cmr/m/n/8 Identificador ^^Suni-co auto-incremental
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1533--1533
-[]\OT1/cmr/m/n/10.95 Cuadro 3.42: |Es-pe-ci-fi-ca-ci^^Son f^^S^^Psi-ca de la ta-bla in-ter-me-dia
+Underfull \hbox (badness 10000) in paragraph at lines 1519--1519
+[]\OT1/cmr/m/n/10.95 Cuadro 2.41: |Es-pe-ci-fi-ca-ci^^Son f^^S^^Psi-ca de la ta-bla in-ter-me-dia
  []
 
-<diagramas/DiagramaTransporte.drawio.png, id=933, 503.8825pt x 462.72874pt>
+<diagramas/DiagramaTransporte.drawio.png, id=889, 503.8825pt x 462.72874pt>
 File: diagramas/DiagramaTransporte.drawio.png Graphic file (type png)
 <use diagramas/DiagramaTransporte.drawio.png>
-Package pdftex.def Info: diagramas/DiagramaTransporte.drawio.png  used on input line 1541.
+Package pdftex.def Info: diagramas/DiagramaTransporte.drawio.png  used on input line 1527.
 (pdftex.def)             Requested size: 233.9978pt x 214.88422pt.
-LaTeX Info: Redefining \. on input line 1546.
-LaTeX Info: Redefining \% on input line 1546.
-[80]
-Underfull \hbox (badness 1205) in paragraph at lines 1576--1576
+LaTeX Info: Redefining \. on input line 1532.
+LaTeX Info: Redefining \% on input line 1532.
+[76]
+Underfull \hbox (badness 1205) in paragraph at lines 1562--1562
 []|\OT1/cmr/m/n/8 Identificador ^^Suni-co auto-incremental
  []
 
-LaTeX Info: Redefining \. on input line 1581.
-LaTeX Info: Redefining \% on input line 1581.
-[81 <./diagramas/DiagramaTransporte.drawio.png>]
-<diagramas/DiagramaMultimedia.drawio.png, id=948, 1048.91875pt x 493.845pt>
+LaTeX Info: Redefining \. on input line 1567.
+LaTeX Info: Redefining \% on input line 1567.
+[77 <./diagramas/DiagramaTransporte.drawio.png>]
+<diagramas/DiagramaMultimedia.drawio.png, id=903, 1048.91875pt x 493.845pt>
 File: diagramas/DiagramaMultimedia.drawio.png Graphic file (type png)
 <use diagramas/DiagramaMultimedia.drawio.png>
-Package pdftex.def Info: diagramas/DiagramaMultimedia.drawio.png  used on input line 1607.
+Package pdftex.def Info: diagramas/DiagramaMultimedia.drawio.png  used on input line 1593.
 (pdftex.def)             Requested size: 288.0011pt x 135.59302pt.
-LaTeX Info: Redefining \. on input line 1612.
-LaTeX Info: Redefining \% on input line 1612.
- [82]
-LaTeX Info: Redefining \. on input line 1625.
-LaTeX Info: Redefining \% on input line 1625.
- [83 <./diagramas/DiagramaMultimedia.drawio.png>]
-<imagenes/MockupAdmin.png, id=960, 2425.06pt x 2935.96875pt>
+LaTeX Info: Redefining \. on input line 1598.
+LaTeX Info: Redefining \% on input line 1598.
+ [78]
+LaTeX Info: Redefining \. on input line 1611.
+LaTeX Info: Redefining \% on input line 1611.
+ [79 <./diagramas/DiagramaMultimedia.drawio.png>]
+<imagenes/MockupAdmin.png, id=915, 2425.06pt x 2935.96875pt>
 File: imagenes/MockupAdmin.png Graphic file (type png)
 <use imagenes/MockupAdmin.png>
-Package pdftex.def Info: imagenes/MockupAdmin.png  used on input line 1630.
+Package pdftex.def Info: imagenes/MockupAdmin.png  used on input line 1616.
 (pdftex.def)             Requested size: 288.0011pt x 348.67232pt.
-<imagenes/MockupPadre.png, id=961, 2223.30624pt x 1958.31625pt>
+<imagenes/MockupPadre.png, id=916, 2223.30624pt x 1958.31625pt>
 File: imagenes/MockupPadre.png Graphic file (type png)
 <use imagenes/MockupPadre.png>
-Package pdftex.def Info: imagenes/MockupPadre.png  used on input line 1637.
+Package pdftex.def Info: imagenes/MockupPadre.png  used on input line 1623.
 (pdftex.def)             Requested size: 288.0011pt x 253.66373pt.
-LaTeX Info: Redefining \. on input line 1641.
-LaTeX Info: Redefining \% on input line 1641.
- [84 <./imagenes/MockupAdmin.png>]
+LaTeX Info: Redefining \. on input line 1627.
+LaTeX Info: Redefining \% on input line 1627.
+ [80 <./imagenes/MockupAdmin.png>]
 File: imagenes/logo.png Graphic file (type png)
 <use imagenes/logo.png>
-Package pdftex.def Info: imagenes/logo.png  used on input line 1653.
+Package pdftex.def Info: imagenes/logo.png  used on input line 1639.
 (pdftex.def)             Requested size: 180.0pt x 163.94655pt.
-LaTeX Info: Redefining \. on input line 1657.
-LaTeX Info: Redefining \% on input line 1657.
- [85 <./imagenes/MockupPadre.png>]
-LaTeX Info: Redefining \. on input line 1657.
-LaTeX Info: Redefining \% on input line 1657.
- [86]
-Underfull \hbox (badness 10000) in paragraph at lines 1683--1683
+LaTeX Info: Redefining \. on input line 1643.
+LaTeX Info: Redefining \% on input line 1643.
+ [81 <./imagenes/MockupPadre.png>]
+LaTeX Info: Redefining \. on input line 1643.
+LaTeX Info: Redefining \% on input line 1643.
+ [82]
+Underfull \hbox (badness 10000) in paragraph at lines 1669--1669
 []|\OT1/cmr/m/n/8 Identificaci^^Son de en-tre-na-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1683--1683
+Underfull \hbox (badness 10000) in paragraph at lines 1669--1669
 []|\OT1/cmr/m/n/8 Identificaci^^Son de en-tre-na-
  []
 
 
-Underfull \hbox (badness 3568) in paragraph at lines 1683--1683
+Underfull \hbox (badness 3568) in paragraph at lines 1669--1669
 \OT1/cmr/m/n/8 cia-les o com-pe-ti-cio-nes del
  []
 
-LaTeX Info: Redefining \. on input line 1697.
-LaTeX Info: Redefining \% on input line 1697.
-[87]
+LaTeX Info: Redefining \. on input line 1683.
+LaTeX Info: Redefining \% on input line 1683.
+[83]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1697.
-LaTeX Info: Redefining \. on input line 1713.
-LaTeX Info: Redefining \% on input line 1713.
- [88]
-Underfull \hbox (badness 1762) in paragraph at lines 1730--1730
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1683.
+LaTeX Info: Redefining \. on input line 1699.
+LaTeX Info: Redefining \% on input line 1699.
+ [84]
+Underfull \hbox (badness 1762) in paragraph at lines 1716--1716
 []|\OT1/cmr/bx/n/8 Responsabilidad en la Apli-ca-ci^^Son
  []
 
-) (./capitulos/resultados.tex
+) (./capitulos/tecnologias.tex
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [85] [86
+
+]
+Cap\'{\i }tulo 3.
+[87] [88]) (./capitulos/resultados.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [89] [90
 
 ]
 Cap\'{\i }tulo 4.
-<imagenes/inicio.png, id=1004, 322.20375pt x 641.39626pt>
+<imagenes/inicio.png, id=998, 322.20375pt x 641.39626pt>
 File: imagenes/inicio.png Graphic file (type png)
 <use imagenes/inicio.png>
 Package pdftex.def Info: imagenes/inicio.png  used on input line 20.
 (pdftex.def)             Requested size: 111.59912pt x 222.15297pt.
-<imagenes/solicitud_registro_1.png, id=1005, 327.2225pt x 595.22375pt>
+<imagenes/solicitud_registro_1.png, id=999, 327.2225pt x 595.22375pt>
 File: imagenes/solicitud_registro_1.png Graphic file (type png)
 <use imagenes/solicitud_registro_1.png>
 Package pdftex.def Info: imagenes/solicitud_registro_1.png  used on input line 27.
 (pdftex.def)             Requested size: 111.59912pt x 203.00008pt.
-<imagenes/solicitud_registro_2.png, id=1006, 322.20375pt x 645.41125pt>
+<imagenes/solicitud_registro_2.png, id=1000, 322.20375pt x 645.41125pt>
 File: imagenes/solicitud_registro_2.png Graphic file (type png)
 <use imagenes/solicitud_registro_2.png>
 Package pdftex.def Info: imagenes/solicitud_registro_2.png  used on input line 34.
 (pdftex.def)             Requested size: 111.59912pt x 223.54361pt.
 [91]
-<imagenes/recuperarContraseña.png, id=1013, 319.1925pt x 642.4pt>
+<imagenes/recuperarContraseña.png, id=1007, 319.1925pt x 642.4pt>
 File: imagenes/recuperarContraseña.png Graphic file (type png)
 <use imagenes/recuperarContraseña.png>
 Package pdftex.def Info: imagenes/recuperarContraseña.png  used on input line 56.
 (pdftex.def)             Requested size: 108.0011pt x 217.35446pt.
-<imagenes/codigo_restablecer.png, id=1014, 967.615pt x 367.3725pt>
+<imagenes/codigo_restablecer.png, id=1008, 967.615pt x 367.3725pt>
 File: imagenes/codigo_restablecer.png Graphic file (type png)
 <use imagenes/codigo_restablecer.png>
 Package pdftex.def Info: imagenes/codigo_restablecer.png  used on input line 63.
 (pdftex.def)             Requested size: 108.0011pt x 40.99968pt.
-<imagenes/recuperar_contraseña_relleno.png, id=1015, 323.2075pt x 641.39626pt>
+<imagenes/recuperar_contraseña_relleno.png, id=1009, 323.2075pt x 641.39626pt>
 File: imagenes/recuperar_contraseña_relleno.png Graphic file (type png)
 <use imagenes/recuperar_contraseña_relleno.png>
 Package pdftex.def Info: imagenes/recuperar_contraseña_relleno.png  used on input line 73.
 (pdftex.def)             Requested size: 108.0011pt x 214.32346pt.
-<imagenes/cambiar_contraseña.png, id=1016, 322.20375pt x 644.4075pt>
+<imagenes/cambiar_contraseña.png, id=1010, 322.20375pt x 644.4075pt>
 File: imagenes/cambiar_contraseña.png Graphic file (type png)
 <use imagenes/cambiar_contraseña.png>
 Package pdftex.def Info: imagenes/cambiar_contraseña.png  used on input line 80.
@@ -1793,22 +1801,22 @@ Overfull \hbox (7.3092pt too wide) in paragraph at lines 98--99
 []\OT1/cmr/m/n/10.95 Una vez va-li-da-do el c^^Sodi-go en el ser-vi-dor, la apli-ca-ci^^Son ha-bi-li-ta la transici^^Son
  []
 
-<imagenes/inicio_entrenador.png, id=1037, 320.19624pt x 642.4pt>
+<imagenes/inicio_entrenador.png, id=1031, 320.19624pt x 642.4pt>
 File: imagenes/inicio_entrenador.png Graphic file (type png)
 <use imagenes/inicio_entrenador.png>
 Package pdftex.def Info: imagenes/inicio_entrenador.png  used on input line 114.
 (pdftex.def)             Requested size: 108.0011pt x 216.67812pt.
-<imagenes/detalle_entreno.png, id=1038, 322.20375pt x 640.3925pt>
+<imagenes/detalle_entreno.png, id=1032, 322.20375pt x 640.3925pt>
 File: imagenes/detalle_entreno.png Graphic file (type png)
 <use imagenes/detalle_entreno.png>
 Package pdftex.def Info: imagenes/detalle_entreno.png  used on input line 121.
 (pdftex.def)             Requested size: 108.0011pt x 214.65251pt.
-<imagenes/lista_transporte.png, id=1039, 318.18875pt x 642.4pt>
+<imagenes/lista_transporte.png, id=1033, 318.18875pt x 642.4pt>
 File: imagenes/lista_transporte.png Graphic file (type png)
 <use imagenes/lista_transporte.png>
 Package pdftex.def Info: imagenes/lista_transporte.png  used on input line 134.
 (pdftex.def)             Requested size: 108.0011pt x 218.04062pt.
-<imagenes/detalle_inscritos.png, id=1040, 323.2075pt x 642.4pt>
+<imagenes/detalle_inscritos.png, id=1034, 323.2075pt x 642.4pt>
 File: imagenes/detalle_inscritos.png Graphic file (type png)
 <use imagenes/detalle_inscritos.png>
 Package pdftex.def Info: imagenes/detalle_inscritos.png  used on input line 141.
@@ -1823,27 +1831,27 @@ Overfull \hbox (0.14383pt too wide) in paragraph at lines 157--157
 []\OT1/cmr/bx/n/10.95 Listado de Pa-sa-je-ros de Fur-go-ne-ta (Fi-gu-ra []4.4a[]): \OT1/cmr/m/n/10.95 Ven-ta-na emer-
  []
 
-<imagenes/calendario_1.png, id=1058, 324.21124pt x 641.39626pt>
+<imagenes/calendario_1.png, id=1052, 324.21124pt x 641.39626pt>
 File: imagenes/calendario_1.png Graphic file (type png)
 <use imagenes/calendario_1.png>
 Package pdftex.def Info: imagenes/calendario_1.png  used on input line 168.
 (pdftex.def)             Requested size: 90.0pt x 178.05318pt.
-<imagenes/calendario_2.png, id=1059, 322.20375pt x 639.38875pt>
+<imagenes/calendario_2.png, id=1053, 322.20375pt x 639.38875pt>
 File: imagenes/calendario_2.png Graphic file (type png)
 <use imagenes/calendario_2.png>
 Package pdftex.def Info: imagenes/calendario_2.png  used on input line 175.
 (pdftex.def)             Requested size: 90.0pt x 178.59834pt.
-<imagenes/crear_evento_1.png, id=1060, 320.19624pt x 617.30624pt>
+<imagenes/crear_evento_1.png, id=1054, 320.19624pt x 617.30624pt>
 File: imagenes/crear_evento_1.png Graphic file (type png)
 <use imagenes/crear_evento_1.png>
 Package pdftex.def Info: imagenes/crear_evento_1.png  used on input line 185.
 (pdftex.def)             Requested size: 90.0pt x 173.50392pt.
-<imagenes/crear_evento_2.png, id=1061, 322.20375pt x 641.39626pt>
+<imagenes/crear_evento_2.png, id=1055, 322.20375pt x 641.39626pt>
 File: imagenes/crear_evento_2.png Graphic file (type png)
 <use imagenes/crear_evento_2.png>
 Package pdftex.def Info: imagenes/crear_evento_2.png  used on input line 192.
 (pdftex.def)             Requested size: 90.0pt x 179.1591pt.
-<imagenes/crear_evento_unico.png, id=1062, 325.215pt x 643.40375pt>
+<imagenes/crear_evento_unico.png, id=1056, 325.215pt x 643.40375pt>
 File: imagenes/crear_evento_unico.png Graphic file (type png)
 <use imagenes/crear_evento_unico.png>
 Package pdftex.def Info: imagenes/crear_evento_unico.png  used on input line 199.
@@ -1853,7 +1861,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 200--200
 []\OT1/cmr/m/n/10 (e) |Pro-gra-ma-ci^^Son
  []
 
-<imagenes/crear_evento_diario.png, id=1063, 319.1925pt x 643.40375pt>
+<imagenes/crear_evento_diario.png, id=1057, 319.1925pt x 643.40375pt>
 File: imagenes/crear_evento_diario.png Graphic file (type png)
 <use imagenes/crear_evento_diario.png>
 Package pdftex.def Info: imagenes/crear_evento_diario.png  used on input line 209.
@@ -1863,7 +1871,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 210--210
 []\OT1/cmr/m/n/10 (f) |Pro-gra-ma-ci^^Son
  []
 
-<imagenes/crear_evento_semanal.png, id=1064, 323.2075pt x 645.41125pt>
+<imagenes/crear_evento_semanal.png, id=1058, 323.2075pt x 645.41125pt>
 File: imagenes/crear_evento_semanal.png Graphic file (type png)
 <use imagenes/crear_evento_semanal.png>
 Package pdftex.def Info: imagenes/crear_evento_semanal.png  used on input line 216.
@@ -1877,17 +1885,17 @@ LaTeX Info: Redefining \% on input line 225.
 LaTeX Info: Redefining \. on input line 225.
 LaTeX Info: Redefining \% on input line 225.
  [97 <./imagenes/calendario_1.png> <./imagenes/calendario_2.png> <./imagenes/crear_evento_1.png> <./imagenes/crear_evento_2.png> <./imagenes/crear_evento_unico.png> <./imagenes/crear_evento_diario.png> <./imagenes/crear_evento_semanal.png>]
-<imagenes/modificar_enrteno.png, id=1083, 318.18875pt x 645.41125pt>
+<imagenes/modificar_enrteno.png, id=1077, 318.18875pt x 645.41125pt>
 File: imagenes/modificar_enrteno.png Graphic file (type png)
 <use imagenes/modificar_enrteno.png>
 Package pdftex.def Info: imagenes/modificar_enrteno.png  used on input line 240.
 (pdftex.def)             Requested size: 100.79956pt x 204.45786pt.
-<imagenes/modificar_entreno_2.png, id=1084, 320.19624pt x 645.41125pt>
+<imagenes/modificar_entreno_2.png, id=1078, 320.19624pt x 645.41125pt>
 File: imagenes/modificar_entreno_2.png Graphic file (type png)
 <use imagenes/modificar_entreno_2.png>
 Package pdftex.def Info: imagenes/modificar_entreno_2.png  used on input line 247.
 (pdftex.def)             Requested size: 100.79956pt x 203.1776pt.
-<imagenes/eliminar_entreno.png, id=1085, 320.19624pt x 641.39626pt>
+<imagenes/eliminar_entreno.png, id=1079, 320.19624pt x 641.39626pt>
 File: imagenes/eliminar_entreno.png Graphic file (type png)
 <use imagenes/eliminar_entreno.png>
 Package pdftex.def Info: imagenes/eliminar_entreno.png  used on input line 254.
@@ -1895,22 +1903,22 @@ Package pdftex.def Info: imagenes/eliminar_entreno.png  used on input line 254.
 LaTeX Info: Redefining \. on input line 272.
 LaTeX Info: Redefining \% on input line 272.
  [98]
-<imagenes/galeria_entrenador.png, id=1093, 317.185pt x 642.4pt>
+<imagenes/galeria_entrenador.png, id=1087, 317.185pt x 642.4pt>
 File: imagenes/galeria_entrenador.png Graphic file (type png)
 <use imagenes/galeria_entrenador.png>
 Package pdftex.def Info: imagenes/galeria_entrenador.png  used on input line 281.
 (pdftex.def)             Requested size: 108.0011pt x 218.73659pt.
-<imagenes/subir_galeria.png, id=1094, 324.21124pt x 643.40375pt>
+<imagenes/subir_galeria.png, id=1088, 324.21124pt x 643.40375pt>
 File: imagenes/subir_galeria.png Graphic file (type png)
 <use imagenes/subir_galeria.png>
 Package pdftex.def Info: imagenes/subir_galeria.png  used on input line 288.
 (pdftex.def)             Requested size: 108.0011pt x 214.32666pt.
-<imagenes/subir_fotos_galeria_drive.png, id=1095, 322.20375pt x 645.41125pt>
+<imagenes/subir_fotos_galeria_drive.png, id=1089, 322.20375pt x 645.41125pt>
 File: imagenes/subir_fotos_galeria_drive.png Graphic file (type png)
 <use imagenes/subir_fotos_galeria_drive.png>
 Package pdftex.def Info: imagenes/subir_fotos_galeria_drive.png  used on input line 298.
 (pdftex.def)             Requested size: 108.0011pt x 216.33475pt.
-<imagenes/eliminar_galeria_entrenador.png, id=1096, 320.19624pt x 641.39626pt>
+<imagenes/eliminar_galeria_entrenador.png, id=1090, 320.19624pt x 641.39626pt>
 File: imagenes/eliminar_galeria_entrenador.png Graphic file (type png)
 <use imagenes/eliminar_galeria_entrenador.png>
 Package pdftex.def Info: imagenes/eliminar_galeria_entrenador.png  used on input line 305.
@@ -1921,7 +1929,7 @@ LaTeX Info: Redefining \% on input line 319.
 LaTeX Info: Redefining \. on input line 319.
 LaTeX Info: Redefining \% on input line 319.
  [100 <./imagenes/galeria_entrenador.png> <./imagenes/subir_galeria.png> <./imagenes/subir_fotos_galeria_drive.png> <./imagenes/eliminar_galeria_entrenador.png>]
-<imagenes/perfil_entrenador.png, id=1113, 318.18875pt x 640.3925pt>
+<imagenes/perfil_entrenador.png, id=1107, 318.18875pt x 640.3925pt>
 File: imagenes/perfil_entrenador.png Graphic file (type png)
 <use imagenes/perfil_entrenador.png>
 Package pdftex.def Info: imagenes/perfil_entrenador.png  used on input line 326.
@@ -1931,7 +1939,7 @@ Underfull \hbox (badness 3098) in paragraph at lines 327--327
 []\OT1/cmr/m/n/10 (a) |In-ter-faz de per-fil del
  []
 
-<imagenes/asistencia_pista_entrenador.png, id=1114, 319.1925pt x 641.39626pt>
+<imagenes/asistencia_pista_entrenador.png, id=1108, 319.1925pt x 641.39626pt>
 File: imagenes/asistencia_pista_entrenador.png Graphic file (type png)
 <use imagenes/asistencia_pista_entrenador.png>
 Package pdftex.def Info: imagenes/asistencia_pista_entrenador.png  used on input line 336.
@@ -1941,12 +1949,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 337--337
 []\OT1/cmr/m/n/10 (b) |His-to-rial en
  []
 
-<imagenes/asistencia_fisico_entrenador.png, id=1115, 320.19624pt x 617.30624pt>
+<imagenes/asistencia_fisico_entrenador.png, id=1109, 320.19624pt x 617.30624pt>
 File: imagenes/asistencia_fisico_entrenador.png Graphic file (type png)
 <use imagenes/asistencia_fisico_entrenador.png>
 Package pdftex.def Info: imagenes/asistencia_fisico_entrenador.png  used on input line 343.
 (pdftex.def)             Requested size: 82.79846pt x 159.61984pt.
-<imagenes/transporte_proximos.png, id=1116, 319.1925pt x 642.4pt>
+<imagenes/transporte_proximos.png, id=1110, 319.1925pt x 642.4pt>
 File: imagenes/transporte_proximos.png Graphic file (type png)
 <use imagenes/transporte_proximos.png>
 Package pdftex.def Info: imagenes/transporte_proximos.png  used on input line 351.
@@ -1956,7 +1964,7 @@ Underfull \hbox (badness 3769) in paragraph at lines 352--352
 []\OT1/cmr/m/n/10 (d) |Ru-tas pr^^Soxi-
  []
 
-<imagenes/transporte_pasados.png, id=1117, 321.2pt x 639.38875pt>
+<imagenes/transporte_pasados.png, id=1111, 321.2pt x 639.38875pt>
 File: imagenes/transporte_pasados.png Graphic file (type png)
 <use imagenes/transporte_pasados.png>
 Package pdftex.def Info: imagenes/transporte_pasados.png  used on input line 358.
@@ -1967,7 +1975,7 @@ LaTeX Info: Redefining \% on input line 378.
 LaTeX Info: Redefining \. on input line 378.
 LaTeX Info: Redefining \% on input line 378.
  [102 <./imagenes/perfil_entrenador.png> <./imagenes/asistencia_pista_entrenador.png> <./imagenes/asistencia_fisico_entrenador.png> <./imagenes/transporte_proximos.png> <./imagenes/transporte_pasados.png>]
-<imagenes/inicio_admin.png, id=1139, 322.20375pt x 638.385pt>
+<imagenes/inicio_admin.png, id=1133, 322.20375pt x 638.385pt>
 File: imagenes/inicio_admin.png Graphic file (type png)
 <use imagenes/inicio_admin.png>
 Package pdftex.def Info: imagenes/inicio_admin.png  used on input line 389.
@@ -1975,12 +1983,12 @@ Package pdftex.def Info: imagenes/inicio_admin.png  used on input line 389.
 LaTeX Info: Redefining \. on input line 398.
 LaTeX Info: Redefining \% on input line 398.
  [103 <./imagenes/inicio_admin.png>]
-<imagenes/galeria_admin.png, id=1146, 317.185pt x 640.3925pt>
+<imagenes/galeria_admin.png, id=1140, 317.185pt x 640.3925pt>
 File: imagenes/galeria_admin.png Graphic file (type png)
 <use imagenes/galeria_admin.png>
 Package pdftex.def Info: imagenes/galeria_admin.png  used on input line 403.
 (pdftex.def)             Requested size: 161.9989pt x 327.08443pt.
-<imagenes/añadir_galeria_admin.png, id=1147, 321.2pt x 643.40375pt>
+<imagenes/añadir_galeria_admin.png, id=1141, 321.2pt x 643.40375pt>
 File: imagenes/añadir_galeria_admin.png Graphic file (type png)
 <use imagenes/añadir_galeria_admin.png>
 Package pdftex.def Info: imagenes/añadir_galeria_admin.png  used on input line 410.
@@ -1988,12 +1996,12 @@ Package pdftex.def Info: imagenes/añadir_galeria_admin.png  used on input line 
 LaTeX Info: Redefining \. on input line 419.
 LaTeX Info: Redefining \% on input line 419.
  [104 <./imagenes/galeria_admin.png> <./imagenes/añadir_galeria_admin.png>]
-<imagenes/perfil_admin.png, id=1154, 321.2pt x 640.3925pt>
+<imagenes/perfil_admin.png, id=1148, 321.2pt x 640.3925pt>
 File: imagenes/perfil_admin.png Graphic file (type png)
 <use imagenes/perfil_admin.png>
 Package pdftex.def Info: imagenes/perfil_admin.png  used on input line 424.
 (pdftex.def)             Requested size: 79.20044pt x 157.89912pt.
-<imagenes/asistencia_pista_admin.png, id=1155, 320.19624pt x 642.4pt>
+<imagenes/asistencia_pista_admin.png, id=1149, 320.19624pt x 642.4pt>
 File: imagenes/asistencia_pista_admin.png Graphic file (type png)
 <use imagenes/asistencia_pista_admin.png>
 Package pdftex.def Info: imagenes/asistencia_pista_admin.png  used on input line 431.
@@ -2003,32 +2011,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 432--432
 []\OT1/cmr/m/n/10 (b) |Ta-bla de
  []
 
-<imagenes/asistencia_entreno_admin.png, id=1156, 323.2075pt x 639.38875pt>
+<imagenes/asistencia_entreno_admin.png, id=1150, 323.2075pt x 639.38875pt>
 File: imagenes/asistencia_entreno_admin.png Graphic file (type png)
 <use imagenes/asistencia_entreno_admin.png>
 Package pdftex.def Info: imagenes/asistencia_entreno_admin.png  used on input line 438.
 (pdftex.def)             Requested size: 79.20044pt x 156.676pt.
-<imagenes/filtro_asistencia.png, id=1157, 322.20375pt x 643.40375pt>
+<imagenes/filtro_asistencia.png, id=1151, 322.20375pt x 643.40375pt>
 File: imagenes/filtro_asistencia.png Graphic file (type png)
 <use imagenes/filtro_asistencia.png>
 Package pdftex.def Info: imagenes/filtro_asistencia.png  used on input line 445.
 (pdftex.def)             Requested size: 79.20044pt x 158.15071pt.
-<imagenes/furgo_admin.png, id=1158, 320.19624pt x 641.39626pt>
+<imagenes/furgo_admin.png, id=1152, 320.19624pt x 641.39626pt>
 File: imagenes/furgo_admin.png Graphic file (type png)
 <use imagenes/furgo_admin.png>
 Package pdftex.def Info: imagenes/furgo_admin.png  used on input line 458.
 (pdftex.def)             Requested size: 79.20044pt x 158.64574pt.
-<imagenes/solicitud_usuarios.png, id=1159, 320.19624pt x 640.3925pt>
+<imagenes/solicitud_usuarios.png, id=1153, 320.19624pt x 640.3925pt>
 File: imagenes/solicitud_usuarios.png Graphic file (type png)
 <use imagenes/solicitud_usuarios.png>
 Package pdftex.def Info: imagenes/solicitud_usuarios.png  used on input line 465.
 (pdftex.def)             Requested size: 79.20044pt x 158.39746pt.
-<imagenes/lista_entrenadores.png, id=1160, 321.2pt x 639.38875pt>
+<imagenes/lista_entrenadores.png, id=1154, 321.2pt x 639.38875pt>
 File: imagenes/lista_entrenadores.png Graphic file (type png)
 <use imagenes/lista_entrenadores.png>
 Package pdftex.def Info: imagenes/lista_entrenadores.png  used on input line 472.
 (pdftex.def)             Requested size: 79.20044pt x 157.65163pt.
-<imagenes/lista_deportistas.png, id=1161, 321.2pt x 642.4pt>
+<imagenes/lista_deportistas.png, id=1155, 321.2pt x 642.4pt>
 File: imagenes/lista_deportistas.png Graphic file (type png)
 <use imagenes/lista_deportistas.png>
 Package pdftex.def Info: imagenes/lista_deportistas.png  used on input line 479.
@@ -2044,22 +2052,22 @@ LaTeX Info: Redefining \% on input line 492.
 LaTeX Info: Redefining \. on input line 502.
 LaTeX Info: Redefining \% on input line 502.
  [106 <./imagenes/furgo_admin.png> <./imagenes/solicitud_usuarios.png> <./imagenes/lista_entrenadores.png> <./imagenes/lista_deportistas.png>]
-<imagenes/detalle_apuntar.png, id=1194, 320.19624pt x 644.4075pt>
+<imagenes/detalle_apuntar.png, id=1188, 320.19624pt x 644.4075pt>
 File: imagenes/detalle_apuntar.png Graphic file (type png)
 <use imagenes/detalle_apuntar.png>
 Package pdftex.def Info: imagenes/detalle_apuntar.png  used on input line 510.
 (pdftex.def)             Requested size: 100.79956pt x 202.8616pt.
-<imagenes/detalle_padre.png, id=1195, 322.20375pt x 638.385pt>
+<imagenes/detalle_padre.png, id=1189, 322.20375pt x 638.385pt>
 File: imagenes/detalle_padre.png Graphic file (type png)
 <use imagenes/detalle_padre.png>
 Package pdftex.def Info: imagenes/detalle_padre.png  used on input line 517.
 (pdftex.def)             Requested size: 100.79956pt x 199.71886pt.
-<imagenes/desapuntar_deportista.png, id=1196, 320.19624pt x 640.3925pt>
+<imagenes/desapuntar_deportista.png, id=1190, 320.19624pt x 640.3925pt>
 File: imagenes/desapuntar_deportista.png Graphic file (type png)
 <use imagenes/desapuntar_deportista.png>
 Package pdftex.def Info: imagenes/desapuntar_deportista.png  used on input line 524.
 (pdftex.def)             Requested size: 100.79956pt x 201.59767pt.
-<imagenes/desapuntar_transporte.png, id=1197, 320.19624pt x 643.40375pt>
+<imagenes/desapuntar_transporte.png, id=1191, 320.19624pt x 643.40375pt>
 File: imagenes/desapuntar_transporte.png Graphic file (type png)
 <use imagenes/desapuntar_transporte.png>
 Package pdftex.def Info: imagenes/desapuntar_transporte.png  used on input line 537.
@@ -2069,12 +2077,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 538--538
 []\OT1/cmr/m/n/10 (a) |Mo-di-fi-ca-ci^^Son de
  []
 
-<imagenes/galeria_padre.png, id=1198, 321.2pt x 642.4pt>
+<imagenes/galeria_padre.png, id=1192, 321.2pt x 642.4pt>
 File: imagenes/galeria_padre.png Graphic file (type png)
 <use imagenes/galeria_padre.png>
 Package pdftex.def Info: imagenes/galeria_padre.png  used on input line 544.
 (pdftex.def)             Requested size: 100.79956pt x 201.5925pt.
-<imagenes/descargar_padre.png, id=1199, 322.20375pt x 641.39626pt>
+<imagenes/descargar_padre.png, id=1193, 322.20375pt x 641.39626pt>
 File: imagenes/descargar_padre.png Graphic file (type png)
 <use imagenes/descargar_padre.png>
 Package pdftex.def Info: imagenes/descargar_padre.png  used on input line 551.
@@ -2087,7 +2095,7 @@ Underfull \hbox (badness 6708) in paragraph at lines 552--552
 LaTeX Info: Redefining \. on input line 560.
 LaTeX Info: Redefining \% on input line 560.
 [107 <./imagenes/detalle_apuntar.png> <./imagenes/detalle_padre.png> <./imagenes/desapuntar_deportista.png>]
-<imagenes/perfil_padre.png, id=1215, 320.19624pt x 640.3925pt>
+<imagenes/perfil_padre.png, id=1209, 320.19624pt x 640.3925pt>
 File: imagenes/perfil_padre.png Graphic file (type png)
 <use imagenes/perfil_padre.png>
 Package pdftex.def Info: imagenes/perfil_padre.png  used on input line 573.
@@ -2097,12 +2105,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 574--574
 []\OT1/cmr/m/n/10 (a) |Men^^Su del
  []
 
-<imagenes/asistencia_padre.png, id=1216, 321.2pt x 647.41875pt>
+<imagenes/asistencia_padre.png, id=1210, 321.2pt x 647.41875pt>
 File: imagenes/asistencia_padre.png Graphic file (type png)
 <use imagenes/asistencia_padre.png>
 Package pdftex.def Info: imagenes/asistencia_padre.png  used on input line 580.
 (pdftex.def)             Requested size: 71.9989pt x 145.1196pt.
-<imagenes/picker_asistencia.png, id=1217, 325.215pt x 645.41125pt>
+<imagenes/picker_asistencia.png, id=1211, 325.215pt x 645.41125pt>
 File: imagenes/picker_asistencia.png Graphic file (type png)
 <use imagenes/picker_asistencia.png>
 Package pdftex.def Info: imagenes/picker_asistencia.png  used on input line 587.
@@ -2117,12 +2125,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 588--588
 \OT1/cmr/m/n/10 din^^Sami-co de
  []
 
-<imagenes/asistencia_fisico_padre.png, id=1218, 323.2075pt x 640.3925pt>
+<imagenes/asistencia_fisico_padre.png, id=1212, 323.2075pt x 640.3925pt>
 File: imagenes/asistencia_fisico_padre.png Graphic file (type png)
 <use imagenes/asistencia_fisico_padre.png>
 Package pdftex.def Info: imagenes/asistencia_fisico_padre.png  used on input line 594.
 (pdftex.def)             Requested size: 71.9989pt x 142.65544pt.
-<imagenes/transporte_padre.png, id=1219, 323.2075pt x 644.4075pt>
+<imagenes/transporte_padre.png, id=1213, 323.2075pt x 644.4075pt>
 File: imagenes/transporte_padre.png Graphic file (type png)
 <use imagenes/transporte_padre.png>
 Package pdftex.def Info: imagenes/transporte_padre.png  used on input line 607.
@@ -2132,7 +2140,7 @@ Underfull \hbox (badness 5091) in paragraph at lines 608--608
 []\OT1/cmr/m/n/10 (a) |Es-ta-do de
  []
 
-<imagenes/transporte_historial.png, id=1220, 323.2075pt x 643.40375pt>
+<imagenes/transporte_historial.png, id=1214, 323.2075pt x 643.40375pt>
 File: imagenes/transporte_historial.png Graphic file (type png)
 <use imagenes/transporte_historial.png>
 Package pdftex.def Info: imagenes/transporte_historial.png  used on input line 614.
@@ -2147,12 +2155,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 615--615
 \OT1/cmr/m/n/10 log^^S^^Psti-co de
  []
 
-<imagenes/administrar_deportistas_padre.png, id=1221, 323.2075pt x 638.385pt>
+<imagenes/administrar_deportistas_padre.png, id=1215, 323.2075pt x 638.385pt>
 File: imagenes/administrar_deportistas_padre.png Graphic file (type png)
 <use imagenes/administrar_deportistas_padre.png>
 Package pdftex.def Info: imagenes/administrar_deportistas_padre.png  used on input line 621.
 (pdftex.def)             Requested size: 71.9989pt x 142.20824pt.
-<imagenes/añadir_hijo.png, id=1222, 319.1925pt x 594.22pt>
+<imagenes/añadir_hijo.png, id=1216, 319.1925pt x 594.22pt>
 File: imagenes/añadir_hijo.png Graphic file (type png)
 <use imagenes/añadir_hijo.png>
 Package pdftex.def Info: imagenes/añadir_hijo.png  used on input line 628.
@@ -2177,26 +2185,23 @@ LaTeX Info: Redefining \% on input line 1.
 
 ]
 Cap\'{\i }tulo 5.
-[111]
-LaTeX Info: Redefining \. on input line 38.
-LaTeX Info: Redefining \% on input line 38.
- [112]) (./apendice/apendice.tex
+[111]) (./apendice/apendice.tex
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
- [113] [114
+ [112]
+Ap\'{e}ndice A.
+[113
 
 ]
-Ap\'{e}ndice A.
-[115]
 LaTeX Info: Redefining \. on input line 36.
 LaTeX Info: Redefining \% on input line 36.
- [116]
+ [114]
 LaTeX Info: Redefining \. on input line 48.
 LaTeX Info: Redefining \% on input line 48.
- [117]))
+ [115]))
 LaTeX Info: Redefining \. on input line 186.
 LaTeX Info: Redefining \% on input line 186.
- [118]
+ [116]
 LaTeX Font Info:    Trying to load font information for U+lasy on input line 187.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -2205,12 +2210,15 @@ Overfull \hbox (4.06749pt too wide) in paragraph at lines 187--187
 []\OT1/cmr/m/n/10.95 Michael Jo-nes, John Brad-ley y Nat Sa-ki-mu-ra. \OT1/cmr/m/it/10.95 JSON Web To-ken (JWT)
  []
 
-[119
+[117
 
 
-] [120
+]
+LaTeX Info: Redefining \. on input line 193.
+LaTeX Info: Redefining \% on input line 193.
+ [118] [119
 
-] [121] (./proyecto.aux
+] (./proyecto.aux
 LaTeX Info: Redefining \sptext on input line 12.
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -2224,24 +2232,24 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `proyecto.out' has not changed.
-(rerunfilecheck)             Checksum: 6BF5AA330EC77C3D27C6DEE345AAD64E;6923.
+(rerunfilecheck)             Checksum: A9FB18B0F31E923FC14E0FAB5279992C;6959.
 Package logreq Info: Writing requests to 'proyecto.run.xml'.
 \openout1 = `proyecto.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36250 strings out of 474222
- 710576 string characters out of 5748733
+ 36247 strings out of 474222
+ 710687 string characters out of 5748733
  1962975 words of memory out of 5000000
  57641 multiletter control sequences out of 15000+600000
  568532 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,15n,107p,1189b,2333s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on proyecto.pdf (125 pages, 6697393 bytes).
+Output written on proyecto.pdf (123 pages, 6696538 bytes).
 PDF statistics:
- 1491 PDF objects out of 1728 (max. 8388607)
- 1123 compressed objects within 12 object streams
- 333 named destinations out of 1000 (max. 500000)
- 748 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1478 PDF objects out of 1728 (max. 8388607)
+ 1112 compressed objects within 12 object streams
+ 330 named destinations out of 1000 (max. 500000)
+ 740 words of extra memory for PDF output out of 10000 (max. 10000000)
 

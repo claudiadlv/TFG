@@ -110,7 +110,7 @@ export default function RegisterRequestScreen() {
         fecha_nacimiento_tutor: formatearFechaISO(parentBirthdate), 
         nombre_hijo: name_reg,
         apellidos_hijo: surname_reg,
-        fecha_nacimiento_hijo: formatearFechaISO(birthdate), // <--- Asegúrate que se llame así
+        fecha_nacimiento_hijo: formatearFechaISO(birthdate),
         contrasena: password,
         categoria: categoria,
       }),
@@ -130,24 +130,6 @@ export default function RegisterRequestScreen() {
         console.error(err);
         Alert.alert('Error', 'No se pudo enviar la solicitud');
       });
-  };
-
-  const rellenarDatosPrueba = () => {
-    setName('Claudia');
-    setSurname('Pérez');
-    setEmail(`claudia${Math.floor(Math.random() * 1000)}@ejemplo.com`);
-    setParentBirthdate('15/05/1985');
-    setParentBirthdateDate(new Date(1985, 4, 15));
-    
-    setName_reg('Lucía');
-    setSurname_reg('Pérez');
-    const fechaHijo = new Date(2012, 0, 1);
-    setBirthdate('01/01/2012');
-    setBirthdateDate(fechaHijo);
-    setCategoria(calcularCategoria(fechaHijo));
-    
-    setPassword('Prueba123');
-    setConfirmPassword('Prueba123');
   };
 
   const validarEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -210,10 +192,6 @@ export default function RegisterRequestScreen() {
 
       <Text style={styles.label}>Repetir contraseña</Text>
       <TextInput style={styles.input} placeholder="Repite la contraseña" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry />
-
-      <TouchableOpacity onPress={rellenarDatosPrueba} style={{ backgroundColor: '#ccc', padding: 10, borderRadius: 8, marginVertical: 10 }}>
-        <Text style={{ textAlign: 'center' }}>Rellenar con datos de prueba</Text>
-      </TouchableOpacity>
 
       <View style={styles.buttonContainer}>
         <Button title="Enviar solicitud" onPress={handleRequest} />

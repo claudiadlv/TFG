@@ -13,7 +13,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import Icon from 'react-native-vector-icons/Ionicons'; // 🔥 Importante para el icono del reloj
+import Icon from 'react-native-vector-icons/Ionicons';
 import { API_URL } from '../../config';
 import { fetchWithAuth } from '../../utils/fetchWithAuth';
 import { PadreStackParamList } from '../../navigation/types/types';
